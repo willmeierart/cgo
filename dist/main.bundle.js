@@ -1,0 +1,1 @@
+webpackJsonp([0],[function(o,n,c){"use strict";c(1),c(2),c(3),jQuery(document).ready(function(o){console.log("js working")})},function(o,n){},function(o,n,c){"use strict";console.log("header")},function(o,n,c){"use strict";console.log("footer")}],[0]);

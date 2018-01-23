@@ -1,0 +1,47 @@
+/*
+ Theme Name:   CGO
+ Theme URI:    http://agencyzero.com
+ Description:  Client child theme
+ Author:       @willmeier
+ Author URI:   http://agencyzero.com
+ Template:     salient
+ Version:      1
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/********************************************
+***************** ~IMPORTS~ *****************
+********************************************/
+
+@import 'normalize';
+@import 'colors';
+@import 'fonts';
+@import 'animations';
+
+/********************************************
+***************** ~MIXINS~ ******************
+********************************************/
+
+/********************************************
+**************** ~VARIABLES~ ****************
+********************************************/
+
+/********************************************
+***************** ~GLOBALS~ *****************
+********************************************/
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: blue!important;
+  div {
+    box-sizing: content-box;
+    border: 1px solid black;
+  }
+}
+
+
+/********************************************
+************* ~MEDIA QUERIES~ ***************
+********************************************/
