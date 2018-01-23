@@ -391,9 +391,7 @@ th {
 body {
   width: 100vw;
   height: 100vh;
-  background: blue !important; }
-  body div {
-    box-sizing: content-box; }
+  background: gold !important; }
 
 /********************************************
 ************* ~MEDIA QUERIES~ ***************

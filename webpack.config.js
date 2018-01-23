@@ -64,7 +64,7 @@ module.exports = function(env) {
     devServer: {
       historyApiFallback: true,
       compress: true,
-      port: 9000,
+      port: 3001,
       https: config.url.indexOf('https') > -1 ? true : false,
       publicPath: config.fullPath,
       proxy: {
