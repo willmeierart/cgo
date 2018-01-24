@@ -9,7 +9,7 @@ function CGO_enqueue_everything() {
 }
 
 function salient_child_enqueue_styles() {
-		// original: wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array('font-awesome'));
+		wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array('font-awesome'));
 		// instead: enqueue webpack styles:
 		wp_enqueue_style( 'bundled-styles', get_stylesheet_directory_uri() . '/dist/styles/main.css', array(), date("H:i:s"));
 
