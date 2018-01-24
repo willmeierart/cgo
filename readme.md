@@ -5,6 +5,6 @@
 using Webpack build tools to enable:
 + SASS styling
 + modular code-splitting of both js/css files for optimum performance
-+ babel transpilation of ES6 code for cross-browser compatability
++ babel transpilation of ES6 code for cross-browser compatability in modern syntax
 
 *developed by Will Meier at Agency Zero 2018 🤑*

@@ -1,0 +1,1 @@
+webpackJsonp([8],{19:function(n,o,s){"use strict";s(20),console.log("spiritual paths")},20:function(n,o){}},[19]);

@@ -9,7 +9,22 @@ module.exports = function(env) {
   return  {
     entry: {
       main: "./js/index.js",
-      home: "./js/components/pages/home.js"
+      home: "./js/components/pages/home.js",
+      connect: "./js/components/pages/connect/index.js",
+      learn: "./js/components/pages/learn/index.js",
+      community: "./js/components/pages/learn/community.js",
+      founders: "./js/components/pages/learn/founders.js",
+      purpose: "./js/components/pages/learn/purpose.js",
+      spiritualMasters: "./js/components/pages/learn/spiritualMasters.js",
+      spiritualPaths: "./js/components/pages/learn/spiritualPaths.js",
+      teachings: "./js/components/pages/learn/teachings.js",
+      story: "./js/components/pages/learn/story.js",
+      locations: "./js/components/pages/locations/index.js",      
+      offerings: "./js/components/pages/offerings/index.js",
+      introductory: "./js/components/pages/offerings/introductory.js",
+      meditation: "./js/components/pages/offerings/meditation.js",
+      seminars: "./js/components/pages/offerings/seminars.js",
+      store: "./js/components/pages/store/index.js",
     },
     output: {
       path: path.resolve(__dirname + "/dist"),
