@@ -1,1 +1,1 @@
-webpackJsonp([0],[function(o,n,c){"use strict";c(1),c(2),c(3),jQuery(document).ready(function(o){console.log("js working")})},function(o,n){},function(o,n,c){"use strict";console.log("header")},function(o,n,c){"use strict";console.log("footer")}],[0]);
+webpackJsonp([0],[function(o,n,t){"use strict";t(1),t(2),t(3),t(4),jQuery(document).ready(function(o){console.log("js working")})},function(o,n){},function(o,n,t){"use strict";console.log("header")},function(o,n,t){"use strict";console.log("footer")},function(o,n,t){"use strict"}],[0]);

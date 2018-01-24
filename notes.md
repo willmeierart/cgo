@@ -8,7 +8,7 @@
 
 
 ## TO-DO:
-[] scaffold out pages according to sitemap
+[x] scaffold out pages according to sitemap
 [] add code in functions.php and components/ to account for the different pages
 [] start any initial base structure / strip away child theme structure
 [] fill out asana tracker for anything upcoming
