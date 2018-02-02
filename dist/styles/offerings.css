@@ -1,0 +1,116 @@
+.az-offerings-submenu-wrapper ul {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 0; }
+  .az-offerings-submenu-wrapper ul li {
+    text-transform: uppercase;
+    font-size: 1.75em; }
+    .az-offerings-submenu-wrapper ul li.active {
+      font-size: 2em; }
+
+.az-offerings-types-description-container {
+  display: flex; }
+  .az-offerings-types-description-container .txt-block {
+    border: 1px solid gray;
+    padding: 1em; }
+    .az-offerings-types-description-container .txt-block .inner-wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between; }
+      .az-offerings-types-description-container .txt-block .inner-wrapper .title {
+        font-size: 1.5em;
+        font-weight: bold;
+        padding-bottom: .25em; }
+      .az-offerings-types-description-container .txt-block .inner-wrapper .description-wrapper {
+        overflow: hidden;
+        padding: .25em; }
+      .az-offerings-types-description-container .txt-block .inner-wrapper .b-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 2em;
+        margin: .25em; }
+      .az-offerings-types-description-container .txt-block .inner-wrapper .expand-btn {
+        width: 2em;
+        height: 2em;
+        border-radius: 10%;
+        border: solid 1px grey;
+        text-align: center; }
+
+.az-offerings-type-filter-wrapper {
+  width: 75%;
+  float: right;
+  display: flex; }
+  .az-offerings-type-filter-wrapper .sort-by {
+    font-weight: bold;
+    font-size: 2em;
+    display: inline-block; }
+  .az-offerings-type-filter-wrapper ul {
+    width: 80%;
+    display: flex;
+    flex-grow: 0;
+    justify-content: space-between;
+    text-transform: uppercase;
+    white-space: nowrap; }
+    .az-offerings-type-filter-wrapper ul a .active {
+      font-weight: bold;
+      font-size: 1.25em; }
+
+.az-offerings-locations-menu-wrapper {
+  height: 100%; }
+  .az-offerings-locations-menu-wrapper ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+  .az-offerings-locations-menu-wrapper li {
+    font-size: 2.5em;
+    line-height: 1.25em;
+    text-transform: uppercase;
+    cursor: pointer; }
+    .az-offerings-locations-menu-wrapper li.active {
+      font-weight: bold; }
+    .az-offerings-locations-menu-wrapper li:hover {
+      font-weight: bold; }
+
+.az-offerings-location-detail-wrapper .detail-inner {
+  margin-bottom: 3em; }
+  .az-offerings-location-detail-wrapper .detail-inner .detail-item {
+    display: flex;
+    justify-content: space-between; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .col-1, .az-offerings-location-detail-wrapper .detail-inner .detail-item .col-2, .az-offerings-location-detail-wrapper .detail-inner .detail-item .col-3 {
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .col-3 {
+      font-size: .8em; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .location-info-spacer {
+      height: 2em; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 2em; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .date {
+      font-size: 1.5em; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .price {
+      font-weight: bold;
+      font-size: 1.5em; }
+      .az-offerings-location-detail-wrapper .detail-inner .detail-item .price, .az-offerings-location-detail-wrapper .detail-inner .detail-item .price .price-notes {
+        display: inline-block; }
+    .az-offerings-location-detail-wrapper .detail-inner .detail-item .register-btn, .az-offerings-location-detail-wrapper .detail-inner .detail-item .learn-btn {
+      text-align: center;
+      display: flex;
+      margin-top: 1em;
+      cursor: default; }
+      .az-offerings-location-detail-wrapper .detail-inner .detail-item .register-btn div, .az-offerings-location-detail-wrapper .detail-inner .detail-item .learn-btn div {
+        cursor: pointer;
+        width: 90%;
+        padding: .25em;
+        box-sizing: border-box;
+        border: 1px solid grey;
+        border-radius: 500px; }

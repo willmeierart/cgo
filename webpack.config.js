@@ -101,19 +101,19 @@ module.exports = function(env) {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'common'
       }),
-      new UglifyJsPlugin({
-        sourceMap: true,
-        uglifyOptions: {
-          ie8: false,
-          ecma: 8,
-          mangle: true,
-          output: {
-            comments: false,
-            beautify: false
-          },
-          warnings: false
-        }
-      }),
+      // new UglifyJsPlugin({
+      //   sourceMap: true,
+      //   uglifyOptions: {
+      //     ie8: false,
+      //     ecma: 8,
+      //     mangle: true,
+      //     output: {
+      //       comments: false,
+      //       beautify: false
+      //     },
+      //     warnings: false
+      //   }
+      // }),
       new BrowserSyncPlugin({
         proxy: config.url,
         files: [

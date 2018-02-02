@@ -391,8 +391,31 @@ th {
 body {
   width: 100vw;
   height: 100vh;
-  background: gold !important; }
+  background: gold !important;
+  overflow: auto !important; }
+
+.container:first-of-type {
+  max-width: unset !important; }
+
+ul, li {
+  list-style: none !important; }
+
+a {
+  text-decoration: none !important;
+  color: inherit !important; }
+  a.active {
+    font-weight: bold; }
+
+[class*=btn] {
+  cursor: pointer; }
 
 /********************************************
 ************* ~MEDIA QUERIES~ ***************
 ********************************************/
+@media only screen and (min-width: 1000px) {
+  .container:first-of-type {
+    max-width: unset !important; } }
+
+@media only screen and (min-width: 1300px) {
+  .container:first-of-type {
+    max-width: unset !important; } }
