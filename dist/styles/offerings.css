@@ -81,10 +81,24 @@
     line-height: 1.25em;
     text-transform: uppercase;
     cursor: pointer; }
-    .az-offerings-locations-menu-wrapper li.active {
-      font-weight: bold; }
+    .az-offerings-locations-menu-wrapper li .active {
+      font-weight: bold;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .az-offerings-locations-menu-wrapper li .active .active-line {
+        width: calc(100% - .5em);
+        margin-left: .5em;
+        border-top: 1px solid black; }
     .az-offerings-locations-menu-wrapper li:hover {
       font-weight: bold; }
+
+.az-offerings-location-detail-wrapper .date-category {
+  cursor: pointer; }
+  .az-offerings-location-detail-wrapper .date-category:not(:first-child), .az-offerings-location-detail-wrapper .date-category :first-of-type {
+    cursor: default; }
 
 .az-offerings-location-detail-wrapper .detail-inner {
   margin-bottom: 3em; }

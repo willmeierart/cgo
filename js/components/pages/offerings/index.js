@@ -5,15 +5,19 @@ import { SAMPLE_DATA, meditationTypes, introductoryTypes, seminarTypes } from '.
 import faker from 'faker'
 
 jQuery(document).ready(function($) {
-  const splitPath = window.location.pathname.split('/')
+  const { pathname } = window.location
+  const splitPath = pathname.split('/')
   let path = splitPath[splitPath.length - 2]
-  if (path === 'offerings') { path = 'meditation' }
+  const isOfferingsPage = path === 'offerings'
+  const isMeditationsPage = pathname.indexOf('meditation') !== -1
+  const isIntroductoryPage = pathname.indexOf('introductory') !== -1
+  const isSeminarsPage = pathname.indexOf('seminar') !== -1
+
+  if (isOfferingsPage) { path = 'meditation' }
 
   let activeLocationSlug = 'denver'
   let activeTypeFilter = 'all'
-  let shouldUpdateEvents = false
   const monthsExpanded = {}
-  // let fullyTransformedEventSet = SAMPLE_DATA.events.meditation
 
   let currentList = meditationTypes
   if (path === 'introductory') {
@@ -67,21 +71,17 @@ jQuery(document).ready(function($) {
 
   const fullyTransformTheseEvents = allEvents => {
     const correctFlatEventSet = getCorrectEventSet(allEvents)
-    // console.log(correctFlatEventSet);
     const eventsWithLocations = bindEventsToLocations(correctFlatEventSet)
-    console.log(eventsWithLocations);
     const thisLocationEvents = filterByLocation(eventsWithLocations)
-    console.log(thisLocationEvents);
     const thisTypeEvents = filterByType(thisLocationEvents)
-    console.log(thisTypeEvents);
     const splitEventObj = { Recurring: [] }
   
     thisTypeEvents.forEach(event => {
       if (event.recurring) {
         splitEventObj.Recurring.push(event)
       } else {
-        console.log(event.date);
-        const month = event.date.split(' ')[0]
+        const splitDate = event.date.split(' ')
+        const month = splitDate[0] + '_' + splitDate[splitDate.length - 1]
         if (!splitEventObj[month]) {
           splitEventObj[month] = []
         }
@@ -90,54 +90,25 @@ jQuery(document).ready(function($) {
       }
     })
 
-    console.log(splitEventObj);
-
-    // fullyTransformedEventSet = thisTypeEvents
     return splitEventObj
-    // return thisTypeEvents
   }
 
-  let fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
+  let fullyTransformedEventSet = { ...fullyTransformTheseEvents(SAMPLE_DATA.events) }
 
+  const refreshEventList = () => {
+    const prevSet = { ...fullyTransformedEventSet }
+    if (prevSet !== { ...fullyTransformTheseEvents(SAMPLE_DATA.events) }) {
+      fullyTransformedEventSet = { ...fullyTransformTheseEvents(SAMPLE_DATA.events) }
+      renderEventData()
+    }
+  }
 
-
-  const setActiveItemFilter = (element, matchedString) => {
-    shouldUpdateEvents = false
-
+  const setActiveItemFilter = (element, matchedString, type) => {
     element.each((i, item) => {
-      // console.log(item, matchedString);
-      // console.log($(item).text() === matchedString);
       $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase()
         ? $(item).addClass('active')
         : $(item).removeClass('active')
-      $(item).click(e => {
-        e.preventDefault()
-        const thisMatchedString = $(e.target).text()
-        
-        shouldUpdateEvents = true 
-
-        if (shouldUpdateEvents) {
-          setActiveItemFilter(element, thisMatchedString)
-          $('.az-offerings-location-detail-wrapper').empty()
-          fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
-          renderEventData()
-        }
-      })
     })
-    // element.click((e) => {
-    //   e.preventDefault()
-    //   const thisMatchedString = $(e.target).text()
-    //   setActiveItemFilter(element, thisMatchedString)
-      
-    //   // initDoc() << infinite loop
-    //   $('.az-offerings-location-detail-wrapper').empty()
-    //   fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
-    //   renderEventData()
-    // })
-    
-    // if (opFunc) {
-    //   opFunc()
-    // }
   }
 
   const setActiveMenuItem = () => {
@@ -160,7 +131,14 @@ jQuery(document).ready(function($) {
         )
       }
     })
-    setActiveItemFilter($('.az-offerings-filter-item').children('a'), activeTypeFilter)
+    const thisChild = $('.az-offerings-filter-item').children('a')
+    setActiveItemFilter(thisChild, activeTypeFilter)
+    thisChild.click(e => {
+      activeTypeFilter = $(e.target).text()
+      setActiveItemFilter(thisChild, activeTypeFilter)
+      $('.az-offerings-location-detail-wrapper').empty()
+      refreshEventList()
+    })
   }
 
   const renderTypesDescriptionBlocks = () => {
@@ -181,7 +159,9 @@ jQuery(document).ready(function($) {
     const monthKeys = Object.keys(monthsExpanded)
     monthKeys.forEach(month => {
       $(`.${month}`).click(() => {
-        $(`.${month}`).children().toggle(300)
+        monthsExpanded[month] = !monthsExpanded[month]
+        $(`.${month}`).children('*:not(i, svg)').toggle(300)
+        $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up')
       })
     })
   }
@@ -195,29 +175,22 @@ jQuery(document).ready(function($) {
 
     if (detailsWrapper.children(`#${event.id}`).length < 1) {
       Object.keys(fullyTransformedEventSet).forEach(type => {
-        detailsWrapper.append($(`<div class='${type}'>${type}</div>`))
+        detailsWrapper.append($(`<div class='date-category ${type}'>${type.replace('_', ' ')}</div>`))
+        const expandIcon = monthsExpanded[type] ? 'down' : 'up'
+        if (type !== 'Recurring') {
+          $(`.${type}`).append(`<i class='fas fa-angle-down'></i>`)
+        }
         fullyTransformedEventSet[type].forEach(event => {
           if ($(`.${type}`).children(`#${event.id}`).length < 1) {
             $(`.${type}`).append(detailInner(event))
           }
         })
-        if (type !== 'Recurring') {
-          $(`.${type}`).children().hide()
-        }
+        if (type !== 'Recurring') { $(`.${type}`).children('*:not(i, svg)').hide() }
       })
     }
 
     handleExpandingMonths()
-
-    // fullyTransformedEventSet.forEach(event => {
-    //   // console.log(event);
-    //   if (detailsWrapper.children(`#${event.id}`).length < 1) {
-    //     detailsWrapper.append(detailInner(event))
-    //   }
-    // })
   }
-  
-  
 
   const renderLocationsMenu = () => {
     const menuWrapper = $('.az-offerings-locations-menu-wrapper ul')
@@ -232,7 +205,27 @@ jQuery(document).ready(function($) {
         `)
       }
     })
-    setActiveItemFilter($('.az-offerings-locations-menu-item').children('a'), activeLocationSlug)
+
+    const menuItems = $('.az-offerings-locations-menu-item a')
+
+    setActiveItemFilter(menuItems, activeLocationSlug)
+
+    menuItems.click(e => {
+      activeLocationSlug = $(e.target).text().replace(' ', '_')
+      setActiveItemFilter(menuItems, activeLocationSlug)
+      $('.az-offerings-location-detail-wrapper').empty()
+      refreshEventList()
+    })
+
+    menuItems.each(item => {
+      if (!$(item).hasClass('active')) {
+        $(item).children('.active-line').remove()
+      } else {
+        if ($(item).children('.active-line').length < 1) {
+          $(item).append($(`<div class='active-line'></div>`))
+        }
+      }
+    })
   }
 
   function initDoc () {

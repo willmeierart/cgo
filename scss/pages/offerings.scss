@@ -102,8 +102,18 @@
     line-height: 1.25em;
     text-transform: uppercase;
     cursor: pointer;
-    &.active {
+    .active {
       font-weight: bold;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .active-line {
+        width: calc(100% - .5em);
+        margin-left: .5em;
+        border-top: 1px solid black;
+      } 
     }
     &:hover {
       font-weight: bold;
@@ -112,6 +122,12 @@
 }
 
 .az-offerings-location-detail-wrapper {
+  .date-category {
+    cursor: pointer;
+    &:not(:first-child), :first-of-type {
+      cursor: default;
+    }
+  }
   .detail-inner {
     margin-bottom: 3em;    
     .detail-item {

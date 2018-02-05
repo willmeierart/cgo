@@ -14,12 +14,6 @@ __webpack_require__(125);
 
 __webpack_require__(126);
 
-// MASTER JS FILE - USE TO COMPILE OTHER MODULAR SCRIPTS
-// (remember to run `webpack --watch` for changes to update live)
-jQuery(document).ready(function ($) {
-  console.log('js working');
-});
-
 /***/ }),
 
 /***/ 123:
@@ -35,7 +29,33 @@ jQuery(document).ready(function ($) {
 "use strict";
 
 
-console.log('header');
+jQuery(document).ready(function ($) {
+  $('#search-btn, .cart-outer').remove();
+  // $('.cart-outer').remove()
+
+  var getTitleFromPath = function getTitleFromPath() {
+    var pathname = window.location.pathname;
+
+    var headerEl = $('#top row');
+    var headerTitle = '';
+    var exists = function exists(str) {
+      return pathname.indexOf(str) !== -1;
+    };
+    switch (true) {
+      case exists('offerings'):
+        headerTitle = 'OUR OFFERINGS TO THE WORLD';
+        break;
+      default:
+        headerTitle = '';
+        break;
+    }
+    $('<div class=\'az-page-title\'><h1>' + headerTitle + '</h1></div>').insertAfter('#top .row .span_3');
+  };
+
+  var initHeader = function () {
+    getTitleFromPath();
+  }();
+});
 
 /***/ }),
 

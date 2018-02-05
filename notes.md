@@ -19,3 +19,7 @@
 
 ### Specific code issues:
 [] recursive call to update events
+
+#### Questions for Jeremy:
+[] how to handle overflow of elements?
+  [] like menu items but also the event-type-description-expand btns

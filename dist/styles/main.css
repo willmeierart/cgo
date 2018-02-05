@@ -405,9 +405,18 @@ a {
   color: inherit !important; }
   a.active {
     font-weight: bold; }
+  a:hover {
+    color: inherit; }
 
 [class*=btn] {
   cursor: pointer; }
+
+#top .container {
+  padding: 0 1vw; }
+  #top .container .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
 
 /********************************************
 ************* ~MEDIA QUERIES~ ***************

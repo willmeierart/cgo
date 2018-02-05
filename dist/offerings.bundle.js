@@ -16484,17 +16484,22 @@ var _faker2 = _interopRequireDefault(_faker);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 jQuery(document).ready(function ($) {
-  var splitPath = window.location.pathname.split('/');
+  var pathname = window.location.pathname;
+
+  var splitPath = pathname.split('/');
   var path = splitPath[splitPath.length - 2];
-  if (path === 'offerings') {
+  var isOfferingsPage = path === 'offerings';
+  var isMeditationsPage = pathname.indexOf('meditation') !== -1;
+  var isIntroductoryPage = pathname.indexOf('introductory') !== -1;
+  var isSeminarsPage = pathname.indexOf('seminar') !== -1;
+
+  if (isOfferingsPage) {
     path = 'meditation';
   }
 
   var activeLocationSlug = 'denver';
   var activeTypeFilter = 'all';
-  var shouldUpdateEvents = false;
   var monthsExpanded = {};
-  // let fullyTransformedEventSet = SAMPLE_DATA.events.meditation
 
   var currentList = _SAMPLE_DATA.meditationTypes;
   if (path === 'introductory') {
@@ -16602,21 +16607,17 @@ jQuery(document).ready(function ($) {
 
   var fullyTransformTheseEvents = function fullyTransformTheseEvents(allEvents) {
     var correctFlatEventSet = getCorrectEventSet(allEvents);
-    // console.log(correctFlatEventSet);
     var eventsWithLocations = bindEventsToLocations(correctFlatEventSet);
-    console.log(eventsWithLocations);
     var thisLocationEvents = filterByLocation(eventsWithLocations);
-    console.log(thisLocationEvents);
     var thisTypeEvents = filterByType(thisLocationEvents);
-    console.log(thisTypeEvents);
     var splitEventObj = { Recurring: [] };
 
     thisTypeEvents.forEach(function (event) {
       if (event.recurring) {
         splitEventObj.Recurring.push(event);
       } else {
-        console.log(event.date);
-        var month = event.date.split(' ')[0];
+        var splitDate = event.date.split(' ');
+        var month = splitDate[0] + '_' + splitDate[splitDate.length - 1];
         if (!splitEventObj[month]) {
           splitEventObj[month] = [];
         }
@@ -16625,50 +16626,23 @@ jQuery(document).ready(function ($) {
       }
     });
 
-    console.log(splitEventObj);
-
-    // fullyTransformedEventSet = thisTypeEvents
     return splitEventObj;
-    // return thisTypeEvents
   };
 
-  var fullyTransformedEventSet = fullyTransformTheseEvents(_SAMPLE_DATA.SAMPLE_DATA.events);
+  var fullyTransformedEventSet = _extends({}, fullyTransformTheseEvents(_SAMPLE_DATA.SAMPLE_DATA.events));
 
-  var setActiveItemFilter = function setActiveItemFilter(element, matchedString) {
-    shouldUpdateEvents = false;
+  var refreshEventList = function refreshEventList() {
+    var prevSet = _extends({}, fullyTransformedEventSet);
+    if (prevSet !== _extends({}, fullyTransformTheseEvents(_SAMPLE_DATA.SAMPLE_DATA.events))) {
+      fullyTransformedEventSet = _extends({}, fullyTransformTheseEvents(_SAMPLE_DATA.SAMPLE_DATA.events));
+      renderEventData();
+    }
+  };
 
+  var setActiveItemFilter = function setActiveItemFilter(element, matchedString, type) {
     element.each(function (i, item) {
-      // console.log(item, matchedString);
-      // console.log($(item).text() === matchedString);
       $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase() ? $(item).addClass('active') : $(item).removeClass('active');
-      $(item).click(function (e) {
-        e.preventDefault();
-        var thisMatchedString = $(e.target).text();
-
-        shouldUpdateEvents = true;
-
-        if (shouldUpdateEvents) {
-          setActiveItemFilter(element, thisMatchedString);
-          $('.az-offerings-location-detail-wrapper').empty();
-          fullyTransformedEventSet = fullyTransformTheseEvents(_SAMPLE_DATA.SAMPLE_DATA.events);
-          renderEventData();
-        }
-      });
     });
-    // element.click((e) => {
-    //   e.preventDefault()
-    //   const thisMatchedString = $(e.target).text()
-    //   setActiveItemFilter(element, thisMatchedString)
-
-    //   // initDoc() << infinite loop
-    //   $('.az-offerings-location-detail-wrapper').empty()
-    //   fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
-    //   renderEventData()
-    // })
-
-    // if (opFunc) {
-    //   opFunc()
-    // }
   };
 
   var setActiveMenuItem = function setActiveMenuItem() {
@@ -16688,7 +16662,14 @@ jQuery(document).ready(function ($) {
         $('#az-offerings-filter-focus').append($('\n          <li id=\'' + formatItem + '\' class=\'az-offerings-filter-item\'>\n            <a>' + item + '</a>\n          </li>\n        '));
       }
     });
-    setActiveItemFilter($('.az-offerings-filter-item').children('a'), activeTypeFilter);
+    var thisChild = $('.az-offerings-filter-item').children('a');
+    setActiveItemFilter(thisChild, activeTypeFilter);
+    thisChild.click(function (e) {
+      activeTypeFilter = $(e.target).text();
+      setActiveItemFilter(thisChild, activeTypeFilter);
+      $('.az-offerings-location-detail-wrapper').empty();
+      refreshEventList();
+    });
   };
 
   var renderTypesDescriptionBlocks = function renderTypesDescriptionBlocks() {
@@ -16709,7 +16690,9 @@ jQuery(document).ready(function ($) {
     var monthKeys = Object.keys(monthsExpanded);
     monthKeys.forEach(function (month) {
       $('.' + month).click(function () {
-        $('.' + month).children().toggle(300);
+        monthsExpanded[month] = !monthsExpanded[month];
+        $('.' + month).children('*:not(i, svg)').toggle(300);
+        $('.' + month).children('i').toggleClass('fa-angle-down fa-angle-up');
       });
     });
   };
@@ -16723,26 +16706,23 @@ jQuery(document).ready(function ($) {
 
     if (detailsWrapper.children('#' + event.id).length < 1) {
       Object.keys(fullyTransformedEventSet).forEach(function (type) {
-        detailsWrapper.append($('<div class=\'' + type + '\'>' + type + '</div>'));
+        detailsWrapper.append($('<div class=\'date-category ' + type + '\'>' + type.replace('_', ' ') + '</div>'));
+        var expandIcon = monthsExpanded[type] ? 'down' : 'up';
+        if (type !== 'Recurring') {
+          $('.' + type).append('<i class=\'fas fa-angle-down\'></i>');
+        }
         fullyTransformedEventSet[type].forEach(function (event) {
           if ($('.' + type).children('#' + event.id).length < 1) {
             $('.' + type).append((0, _templateElements.detailInner)(event));
           }
         });
         if (type !== 'Recurring') {
-          $('.' + type).children().hide();
+          $('.' + type).children('*:not(i, svg)').hide();
         }
       });
     }
 
     handleExpandingMonths();
-
-    // fullyTransformedEventSet.forEach(event => {
-    //   // console.log(event);
-    //   if (detailsWrapper.children(`#${event.id}`).length < 1) {
-    //     detailsWrapper.append(detailInner(event))
-    //   }
-    // })
   };
 
   var renderLocationsMenu = function renderLocationsMenu() {
@@ -16755,7 +16735,27 @@ jQuery(document).ready(function ($) {
         menuWrapper.append('\n          <li id=\'' + location.menu_slug + '\' class=\'az-offerings-locations-menu-item\'>\n            <a>' + location.menu_slug.replace('_', ' ') + '</a>\n          </li>\n        ');
       }
     });
-    setActiveItemFilter($('.az-offerings-locations-menu-item').children('a'), activeLocationSlug);
+
+    var menuItems = $('.az-offerings-locations-menu-item a');
+
+    setActiveItemFilter(menuItems, activeLocationSlug);
+
+    menuItems.click(function (e) {
+      activeLocationSlug = $(e.target).text().replace(' ', '_');
+      setActiveItemFilter(menuItems, activeLocationSlug);
+      $('.az-offerings-location-detail-wrapper').empty();
+      refreshEventList();
+    });
+
+    menuItems.each(function (item) {
+      if (!$(item).hasClass('active')) {
+        $(item).children('.active-line').remove();
+      } else {
+        if ($(item).children('.active-line').length < 1) {
+          $(item).append($('<div class=\'active-line\'></div>'));
+        }
+      }
+    });
   };
 
   function initDoc() {

@@ -51,10 +51,27 @@ a {
   &.active {
     font-weight: bold;
   }
+  &:hover {
+    color: inherit;
+  }
 }
 
 [class*=btn] {
   cursor: pointer;
+}
+
+#top {
+  .container{
+    padding: 0 1vw;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .az-page-title {
+        // font-size: 1
+      }
+    }
+  }
 }
 
 
@@ -73,4 +90,3 @@ a {
     max-width: unset !important;
   }
 }
-
