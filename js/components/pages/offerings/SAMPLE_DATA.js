@@ -66,6 +66,19 @@ export const SAMPLE_DATA = {
         portal_link: 'http://sdfsdfsd.rr/ff',
         streaming_link: 'youtube.jf/ssasdfasdf'
       },
+       {
+        id: 6756345,
+        location_id: 2352346,
+        type: 'path_meditation',
+        date: `${moment(new Date()).add(78, 'd').format('MMMM D, YYYY')}`, // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
+        time: '7:00 - 8:00 PM MT',
+        time_notes: 'asdfasdfasdf', // i.e. 'please arrive by 6:45 pm'
+        price: '$500', // 'free' if free
+        price_notes: "ahhhhhhh", // i.e. 'first time free'
+        other_notes: 'sdffffffffffffret entrance ..sd .', // char_limit - let's start with 200, subject to change. if not specified, some boilerplate will be used
+        portal_link: 'http://sdfsdfsd.rr/ff',
+        streaming_link: 'youtube.jf/ssasdfasdf'
+      },
       {
         id: 645673,
         location_id: 2352348,

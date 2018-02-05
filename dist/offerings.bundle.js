@@ -16513,7 +16513,7 @@ jQuery(document).ready(function ($) {
     var upcomingName = formatPath;
     // if (path === 'offerings') { formatPath = 'meditation' }
     if (formatPath === 'meditation') {
-      upcomingName = 'Meditations';
+      upcomingName = 'Meditation Events';
     } else if (formatPath === 'introductory') {
       upcomingName = 'Introductory Events';
     }
@@ -16641,7 +16641,7 @@ jQuery(document).ready(function ($) {
 
   var setActiveItemFilter = function setActiveItemFilter(element, matchedString, type) {
     element.each(function (i, item) {
-      $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase() ? $(item).addClass('active') : $(item).removeClass('active');
+      $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase() || $(item).text() === matchedString.replace('_', ' ') ? $(item).addClass('active') : $(item).removeClass('active');
     });
   };
 
@@ -16740,21 +16740,21 @@ jQuery(document).ready(function ($) {
 
     setActiveItemFilter(menuItems, activeLocationSlug);
 
+    menuItems.each(function (i, item) {
+      console.log(item);
+      $(item).append($('<div class=\'active-line\'></div>'));
+      if (!$(item).hasClass('active')) {
+        $(item).children('.active-line').hide();
+      }
+    });
+
     menuItems.click(function (e) {
       activeLocationSlug = $(e.target).text().replace(' ', '_');
       setActiveItemFilter(menuItems, activeLocationSlug);
       $('.az-offerings-location-detail-wrapper').empty();
       refreshEventList();
-    });
-
-    menuItems.each(function (item) {
-      if (!$(item).hasClass('active')) {
-        $(item).children('.active-line').remove();
-      } else {
-        if ($(item).children('.active-line').length < 1) {
-          $(item).append($('<div class=\'active-line\'></div>'));
-        }
-      }
+      menuItems.children('.active-line').hide();
+      $(e.target).children('.active-line').show(200);
     });
   };
 
@@ -106109,6 +106109,18 @@ var SAMPLE_DATA = exports.SAMPLE_DATA = {
     }, {
       id: 67567,
       location_id: 2352345,
+      type: 'path_meditation',
+      date: '' + (0, _moment2.default)(new Date()).add(78, 'd').format('MMMM D, YYYY'), // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
+      time: '7:00 - 8:00 PM MT',
+      time_notes: 'asdfasdfasdf', // i.e. 'please arrive by 6:45 pm'
+      price: '$500', // 'free' if free
+      price_notes: "ahhhhhhh", // i.e. 'first time free'
+      other_notes: 'sdffffffffffffret entrance ..sd .', // char_limit - let's start with 200, subject to change. if not specified, some boilerplate will be used
+      portal_link: 'http://sdfsdfsd.rr/ff',
+      streaming_link: 'youtube.jf/ssasdfasdf'
+    }, {
+      id: 6756345,
+      location_id: 2352346,
       type: 'path_meditation',
       date: '' + (0, _moment2.default)(new Date()).add(78, 'd').format('MMMM D, YYYY'), // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
       time: '7:00 - 8:00 PM MT',

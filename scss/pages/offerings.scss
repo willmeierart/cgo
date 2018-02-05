@@ -102,12 +102,14 @@
     line-height: 1.25em;
     text-transform: uppercase;
     cursor: pointer;
+    white-space: nowrap;
     .active {
       font-weight: bold;
       position: relative;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      flex-wrap: nowrap;
       align-items: center;
       .active-line {
         width: calc(100% - .5em);

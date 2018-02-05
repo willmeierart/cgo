@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
     let upcomingName = formatPath
     // if (path === 'offerings') { formatPath = 'meditation' }
     if (formatPath === 'meditation') {
-      upcomingName = 'Meditations'
+      upcomingName = 'Meditation Events'
     } else if (formatPath === 'introductory') {
       upcomingName= 'Introductory Events'
     }
@@ -105,7 +105,9 @@ jQuery(document).ready(function($) {
 
   const setActiveItemFilter = (element, matchedString, type) => {
     element.each((i, item) => {
-      $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase()
+      $(item).text() === matchedString ||
+      $(item).text() === matchedString.toUpperCase() ||
+      $(item).text() === matchedString.replace('_', ' ')
         ? $(item).addClass('active')
         : $(item).removeClass('active')
     })
@@ -210,22 +212,24 @@ jQuery(document).ready(function($) {
 
     setActiveItemFilter(menuItems, activeLocationSlug)
 
+    menuItems.each((i, item) => {
+      console.log(item);
+      $(item).append($(`<div class='active-line'></div>`))
+      if (!$(item).hasClass('active')) {
+        $(item).children('.active-line').hide()
+      }
+    })
+
     menuItems.click(e => {
       activeLocationSlug = $(e.target).text().replace(' ', '_')
       setActiveItemFilter(menuItems, activeLocationSlug)
       $('.az-offerings-location-detail-wrapper').empty()
       refreshEventList()
+      menuItems.children('.active-line').hide()
+      $(e.target).children('.active-line').show(200)
     })
 
-    menuItems.each(item => {
-      if (!$(item).hasClass('active')) {
-        $(item).children('.active-line').remove()
-      } else {
-        if ($(item).children('.active-line').length < 1) {
-          $(item).append($(`<div class='active-line'></div>`))
-        }
-      }
-    })
+    
   }
 
   function initDoc () {
