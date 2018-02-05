@@ -1,14 +1,14 @@
 import faker from 'faker'
 
 export const detailInner = event => {
-  const { id, type, title, date, time, time_notes, price, price_notes, location_title, address, phone, other_notes } = event
+  const { id, type, title, date, time, recurring, time_notes, price, price_notes, location_title, address, phone, other_notes } = event
   return `
     <div id='${id}' class='detail-inner'>
       <div class='detail-item'>
         <div class='col-1'>
           <div class='details'>
             <div class='title'>${title ? title : type.replace('_', ' ')}</div>
-            <div class='date'>${date /* have logic in here for handling recurring dates */}</div>
+            <div class='date'>${recurring ? recurring : date /* have logic in here for handling recurring dates */}</div>
             <div class='time'>${time}</div>
             <div class='time-notes'>(${time_notes})</div>
             <span class='price'>${price}&nbsp;</span>

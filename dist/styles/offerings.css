@@ -41,6 +41,12 @@
         border: solid 1px grey;
         text-align: center; }
 
+.az-upcoming-category {
+  width: 75%;
+  float: right;
+  text-align: left;
+  text-transform: uppercase; }
+
 .az-offerings-type-filter-wrapper {
   width: 75%;
   float: right;
@@ -56,6 +62,9 @@
     justify-content: space-between;
     text-transform: uppercase;
     white-space: nowrap; }
+    .az-offerings-type-filter-wrapper ul li {
+      margin-right: 1em;
+      cursor: pointer; }
     .az-offerings-type-filter-wrapper ul a .active {
       font-weight: bold;
       font-size: 1.25em; }

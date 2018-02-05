@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const HardsourceWebpackPlugin = require('hard-source-webpack-plugin')
 const config = require('./config')
 
 module.exports = function(env) {
@@ -35,16 +36,28 @@ module.exports = function(env) {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["env"]
+          use: [
+            {
+              loader: "cache-loader"
+            },
+            {
+              loader: "babel-loader",
+              options: {
+                presets: ["env"]
+              }
             }
-          }
+          ]
         },
         {
           test: /\.html$/,
-          loader: "raw-loader",
+          use: [
+            {
+              loader: "cache-loader"
+            },
+            {
+              loader: "raw-loader"
+            }
+          ],
           exclude: /node_modules/
         },
         {
@@ -52,6 +65,9 @@ module.exports = function(env) {
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
             use: [
+              {
+                loader: "cache-loader"
+              },
               {
                 loader: "css-loader"
               },
@@ -94,6 +110,7 @@ module.exports = function(env) {
       }
     },
     plugins: [
+      new HardsourceWebpackPlugin(),
       new ExtractTextPlugin({
         filename: 'styles/[name].css',
         allChunks: true
@@ -119,7 +136,8 @@ module.exports = function(env) {
         files: [
           '**/*.php'
         ],
-        reloadDelay: 0
+        reloadDelay: 0,
+        online: true
       })
     ]
   }

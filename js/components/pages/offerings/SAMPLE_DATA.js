@@ -43,7 +43,7 @@ export const SAMPLE_DATA = {
         id: 2324,
         location_id: 2352345,
         type: 'public_meditation',
-        recurring: false, // i.e. 'every wednesday'. if not specified, 'date' is required
+        recurring: 'Every Wednesday', // i.e. 'every wednesday'. if not specified, 'date' is required
         date: `${moment(new Date()).format('MMMM D, YYYY')}`, // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
         time: '7:00 - 8:00 PM MT',
         time_notes: 'please arrive days before', // i.e. 'please arrive by 6:45 pm'
@@ -55,9 +55,8 @@ export const SAMPLE_DATA = {
       },
       {
         id: 67567,
-        location_id: 2352347,
+        location_id: 2352345,
         type: 'path_meditation',
-        recurring: false, // i.e. 'every wednesday'. if not specified, 'date' is required
         date: `${moment(new Date()).add(78, 'd').format('MMMM D, YYYY')}`, // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
         time: '7:00 - 8:00 PM MT',
         time_notes: 'asdfasdfasdf', // i.e. 'please arrive by 6:45 pm'
@@ -71,7 +70,6 @@ export const SAMPLE_DATA = {
         id: 645673,
         location_id: 2352348,
         type: 'path_meditation',
-        recurring: true, // i.e. 'every wednesday'. if not specified, 'date' is required
         date: `${moment(new Date()).add(7, 'd').format('MMMM D, YYYY')}`, // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
         time: '7:00 - 8:00 PM MT',
         time_notes: 'recur1', // i.e. 'please arrive by 6:45 pm'
@@ -85,7 +83,7 @@ export const SAMPLE_DATA = {
         id: 3458345083450,
         location_id: 2352348,
         type: 'path_meditation',
-        recurring: true, // i.e. 'every wednesday'. if not specified, 'date' is required
+        recurring: 'Every Wednesday', // i.e. 'every wednesday'. if not specified, 'date' is required
         date: `${moment(new Date()).add(14, 'd').format('MMMM D, YYYY')}`, // normalized format - i.e. '7:00pm - 9:00pm MT' if not specified, 'recurring_date' is required
         time: '7:00 - 8:00 PM MT',
         time_notes: 'recur2', // i.e. 'please arrive by 6:45 pm'

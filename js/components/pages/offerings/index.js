@@ -6,10 +6,14 @@ import faker from 'faker'
 
 jQuery(document).ready(function($) {
   const splitPath = window.location.pathname.split('/')
-  const path = splitPath[splitPath.length - 2]
+  let path = splitPath[splitPath.length - 2]
+  if (path === 'offerings') { path = 'meditation' }
 
   let activeLocationSlug = 'denver'
   let activeTypeFilter = 'all'
+  let shouldUpdateEvents = false
+  const monthsExpanded = {}
+  // let fullyTransformedEventSet = SAMPLE_DATA.events.meditation
 
   let currentList = meditationTypes
   if (path === 'introductory') {
@@ -20,7 +24,15 @@ jQuery(document).ready(function($) {
 
   const getCorrectEventSet = eventObj => {
     let formatPath = path
-    if (path === 'offerings') { formatPath = 'meditation' }
+    let upcomingName = formatPath
+    // if (path === 'offerings') { formatPath = 'meditation' }
+    if (formatPath === 'meditation') {
+      upcomingName = 'Meditations'
+    } else if (formatPath === 'introductory') {
+      upcomingName= 'Introductory Events'
+    }
+
+    $('.az-upcoming-category').text(`Upcoming ${upcomingName}`)
     for (let eventType of Object.keys(eventObj)) {
       if (eventType === formatPath) { return eventObj[eventType] }
     }
@@ -35,11 +47,12 @@ jQuery(document).ready(function($) {
         }
       }
       const eLoc = eventLocation()
+      const { phone, address } = eLoc
       return {
         location_title: eLoc.title,
-        address: eLoc.address,
-        phone: eLoc.phone,
         slug: eLoc.menu_slug,
+        address,
+        phone,
         ...event
       }
     })
@@ -54,10 +67,34 @@ jQuery(document).ready(function($) {
 
   const fullyTransformTheseEvents = allEvents => {
     const correctFlatEventSet = getCorrectEventSet(allEvents)
+    // console.log(correctFlatEventSet);
     const eventsWithLocations = bindEventsToLocations(correctFlatEventSet)
+    console.log(eventsWithLocations);
     const thisLocationEvents = filterByLocation(eventsWithLocations)
+    console.log(thisLocationEvents);
     const thisTypeEvents = filterByType(thisLocationEvents)
-    return thisTypeEvents
+    console.log(thisTypeEvents);
+    const splitEventObj = { Recurring: [] }
+  
+    thisTypeEvents.forEach(event => {
+      if (event.recurring) {
+        splitEventObj.Recurring.push(event)
+      } else {
+        console.log(event.date);
+        const month = event.date.split(' ')[0]
+        if (!splitEventObj[month]) {
+          splitEventObj[month] = []
+        }
+        splitEventObj[month].push(event)
+        monthsExpanded[month] = false
+      }
+    })
+
+    console.log(splitEventObj);
+
+    // fullyTransformedEventSet = thisTypeEvents
+    return splitEventObj
+    // return thisTypeEvents
   }
 
   let fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
@@ -65,20 +102,38 @@ jQuery(document).ready(function($) {
 
 
   const setActiveItemFilter = (element, matchedString) => {
+    shouldUpdateEvents = false
+
     element.each((i, item) => {
-      console.log($(item).text() === matchedString);
+      // console.log(item, matchedString);
+      // console.log($(item).text() === matchedString);
       $(item).text() === matchedString || $(item).text() === matchedString.toUpperCase()
         ? $(item).addClass('active')
         : $(item).removeClass('active')
-    })
-    element.click((e) => {
-      e.preventDefault()
-      matchedString = $(e.target).text()
-      setActiveItemFilter(element, matchedString)
-      fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
+      $(item).click(e => {
+        e.preventDefault()
+        const thisMatchedString = $(e.target).text()
+        
+        shouldUpdateEvents = true 
 
-      // initDoc() << infinite loop
+        if (shouldUpdateEvents) {
+          setActiveItemFilter(element, thisMatchedString)
+          $('.az-offerings-location-detail-wrapper').empty()
+          fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
+          renderEventData()
+        }
+      })
     })
+    // element.click((e) => {
+    //   e.preventDefault()
+    //   const thisMatchedString = $(e.target).text()
+    //   setActiveItemFilter(element, thisMatchedString)
+      
+    //   // initDoc() << infinite loop
+    //   $('.az-offerings-location-detail-wrapper').empty()
+    //   fullyTransformedEventSet = fullyTransformTheseEvents(SAMPLE_DATA.events)
+    //   renderEventData()
+    // })
     
     // if (opFunc) {
     //   opFunc()
@@ -88,11 +143,8 @@ jQuery(document).ready(function($) {
   const setActiveMenuItem = () => {
     const subheadLinks = $('.az-offerings-submenu-wrapper a')
     let formatPath = path
-    if (path === 'introductory') {
-      formatPath = path + ' events'
-    } else if (path === 'offerings') {
-      formatPath = 'meditations'
-    }
+    if (path === 'introductory') { formatPath = path + ' events' }
+    // console.log(subheadLinks, formatPath);
     setActiveItemFilter(subheadLinks, formatPath)
   }
 
@@ -125,6 +177,15 @@ jQuery(document).ready(function($) {
     blockEl.css('height', newWidth)
   }
 
+  const handleExpandingMonths = () => {
+    const monthKeys = Object.keys(monthsExpanded)
+    monthKeys.forEach(month => {
+      $(`.${month}`).click(() => {
+        $(`.${month}`).children().toggle(300)
+      })
+    })
+  }
+
   const renderEventData = () => {
     let formatPath = path
     if (path === ('offerings')) {
@@ -132,12 +193,31 @@ jQuery(document).ready(function($) {
     }
     const detailsWrapper = $('.az-offerings-location-detail-wrapper')
 
-    fullyTransformedEventSet.forEach(event => {
-      if (detailsWrapper.children(`#${event.id}`).length < 1) {
-        detailsWrapper.append(detailInner(event))
-      }
-    })
+    if (detailsWrapper.children(`#${event.id}`).length < 1) {
+      Object.keys(fullyTransformedEventSet).forEach(type => {
+        detailsWrapper.append($(`<div class='${type}'>${type}</div>`))
+        fullyTransformedEventSet[type].forEach(event => {
+          if ($(`.${type}`).children(`#${event.id}`).length < 1) {
+            $(`.${type}`).append(detailInner(event))
+          }
+        })
+        if (type !== 'Recurring') {
+          $(`.${type}`).children().hide()
+        }
+      })
+    }
+
+    handleExpandingMonths()
+
+    // fullyTransformedEventSet.forEach(event => {
+    //   // console.log(event);
+    //   if (detailsWrapper.children(`#${event.id}`).length < 1) {
+    //     detailsWrapper.append(detailInner(event))
+    //   }
+    // })
   }
+  
+  
 
   const renderLocationsMenu = () => {
     const menuWrapper = $('.az-offerings-locations-menu-wrapper ul')

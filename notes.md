@@ -8,7 +8,14 @@
 
 
 ## TO-DO:
-[x] scaffold out pages according to sitemap
-[x] add code in functions.php and components/ to account for the different pages
-[] start any initial base structure / strip away child theme structure
-[] fill out asana tracker for anything upcoming
+[] figure out hot module reloading speed
+[] make sure Ben/Bruce are going to get the data model going correctly
+[] get full dynamic page structure with fake data
+[] figure out how to make that work with copying each page for each type of offering
+[] once we get design assets meet with nick and start scaffolding large-scale principles
+
+### ONGOING:
+[] keep Asana up-to-date
+
+### Specific code issues:
+[] recursive call to update events
