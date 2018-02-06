@@ -10,16 +10,17 @@
 ## TO-DO:
 [] figure out hot module reloading speed
 [] make sure Ben/Bruce are going to get the data model going correctly
-[] get full dynamic page structure with fake data
+[x] get full dynamic page structure with fake data
 [] figure out how to make that work with copying each page for each type of offering
 [] once we get design assets meet with nick and start scaffolding large-scale principles
+[] handle redirect of offerings page to offerings/meditation instead of dynamic content
 
 ### ONGOING:
 [] keep Asana up-to-date
 
 ### Specific code issues:
-[] recursive call to update events
+[x] recursive call to update events
 
 #### Questions for Jeremy:
-[] how to handle overflow of elements?
-  [] like menu items but also the event-type-description-expand btns
+[x] how to handle overflow of elements?
+  [x] like menu items but also the event-type-description-expand btns

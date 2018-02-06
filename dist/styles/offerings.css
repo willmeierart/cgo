@@ -9,6 +9,22 @@
     .az-offerings-submenu-wrapper ul li.active {
       font-size: 2em; }
 
+.az-offerings-header-description-text {
+  margin-bottom: 2em; }
+  .az-offerings-header-description-text .wpb_wrapper {
+    display: flex;
+    justify-content: space-between; }
+    .az-offerings-header-description-text .wpb_wrapper p {
+      width: 48%;
+      margin: 0;
+      padding: 0; }
+  .az-offerings-header-description-text .read-more {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: .5em 0; }
+
 .az-offerings-types-description-container {
   display: flex; }
   .az-offerings-types-description-container .txt-block {

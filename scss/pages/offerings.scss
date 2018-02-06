@@ -14,6 +14,26 @@
   }
 }
 
+.az-offerings-header-description-text {
+  margin-bottom: 2em;
+  .wpb_wrapper {
+    display: flex;
+    justify-content: space-between;
+    p {
+      width: 48%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .read-more {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: .5em 0;
+  }
+}
+
 .az-offerings-types-description-container {
   display: flex;
   .txt-block{

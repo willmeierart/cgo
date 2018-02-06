@@ -2,23 +2,26 @@ import moment from 'moment'
 import '../../../../scss/pages/offerings.scss'
 import { detailInner, descriptionTxtBlock } from './templateElements'
 import { SAMPLE_DATA, meditationTypes, introductoryTypes, seminarTypes } from './SAMPLE_DATA'
-import faker from 'faker'
 
 jQuery(document).ready(function($) {
   const { pathname } = window.location
   const splitPath = pathname.split('/')
   let path = splitPath[splitPath.length - 2]
+
   const isOfferingsPage = path === 'offerings'
   const isMeditationsPage = pathname.indexOf('meditation') !== -1
   const isIntroductoryPage = pathname.indexOf('introductory') !== -1
   const isSeminarsPage = pathname.indexOf('seminar') !== -1
 
+  // maybe just for testing purposes, but make top-level 'offerings' behave like 'meditation' page
   if (isOfferingsPage) { path = 'meditation' }
 
+  // global variables modified by filters for sorting events
   let activeLocationSlug = 'denver'
   let activeTypeFilter = 'all'
   const monthsExpanded = {}
 
+  // use sample arrays for meditation data
   let currentList = meditationTypes
   if (path === 'introductory') {
     currentList = introductoryTypes
@@ -26,17 +29,23 @@ jQuery(document).ready(function($) {
     currentList = seminarTypes
   }
 
+  // this function will do more, deal with splitting and truncation of top description text
+  const formatHeaderTypeDescription = () => {
+    $('.az-offerings-header-description-text')
+      .append(`<div class='read-more'>Read More...</div>`) // this will need to do more also
+  }
+
   const getCorrectEventSet = eventObj => {
     let formatPath = path
     let upcomingName = formatPath
-    // if (path === 'offerings') { formatPath = 'meditation' }
     if (formatPath === 'meditation') {
       upcomingName = 'Meditation Events'
     } else if (formatPath === 'introductory') {
       upcomingName= 'Introductory Events'
     }
-
     $('.az-upcoming-category').text(`Upcoming ${upcomingName}`)
+    
+    // get the actual event object from the 
     for (let eventType of Object.keys(eventObj)) {
       if (eventType === formatPath) { return eventObj[eventType] }
     }
@@ -89,7 +98,6 @@ jQuery(document).ready(function($) {
         monthsExpanded[month] = false
       }
     })
-
     return splitEventObj
   }
 
@@ -117,7 +125,6 @@ jQuery(document).ready(function($) {
     const subheadLinks = $('.az-offerings-submenu-wrapper a')
     let formatPath = path
     if (path === 'introductory') { formatPath = path + ' events' }
-    // console.log(subheadLinks, formatPath);
     setActiveItemFilter(subheadLinks, formatPath)
   }
 
@@ -213,7 +220,6 @@ jQuery(document).ready(function($) {
     setActiveItemFilter(menuItems, activeLocationSlug)
 
     menuItems.each((i, item) => {
-      console.log(item);
       $(item).append($(`<div class='active-line'></div>`))
       if (!$(item).hasClass('active')) {
         $(item).children('.active-line').hide()
@@ -233,6 +239,7 @@ jQuery(document).ready(function($) {
   }
 
   function initDoc () {
+    formatHeaderTypeDescription()
     setActiveMenuItem()
     renderTypesFilter()
     renderTypesDescriptionBlocks()

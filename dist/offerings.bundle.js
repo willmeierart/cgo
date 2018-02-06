@@ -16477,10 +16477,6 @@ var _templateElements = __webpack_require__(153);
 
 var _SAMPLE_DATA = __webpack_require__(1200);
 
-var _faker = __webpack_require__(120);
-
-var _faker2 = _interopRequireDefault(_faker);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 jQuery(document).ready(function ($) {
@@ -16488,19 +16484,23 @@ jQuery(document).ready(function ($) {
 
   var splitPath = pathname.split('/');
   var path = splitPath[splitPath.length - 2];
+
   var isOfferingsPage = path === 'offerings';
   var isMeditationsPage = pathname.indexOf('meditation') !== -1;
   var isIntroductoryPage = pathname.indexOf('introductory') !== -1;
   var isSeminarsPage = pathname.indexOf('seminar') !== -1;
 
+  // maybe just for testing purposes, but make top-level 'offerings' behave like 'meditation' page
   if (isOfferingsPage) {
     path = 'meditation';
   }
 
+  // global variables modified by filters for sorting events
   var activeLocationSlug = 'denver';
   var activeTypeFilter = 'all';
   var monthsExpanded = {};
 
+  // use sample arrays for meditation data
   var currentList = _SAMPLE_DATA.meditationTypes;
   if (path === 'introductory') {
     currentList = _SAMPLE_DATA.introductoryTypes;
@@ -16508,17 +16508,22 @@ jQuery(document).ready(function ($) {
     currentList = _SAMPLE_DATA.seminarTypes;
   }
 
+  // this function will do more, deal with splitting and truncation of top description text
+  var formatHeaderTypeDescription = function formatHeaderTypeDescription() {
+    $('.az-offerings-header-description-text').append('<div class=\'read-more\'>Read More...</div>'); // this will need to do more also
+  };
+
   var getCorrectEventSet = function getCorrectEventSet(eventObj) {
     var formatPath = path;
     var upcomingName = formatPath;
-    // if (path === 'offerings') { formatPath = 'meditation' }
     if (formatPath === 'meditation') {
       upcomingName = 'Meditation Events';
     } else if (formatPath === 'introductory') {
       upcomingName = 'Introductory Events';
     }
-
     $('.az-upcoming-category').text('Upcoming ' + upcomingName);
+
+    // get the actual event object from the 
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -16625,7 +16630,6 @@ jQuery(document).ready(function ($) {
         monthsExpanded[month] = false;
       }
     });
-
     return splitEventObj;
   };
 
@@ -16651,7 +16655,6 @@ jQuery(document).ready(function ($) {
     if (path === 'introductory') {
       formatPath = path + ' events';
     }
-    // console.log(subheadLinks, formatPath);
     setActiveItemFilter(subheadLinks, formatPath);
   };
 
@@ -16741,7 +16744,6 @@ jQuery(document).ready(function ($) {
     setActiveItemFilter(menuItems, activeLocationSlug);
 
     menuItems.each(function (i, item) {
-      console.log(item);
       $(item).append($('<div class=\'active-line\'></div>'));
       if (!$(item).hasClass('active')) {
         $(item).children('.active-line').hide();
@@ -16759,6 +16761,7 @@ jQuery(document).ready(function ($) {
   };
 
   function initDoc() {
+    formatHeaderTypeDescription();
     setActiveMenuItem();
     renderTypesFilter();
     renderTypesDescriptionBlocks();
