@@ -87,12 +87,18 @@ function CGO_enqueue_js() {
 		} else if(is_page( 'Meditation' )) {
 			wp_enqueue_script('cgo_meditation');
 			wp_enqueue_style('cgo_meditation_style', get_stylesheet_directory_uri() . '/dist/styles/meditation.css');
+			wp_enqueue_script('cgo_offerings');
+			wp_enqueue_style('cgo_offerings_style', get_stylesheet_directory_uri() . '/dist/styles/offerings.css');
 		} else if(is_page( 'Seminars' )) {
 			wp_enqueue_script('cgo_seminars');
 			wp_enqueue_style('cgo_seminars_style', get_stylesheet_directory_uri() . '/dist/styles/seminars.css');
+			wp_enqueue_script('cgo_offerings');
+			wp_enqueue_style('cgo_offerings_style', get_stylesheet_directory_uri() . '/dist/styles/offerings.css');
 		} else if(is_page( 'Introductory' )) {
 			wp_enqueue_script('cgo_introductory');
 			wp_enqueue_style('cgo_introductory_style', get_stylesheet_directory_uri() . '/dist/styles/introductory.css');
+			wp_enqueue_script('cgo_offerings');
+			wp_enqueue_style('cgo_offerings_style', get_stylesheet_directory_uri() . '/dist/styles/offerings.css');
 		} 
 	endif;
 }

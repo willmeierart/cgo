@@ -14,6 +14,7 @@
 [] figure out how to make that work with copying each page for each type of offering
 [] once we get design assets meet with nick and start scaffolding large-scale principles
 [] handle redirect of offerings page to offerings/meditation instead of dynamic content
+[] responsive styling
 
 ### ONGOING:
 [] keep Asana up-to-date

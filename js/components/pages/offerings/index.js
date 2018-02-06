@@ -1,5 +1,6 @@
 import moment from 'moment'
 import '../../../../scss/pages/offerings.scss'
+import { setActiveItemFilter } from './utils'
 import { detailInner, descriptionTxtBlock } from './templateElements'
 import { SAMPLE_DATA, meditationTypes, introductoryTypes, seminarTypes } from './SAMPLE_DATA'
 
@@ -29,6 +30,11 @@ jQuery(document).ready(function($) {
     currentList = seminarTypes
   }
 
+  // everything above has to do with dynamic page loads
+
+
+  
+
   // this function will do more, deal with splitting and truncation of top description text
   const formatHeaderTypeDescription = () => {
     $('.az-offerings-header-description-text')
@@ -36,18 +42,10 @@ jQuery(document).ready(function($) {
   }
 
   const getCorrectEventSet = eventObj => {
-    let formatPath = path
-    let upcomingName = formatPath
-    if (formatPath === 'meditation') {
-      upcomingName = 'Meditation Events'
-    } else if (formatPath === 'introductory') {
-      upcomingName= 'Introductory Events'
-    }
-    $('.az-upcoming-category').text(`Upcoming ${upcomingName}`)
-    
-    // get the actual event object from the 
+    // get the actual event object
+    // could be page-specific
     for (let eventType of Object.keys(eventObj)) {
-      if (eventType === formatPath) { return eventObj[eventType] }
+      if (eventType === path) { return eventObj[eventType] }
     }
   }
 
@@ -109,23 +107,6 @@ jQuery(document).ready(function($) {
       fullyTransformedEventSet = { ...fullyTransformTheseEvents(SAMPLE_DATA.events) }
       renderEventData()
     }
-  }
-
-  const setActiveItemFilter = (element, matchedString, type) => {
-    element.each((i, item) => {
-      $(item).text() === matchedString ||
-      $(item).text() === matchedString.toUpperCase() ||
-      $(item).text() === matchedString.replace('_', ' ')
-        ? $(item).addClass('active')
-        : $(item).removeClass('active')
-    })
-  }
-
-  const setActiveMenuItem = () => {
-    const subheadLinks = $('.az-offerings-submenu-wrapper a')
-    let formatPath = path
-    if (path === 'introductory') { formatPath = path + ' events' }
-    setActiveItemFilter(subheadLinks, formatPath)
   }
 
   const renderTypesFilter = () => {
@@ -232,7 +213,7 @@ jQuery(document).ready(function($) {
       $('.az-offerings-location-detail-wrapper').empty()
       refreshEventList()
       menuItems.children('.active-line').hide()
-      $(e.target).children('.active-line').show(200)
+      $(e.target).children('.active-line').show(250)
     })
 
     
@@ -240,9 +221,8 @@ jQuery(document).ready(function($) {
 
   function initDoc () {
     formatHeaderTypeDescription()
-    setActiveMenuItem()
     renderTypesFilter()
-    renderTypesDescriptionBlocks()
+    // renderTypesDescriptionBlocks()
     renderEventData()
     renderLocationsMenu()
   }
