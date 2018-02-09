@@ -1,22 +1,65 @@
 webpackJsonp([14],{
 
-/***/ 127:
+/***/ 126:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(128);
+__webpack_require__(127);
 
-console.log('homepage');
+var _url = __webpack_require__(161);
+
+var _url2 = _interopRequireDefault(_url);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+jQuery(document).ready($ => {
+
+  const setBtnBGs = () => {
+    const btnColors = ['purple', 'orange', 'yellow', 'blue'];
+    const mediaURL = _url2.default + '/wp-content/uploads/2018/02/btn_bg_';
+    $('.home-nav-btn').each((i, btn) => {
+      $(btn).css('background-image', `url('${mediaURL}${btnColors[i]}.jpg')`);
+    });
+  };
+  const formatEndStatement = () => {
+    const pars = $('.come-within p');
+    const par = pars[pars.length - 1];
+    const splitPar = $(par).text().split('. ');
+    const newLinePar = splitPar.join('.\n');
+    $(par).text(newLinePar);
+  };
+
+  const initDoc = () => {
+    setBtnBGs();
+    formatEndStatement();
+  };
+  initDoc();
+});
 
 /***/ }),
 
-/***/ 128:
+/***/ 127:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
+/***/ }),
+
+/***/ 161:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const url = 'http://kp0.60d.myftpupload.com';
+
+exports.default = url;
+
 /***/ })
 
-},[127]);
+},[126]);

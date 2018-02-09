@@ -1,3 +1,59 @@
-body {
-  background: gold;
+$home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
+
+.home{
+  .container-wrap {
+    padding-top: 0!important;
+    margin-top: 0!important;
+  }
+  .main-content {
+    padding: 0;
+    #homepage-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      width: 100vw!important;
+      height: 50vw;
+      object-fit: cover;
+      position: relative;
+      #bg-image {
+        width: 100vw !important;
+        height: 100%;
+        background-image: url($home-url + '/2018/02/CGO_Home_2500x1274_background.png');
+        // background-position: center; 
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+  .come-within {
+    margin: 3em!important;
+    text-align: center;
+    p {
+      padding-bottom: 0;
+      font-size: 1.25em;
+      line-height: 1em;
+      &:first-of-type {
+        font-weight: bold;
+      }
+    }
+  }
+  .home-nav-btn-row {
+    .col {
+      .home-nav-btn {
+        font-size: 1.5em;
+        text-align: center;
+        margin: 0 2em;
+        font-weight: bold;
+        color: white;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 1em 0;
+      }
+    }
+  }
+  #ajax-content-wrap {
+    .row:first-of-type {
+      padding-bottom: 0 !important;
+    }
+  }
 }

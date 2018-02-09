@@ -28,7 +28,7 @@ export const detailInner = event => {
           </div>
         </div>  
         <div class='col-3'>
-          <div class='description'>${other_notes + 'Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero. Suspendisse potenti. Aliquam quis sagittis urna. Cras a elementum est, vel laoreet nisi. Fusce ultricies metus eu elit finibus tempus. Praesent elementum blandit lorem vitae sagittis. Cras lobortis porta consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus nisi nisl, pellentesque id maximus ut, porta vel justo.'}</div>
+          <div class='description'>${other_notes + 'Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero.'}</div>
         </div>    
       </div>
     </div>
@@ -40,7 +40,7 @@ export const descriptionTxtBlock = (title, flatTitle) => `
     <div class='inner-wrapper'>
       <div class='title'>${title}</div>
       <div class='description-wrapper'>
-        <div class='description'>Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero. Suspendisse potenti. Aliquam quis sagittis urna. Cras a elementum est, vel laoreet nisi. Fusce ultricies metus eu elit finibus tempus. Praesent elementum blandit lorem vitae sagittis. Cras lobortis porta consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus nisi nisl, pellentesque id maximus ut, porta vel justo.</div>
+        <div class='description'>Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero.</div>
       </div>
       <div class='b-wrapper'>
         <div class='expand-btn'>+</div>

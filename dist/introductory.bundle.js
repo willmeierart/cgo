@@ -1,39 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 1201:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(1202);
-
-var _utils = __webpack_require__(1208);
-
-jQuery(document).ready(function ($) {
-  $('.az-upcoming-category').text('Upcoming Introductory Events');
-
-  var setTopMenuActiveItem = function setTopMenuActiveItem() {
-    var subheadLinks = $('.az-offerings-submenu-wrapper a');
-    (0, _utils.setActiveItemFilter)(subheadLinks, 'introductory');
-  };
-
-  var initDoc = function initDoc() {
-    setTopMenuActiveItem();
-  };
-  initDoc();
-});
-
-/***/ }),
-
-/***/ 1202:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 1208:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48,6 +15,39 @@ var setActiveItemFilter = exports.setActiveItemFilter = function setActiveItemFi
   });
 };
 
+/***/ }),
+
+/***/ 154:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(155);
+
+var _utils = __webpack_require__(1);
+
+jQuery(document).ready(function ($) {
+  $('.az-upcoming-category').text('Upcoming Introductory Events');
+
+  const setTopMenuActiveItem = () => {
+    const subheadLinks = $('.az-offerings-submenu-wrapper a');
+    (0, _utils.setActiveItemFilter)(subheadLinks, 'introductory');
+  };
+
+  const initDoc = () => {
+    setTopMenuActiveItem();
+  };
+  initDoc();
+});
+
+/***/ }),
+
+/***/ 155:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
 /***/ })
 
-},[1201]);
+},[154]);

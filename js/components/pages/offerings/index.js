@@ -41,6 +41,25 @@ jQuery(document).ready(function($) {
       .append(`<div class='read-more'>Read More...</div>`) // this will need to do more also
   }
 
+
+  // replace dumbass wp theme wrappers with the raw html they're supposed to be
+  // also dude, probably just like rewrite the css, fuck this...
+  const ditchDescriptionBlockThemeWrappers = async () => {
+    const eachWrapper = $('.az-offerings-types-description-container .wpb_wrapper').children('.wpb_raw_code')
+    await $(eachWrapper).each((i, wrapper) => {
+      const actualContent = $(wrapper).children('txt-block')
+      console.log(actualContent);
+      $('.az-offerings-types-description-container').prepend(actualContent)
+    })
+    await $('.az-offerings-types-description-container').children().each((i, child) => {
+      if (!$(child).hasClass('txt-block')) {
+        $(child).remove()
+      }
+    })
+  }
+
+
+  // these functions sort thru data
   const getCorrectEventSet = eventObj => {
     // get the actual event object
     // could be page-specific
@@ -221,6 +240,7 @@ jQuery(document).ready(function($) {
 
   function initDoc () {
     formatHeaderTypeDescription()
+    // ditchDescriptionBlockThemeWrappers()
     renderTypesFilter()
     // renderTypesDescriptionBlocks()
     renderEventData()

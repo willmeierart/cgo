@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const HardsourceWebpackPlugin = require('hard-source-webpack-plugin')
+const AsyncAwaitPlugin = require('webpack-async-await')
 const config = require('./config')
 
 module.exports = function(env) {
@@ -43,7 +44,15 @@ module.exports = function(env) {
             {
               loader: "babel-loader",
               options: {
-                presets: ["env"]
+                presets: [
+                  [
+                    "env", {
+                      "targets": {
+                        "node": "current"
+                      }
+                    }
+                  ]
+                ]
               }
             }
           ]
@@ -111,6 +120,7 @@ module.exports = function(env) {
     },
     plugins: [
       new HardsourceWebpackPlugin(),
+      new AsyncAwaitPlugin(),
       new ExtractTextPlugin({
         filename: 'styles/[name].css',
         allChunks: true
