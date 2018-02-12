@@ -1846,7 +1846,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(150)("./" + name);
+            __webpack_require__(151)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4538,7 +4538,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(149)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(150)(module)))
 
 /***/ }),
 /* 1 */
@@ -16245,7 +16245,8 @@ return zhTw;
 /* 145 */,
 /* 146 */,
 /* 147 */,
-/* 148 */
+/* 148 */,
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16257,13 +16258,13 @@ var _moment = __webpack_require__(0);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-__webpack_require__(151);
+__webpack_require__(152);
 
 var _utils = __webpack_require__(1);
 
-var _templateElements = __webpack_require__(152);
+var _templateElements = __webpack_require__(153);
 
-var _SAMPLE_DATA = __webpack_require__(153);
+var _SAMPLE_DATA = __webpack_require__(154);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16510,7 +16511,7 @@ jQuery(document).ready(function ($) {
 });
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -16538,7 +16539,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -16795,16 +16796,16 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 150;
+webpackContext.id = 151;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16865,7 +16866,7 @@ const descriptionTxtBlock = exports.descriptionTxtBlock = (title, flatTitle) => 
 `;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16988,4 +16989,4 @@ var introductoryTypes = exports.introductoryTypes = ['Expanding Awareness', 'Int
 var seminarTypes = exports.seminarTypes = ['1 Day Seminar', '4 Day Intensive', '30 Day Seminar', 'Advanced Intensive'];
 
 /***/ })
-],[148]);
+],[149]);

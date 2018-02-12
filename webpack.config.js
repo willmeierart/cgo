@@ -78,10 +78,17 @@ module.exports = function(env) {
                 loader: "cache-loader"
               },
               {
-                loader: "css-loader"
+                loader: "css-loader", options: {
+                  sourceMap: true
+                }
               },
               {
-                loader: "sass-loader"
+                loader: "resolve-url-loader"
+              },
+              {
+                loader: "sass-loader", options: {
+                  sourceMap: true
+                }
               }
             ]
           }),

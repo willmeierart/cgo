@@ -16,7 +16,7 @@
 
 @import 'normalize';
 @import 'colors';
-@import 'fonts';
+@import './fonts/_fonts';
 @import 'animations'; 
 
 /********************************************
@@ -37,6 +37,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: auto !important;
+  color: black;
 }
 
 .container:first-of-type {
@@ -172,6 +173,10 @@ a {
   }
 }
 
+#footer-outer {
+  background-color: white!important;
+}
+
 
 
 
@@ -206,6 +211,34 @@ a {
           background-color: $color-gold !important;
         }
       }
+    }
+  }
+}
+
+.gilded-first-letter {
+  font-family: $font-fam-serif;
+  .first-par {
+    padding-bottom: 0;
+  }
+  .first-letter{
+    line-height: .75em;
+    padding-top: .05em;
+    padding-right: .1em;
+    font-size: 4em;
+    font-weight: bold;
+    color: $color-gold;
+    float: left;
+  }
+}
+
+#cgo-logo{
+  width: 10px;
+  height: 10px;
+  svg {
+    width: 1px;
+    overflow: visible!important;
+    .cls-1 {
+      fill: $color-gold;
     }
   }
 }

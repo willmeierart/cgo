@@ -14,6 +14,31 @@ __webpack_require__(124);
 
 __webpack_require__(125);
 
+var _url = __webpack_require__(128);
+
+var _url2 = _interopRequireDefault(_url);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+jQuery(document).ready($ => {
+
+  $('img').each((i, img) => {
+    $(img).attr('src').indexOf('localhost') !== -1 && $(img).attr('src', $(img).attr('src').replace('//localhost:3000', _url2.default));
+    $(img).attr('srcset').indexOf('localhost') !== -1 && $(img).attr('srcset', $(img).attr('srcset').replace('//localhost:3000', _url2.default));
+  });
+
+  $('.gilded-first-letter').each((i, par) => {
+    const pars = $(par).find('p');
+    const firstPar = $(pars).first();
+    console.log(firstPar);
+    const txtContent = firstPar.text();
+    const firstLetter = txtContent.substring(0, 1);
+    const rest = txtContent.substring(1, txtContent.length);
+    $(firstPar).addClass('first-par').empty().append(`<span class='first-letter'>${firstLetter}</span><span class='rest'>${rest}</span>`);
+  });
+}); // MASTER JS FILE - USE TO COMPILE OTHER MODULAR SCRIPTS
+// (remember to run `webpack --watch` for changes to update live)
+
 /***/ }),
 
 /***/ 122:
@@ -28,6 +53,12 @@ __webpack_require__(125);
 
 "use strict";
 
+
+var _cgoLogo = __webpack_require__(163);
+
+var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 jQuery(document).ready(function ($) {
   const clonedMenu = $('nav .sf-menu').clone();
@@ -55,10 +86,10 @@ jQuery(document).ready(function ($) {
 
   const formatLogo = () => {
     const titleSection = $('.az-header-container .header-title');
-    const logo = '✧';
+    // const logo = '✧'
     titleSection.empty();
     titleSection.append(`
-      <div id='cgo-logo'>${logo}</div>
+      <div id='cgo-logo'>${_cgoLogo2.default}</div>
     `);
     titleSection.append(`
       <div class='title-wrapper'>
@@ -122,6 +153,36 @@ console.log('footer');
 
 "use strict";
 
+
+/***/ }),
+
+/***/ 128:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const url = 'http://kp0.60d.myftpupload.com';
+
+exports.default = url;
+
+/***/ }),
+
+/***/ 163:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const logo = `<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 78"><defs></defs><title>CGO_LogoMark</title><path class="cls-1" d="M169.2,356.93C255.52,238.13,279.93,0,279.93,0s24.42,238.13,110.72,356.93C471.28,468.07,560.44,500,560.44,500L279.93,780.89,0,500s88.56-32,169.2-143.11"/></svg>`;
+
+exports.default = logo;
 
 /***/ })
 

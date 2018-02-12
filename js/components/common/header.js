@@ -1,3 +1,5 @@
+import logo from '../../../assets/cgo-logo.js'
+
 jQuery(document).ready(function($) { 
   const clonedMenu = $('nav .sf-menu').clone()
   let menuIsOpen = false
@@ -24,7 +26,7 @@ jQuery(document).ready(function($) {
   
   const formatLogo = () => {
     const titleSection = $('.az-header-container .header-title')
-    const logo = '✧'
+    // const logo = '✧'
     titleSection.empty()
     titleSection.append(`
       <div id='cgo-logo'>${logo}</div>

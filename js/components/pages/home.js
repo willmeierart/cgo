@@ -11,7 +11,7 @@ jQuery(document).ready(($) => {
     })
   }
   const formatEndStatement = () => {
-    const pars = $('.come-within p')
+    const pars = $('.come-within p') 
     const par = pars[pars.length - 1]
     const splitPar = $(par).text().split('. ')
     const newLinePar = splitPar.join('.\n')
