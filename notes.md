@@ -8,11 +8,15 @@
 
 
 ## TO-DO:
-[] figure out hot module reloading speed (actually an issue with ipv6 most likely)
-[] make sure Ben/Bruce are going to get the data model going correctly
+[] figure out hot module reloading speed (actually an issue with ipv6 / dns lookup most likely)
+[x] make sure Ben/Bruce are going to get the data model going correctly
 each page for each type of offering
-[] once we get design assets meet with nick and start scaffolding large-scale principles
+[x] once we get design assets meet with nick and start scaffolding large-scale principles
 [] responsive styling
+
+
+[] at the end of the project, delete any unused files, remove enqueue'ing
+  [] refactor for sahred assets
 
 ### ONGOING:
 [] keep Asana up-to-date
@@ -20,3 +24,5 @@ each page for each type of offering
 ### Specific code issues:
 
 #### Questions for Jeremy:
+[] how to handle menu / submenus (especially on mobile) ?
+[] what should be a link elsewhere (images, text, etc)

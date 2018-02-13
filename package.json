@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/agencyzero/CGO#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",

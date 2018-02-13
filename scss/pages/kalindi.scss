@@ -1,0 +1,14 @@
+@import '../_variables';
+@import '../pageTemplate.scss';
+.kalindi {
+  .logo-append-to {
+    margin-top: 8em;
+  }
+  .end-text-block {
+    padding: 2em 5em 5em 5em;
+    font-family: $font-fam-serif;
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+  }
+}

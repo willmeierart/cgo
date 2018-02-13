@@ -40,6 +40,9 @@ function CGO_enqueue_js() {
 		wp_register_script('cgo_meditation', get_stylesheet_directory_uri() . '/dist/meditation.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_seminars', get_stylesheet_directory_uri() . '/dist/seminars.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_introductory', get_stylesheet_directory_uri() . '/dist/introductory.bundle.js', array('jquery'), '1.0', false );
+		wp_register_script('cgo_gourasana', get_stylesheet_directory_uri() . '/dist/gourasana.bundle.js', array('jquery'), '1.0', false );
+		wp_register_script('cgo_lady', get_stylesheet_directory_uri() . '/dist/lady.bundle.js', array('jquery'), '1.0', false );
+		wp_register_script('cgo_kalindi', get_stylesheet_directory_uri() . '/dist/kalindi.bundle.js', array('jquery'), '1.0', false );
 
 
 		wp_enqueue_script('cgo_common');		
@@ -63,6 +66,15 @@ function CGO_enqueue_js() {
 		} else if(is_page( 'Founders' )) {
 			wp_enqueue_script('cgo_founders');
 			wp_enqueue_style('cgo_founders_style', get_stylesheet_directory_uri() . '/dist/styles/founders.css');
+		}	else if(is_page( 'Gourasana' )) {
+			wp_enqueue_script('cgo_gourasana');
+			wp_enqueue_style('cgo_gourasana_style', get_stylesheet_directory_uri() . '/dist/styles/gourasana.css');
+		}	else if(is_page( 'The Lady' )) {
+			wp_enqueue_script('cgo_lady');
+			wp_enqueue_style('cgo_lady_style', get_stylesheet_directory_uri() . '/dist/styles/lady.css');
+		}	else if(is_page( 'Kalindi' )) {
+			wp_enqueue_script('cgo_kalindi');
+			wp_enqueue_style('cgo_kalindi_style', get_stylesheet_directory_uri() . '/dist/styles/kalindi.css');
 		} else if(is_page( 'Teachings' )) {
 			wp_enqueue_script('cgo_teachings');
 			wp_enqueue_style('cgo_teachings_style', get_stylesheet_directory_uri() . '/dist/styles/teachings.css');

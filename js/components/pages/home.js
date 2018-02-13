@@ -1,5 +1,5 @@
 import '../../../scss/pages/home.scss'
-import url from '../../url'
+import { url } from '../../utils'
 
 jQuery(document).ready(($) => {
 
