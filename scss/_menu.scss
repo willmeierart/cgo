@@ -80,18 +80,39 @@
           display: flex;
           flex-direction: column;
           .item {
+            font-size: 3em;
+            line-height:1em;
             a {
-
+              .disable {
+                pointer-events:none;
+              }
             }
             &.has-children {
               .submenu-list {
                 display: none;
-                .submenu-item {}
+                .submenu-item {
+                  font-size: .66em;
+                  .tert-menu-list {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    display: none;
+                    .tert-menu-item {
+                      font-size: .5em;
+                    }
+                  }
+                }
               }
               &.open {
                 .submenu-list {
                   display: flex;
-                  .submenu-item {}
+                  flex-direction: column;
+                  align-items: center;
+                  .submenu-item {
+                    .disable {
+                      pointer-events: none;
+                    }
+                  }
                 }
               }
             }

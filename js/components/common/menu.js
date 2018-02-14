@@ -3,20 +3,25 @@ import { isThin } from '../../utils'
 
 jQuery(document).ready(function($) {
 
-  const disableThemeFunctionality = () => {
-    $('#side-nav ul li').each((i, li) => {
-      const a = $(li).childen('a')[0]
+  const enableNewMenuClickFunctionality = () => {
+    $('#side-nav li').each((i, li) => {
+      const a = $(li).children('a')
       if ($(a).text() === 'Learn' || $(a).text() === 'Offerings') {
-        $(a).click(e => {
+        $(a).addClass('disable')
+        $(li).click(e => {
           e.preventDefault()
-          $(li).toggleClass('open')
+          $(li).children('ul').slideToggle(300)
+          $(li).siblings().children('ul').slideUp(300)
         })
-      }
-      if($(li).hasClass('has-children')) {
-        $(a).on('mouseover', e => {
-          e.preventDefault()
-          $(li).toggleClass('open')
-        })
+        $(li).find('.submenu-item').each((j, subLi) => {
+          if ($(subLi).children('ul').length > 0 ) {
+          $(subLi).click(e => {
+            e.preventDefault()
+            e.stopPropagation()
+            $(subLi).children('ul').slideToggle(300)
+          })
+        }
+        }) 
       }
     })
   }
@@ -37,7 +42,7 @@ jQuery(document).ready(function($) {
   
   const initDoc = () => {
     // dealWithMobileSubmenus()
-    disableThemeFunctionality()
+    enableNewMenuClickFunctionality()
   }
   initDoc()
 })

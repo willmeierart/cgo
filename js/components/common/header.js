@@ -1,6 +1,5 @@
 import logo from '../../../assets/cgo-logo.js'
 import { clonedMenu } from '../../utils'
-import menu from './menu'
 import './userAgreement'
 
 jQuery(document).ready(function($) { 
@@ -18,8 +17,6 @@ jQuery(document).ready(function($) {
       const txtContent = $(li).children('a').text()
       const href = $(li).children('a').attr('href')
       const newListItem = $(`<li class="item"><a href="${href}">${txtContent}</a></li>`)
-      console.log($(li).children())
-      console.log(txtContent);
       newList.append(newListItem)
       if ($(li).children('ul').length > 0) {
         newListItem.addClass('has-children')
@@ -28,7 +25,19 @@ jQuery(document).ready(function($) {
         $(li).children('ul').children('li').each((j, subLi) => {
           const txtContent2 = $(subLi).children('a').text()
           const href2 = $(subLi).children('a').attr('href')
-          newSubmenu.append(`<li class='submenu-item'><a href="${href2}">${txtContent2}</a></li>`)
+          const newSubListItem = $(`<li class='submenu-item'><a href="${href2}">${txtContent2}</a></li>`)
+          newSubmenu.append(newSubListItem)
+          if ($(subLi).children('ul').length > 0) {
+            newSubListItem.addClass('has-sub-children')
+            const newTertMenu = $('<ul class="tert-menu-list"></ul>')
+            newSubListItem.append(newTertMenu)
+            $(subLi).children('ul').children('li').each((k, tertLi) => {
+              const txtContent3 = $(tertLi).children('a').text()
+              const href3 = $(tertLi).children('a').attr('href')
+              const newTertListItem = $(`<li class='tert-menu-item'><a href="${href3}">${txtContent3}</a></li>`)
+              newTertMenu.append(newTertListItem)
+            })
+          }
         })
       }
     })
@@ -36,10 +45,7 @@ jQuery(document).ready(function($) {
   }
 
   const clonedMenu = makeWholeNewMenu()
-
-  console.log(clonedMenu)
   
-
   const replaceEntireHeader = () => {
     $('#top').children('.container').replaceWith(`
       <div class='az-header-container'>
