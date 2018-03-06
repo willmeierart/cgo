@@ -1,31 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 1:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedString) => {
-  element.each((i, item) => {
-    jQuery(item).text() === matchedString || jQuery(item).text() === matchedString.toUpperCase() || jQuery(item).text() === matchedString.replace('_', ' ') ? jQuery(item).addClass('active') : jQuery(item).removeClass('active');
-  });
-};
+__webpack_require__(193);
 
-/***/ }),
-
-/***/ 164:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(165);
-
-var _utils = __webpack_require__(1);
+var _utils = __webpack_require__(2);
 
 jQuery(document).ready(function ($) {
   $('.az-upcoming-category').text('Upcoming Meditation Events');
@@ -43,11 +26,28 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 165:
+/***/ 193:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedString) => {
+  element.each((i, item) => {
+    jQuery(item).text() === matchedString || jQuery(item).text() === matchedString.toUpperCase() || jQuery(item).text() === matchedString.replace('_', ' ') ? jQuery(item).addClass('active') : jQuery(item).removeClass('active');
+  });
+};
+
 /***/ })
 
-},[164]);
+},[192]);

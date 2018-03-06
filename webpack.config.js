@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const HardsourceWebpackPlugin = require('hard-source-webpack-plugin')
 const AsyncAwaitPlugin = require('webpack-async-await')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const config = require('./config')
 
 module.exports = function(env) {
@@ -41,9 +42,9 @@ module.exports = function(env) {
           test: /\.js$/,
           exclude: /node_modules/,
           use: [
-            {
-              loader: "cache-loader"
-            },
+            // {
+            //   loader: "cache-loader"
+            // },
             {
               loader: "babel-loader",
               options: {
@@ -63,9 +64,9 @@ module.exports = function(env) {
         {
           test: /\.html$/,
           use: [
-            {
-              loader: "cache-loader"
-            },
+            // {
+            //   loader: "cache-loader"
+            // },
             {
               loader: "raw-loader"
             }
@@ -77,9 +78,9 @@ module.exports = function(env) {
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
             use: [
-              {
-                loader: "cache-loader"
-              },
+              // {
+              //   loader: "cache-loader"
+              // },
               {
                 loader: "css-loader", options: {
                   sourceMap: true
@@ -129,6 +130,7 @@ module.exports = function(env) {
       }
     },
     plugins: [
+      new CleanWebpackPlugin(['dist']),
       new HardsourceWebpackPlugin(),
       new AsyncAwaitPlugin(),
       new ExtractTextPlugin({

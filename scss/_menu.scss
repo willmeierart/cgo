@@ -64,41 +64,80 @@
       // border-top: 1px solid $color-gold;
       // border-left: 1px solid $color-gold;
       position: fixed;
-      top: 70px;
+      // top: 99px;
+      top: 0;
       right: 0;
-      height: calc(100vh - 70px);
+      height: calc(100vh);
       width: 100vw;
-      // margin-right: -200px;
       display: none;
-      background-color: white; // display: none;
+      background-color: $color-gold;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-right: 2em;
+      z-index:900;
+      color: white;
+      &.active {
+        
+      }
       .side-nav-inner {
         display: flex;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-end;
+        text-align: right;
         margin-top: 2em;
+        width: 500px;
         .new-menu-list {
           display: flex;
           flex-direction: column;
           .item {
             font-size: 3em;
-            line-height:1em;
+            line-height: 1.5em;
             a {
               .disable {
                 pointer-events:none;
               }
             }
+            &.isOpen, &:hover {
+              // color: $color-gold;
+              font-weight: bold;
+              
+            }
             &.has-children {
+              // margin-left: -1em;
               .submenu-list {
+                font-weight: normal;
+                // color: black;
+                // margin-left: 1em;
                 display: none;
+                padding-right: 1em;
                 .submenu-item {
-                  font-size: .66em;
-                  .tert-menu-list {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    display: none;
-                    .tert-menu-item {
-                      font-size: .5em;
+                  // font-size: .66em;
+                  // color: black;
+                  font-weight: normal;
+                  &.isOpen, &:hover {
+                    font-weight: bold;
+                    // color: $color-gold;
+                  }
+                  &.has-children {
+                    margin-left: -1em;
+                    .tert-menu-list {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      display: none;
+                      // margin-left: 1em;
+                      padding-right: 1em;
+                      .tert-menu-item {
+                        // color: black;
+                         font-weight: normal;    
+                        &:hover {
+                          font-weight: bold;
+                          
+                          // color: $color-gold;
+                        }
+                        // font-size: .5em;
+                      }
                     }
                   }
                 }

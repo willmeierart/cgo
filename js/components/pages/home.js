@@ -2,7 +2,7 @@ import '../../../scss/pages/home.scss'
 import { url } from '../../utils'
 
 jQuery(document).ready(($) => {
-
+  
   const setBtnBGs = () => {
     const btnColors = ['purple', 'orange', 'yellow', 'blue']
     const mediaURL = url + '/wp-content/uploads/2018/02/btn_bg_'

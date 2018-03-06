@@ -66,6 +66,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
     .col {
       display: flex;
       justify-content: center;
+      flex-direction: row;
       .vc_col-sm-3 {
         width: 100%;
         margin-left: 0;
@@ -110,5 +111,29 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .come-within {
+    p:last-of-type {
+      padding: 0 10%;
+      padding-bottom: 0 !important;
+    }
+  }
+  .home-nav-btn-row {
+    .col {
+      flex-direction: column!important;
+      align-items: center;
+      .wpb_column {
+        margin-bottom: 0!important;
+      }
+      .vc_col-sm-3 {
+        padding: 0!important;
+      }
+    }
+  }
+  .bottom-cgo-branding {
+    margin-bottom: 2em!important;
   }
 }

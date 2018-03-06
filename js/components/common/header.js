@@ -6,6 +6,7 @@ jQuery(document).ready(function($) {
   let menuIsOpen = false
   const breakpoints = [1000]
   const isThin = $(window).width() <= 1000
+  console.log(menuIsOpen);
 
 
   const makeWholeNewMenu = () => {
@@ -28,7 +29,7 @@ jQuery(document).ready(function($) {
           const newSubListItem = $(`<li class='submenu-item'><a href="${href2}">${txtContent2}</a></li>`)
           newSubmenu.append(newSubListItem)
           if ($(subLi).children('ul').length > 0) {
-            newSubListItem.addClass('has-sub-children')
+            newSubListItem.addClass('has-children')
             const newTertMenu = $('<ul class="tert-menu-list"></ul>')
             newSubListItem.append(newTertMenu)
             $(subLi).children('ul').children('li').each((k, tertLi) => {
@@ -64,6 +65,7 @@ jQuery(document).ready(function($) {
       </div>
     `)
     $('.side-nav-inner').append(clonedMenu)
+    $('#side-nav').css('display', 'none')    
   }
   
   
@@ -86,10 +88,9 @@ jQuery(document).ready(function($) {
   const handleNavClick = () => {
     $('#nav-btn').click(() => {
       menuIsOpen = !menuIsOpen
-      const marginVal = menuIsOpen ? 0 : '-200px'
+      console.log(menuIsOpen)      
       $('#nav-btn').toggleClass('open')
-      // $('#side-nav').toggle(200)
-      // $('#side-nav').animate({'margin-right': marginVal}, 200)
+      menuIsOpen ? $('#side-nav').addClass('active') : $('#side-nav').removeClass('active')
       $('#side-nav').slideToggle()
     })
     $('#nav-btn').hover(() => {
