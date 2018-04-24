@@ -7,8 +7,11 @@
   ssh-keygen -R "45.40.149.159"
 
 
+staging site: http://kp0.60d.myftpupload.com
+
+
 ## TO-DO:
-[] figure out hot module reloading speed (actually an issue with ipv6 / dns lookup most likely)
+[x] figure out hot module reloading speed (actually an issue with ipv6 / dns lookup most likely)
 [x] make sure Ben/Bruce are going to get the data model going correctly
 each page for each type of offering
 [x] once we get design assets meet with nick and start scaffolding large-scale principles
@@ -16,10 +19,10 @@ each page for each type of offering
 
 
 [] at the end of the project, delete any unused files, remove enqueue'ing
-  [] refactor for sahred assets
+  [] refactor for shared assets
 
 ### ONGOING:
-[] keep Asana up-to-date
+[] keep gitlab up-to-date
 
 ### Specific code issues:
 
