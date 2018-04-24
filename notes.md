@@ -6,26 +6,16 @@
 *reset ssh when REMOTE HOST IDENTIFICATION HAS CHANGED warning happens:*
   ssh-keygen -R "45.40.149.159"
 
-
-staging site: http://kp0.60d.myftpupload.com
+## CGO events API:
++ **endpoint: *http://104.130.1.140/data/:query***
++ queries:
+  + LocationAreas: Returns a list of all active areas.
+  + Locations/?area=[locationAreaId]: Returns a list of all locations for the specified area. Area is required.
+  + CourseTypes: Returns a list of all course types.
+  + SampleError: Returns a sample error message.
+  + Events/?loc=[locationId]&type=[courseTypeId]&start=[DateTime]&end=[DateTime]: Returns a list of events. All parameters are optional. If start and end aren't specified the system will set start to now and end to the end of the year.
 
 
 ## TO-DO:
-[x] figure out hot module reloading speed (actually an issue with ipv6 / dns lookup most likely)
-[x] make sure Ben/Bruce are going to get the data model going correctly
-each page for each type of offering
-[x] once we get design assets meet with nick and start scaffolding large-scale principles
-[] responsive styling
-
-
 [] at the end of the project, delete any unused files, remove enqueue'ing
   [] refactor for shared assets
-
-### ONGOING:
-[] keep gitlab up-to-date
-
-### Specific code issues:
-
-#### Questions for Jeremy:
-[] how to handle menu / submenus (especially on mobile) ?
-[] what should be a link elsewhere (images, text, etc)
