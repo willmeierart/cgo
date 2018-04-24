@@ -1,6 +1,6 @@
-#Center of the Golden One
+# Center of the Golden One
 
-##VC Archive of custom 'CGO' theme for wordpress build
+## VC Archive of custom 'CGO' theme for wordpress build
 
 #### **note: staging site url: http://kp0.60d.myftpupload.com**
 
