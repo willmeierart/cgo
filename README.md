@@ -4,7 +4,7 @@
 
 #### IMPORTANT STUFF:
 + **staging site url: *http://kp0.60d.myftpupload.com***
-+ **assets dropbox folder: *https://www.dropbox.com/sh/virj9v5g7x5tw60/AADH4cRJHN0H5dZmSIWoO35za?dl=0***
++ **client assets dropbox folder: *https://www.dropbox.com/sh/virj9v5g7x5tw60/AADH4cRJHN0H5dZmSIWoO35za?dl=0***
 
 using Webpack build tools to enable:
 + SASS styling
