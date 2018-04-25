@@ -1,0 +1,220 @@
+.az-offerings-submenu-wrapper {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-grow: 0;
+    li {
+      text-transform: uppercase;
+      font-size: 1.75em;
+      &.active {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+.az-offerings-header-description-text {
+  margin-bottom: 2em;
+  .wpb_wrapper {
+    display: flex;
+    justify-content: space-between;
+    p {
+      width: 48%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .read-more {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: .5em 0;
+  }
+}
+
+.az-offerings-types-description-container {
+  .wpb_wrapper{
+    display: flex;
+    .wpb_raw_code {
+      height: 20vw;
+      display: flex;
+      flex-direction: column;
+      .wpb_wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .txt-block {
+          height: 100%;
+          border: 1px solid gray;
+          padding: 1em;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          .inner-wrapper {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            .title {
+              font-size: 1.5em;
+              font-weight: bold;
+              padding-bottom: .25em;
+            }
+            .description-wrapper {
+              overflow: hidden;
+              padding: .25em;
+            }
+            .b-wrapper {
+              display: flex;
+              justify-content: flex-end;
+              width: 100%;
+              height: 2em;
+              margin: .25em;
+            }
+            .expand-btn {
+              width: 2em;
+              height: 2em;
+              border-radius: 10%;
+              border: solid 1px grey;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.az-upcoming-category {
+  width: 75%;
+  float: right;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.az-offerings-type-filter-wrapper {
+  width: 75%;
+  float: right;
+  display: flex;
+  // justify-content: space-between;
+  .sort-by {
+    font-weight: bold;
+    font-size: 2em;
+    display: inline-block;
+  }
+  ul {
+    width: 80%;
+    display: flex;
+    flex-grow: 0;
+    justify-content: space-between;
+    text-transform: uppercase;
+    // flex-wrap: nowrap;
+    white-space: nowrap;
+    li {
+      margin-right: 1em;
+      cursor: pointer;
+    }
+    a .active {
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+  }
+}
+
+.az-offerings-locations-menu-wrapper {
+  height: 100%;
+  ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  li {
+    font-size: 2.5em;
+    line-height: 1.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    .active {
+      font-weight: bold;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: center;
+      .active-line {
+        width: calc(100% - .5em);
+        margin-left: .5em;
+        border-top: 1px solid black;
+      } 
+    }
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}
+
+.az-offerings-location-detail-wrapper {
+  .date-category {
+    cursor: pointer;
+    &:not(:first-child), :first-of-type {
+      cursor: default;
+    }
+  }
+  .detail-inner {
+    margin-bottom: 3em;    
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      .col-1, .col-2, .col-3 {
+        width: 15vw;
+        // height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // flex-grow: 1;
+      }
+      .col-3{
+        font-size: .8em;
+      }
+      .location-info-spacer {
+        height: 2em;
+      }
+      .title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 2em;
+      }
+      .date {
+        font-size: 1.5em;
+      }
+      .price {
+        font-weight: bold;
+        font-size: 1.5em;
+        &,.price-notes {
+          display: inline-block;
+        }
+      }
+      .register-btn, .learn-btn {
+        text-align: center;
+        display: flex;
+        // justify-content: center;
+        margin-top: 1em;
+        cursor: default;
+        div {
+          cursor: pointer;
+          width: 90%;
+          padding: .25em;
+          box-sizing: border-box;
+          border: 1px solid grey;
+          border-radius: 500px;
+        }
+      }
+    }
+  }
+}

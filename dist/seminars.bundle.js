@@ -1,14 +1,16 @@
-webpackJsonp([2],{
+webpackJsonp([3],{
 
-/***/ 194:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(195);
+__webpack_require__(192);
 
-var _utils = __webpack_require__(2);
+__webpack_require__(3);
+
+var _utils = __webpack_require__(4);
 
 jQuery(document).ready(function ($) {
   $('.az-upcoming-category').text('Seminars');
@@ -26,14 +28,21 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 195:
+/***/ 192:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50,4 +59,4 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ })
 
-},[194]);
+},[191]);

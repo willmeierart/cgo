@@ -94,8 +94,16 @@
             font-size: 3em;
             line-height: 1.5em;
             a {
+              position: relative;
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
               .disable {
                 pointer-events:none;
+              }
+              i {
+                margin-right: -2em;
+                margin-bottom: -.75em;
               }
             }
             &.isOpen, &:hover {

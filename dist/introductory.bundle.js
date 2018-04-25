@@ -1,14 +1,16 @@
-webpackJsonp([4],{
+webpackJsonp([5],{
 
-/***/ 190:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(191);
+__webpack_require__(188);
 
-var _utils = __webpack_require__(2);
+__webpack_require__(3);
+
+var _utils = __webpack_require__(4);
 
 jQuery(document).ready(function ($) {
   $('.az-upcoming-category').text('Upcoming Introductory Events');
@@ -26,14 +28,21 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 191:
+/***/ 188:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50,4 +59,4 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ })
 
-},[190]);
+},[187]);

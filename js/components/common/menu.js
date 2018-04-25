@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
     $('#side-nav li').each((i, li) => {
       const a = $(li).children('a')
       if ($(li).hasClass('has-children')) {
-        $(li).prepend('<i class="fas fa-angle-down arrow"></i>')
+        $(li).children('a').first().append('<i class="fas fa-plus"></i>')
       }
 
   // const dealWithMobileSubmenus = () => {
@@ -21,15 +21,15 @@ jQuery(document).ready(function($) {
   //     })
   //   }
   // }
-      if ($(a).text() === 'Learn' || $(a).text() === 'Offerings') {
+      if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
         $(a).addClass('disable') 
         $(li).click(e => {
           e.preventDefault()
           $(li).children('ul').slideToggle(300)
           $(li).toggleClass('isOpen')
-          $(li).children('i').toggleClass('fa-angle-down fa-angle-up')
+          $(li).find('i').toggleClass('fa-plus fa-minus')
           $(li).siblings().children('ul').slideUp(300)
-          $(li).siblings().children('i').removeClass('fa-angle-up').addClass('fa-angle-down')
+          $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus')
           
         })
         $(li).find('.submenu-item').each((j, subLi) => {
@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
               e.preventDefault()
               e.stopPropagation()
               $(subLi).toggleClass('isOpen')
-              $(subLi).children('i').toggleClass('fa-angle-down fa-angle-up')
+              $(subLi).find('i').toggleClass('fa-plus fa-minus')
               $(subLi).children('ul').slideToggle(300)
             })
           }
