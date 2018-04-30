@@ -1,14 +1,23 @@
-webpackJsonp([8],{
+webpackJsonp([3],{
 
-/***/ 158:
+/***/ 15:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(159);
+__webpack_require__(15);
 
-var _utils = __webpack_require__(5);
+__webpack_require__(160);
+
+var _utils = __webpack_require__(4);
 
 jQuery(document).ready($ => {
 
@@ -19,6 +28,11 @@ jQuery(document).ready($ => {
       $(btn).css('background-image', `url('${mediaURL}${btnColors[i]}.jpg')`);
     });
   };
+
+  const formatSectionTitle = () => {
+    $('.section-title').children('h2').text(undefined.text().split('about')[0]).append('<span class="gold-letter-normal">?</span>');
+  };
+
   const formatEndStatement = () => {
     const pars = $('.come-within p');
     const par = pars[pars.length - 1];
@@ -30,20 +44,154 @@ jQuery(document).ready($ => {
   const initDoc = () => {
     setBtnBGs();
     formatEndStatement();
+    formatSectionTitle();
   };
   initDoc();
 });
 
 /***/ }),
 
-/***/ 159:
+/***/ 160:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _utils = __webpack_require__(4);
+
+var _cgoLogo = __webpack_require__(7);
+
+var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
+
+__webpack_require__(161);
+
+__webpack_require__(15);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// load in first image statically and then after ajax load in the others and init animation func
+// prob thru wp load the first, then on ajax do all this
+
+jQuery(document).ready($ => {
+
+  const rosePfx = _utils.url + '/wp-content/uploads/2018/04/home-header-rose';
+  const imgSize = 788;
+  const imgWPix = `${imgSize}px`;
+  const imgEl = $('.each-rose').children('img')[0];
+  const roseRect = imgEl.getBoundingClientRect();
+  console.log(roseRect);
+  let roseRealWidth = roseRect.width;
+  let roseMargin = (window.innerWidth - roseRealWidth) / 2;
+
+  console.log(roseRealWidth);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < imgSize) {
+      console.log('reeval roseRealWidth');
+      roseRealWidth = imgEl.getBoundingClientRect().width;
+      $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ });
+    }
+    roseMargin = (window.innerWidth - roseRealWidth) / 2;
+  });
+
+  console.log(window.location);
+  const isLocal = window.location.host.includes('localhost');
+
+  // 
+  if (isLocal) {
+    console.log('isLocal');
+    const rawSrc = $('.rose-5 img').attr('src');
+    $('.rose-5 img').attr('src', _utils.url + rawSrc);
+    console.log($('.rose-5 img').attr('src'));
+  }
+
+  const createRosettas = () => {
+    let i = 4;
+    let j = 3;
+    const slots = [0, 0, 0, 0];
+    slots.forEach((x, k) => {
+      console.log(x, k);
+      const num = k + 1;
+      $('#rosetta-container').append($(`
+        <div class='each-rose rose-${num}' >
+          <img src='${rosePfx}0${num}.png' />
+        </div>
+      `).css({
+        zIndex: num,
+        opacity: num > 3 ? 1 : 0,
+        willChange: 'opacity'
+      }));
+    });
+
+    $('#rosetta-container').append(`
+      <div class='rose-logo-wrapper'>
+        <div id='rosetta-logo'>${_cgoLogo2.default}</div>
+      </div>
+    `);
+
+    $('.rose-logo-wrapper').css({
+      zIndex: 10,
+      position: 'absolute',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: imgWPix,
+      color: '#CDA33A',
+      bottom: 0
+    });
+
+    i = 5;
+    j = 4;
+
+    $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ });
+
+    const animateFunc = () => {
+      if (i === 0) i = 5;
+      if (j === 0) j = 5;
+      $(`.rose-${j}`).css({
+        opacity: 1,
+        zIndex: j < i ? j : i
+        // backgroundBlendMode: 'normal'
+      });
+      $(`.rose-${i}`).css({
+        zIndex: i > j ? i : j
+        // mixBlendMode: 'difference'
+        // mixBlendMode: i % 2 === 0 ? 'overlay' : 'multiply'
+      }).delay(200).animate({ opacity: 0 }, {
+        duration: 5000,
+        specialEasing: 'ease-in',
+        clearQueue: true,
+        complete: () => {
+          i--;
+          j--;
+          setTimeout(() => {
+            animateFunc();
+          }, 10);
+        }
+      });
+    };
+    // window.requestAnimationFrame(animateFunc)
+  };
+
+  const initDoc = () => {
+    $('.rose-5 img').load(() => {
+      createRosettas();
+    });
+  };
+  initDoc();
+});
+
+/***/ }),
+
+/***/ 161:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67,6 +215,21 @@ const url = exports.url = 'http://kp0.60d.myftpupload.com';
 //     : jQuery({ ...jQuery('nav .sf-menu').clone() })
 // })
 
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const logo = `<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 78"><defs></defs><title>CGO_LogoMark</title><path class="cls-1" d="M169.2,356.93C255.52,238.13,279.93,0,279.93,0s24.42,238.13,110.72,356.93C471.28,468.07,560.44,500,560.44,500L279.93,780.89,0,500s88.56-32,169.2-143.11"/></svg>`;
+
+exports.default = logo;
+
 /***/ })
 
-},[158]);
+},[159]);

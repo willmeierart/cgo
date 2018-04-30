@@ -1,16 +1,16 @@
 webpackJsonp([4],{
 
-/***/ 189:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(190);
+__webpack_require__(185);
 
 __webpack_require__(3);
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(5);
 
 jQuery(document).ready(function ($) {
   $('.az-upcoming-category').text('Upcoming Meditation Events');
@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 190:
+/***/ 185:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59,4 +59,4 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ })
 
-},[189]);
+},[184]);

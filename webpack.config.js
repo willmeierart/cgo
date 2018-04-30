@@ -12,7 +12,7 @@ module.exports = function(env) {
   return  {
     entry: {
       main: "./js/index.js",
-      home: "./js/components/pages/home.js",
+      home: "./js/components/pages/home/index.js",
       explore: "./js/components/pages/explore/index.js",
       purpose: "./js/components/pages/explore/purpose.js",
       story: "./js/components/pages/explore/story.js",
@@ -113,6 +113,7 @@ module.exports = function(env) {
         }
       ]
     },
+    devtool: 'true',
     devServer: {
       historyApiFallback: true,
       compress: true,

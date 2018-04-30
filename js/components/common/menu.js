@@ -51,7 +51,6 @@ jQuery(document).ready(function($) {
   const initDoc = () => {
     // dealWithMobileSubmenus()
     enableNewMenuClickFunctionality()
-    console.log('new');
   }
   initDoc()
 })

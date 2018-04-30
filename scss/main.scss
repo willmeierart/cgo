@@ -40,6 +40,12 @@ body {
   height: 100vh;
   overflow: auto !important;
   color: black;
+  .loading-icon .material-icon .bar {
+    border-color: $color-gold;
+    &::after {
+      background-color: $color-gold;
+    }
+  }
 }
 
 .container:first-of-type {
@@ -64,16 +70,29 @@ a {
   cursor: pointer;
 }
 
+.gold-letter-normal {
+  color: $color-gold;
+}
+
 #header-outer {
   // padding-top: 0!important;
   // padding:0!important
   box-shadow: none!important;
+  background: linear-gradient(rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, .95))!important;
+}
+.header-gradient {
+  height: 20vh;
+  background: linear-gradient(rgba(255, 255, 255, 1) 50%,rgba(255, 255, 255, 0));
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
 }
 #header-space { 
   background-color: white;
- }
+}
 #top {
-  height: 70px;
+  height: 70px!important;
   .container, .az-header-container{
     padding: 0 1vw;
     display: flex;
@@ -128,6 +147,23 @@ a {
   height: 10px;
   svg {
     width: 1px;
+    overflow: visible!important;
+    .cls-1 {
+      fill: $color-gold;
+    }
+  }
+}
+
+#rosetta-logo {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  margin-bottom: 30px;
+  // justify-content: center;
+  // align-items: center;
+  svg {
+    width: 2px;
+    height: 6px;
     overflow: visible!important;
     .cls-1 {
       fill: $color-gold;

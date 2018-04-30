@@ -8,6 +8,9 @@ jQuery(document).ready(function($) {
   const isThin = $(window).width() <= 1000
   console.log(menuIsOpen);
 
+  const giveHeaderGradient = () => {
+    $('body').prepend("<div class='header-gradient'></div>")
+  }
 
   const makeWholeNewMenu = () => {
     const clonedMenu = isThin
@@ -114,6 +117,8 @@ jQuery(document).ready(function($) {
 
   const initHeader = (() => {
     // getTitleFromPath()
+    giveHeaderGradient()
+
     replaceEntireHeader()
     handleNavClick()
     formatLogo()

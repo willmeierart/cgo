@@ -14,7 +14,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       flex-direction: column;
       flex-grow: 1;
       width: 100vw!important;
-      height: 55vw;
+      height: 80vh;
       object-fit: cover;
       position: relative;
       #bg-image {
@@ -26,6 +26,25 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
         background-position: top center;
         // border-bottom: 10px solid black;
         // box-sizing: content-box;
+      }
+      #rosetta-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .each-rose {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          bottom: 0;
+          filter: blur(1px);
+          width: 100vw;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
   }
