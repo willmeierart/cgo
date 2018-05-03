@@ -16841,26 +16841,12 @@ jQuery(document).ready(function ($) {
     const monthKeys = Object.keys(monthsExpanded);
     monthKeys.forEach(month => {
       $(`.${month}`).click(e => {
-        console.log(e.target);
         monthsExpanded[month] = !monthsExpanded[month];
         $(`.${month}`).children('*:not(i, svg)').toggle(300);
         $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up');
       });
     });
   };
-
-  // const ditchDescriptionBlockThemeWrappers = async () => {
-  //   const eachWrapper = $('.az-offerings-types-description-container .wpb_wrapper').children('.wpb_raw_code')
-  //   await $(eachWrapper).each((i, wrapper) => {
-  //     const actualContent = $(wrapper).children('txt-block')
-  //     $('.az-offerings-types-description-container').prepend(actualContent)
-  //   })
-  //   await $('.az-offerings-types-description-container').children().each((i, child) => {
-  //     if (!$(child).hasClass('txt-block')) {
-  //       $(child).remove()
-  //     }
-  //   })
-  // }
 
   const filterByLocation = eventList => eventList.filter(event => event.slug === activeLocation);
 
@@ -16986,8 +16972,6 @@ jQuery(document).ready(function ($) {
         }
       }
     });
-
-    console.log(monthsExpanded);
   };
 
   const transformEvents = (events, centers) => {
@@ -17009,7 +16993,6 @@ jQuery(document).ready(function ($) {
       const start = start_time ? formatTime(event.start_time) : null;
       const end = end_time ? formatTime(event.end_time) : null;
       const center = centers.filter(center => center.id === center_id)[0];
-      // const course = courses.filter(course => course.id === course_id)[0]
       const endsSameDay = start_time && end_time ? formatTime(start_time).date === formatTime(end_time).date : false;
       if (endsSameDay) {
         start.time = `${start.time} - ${end.time}`;
@@ -17030,7 +17013,6 @@ jQuery(document).ready(function ($) {
         streaming: is_streaming,
         link: registration_link,
         location: { title: center.title, address: center.address, phone: center.phone }
-        // course
       };
     });
   };
@@ -17123,7 +17105,6 @@ jQuery(document).ready(function ($) {
     filterEventsData();
     renderTypesFilter(courses);
     renderLocationsMenu(cities);
-    // renderEventData(LOCAL_EVENTS, RECURRING_EVENTS)
   }
 
   renderDoc();
