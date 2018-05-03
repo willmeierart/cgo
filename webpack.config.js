@@ -22,7 +22,7 @@ module.exports = function(env) {
       spiritualMasters: "./js/components/pages/explore/spiritualMasters.js",
       twoGifts: "./js/components/pages/twoGifts/index.js",
       participate: "./js/components/pages/participate/index.js",
-      introductory: "./js/components/pages/participate/introductory.js",
+      introductions: "./js/components/pages/participate/introductions.js",
       meditation: "./js/components/pages/participate/meditation.js",
       seminars: "./js/components/pages/participate/seminars.js",
       otherOpportunities: "./js/components/pages/participate/otherOpportunities.js",

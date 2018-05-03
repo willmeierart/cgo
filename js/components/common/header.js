@@ -1,4 +1,5 @@
 import logo from '../../../assets/cgo-logo.js'
+import headerLogo from '../../../assets/cgo-header-logo'
 import { clonedMenu } from '../../utils'
 import './userAgreement'
 
@@ -75,17 +76,18 @@ jQuery(document).ready(function($) {
   const formatLogo = () => {
     const titleSection = $('.az-header-container .header-title')
     titleSection.empty()
-    titleSection.append(`
-      <div id='cgo-logo'>${logo}</div>
-    `)
-    titleSection.append(`
-      <div class='title-wrapper'>
-        <a href='/'>
-          <div class='center-of'>CENTER OF</div>
-          <div class='the-golden-one'>THE GOLDEN ONE</div>
-        </a>
-      </div>
-    `)
+    // titleSection.append(`
+    //   <div id='cgo-logo'>${logo}</div>
+    // `)
+    // titleSection.append(`
+    //   <div class='title-wrapper'>
+    //     <a href='/'>
+    //       <div class='center-of'>CENTER OF</div>
+    //       <div class='the-golden-one'>THE GOLDEN ONE</div>
+    //     </a>
+    //   </div>
+    // `)
+    titleSection.append(`<a href='/' style='width: 200px;'>${headerLogo}</a>`)
   }
 
   const handleNavClick = () => {

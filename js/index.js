@@ -9,6 +9,10 @@ import './components/common/menu'
 import logo from '../assets/cgo-logo.js' 
 
 jQuery(document).ready(($) => { 
+
+  $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap')
+  $('.img-with-animation').removeClass('img-with-animation')
+
   const pageNeedsFlippedMiddleSection = thisPage === 'kalindi' || thisPage === 'gourasana' || thisPage === 'the-lady'
   
   if ($('img').length > 0) {

@@ -1,0 +1,26 @@
+@import '../_variables.scss';
+
+.purpose, .story {
+  .header-title-text {
+    height: 400px;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 5em;
+      font-style: italic;
+      font-family: $font-fam-serif;
+      color: white;
+    }
+  }
+  .header-secondary-text {
+    padding: 10vw;
+    text-align: center;
+    font-family: $font-fam-serif;
+    font-size: 1.75em;
+    line-height: 1.25em;
+  }
+}

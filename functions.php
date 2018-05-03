@@ -38,7 +38,7 @@ function CGO_enqueue_js() {
 		wp_register_script('cgo_participate', get_stylesheet_directory_uri() . '/dist/participate.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_meditation', get_stylesheet_directory_uri() . '/dist/meditation.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_seminars', get_stylesheet_directory_uri() . '/dist/seminars.bundle.js', array('jquery'), '1.0', false );
-		wp_register_script('cgo_introductory', get_stylesheet_directory_uri() . '/dist/introductory.bundle.js', array('jquery'), '1.0', false );
+		wp_register_script('cgo_introductions', get_stylesheet_directory_uri() . '/dist/introductions.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_calendar', get_stylesheet_directory_uri() . '/dist/calendar.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_otherOpportunities', get_stylesheet_directory_uri() . '/dist/otherOpportunities.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_community', get_stylesheet_directory_uri() . '/dist/community.bundle.js', array('jquery'), '1.0', false );
@@ -96,9 +96,9 @@ function CGO_enqueue_js() {
 			wp_enqueue_style('cgo_seminars_style', get_stylesheet_directory_uri() . '/dist/styles/seminars.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
-		} else if(is_page( 'Introductory' )) {
-			wp_enqueue_script('cgo_introductory');
-			wp_enqueue_style('cgo_introductory_style', get_stylesheet_directory_uri() . '/dist/styles/introductory.css');
+		} else if(is_page( 'Introductions' )) {
+			wp_enqueue_script('cgo_introductions');
+			wp_enqueue_style('cgo_introductions_style', get_stylesheet_directory_uri() . '/dist/styles/introductions.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
 		} else if(is_page( 'Calendar' )) {

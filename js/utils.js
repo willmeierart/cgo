@@ -7,6 +7,9 @@ export const isMobile = typeof window.orientation !== 'undefined'
 
 export const url = 'http://kp0.60d.myftpupload.com'
 
+export const API_PROXY = 'http://104.131.7.39/data/'
+export const API_BASE = 'http://104.130.1.140/data/'
+
 // export const clonedMenu = () => jQuery(document).ready($ => {
 //   isThin 
 //     ? jQuery({ ...jQuery('.mobile-only .menu').clone() })

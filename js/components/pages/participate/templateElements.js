@@ -1,16 +1,26 @@
 export const detailInner = event => {
-  const { id, type, title, date, time, recurring, time_notes, price, price_notes, location_title, address, phone, other_notes } = event
+  const { id, title, time, price, price_notes, location, description, day, start, end, time_notes } = event
   return `
     <div id='${id}' class='detail-inner'>
       <div class='detail-item'>
         <div class='col-1'>
           <div class='details'>
-            <div class='title'>${title ? title : type.replace('_', ' ')}</div>
-            <div class='date'>${recurring ? recurring : date /* have logic in here for handling recurring dates */}</div>
-            <div class='time'>${time}</div>
-            <div class='time-notes'>(${time_notes})</div>
-            <span class='price'>${price}&nbsp;</span>
-            <span class='price-notes'>(${price_notes})</span>                
+            <div class='date'>${ day
+              ? day
+              : end.time !== null
+                ? start.date + ' - ' + end.date
+                : start.date }
+            </div>
+            <div class='title'>${title}</div>
+            <div class='time'>${day
+              ? start
+              : end.time !== null
+                ? start.time + ' - ' + end.time
+                : start.time}
+            </div>
+            <div class='time-notes'>${time_notes || ''}</div>
+            <div class='price'>${price}</div>
+            <div class='price-notes'>${price_notes || ''}</div>                
           </div>
           <div class='register-btn'>
             <div>REGISTER</div>
@@ -19,28 +29,28 @@ export const detailInner = event => {
         <div class='col-2'>
           <div class='location-info-spacer'></div>
           <div>
-            <div class='address'>${location_title}</div>              
-            <div class='address'>${address}</div>
-            <div class='phone'>${phone}</div>
+            <div class='address'>${location.title}</div>              
+            <div class='address'>${location.address}</div>
+            <div class='phone'>${location.phone}</div>
           </div>
           <div class='learn-btn'>
             <div>LEARN ABOUT THIS LOCATION</div>
           </div>
         </div>  
         <div class='col-3'>
-          <div class='description'>${other_notes + 'Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero.'}</div>
+          <div class='description'>${description}</div>
         </div>    
       </div>
     </div>
   `
 }
 
-export const descriptionTxtBlock = (title, flatTitle) => `
-  <div id='${flatTitle}' class='txt-block'>
+export const descriptionTxtBlock = course => `
+  <div id='${course.Id}' class='txt-block'>
     <div class='inner-wrapper'>
-      <div class='title'>${title}</div>
+      <div class='title'>${course.Name}</div>
       <div class='description-wrapper'>
-        <div class='description'>Nullam id sapien in nunc vestibulum vehicula. Morbi hendrerit est eget auctor eleifend. Sed dignissim venenatis ligula, a pellentesque purus scelerisque eu. Maecenas ac orci pulvinar, imperdiet ligula a, dapibus libero.</div>
+        <div class='description'>${course.Descripton}</div>
       </div>
       <div class='b-wrapper'>
         <div class='expand-btn'>+</div>

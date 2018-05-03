@@ -1,16 +1,16 @@
-webpackJsonp([4],{
+webpackJsonp([6],{
 
-/***/ 184:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(185);
+__webpack_require__(192);
 
-__webpack_require__(3);
+__webpack_require__(4);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(6);
 
 jQuery(document).ready(function ($) {
   $('.az-upcoming-category').text('Upcoming Meditation Events');
@@ -28,21 +28,21 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 185:
+/***/ 192:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51,12 +51,15 @@ jQuery(document).ready(function ($) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+const textMatches = exports.textMatches = (str1, str2) => str1 === str2 || str1.toLowerCase() === str2.toLowerCase() || str1.toUpperCase() === str2.toUpperCase() || str1.replace(/[^a-zA-Z]/g, '_') === str2.replace(/[^a-zA-Z]/g, '_') || str1.replace(/[^a-zA-Z]/g, '-') === str2.replace(/[^a-zA-Z]/g, '-') || str1.replace(/[^a-zA-Z]/g, '_').toUpperCase() === str2.replace(/[^a-zA-Z]/g, '_').toUpperCase() || str1.replace(/[^a-zA-Z]/g, '_').toLowerCase() === str2.replace(/[^a-zA-Z]/g, '_').toLowerCase() || str1.replace(/[^a-zA-Z]/g, '-').toUpperCase() === str2.replace(/[^a-zA-Z]/g, '-').toUpperCase() || str1.replace(/[^a-zA-Z]/g, '-').toLowerCase() === str2.replace(/[^a-zA-Z]/g, '-').toLowerCase();
+
 const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedString) => {
   element.each((i, item) => {
-    jQuery(item).text() === matchedString || jQuery(item).text() === matchedString.toUpperCase() || jQuery(item).text() === matchedString.replace('_', ' ') ? jQuery(item).addClass('active') : jQuery(item).removeClass('active');
+    const itemText = jQuery(item).text();
+    textMatches(itemText, matchedString) ? jQuery(item).addClass('active') : jQuery(item).removeClass('active');
   });
 };
 
 /***/ })
 
-},[184]);
+},[191]);

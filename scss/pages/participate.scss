@@ -1,10 +1,11 @@
 .az-offerings-submenu-wrapper {
   ul {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex-direction: row;
     flex-grow: 0;
     li {
+      margin-right: 2em;
       text-transform: uppercase;
       font-size: 1.75em;
       &.active {
@@ -35,55 +36,43 @@
 }
 
 .az-offerings-types-description-container {
-  .wpb_wrapper{
+  display: flex;
+  .txt-block {
+    height: 100%;
+    border: 1px solid gray;
+    padding: 1em;
+    margin: 0;
     display: flex;
-    .wpb_raw_code {
-      height: 20vw;
+    flex-direction: column;
+    .inner-wrapper {
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      .wpb_wrapper {
-        height: 100%;
+      flex-grow: 1;
+      justify-content: space-between;
+      .title {
+        font-size: 1.5em;
+        font-weight: bold;
+        padding-bottom: .25em;
+      }
+      .description-wrapper {
+        overflow: hidden;
+        padding: .25em;
+      }
+      .b-wrapper {
         display: flex;
-        flex-direction: column;
-        .txt-block {
-          height: 100%;
-          border: 1px solid gray;
-          padding: 1em;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          .inner-wrapper {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-            .title {
-              font-size: 1.5em;
-              font-weight: bold;
-              padding-bottom: .25em;
-            }
-            .description-wrapper {
-              overflow: hidden;
-              padding: .25em;
-            }
-            .b-wrapper {
-              display: flex;
-              justify-content: flex-end;
-              width: 100%;
-              height: 2em;
-              margin: .25em;
-            }
-            .expand-btn {
-              width: 2em;
-              height: 2em;
-              border-radius: 10%;
-              border: solid 1px grey;
-              text-align: center;
-            }
-          }
-        }
+        justify-content: flex-end;
+        width: 100%;
+        height: 2em;
+        margin: .25em;
+      }
+      .expand-btn {
+        width: 2em;
+        height: 2em;
+        border-radius: 10%;
+        border: solid 1px grey;
+        text-align: center;
       }
     }
   }
@@ -162,7 +151,7 @@
 .az-offerings-location-detail-wrapper {
   .date-category {
     cursor: pointer;
-    &:not(:first-child), :first-of-type {
+    & *:not(i) {
       cursor: default;
     }
   }
@@ -190,7 +179,7 @@
         font-weight: bold;
         font-size: 2em;
       }
-      .date {
+      .date, .time {
         font-size: 1.5em;
       }
       .price {

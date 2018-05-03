@@ -5,15 +5,17 @@ import { url } from '../../../utils'
 jQuery(document).ready(($) => {
   
   const setBtnBGs = () => {
-    const btnColors = ['purple', 'orange', 'yellow', 'blue']
-    const mediaURL = url + '/wp-content/uploads/2018/02/btn_bg_'
+    // const btnColors = ['purple', 'orange', 'yellow', 'blue']
+    // const mediaURL = url + '/wp-content/uploads/2018/02/btn_bg_'
+    const mediaURL = url + '/wp-content/uploads/2018/04/home-button-0'
     $('.home-nav-btn').each((i, btn) => {
-      $(btn).css('background-image', `url('${mediaURL}${btnColors[i]}.jpg')`)
+      $(btn).css('background-image', `url('${mediaURL}${i + 1}.png')`)
     })
   }
 
   const formatSectionTitle = () => {
-    $('.section-title').children('h2').text(this.text().split('about')[0]).append('<span class="gold-letter-normal">?</span>')
+    const h2el = $('.section-title').children('h2')
+    h2el.text(h2el.text().split('?')[0]).append('<span class="gold-letter-normal">?</span>')
   }
 
   const formatEndStatement = () => {

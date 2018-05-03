@@ -1,36 +1,67 @@
 webpackJsonp([3],{
 
-/***/ 15:
+/***/ 1:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const splitPath = window.location.pathname.split('/');
+const thisPage = exports.thisPage = splitPath[splitPath.length - 2];
+
+const isThin = exports.isThin = jQuery(window).width() <= 1000;
+
+const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
+
+const url = exports.url = 'http://kp0.60d.myftpupload.com';
+
+const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
+const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
+
+// export const clonedMenu = () => jQuery(document).ready($ => {
+//   isThin 
+//     ? jQuery({ ...jQuery('.mobile-only .menu').clone() })
+//     : jQuery({ ...jQuery('nav .sf-menu').clone() })
+// })
+
+/***/ }),
+
+/***/ 141:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 159:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(15);
+__webpack_require__(141);
 
-__webpack_require__(160);
+__webpack_require__(168);
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(1);
 
 jQuery(document).ready($ => {
 
   const setBtnBGs = () => {
-    const btnColors = ['purple', 'orange', 'yellow', 'blue'];
-    const mediaURL = _utils.url + '/wp-content/uploads/2018/02/btn_bg_';
+    // const btnColors = ['purple', 'orange', 'yellow', 'blue']
+    // const mediaURL = url + '/wp-content/uploads/2018/02/btn_bg_'
+    const mediaURL = _utils.url + '/wp-content/uploads/2018/04/home-button-0';
     $('.home-nav-btn').each((i, btn) => {
-      $(btn).css('background-image', `url('${mediaURL}${btnColors[i]}.jpg')`);
+      $(btn).css('background-image', `url('${mediaURL}${i + 1}.png')`);
     });
   };
 
   const formatSectionTitle = () => {
-    $('.section-title').children('h2').text(undefined.text().split('about')[0]).append('<span class="gold-letter-normal">?</span>');
+    const h2el = $('.section-title').children('h2');
+    h2el.text(h2el.text().split('?')[0]).append('<span class="gold-letter-normal">?</span>');
   };
 
   const formatEndStatement = () => {
@@ -51,30 +82,27 @@ jQuery(document).ready($ => {
 
 /***/ }),
 
-/***/ 160:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(1);
 
-var _cgoLogo = __webpack_require__(7);
+var _cgoLogo = __webpack_require__(5);
 
 var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
 
-__webpack_require__(161);
+__webpack_require__(169);
 
-__webpack_require__(15);
+__webpack_require__(141);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// load in first image statically and then after ajax load in the others and init animation func
-// prob thru wp load the first, then on ajax do all this
-
 jQuery(document).ready($ => {
 
-  const rosePfx = _utils.url + '/wp-content/uploads/2018/04/home-header-rose';
+  const rosePfx = _utils.url + '/wp-content/uploads/2018/05/home-header-rose';
   const imgSize = 788;
   const imgWPix = `${imgSize}px`;
   const imgEl = $('.each-rose').children('img')[0];
@@ -97,7 +125,6 @@ jQuery(document).ready($ => {
   console.log(window.location);
   const isLocal = window.location.host.includes('localhost');
 
-  // 
   if (isLocal) {
     console.log('isLocal');
     const rawSrc = $('.rose-5 img').attr('src');
@@ -167,11 +194,11 @@ jQuery(document).ready($ => {
           j--;
           setTimeout(() => {
             animateFunc();
-          }, 10);
+          }, 16);
         }
       });
     };
-    // window.requestAnimationFrame(animateFunc)
+    window.requestAnimationFrame(animateFunc);
   };
 
   const initDoc = () => {
@@ -184,40 +211,14 @@ jQuery(document).ready($ => {
 
 /***/ }),
 
-/***/ 161:
+/***/ 169:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 4:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-const splitPath = window.location.pathname.split('/');
-const thisPage = exports.thisPage = splitPath[splitPath.length - 2];
-
-const isThin = exports.isThin = jQuery(window).width() <= 1000;
-
-const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
-
-const url = exports.url = 'http://kp0.60d.myftpupload.com';
-
-// export const clonedMenu = () => jQuery(document).ready($ => {
-//   isThin 
-//     ? jQuery({ ...jQuery('.mobile-only .menu').clone() })
-//     : jQuery({ ...jQuery('nav .sf-menu').clone() })
-// })
-
-/***/ }),
-
-/***/ 7:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -232,4 +233,4 @@ exports.default = logo;
 
 /***/ })
 
-},[159]);
+},[167]);

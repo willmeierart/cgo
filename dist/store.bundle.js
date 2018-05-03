@@ -1,12 +1,12 @@
 webpackJsonp([15],{
 
-/***/ 195:
+/***/ 201:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(196);
+__webpack_require__(202);
 
 jQuery(document).ready($ => {
   console.log('shop');
@@ -14,11 +14,11 @@ jQuery(document).ready($ => {
 
 /***/ }),
 
-/***/ 196:
+/***/ 202:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
 
-},[195]);
+},[201]);

@@ -3,13 +3,9 @@ import logo from '../../../../assets/cgo-logo.js'
 import '../../../../scss/_animations.scss'
 import '../../../../scss/pages/home.scss'
 
-
-// load in first image statically and then after ajax load in the others and init animation func
-// prob thru wp load the first, then on ajax do all this
-
 jQuery(document).ready(($) => {
 
-  const rosePfx = url + '/wp-content/uploads/2018/04/home-header-rose'
+  const rosePfx = url + '/wp-content/uploads/2018/05/home-header-rose'
   const imgSize = 788
   const imgWPix = `${imgSize}px`
   const imgEl = $('.each-rose').children('img')[0]
@@ -32,7 +28,6 @@ jQuery(document).ready(($) => {
   console.log(window.location)
   const isLocal = window.location.host.includes('localhost')
 
-  // 
   if (isLocal) {
     console.log('isLocal')
     const rawSrc = $('.rose-5 img').attr('src')
@@ -101,11 +96,11 @@ jQuery(document).ready(($) => {
           complete: () => {
             i--
             j--
-            setTimeout(() => { animateFunc() }, 10)
+            setTimeout(() => { animateFunc() }, 16)
           }
         })
     }
-    // window.requestAnimationFrame(animateFunc)
+    window.requestAnimationFrame(animateFunc)
   }
 
   const initDoc = () => {
