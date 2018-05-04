@@ -70,14 +70,14 @@
       height: calc(100vh);
       width: 100vw;
       display: none;
-      background-color: $color-gold;
+      background-color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding-right: 2em;
       z-index:900;
-      color: white;
+      color: $color-gold;
       &.active {
         
       }
@@ -91,7 +91,7 @@
           display: flex;
           flex-direction: column;
           .item {
-            font-size: 3em;
+            font-size: 3.5em;
             line-height: 1.5em;
             a {
               position: relative;
@@ -108,23 +108,39 @@
             }
             &.isOpen, &:hover {
               // color: $color-gold;
-              font-weight: bold;
+              font-weight: 900 !important;
+              font-family: $font-fam-serif !important;
+              font-style: italic;
+              color: black !important;
               
             }
             &.has-children {
               // margin-left: -1em;
               .submenu-list {
                 font-weight: normal;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                // font-size: 1.75em;
                 // color: black;
                 // margin-left: 1em;
                 display: none;
-                padding-right: 1em;
+                padding: 0 1em ;
                 .submenu-item {
-                  // font-size: .66em;
-                  // color: black;
+                  line-height: 1.125em;
+                  font-size: .66em;
                   font-weight: normal;
+                  font-family: $font-fam-sans;
+                  color: $color-gold;
+                  font-style: normal;
+                  font-weight: normal;
+                  a {
+                    text-align: left !important;
+                    justify-content: flex-start;
+                  }
                   &.isOpen, &:hover {
                     font-weight: bold;
+                    
                     // color: $color-gold;
                   }
                   &.has-children {

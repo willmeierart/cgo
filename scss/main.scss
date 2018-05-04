@@ -19,6 +19,7 @@
 @import 'animations';
 @import 'menu';
 @import './fonts/_fonts';
+@import 'base';
 // @import 'pageTemplate';
 
 /********************************************
@@ -130,10 +131,10 @@ a {
     padding-bottom: 0;
   }
   .first-letter{
-    line-height: .75em;
+    line-height: 1em;
     padding-top: .05em;
     padding-right: .1em;
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
     color: $color-gold;
     float: left;

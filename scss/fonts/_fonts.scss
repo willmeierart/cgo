@@ -54,3 +54,19 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('PlayfairDisplay-Black.eot');
+  src: url('PlayfairDisplay-Black.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Black.woff2') format('woff2'), url('PlayfairDisplay-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('PlayfairDisplay-BlackItalic.eot');
+  src: url('PlayfairDisplay-BlackItalic.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-BlackItalic.woff2') format('woff2'), url('PlayfairDisplay-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+}

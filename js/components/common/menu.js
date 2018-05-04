@@ -22,11 +22,13 @@ jQuery(document).ready(function($) {
   //   }
   // }
       if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
-        $(a).addClass('disable') 
+        $(a).addClass('disable')
         $(li).click(e => {
+          console.log($(e.target))
           e.preventDefault()
           $(li).children('ul').slideToggle(300)
           $(li).toggleClass('isOpen')
+          // $(e.target).parent().addClass('isOpen')
           $(li).find('i').toggleClass('fa-plus fa-minus')
           $(li).siblings().children('ul').slideUp(300)
           $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus')

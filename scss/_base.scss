@@ -1,0 +1,49 @@
+@import './fonts/_fonts';
+@import 'variables';
+
+h1, .h1 {
+  font: $font-fam-serif italic 180px, serif !important;
+}
+
+h2, .h2 {
+  font: $font-fam-sans bold 72px, sans-serif !important;
+  letter-spacing: 0.1em !important;
+}
+
+h3, .h3 {
+  font: $font-fam-serif 72px italic, serif !important;
+}
+
+h4, .h4 {
+  font: $font-fam-serif 48px/66px, serif !important;
+}
+
+h5, .h5 {
+  font: $font-fam-serif 48px 900, serif !important;
+}
+
+h6, .h6 {
+  font: $font-fam-serif 48px/66px italic, serif !important;
+}
+
+.h7 {
+  font: $font-fam-sans bold 42px, sans-serif !important;
+}
+
+.quote {
+  font: $font-fam-serif italic 42px/52px, serif !important;
+}
+
+.quote-attr {
+  font: $font-fam-sans bold 36px, sans-serif !important;
+  letter-spacing: 0.05em !important;
+}
+
+.body-copy {
+  font: $font-fam-sans 300 36px/54px !important;
+}
+
+.btn-txt {
+  font: $font-fam-sans bold 36px !important;
+  letter-spacing: 0.05em !important;
+}
