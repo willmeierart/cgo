@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackJsonp([5],{
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
@@ -37,7 +37,7 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 __webpack_require__(174);
 
-__webpack_require__(2);
+__webpack_require__(3);
 
 var _cgoLogo = __webpack_require__(5);
 
@@ -74,7 +74,7 @@ jQuery(document).ready($ => {
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

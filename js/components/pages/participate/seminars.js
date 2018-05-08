@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
   }
 
   const initDoc = async () => {
-    setTopMenuActiveItem()    
+    // setTopMenuActiveItem()    
     // const courseData = await fetchData()
     // await renderData(courseData)
   }

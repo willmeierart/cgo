@@ -1,12 +1,12 @@
-webpackJsonp([7],{
+webpackJsonp([8],{
 
-/***/ 189:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(190);
+__webpack_require__(188);
 
 __webpack_require__(4);
 
@@ -21,14 +21,14 @@ jQuery(document).ready(function ($) {
   };
 
   const initDoc = () => {
-    setTopMenuActiveItem();
+    // setTopMenuActiveItem()
   };
   initDoc();
 });
 
 /***/ }),
 
-/***/ 190:
+/***/ 188:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -62,4 +62,4 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ })
 
-},[189]);
+},[187]);

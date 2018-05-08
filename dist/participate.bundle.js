@@ -1837,7 +1837,7 @@ webpackJsonp([0],[
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(132)("./" + name);
+                __webpack_require__(133)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4509,7 +4509,7 @@ webpackJsonp([0],[
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(131)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(132)(module)))
 
 /***/ }),
 /* 1 */
@@ -16414,7 +16414,8 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ }),
 /* 130 */,
-/* 131 */
+/* 131 */,
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -16442,7 +16443,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -16707,10 +16708,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 132;
+webpackContext.id = 133;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16740,7 +16741,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 134 */,
 /* 135 */,
 /* 136 */,
 /* 137 */,
@@ -16789,9 +16789,7 @@ exports.default = {
 /* 180 */,
 /* 181 */,
 /* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16801,19 +16799,25 @@ var _moment = __webpack_require__(0);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _lodash = __webpack_require__(186);
+var _lodash = __webpack_require__(184);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
 __webpack_require__(4);
 
+var _dynamicLayout = __webpack_require__(207);
+
+var _dynamicLayout2 = _interopRequireDefault(_dynamicLayout);
+
+var _templateElements = __webpack_require__(186);
+
 var _utils = __webpack_require__(6);
 
-var _queries = __webpack_require__(133);
+var _utils2 = __webpack_require__(1);
+
+var _queries = __webpack_require__(134);
 
 var _queries2 = _interopRequireDefault(_queries);
-
-var _templateElements = __webpack_require__(188);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16892,6 +16896,13 @@ jQuery(document).ready(function ($) {
         menuWrapper.append(`
           <li id='${location.id}' class='az-offerings-locations-menu-item'>
             <a>${location.title}</a>
+          </li>
+        `);
+      }
+      if (menuWrapper.children(`#streaming-menu-item`).length < 1) {
+        menuWrapper.append(`
+          <li id='streaming-menu-item' class='az-offerings-locations-menu-item'>
+            <a>STREAMING</a>
           </li>
         `);
       }
@@ -17019,20 +17030,20 @@ jQuery(document).ready(function ($) {
 
   function filterEventsData() {
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'));
-    const { course_types: { meditation, seminar, introduction, other_opportunities }, locations: { cities, centers } } = cachedData;
+    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData;
 
     const allTheseCourses = (() => {
       switch (true) {
         case IS_SEMINARS_PAGE:
-          return seminar;
+          return seminars;
         case IS_MEDITATIONS_PAGE:
-          return meditation;
+          return meditations;
         case IS_INTRODUCTIONS_PAGE:
-          return introduction;
+          return introductions;
         case IS_OTHER_PAGE:
-          return other_opportunities;
+          return other_programs;
         default:
-          return meditation;
+          return meditations;
       }
     })();
 
@@ -17083,24 +17094,28 @@ jQuery(document).ready(function ($) {
     }
     console.log('cached refreshed:', conds);
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'));
-    const { course_types: { meditation, seminar, introduction, other_opportunities }, locations: { cities, centers } } = cachedData;
+    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData;
+
+    console.log('cachedData: ', cachedData);
 
     const allTheseCourses = (() => {
       switch (true) {
         case IS_SEMINARS_PAGE:
-          return seminar;
+          return seminars;
         case IS_MEDITATIONS_PAGE:
-          return meditation;
+          return meditations;
         case IS_INTRODUCTIONS_PAGE:
-          return introduction;
+          return introductions;
         case IS_OTHER_PAGE:
-          return other_opportunities;
+          return other_programs;
         default:
-          return meditation;
+          return meditations;
       }
     })();
 
-    const { events, courses } = allTheseCourses;
+    console.log(allTheseCourses);
+
+    const { courses } = allTheseCourses;
 
     filterEventsData();
     renderTypesFilter(courses);
@@ -17111,7 +17126,7 @@ jQuery(document).ready(function ($) {
 });
 
 /***/ }),
-/* 186 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -17464,10 +17479,10 @@ function isObjectLike(value) {
 
 module.exports = flatten;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(187)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(185)))
 
 /***/ }),
-/* 187 */
+/* 185 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17494,7 +17509,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 188 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17556,5 +17571,56 @@ const descriptionTxtBlock = exports.descriptionTxtBlock = course => `
   </div>
 `;
 
+/***/ }),
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+jQuery(document).ready(function ($) {
+  const formatTypesDescriptionBlocks = () => {
+    const wrapper = $('.az-offerings-types-description-container');
+    const innerWrapper = $(wrapper.find('.wpb_wrapper')[0]);
+    const txtBlocks = innerWrapper.children();
+    const numChildren = txtBlocks.length;
+    const isOdd = numChildren % 2 === 1;
+    const numRows = isOdd ? numChildren / 2 + 1 : numChildren / 2;
+    innerWrapper.css({
+      gridTemplateRows: `repeat(${numRows}, 1fr)`
+    });
+  };
+
+  const setHeaderBG = () => {
+    $('.top-banner').css({
+      backgroundImage: `url('')`
+    });
+  };
+
+  const initDoc = (() => {
+    formatTypesDescriptionBlocks();
+  })();
+});
+
 /***/ })
-],[185]);
+],[183]);

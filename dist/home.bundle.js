@@ -29,7 +29,7 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 /***/ }),
 
-/***/ 141:
+/***/ 142:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -42,7 +42,7 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 "use strict";
 
 
-__webpack_require__(141);
+__webpack_require__(142);
 
 __webpack_require__(168);
 
@@ -96,7 +96,7 @@ var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
 
 __webpack_require__(169);
 
-__webpack_require__(141);
+__webpack_require__(142);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -194,11 +194,13 @@ jQuery(document).ready($ => {
           j--;
           setTimeout(() => {
             animateFunc();
-          }, 16);
+          }, 160);
+          // window.requestAnimationFrame(animateFunc)            
         }
       });
     };
     window.requestAnimationFrame(animateFunc);
+    // animateFunc()
   };
 
   const initDoc = () => {

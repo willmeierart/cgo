@@ -1837,7 +1837,7 @@ webpackJsonp([1],[
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(132)("./" + name);
+                __webpack_require__(133)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4509,7 +4509,7 @@ webpackJsonp([1],[
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(131)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(132)(module)))
 
 /***/ }),
 /* 1 */
@@ -16414,7 +16414,8 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ }),
 /* 130 */,
-/* 131 */
+/* 131 */,
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -16442,7 +16443,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -16707,10 +16708,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 132;
+webpackContext.id = 133;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16740,7 +16741,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 134 */,
 /* 135 */,
 /* 136 */,
 /* 137 */,
@@ -16797,9 +16797,7 @@ exports.default = {
 /* 188 */,
 /* 189 */,
 /* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16809,13 +16807,13 @@ var _moment = __webpack_require__(0);
 
 var _moment2 = _interopRequireDefault(_moment);
 
-__webpack_require__(194);
+__webpack_require__(192);
 
 __webpack_require__(4);
 
 var _utils = __webpack_require__(6);
 
-var _queries = __webpack_require__(133);
+var _queries = __webpack_require__(134);
 
 var _queries2 = _interopRequireDefault(_queries);
 
@@ -16874,7 +16872,7 @@ jQuery(document).ready(function ($) {
   };
 
   const initDoc = async () => {
-    setTopMenuActiveItem();
+    // setTopMenuActiveItem()    
     // const courseData = await fetchData()
     // await renderData(courseData)
   };
@@ -16882,10 +16880,10 @@ jQuery(document).ready(function ($) {
 });
 
 /***/ }),
-/* 194 */
+/* 192 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-],[193]);
+],[191]);

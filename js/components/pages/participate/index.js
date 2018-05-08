@@ -1,9 +1,11 @@
 import moment from 'moment'
 import flatten from 'lodash.flatten'
 import '../../../../scss/pages/participate.scss'
-import { setActiveItemFilter, textMatcher, textMatches } from './utils'
-import queries from '../../../queries'
+import dynamicLayout from './dynamicLayout'
 import { detailInner, descriptionTxtBlock } from './templateElements'
+import { setActiveItemFilter, textMatcher, textMatches } from './utils'
+import { url } from '../../../utils'
+import queries from '../../../queries'
 
 jQuery(document).ready(function($) {
   const { pathname } = window.location
@@ -83,6 +85,13 @@ jQuery(document).ready(function($) {
         menuWrapper.append(`
           <li id='${location.id}' class='az-offerings-locations-menu-item'>
             <a>${location.title}</a>
+          </li>
+        `)
+      }
+      if (menuWrapper.children(`#streaming-menu-item`).length < 1) {
+        menuWrapper.append(`
+          <li id='streaming-menu-item' class='az-offerings-locations-menu-item'>
+            <a>STREAMING</a>
           </li>
         `)
       }
@@ -215,20 +224,20 @@ jQuery(document).ready(function($) {
 
   function filterEventsData () {
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    const { course_types: { meditation, seminar, introduction, other_opportunities }, locations: { cities, centers } } = cachedData
+    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
 
     const allTheseCourses = (() => {
       switch (true) {
         case IS_SEMINARS_PAGE:
-          return seminar
+          return seminars
         case IS_MEDITATIONS_PAGE:
-          return meditation
+          return meditations
         case IS_INTRODUCTIONS_PAGE:
-          return introduction
+          return introductions
         case IS_OTHER_PAGE:
-          return other_opportunities
+          return other_programs
         default:
-          return meditation
+          return meditations
       }
     })()
 
@@ -287,24 +296,28 @@ jQuery(document).ready(function($) {
     }
     console.log('cached refreshed:', conds)
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    const { course_types: { meditation, seminar, introduction, other_opportunities }, locations: { cities, centers } } = cachedData
+    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
+
+    console.log('cachedData: ', cachedData)
 
     const allTheseCourses = (() => {
       switch (true) {
         case IS_SEMINARS_PAGE:
-          return seminar
+          return seminars
         case IS_MEDITATIONS_PAGE:
-          return meditation
+          return meditations
         case IS_INTRODUCTIONS_PAGE:
-          return introduction
+          return introductions
         case IS_OTHER_PAGE:
-          return other_opportunities
+          return other_programs
         default:
-          return meditation
+          return meditations
       }
     })()
 
-    const { events, courses } = allTheseCourses
+    console.log(allTheseCourses)
+
+    const { courses } = allTheseCourses
 
     filterEventsData()
     renderTypesFilter(courses)    

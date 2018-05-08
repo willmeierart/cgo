@@ -28,14 +28,13 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 // })
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bind = __webpack_require__(135);
+var bind = __webpack_require__(136);
 var isBuffer = __webpack_require__(149);
 
 /*global toString:true*/
@@ -339,6 +338,7 @@ module.exports = {
 
 
 /***/ }),
+/* 3 */,
 /* 4 */,
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -479,12 +479,18 @@ exports.default = logo;
 /* 128 */,
 /* 129 */,
 /* 130 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 var normalizeHeaderName = __webpack_require__(151);
 
 var DEFAULT_CONTENT_TYPE = {
@@ -501,10 +507,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(137);
+    adapter = __webpack_require__(138);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(137);
+    adapter = __webpack_require__(138);
   }
   return adapter;
 }
@@ -575,13 +581,13 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(136)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(137)))
 
 /***/ }),
-/* 131 */,
 /* 132 */,
 /* 133 */,
-/* 134 */
+/* 134 */,
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -596,37 +602,37 @@ var _utils = __webpack_require__(1);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 jQuery(document).ready($ => {
-  const agreementEndpoint = _utils.url + '/wp-json/wp/v2/pages/236';
-  let UAContent = '';
+  // const agreementEndpoint = url + '/wp-json/wp/v2/pages/236'
+  // let UAContent = ''
 
-  $('body').prepend('<div id="user-agreement-modal"></div>');
+  // $('body').prepend('<div id="user-agreement-modal"></div>')
 
-  const fetchContent = async () => {
-    const response = await _axios2.default.get(agreementEndpoint);
-    const agreement = await response.data.content.rendered;
-    UAContent = agreement;
+  // const fetchContent = async () => {
+  //   const response = await axios.get(agreementEndpoint)
+  //   const agreement = await response.data.content.rendered
+  //   UAContent = agreement
 
-    $('#user-agreement-modal').append(UAContent);
+  //   $('#user-agreement-modal').append(UAContent)
 
-    $('#side-nav ul a').each((i, a) => {
-      if ($(a).text() === 'User Agreement') {
-        $(a).click(e => {
-          e.preventDefault();
-          $('#user-agreement-modal').toggle();
-          // alert(UAContent)
-        });
-      }
-    });
-  };
+  //   $('#side-nav ul a').each((i, a) => {
+  //     if($(a).text() === 'User Agreement'){
+  //       $(a).click(e => {
+  //         e.preventDefault()
+  //         $('#user-agreement-modal').toggle()
+  //         // alert(UAContent)
+  //       })
+  //     }
+  //   })
+  // }
 
-  const initDoc = async () => {
-    await fetchContent();
-  };
-  initDoc();
+  // const initDoc = async () => {
+  //   await fetchContent()
+  // }
+  // initDoc()
 });
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -644,7 +650,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -834,18 +840,18 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 var settle = __webpack_require__(152);
 var buildURL = __webpack_require__(154);
 var parseHeaders = __webpack_require__(155);
 var isURLSameOrigin = __webpack_require__(156);
-var createError = __webpack_require__(138);
+var createError = __webpack_require__(139);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(157);
 
 module.exports = function xhrAdapter(config) {
@@ -1019,10 +1025,10 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(136)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(137)))
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1047,7 +1053,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1059,7 +1065,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1085,14 +1091,14 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 141 */,
-/* 142 */
+/* 142 */,
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(143);
+__webpack_require__(130);
 
 var _utils = __webpack_require__(1);
 
@@ -1100,7 +1106,7 @@ __webpack_require__(144);
 
 __webpack_require__(145);
 
-__webpack_require__(134);
+__webpack_require__(135);
 
 __webpack_require__(166);
 
@@ -1112,46 +1118,104 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 jQuery(document).ready($ => {
 
-  $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap');
-  $('.img-with-animation').removeClass('img-with-animation');
+  const ditchThemeImgAnimations = () => {
+    $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap');
+    $('.img-with-animation').removeClass('img-with-animation');
+  };
 
-  const pageNeedsFlippedMiddleSection = _utils.thisPage === 'kalindi' || _utils.thisPage === 'gourasana' || _utils.thisPage === 'the-lady';
-
-  if ($('img').length > 0) {
-    $('img').each((i, img) => {
-      if ($(img).attr('src') !== undefined && $(img).attr('src') !== '') {
-        $(img).attr('src').indexOf('localhost') !== -1 && $(img).attr('src', $(img).attr('src').replace(/\/\/localhost:300\d/, _utils.url));
-      }
-      if ($(img).attr('srcset') !== undefined && $(img).attr('srcset') !== '') {
-        $(img).attr('srcset').indexOf('localhost') !== -1 && $(img).attr('srcset', $(img).attr('srcset').replace(/\/\/localhost:300\d/, _utils.url));
+  const addSmallLogos = () => {
+    $('.logo-append-to').removeClass('logo-append-to').addClass('append-logo');
+    $('.append-logo').each((i, sec) => {
+      if ($(sec).children().length < 1) {
+        $(sec).parent().append(`<div class='append-wrapper-${i}'></div>`);
+        const sec2 = $(sec).clone();
+        $(sec).remove();
+        $(`.append-wrapper-${i}`).css({
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }).append(`<div class="cgo-logo-small">${_cgoLogo2.default}</div>`);
+      } else {
+        $(sec).append(`<div class="cgo-logo-small">${_cgoLogo2.default}</div>`);
       }
     });
-  }
 
-  $('.gilded-first-letter').each((i, par) => {
-    const pars = $(par).find('p');
-    const firstPar = $(pars).first();
-    const txtContent = firstPar.text();
-    const firstLetter = txtContent.substring(0, 1);
-    const rest = txtContent.substring(1, txtContent.length);
-    $(firstPar).addClass('first-par').empty().append(`<span class='first-letter'>${firstLetter}</span><span class='rest'>${rest}</span>`);
-  });
-
-  if (pageNeedsFlippedMiddleSection && _utils.isThin) {
-    $('.middle-template-section .span_12').children('.vc_col-sm-6').each((i, sec) => {
-      $('.middle-template-section .span_12').prepend(sec);
+    $('.prepend-logo').each((i, sec) => {
+      if ($(sec).children().length < 1) {
+        $(sec).parent().append(`<div class='prepend-wrapper-small-${i}'></div>`);
+        const sec2 = $(sec).clone();
+        $(sec).remove();
+        $(`.prepend-wrapper-small-${i}`).css({
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }).append(`<div class="cgo-logo-small">${_cgoLogo2.default}</div>`);
+      } else {
+        $(sec).prepend(`<div class="cgo-logo-small">${_cgoLogo2.default}</div>`);
+      }
     });
-  }
 
-  $('.logo-append-to').append(`<div class="cgo-logo">${_cgoLogo2.default}</div>`);
+    $('.prepend-logo-medium').each((i, sec) => {
+      if ($(sec).children().length < 1) {
+        $(sec).parent().append(`<div class='prepend-wrapper-medium-${i}'></div>`);
+        const sec2 = $(sec).clone();
+        $(sec).remove();
+        $(`.prepend-wrapper-medium-${i}`).css({
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }).append(`<div class="cgo-logo-medium">${_cgoLogo2.default}</div>`);
+      } else {
+        $(sec).prepend(`<div class="cgo-logo-medium">${_cgoLogo2.default}</div>`);
+      }
+    });
+  };
+
+  const flipMiddleSecOnMobile = () => {
+    const pageNeedsFlippedMiddleSection = _utils.thisPage === 'spiritual-lineage';
+    if (pageNeedsFlippedMiddleSection && _utils.isThin) {
+      $('.middle-template-section .span_12').children('.vc_col-sm-6').each((i, sec) => {
+        $('.middle-template-section .span_12').prepend(sec);
+      });
+    }
+  };
+
+  const handleLocalSrcSets = () => {
+    if ($('img').length > 0) {
+      $('img').each((i, img) => {
+        if ($(img).attr('src') !== undefined && $(img).attr('src') !== '') {
+          $(img).attr('src').indexOf('localhost') !== -1 && $(img).attr('src', $(img).attr('src').replace(/\/\/localhost:300\d/, _utils.url));
+        }
+        if ($(img).attr('srcset') !== undefined && $(img).attr('srcset') !== '') {
+          $(img).attr('srcset').indexOf('localhost') !== -1 && $(img).attr('srcset', $(img).attr('srcset').replace(/\/\/localhost:300\d/, _utils.url));
+        }
+      });
+    }
+  };
+
+  const formatGoldFirstLetter = () => {
+    $('.gilded-first-letter').each((i, par) => {
+      const pars = $(par).find('p');
+      const firstPar = $(pars).first();
+      const txtContent = firstPar.text();
+      const firstLetter = txtContent.substring(0, 1);
+      const rest = txtContent.substring(1, txtContent.length);
+      $(firstPar).addClass('first-par').empty().append(`<span class='first-letter'>${firstLetter}</span><span class='rest'>${rest}</span>`);
+    });
+  };
+
+  const initDoc = (() => {
+    ditchThemeImgAnimations();
+    addSmallLogos();
+    flipMiddleSecOnMobile();
+    handleLocalSrcSets();
+    formatGoldFirstLetter();
+  })();
 }); // MASTER JS FILE - USE TO COMPILE OTHER MODULAR SCRIPTS
 // (remember to run `webpack --watch` for changes to update live)
-
-/***/ }),
-/* 143 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 144 */
@@ -1214,7 +1278,7 @@ var _cgoHeaderLogo2 = _interopRequireDefault(_cgoHeaderLogo);
 
 var _utils = __webpack_require__(1);
 
-__webpack_require__(134);
+__webpack_require__(135);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1305,7 +1369,6 @@ jQuery(document).ready(function ($) {
   const handleNavClick = () => {
     $('#nav-btn').click(() => {
       menuIsOpen = !menuIsOpen;
-      console.log(menuIsOpen);
       $('#nav-btn').toggleClass('open');
       menuIsOpen ? $('#side-nav').addClass('active') : $('#side-nav').removeClass('active');
       $('#side-nav').slideToggle();
@@ -1420,10 +1483,10 @@ module.exports = __webpack_require__(148);
 "use strict";
 
 
-var utils = __webpack_require__(3);
-var bind = __webpack_require__(135);
+var utils = __webpack_require__(2);
+var bind = __webpack_require__(136);
 var Axios = __webpack_require__(150);
-var defaults = __webpack_require__(130);
+var defaults = __webpack_require__(131);
 
 /**
  * Create an instance of Axios
@@ -1456,9 +1519,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(140);
+axios.Cancel = __webpack_require__(141);
 axios.CancelToken = __webpack_require__(164);
-axios.isCancel = __webpack_require__(139);
+axios.isCancel = __webpack_require__(140);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -1506,8 +1569,8 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(130);
-var utils = __webpack_require__(3);
+var defaults = __webpack_require__(131);
+var utils = __webpack_require__(2);
 var InterceptorManager = __webpack_require__(159);
 var dispatchRequest = __webpack_require__(160);
 
@@ -1592,7 +1655,7 @@ module.exports = Axios;
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -1611,7 +1674,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(138);
+var createError = __webpack_require__(139);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1672,7 +1735,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -1747,7 +1810,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -1807,7 +1870,7 @@ module.exports = function parseHeaders(headers) {
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1925,7 +1988,7 @@ module.exports = btoa;
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1985,7 +2048,7 @@ module.exports = (
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -2044,10 +2107,10 @@ module.exports = InterceptorManager;
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 var transformData = __webpack_require__(161);
-var isCancel = __webpack_require__(139);
-var defaults = __webpack_require__(130);
+var isCancel = __webpack_require__(140);
+var defaults = __webpack_require__(131);
 var isAbsoluteURL = __webpack_require__(162);
 var combineURLs = __webpack_require__(163);
 
@@ -2137,7 +2200,7 @@ module.exports = function dispatchRequest(config) {
 "use strict";
 
 
-var utils = __webpack_require__(3);
+var utils = __webpack_require__(2);
 
 /**
  * Transform the data for a request or a response
@@ -2206,7 +2269,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(140);
+var Cancel = __webpack_require__(141);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -2330,7 +2393,6 @@ jQuery(document).ready(function ($) {
       if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
         $(a).addClass('disable');
         $(li).click(e => {
-          console.log($(e.target));
           e.preventDefault();
           $(li).children('ul').slideToggle(300);
           $(li).toggleClass('isOpen');
@@ -2363,4 +2425,4 @@ jQuery(document).ready(function ($) {
 });
 
 /***/ })
-],[142]);
+],[143]);

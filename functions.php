@@ -31,7 +31,6 @@ function CGO_enqueue_js() {
 		wp_register_script('cgo_spiritualLineage', get_stylesheet_directory_uri() . '/dist/spiritualLineage.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_teachings', get_stylesheet_directory_uri() . '/dist/teachings.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_spiritualPaths', get_stylesheet_directory_uri() . '/dist/spiritualPaths.bundle.js', array('jquery'), '1.0', false );
-		wp_register_script('cgo_spiritualMasters', get_stylesheet_directory_uri() . '/dist/spiritualMasters.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_twoGifts', get_stylesheet_directory_uri() . '/dist/twoGifts.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_giftsSeminars', get_stylesheet_directory_uri() . '/dist/giftsSeminars.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_gmp', get_stylesheet_directory_uri() . '/dist/gmp.bundle.js', array('jquery'), '1.0', false );
@@ -76,11 +75,6 @@ function CGO_enqueue_js() {
 		} else if(is_page( 'Spiritual Paths' )) {
 			wp_enqueue_script('cgo_spiritualPaths');
 			wp_enqueue_style('cgo_spiritualPaths_style', get_stylesheet_directory_uri() . '/dist/styles/spiritualPaths.css');
-			wp_enqueue_script('cgo_explore');
-			wp_enqueue_style('cgo_explore_style', get_stylesheet_directory_uri() . '/dist/styles/explore.css');
-		} else if(is_page( 'Spiritual Masters' )) {
-			wp_enqueue_script('cgo_spiritualMasters');
-			wp_enqueue_style('cgo_spiritualMasters_style', get_stylesheet_directory_uri() . '/dist/styles/spiritualMasters.css');
 			wp_enqueue_script('cgo_explore');
 			wp_enqueue_style('cgo_explore_style', get_stylesheet_directory_uri() . '/dist/styles/explore.css');
 		} else if(is_page( 'Two Gifts' )) {

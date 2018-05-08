@@ -1,49 +1,71 @@
 @import './fonts/_fonts';
 @import 'variables';
 
-h1, .h1 {
-  font: $font-fam-serif italic 180px, serif !important;
+// body {
+//   font-size: 12px !important;
+// }
+
+.body-copy, body {
+  font: 300 1em/1.5em $font-fam-sans !important;
+}
+
+h1, .h1, h1 *, .h1 * {
+  font: italic 5em $font-fam-serif, serif !important;
 }
 
 h2, .h2 {
-  font: $font-fam-sans bold 72px, sans-serif !important;
-  letter-spacing: 0.1em !important;
+  font: 2em/1.5em $font-fam-serif, serif !important;
+  color: $color-gold !important;
 }
 
 h3, .h3 {
-  font: $font-fam-serif 72px italic, serif !important;
+  font: bold 1.3em $font-fam-sans, sans-serif !important;
 }
 
 h4, .h4 {
-  font: $font-fam-serif 48px/66px, serif !important;
-}
-
-h5, .h5 {
-  font: $font-fam-serif 48px 900, serif !important;
-}
-
-h6, .h6 {
-  font: $font-fam-serif 48px/66px italic, serif !important;
-}
-
-.h7 {
-  font: $font-fam-sans bold 42px, sans-serif !important;
+  font: bold italic 1.3em $font-fam-serif, serif !important;
 }
 
 .quote {
-  font: $font-fam-serif italic 42px/52px, serif !important;
+  font: italic 1em/1.5em $font-fam-serif, serif !important;
 }
 
 .quote-attr {
-  font: $font-fam-sans bold 36px, sans-serif !important;
-  letter-spacing: 0.05em !important;
+  font: bold 1em $font-fam-sans, sans-serif !important;
+  letter-spacing: 0.0125em !important;
 }
 
-.body-copy {
-  font: $font-fam-sans 300 36px/54px !important;
+.big-quote {
+  font: bold 2.3em/1.5em $font-fam-serif !important;
 }
 
 .btn-txt {
-  font: $font-fam-sans bold 36px !important;
-  letter-spacing: 0.05em !important;
+  font: bold 1em/1.125em $font-fam-sans !important;
+  letter-spacing: 0.0125em !important;
+}
+
+.gold-text {
+  color: $color-gold !important;
+}
+
+.gold-letter-normal {
+  color: $color-gold !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+
+.gilded-first-letter {
+  font-family: $font-fam-serif;
+  .first-par {
+    padding-bottom: 0;
+  }
+  .first-letter {
+    line-height: 1em;
+    padding-top: .05em;
+    padding-right: .1em;
+    font-size: 5em;
+    font-weight: bold;
+    color: $color-gold;
+    float: left;
+  }
 }

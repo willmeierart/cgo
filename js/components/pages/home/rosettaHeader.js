@@ -96,11 +96,13 @@ jQuery(document).ready(($) => {
           complete: () => {
             i--
             j--
-            setTimeout(() => { animateFunc() }, 16)
+            setTimeout(() => { animateFunc() }, 160)
+            // window.requestAnimationFrame(animateFunc)            
           }
         })
     }
     window.requestAnimationFrame(animateFunc)
+    // animateFunc()
   }
 
   const initDoc = () => {

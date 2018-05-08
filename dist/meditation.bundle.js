@@ -1,12 +1,12 @@
-webpackJsonp([6],{
+webpackJsonp([7],{
 
-/***/ 191:
+/***/ 189:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(192);
+__webpack_require__(190);
 
 __webpack_require__(4);
 
@@ -17,18 +17,18 @@ jQuery(document).ready(function ($) {
 
   const setTopMenuActiveItem = () => {
     const subheadLinks = $('.az-offerings-submenu-wrapper a');
-    (0, _utils.setActiveItemFilter)(subheadLinks, 'meditation');
+    (0, _utils.setActiveItemFilter)(subheadLinks, 'meditations');
   };
 
   const initDoc = () => {
-    setTopMenuActiveItem();
+    // setTopMenuActiveItem()
   };
   initDoc();
 });
 
 /***/ }),
 
-/***/ 192:
+/***/ 190:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -62,4 +62,4 @@ const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedStrin
 
 /***/ })
 
-},[191]);
+},[189]);

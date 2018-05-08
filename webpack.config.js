@@ -19,7 +19,6 @@ module.exports = function(env) {
       spiritualLineage: "./js/components/pages/explore/spiritualLineage.js",
       teachings: "./js/components/pages/explore/teachings.js",
       spiritualPaths: "./js/components/pages/explore/spiritualPaths.js",
-      spiritualMasters: "./js/components/pages/explore/spiritualMasters.js",
       twoGifts: "./js/components/pages/twoGifts/index.js",
       participate: "./js/components/pages/participate/index.js",
       introductions: "./js/components/pages/participate/introductions.js",

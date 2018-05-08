@@ -1,12 +1,53 @@
 @import './kalindi.scss';
 @import './lady.scss';
 @import './gourasana.scss';
+@import '../_variables.scss';
 
 .spiritual-lineage {
+  .header-title-text {
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: center!important;
+    justify-content: flex-end!important;
+    .wpb_wrapper {
+      height: 50%;
+      h1 {
+        margin: 0!important;
+        font-size: 100px!important;
+      }
+    }
+    .cgo-logo-medium {
+      margin-bottom: 50px;
+      // margin-left: -20px;
+    }
+  }
   .header-img {
+    margin-left: 45px!important;
     .inner {
       display: flex;
       justify-content: center;
     }
+    .wpb_text_column {
+      text-align: center;
+      &.leader-logo-name {
+        font-family: $font-fam-sans;
+        font-weight: bold !important;
+        font-size: 2em;
+      }
+      &.leader-logo-slogan  {
+        font-family: $font-fam-serif;
+        font-style: italic;
+      }
+    }
+  }
+  .intro-par {
+    padding: 20px 10vw;
+    text-align: center;
+    font-size: 2em;
+    font-family: $font-fam-serif;
+    line-height: 1.125em;
+  }
+  .section-gap {
+    height: 100px;
   }
 }

@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
   }
   
   const initDoc = () => {
-    setTopMenuActiveItem()
+    // setTopMenuActiveItem()
   }
   initDoc()
 })

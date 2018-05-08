@@ -92,8 +92,7 @@ jQuery(document).ready(function($) {
 
   const handleNavClick = () => {
     $('#nav-btn').click(() => {
-      menuIsOpen = !menuIsOpen
-      console.log(menuIsOpen)      
+      menuIsOpen = !menuIsOpen 
       $('#nav-btn').toggleClass('open')
       menuIsOpen ? $('#side-nav').addClass('active') : $('#side-nav').removeClass('active')
       $('#side-nav').slideToggle()

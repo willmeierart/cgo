@@ -1,0 +1,46 @@
+@import '../_variables.scss';
+
+.two-gifts {
+  .container.main-content {
+    padding: 0;
+  }
+  .top-banner, .page-breaker {
+    width: 100vw;
+    height: 400px;
+    text-align: center;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    h1 {
+      color: white!important;
+      font-size: 2em !important;
+      font-style: normal!important;
+      font-family: $font-fam-sans!important;
+    }
+  }
+  .gold-text, .page-intro {
+    color: $color-gold;
+    font-family: $font-fam-serif;
+    text-align: center;
+  }
+  .star-motif {
+    display: flex;
+    justify-content: center;
+  }
+  .two-gifts-button {
+    color: white;
+    text-align: center;
+    background-size: fill;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

@@ -7,11 +7,11 @@ jQuery(document).ready(function($) {
 
   const setTopMenuActiveItem = () => {
     const subheadLinks = $('.az-offerings-submenu-wrapper a')
-    setActiveItemFilter(subheadLinks, 'meditation')
+    setActiveItemFilter(subheadLinks, 'meditations')
   }
 
   const initDoc = () => {
-    setTopMenuActiveItem()
+    // setTopMenuActiveItem()
   }
   initDoc()
 })
