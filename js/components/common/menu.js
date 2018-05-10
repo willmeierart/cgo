@@ -1,6 +1,77 @@
 import { isThin } from '../../utils'
 
 jQuery(document).ready(function($) {
+  console.log('MENU INITD')
+
+  const getGridContainerSize = () => $('#top').find('.inner-grid').width()
+  // console.log(getGridContainerSize(), $('#top').find('.inner-grid'))
+  let gridContainerSize = getGridContainerSize()
+  let initInterval
+  let initial = true
+  let shouldFireGate = true
+  let i = 0  
+
+  const handleAnimatingPos = () => {
+    console.log($('#top').find('.inner-grid').css('margin-left'));
+    const marginLeft = parseFloat($('#top').find('.inner-grid').css('margin-left').replace(/[a-zA-Z]/g, ''))
+    const computedWidth = getGridContainerSize() + (marginLeft * 2)
+    const pxPlusChange = getGridContainerSize() < gridContainerSize - 1 || getGridContainerSize() > gridContainerSize + 1
+    const marginsNotSame = computedWidth !== window.innerWidth
+    const conds = pxPlusChange || marginsNotSame
+
+    console.log('pxPlusChange', pxPlusChange, 'marginsNotSame', marginsNotSame, 'getGridContainerSize', getGridContainerSize(), 'marginLeft', marginLeft, 'computedWidth', computedWidth, 'window', window.innerWidth)
+
+      const containerEl = $('#top').find('.inner-grid')
+      if (initial) {
+        initial = false
+        gridContainerSize = getGridContainerSize()
+        const marginLeftInit = (window.innerWidth - gridContainerSize) / 2
+        containerEl.css({ marginLeft: marginLeftInit })
+      } else if (conds) {
+        if (initInterval) {
+          clearInterval(initInterval)
+          initInterval = null
+        }
+        shouldFireGate = true
+        console.log('changed', gridContainerSize, getGridContainerSize())
+        // let adjustAmt = gridContainerSize - getGridContainerSize()
+        gridContainerSize = getGridContainerSize()
+        const marginLeft2 = (window.innerWidth - gridContainerSize) / 2
+        // console.log(window.innerWidth, adjustAmt, gridContainerSize, marginLeft)
+        containerEl.animate({
+          marginLeft: marginLeft2
+        }, {
+          duration: 1000,
+          specialEasing: 'ease-in',
+          clearQueue: true
+        })
+      } else {
+        console.log('should fire else');
+        if (!initInterval) {
+          initInterval = setInterval(() => {
+            console.log(i);
+            i++
+            handleAnimatingPos()
+            if (conds || i > 50) {
+              clearInterval(initInterval)
+              initInterval = null
+              i = 0
+              return
+            }
+          }, 50)
+        }
+      }
+      // } else {
+      //   console.log('was same')
+      //   setTimeout(() => {
+      //     if (shouldFireGate) {
+      //       handleAnimatingPos()
+      //       shouldFireGate = false
+      //     }
+      //   }, 405)
+      // }
+    return
+  }
 
   const enableNewMenuClickFunctionality = () => {
     $('#side-nav li').each((i, li) => {
@@ -21,37 +92,92 @@ jQuery(document).ready(function($) {
   //     })
   //   }
   // }
+      
+
       if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
         $(a).addClass('disable')
         $(li).click(e => {
+          const txt = $(li).text()
+          const txt2 = txt === 'Explore' ? 'Participate' : 'Explore'
           e.preventDefault()
-          $(li).children('ul').slideToggle(300)
+          // console.log('siblings: ', $(li).siblings('.has-children'))
+          $(li).siblings('.has-children').removeClass('isOpen')
+            .find('i').removeClass('fa-minus').addClass('fa-plus')
+          $('.inner-grid').children('.col-2').find(`.${txt2}`)
+            .hide(0)
+            .siblings(`.${txt}`)
+              .slideToggle(400)
+          $('.inner-grid').children('.col-3').children('ul')
+            .hide(400)
+          $('.inner-grid').children('.col-2').find('.has-children')
+            .removeClass('isOpen')
+            .find('i')
+              .removeClass('fa-minus').addClass('fa-plus')
           $(li).toggleClass('isOpen')
           // $(e.target).parent().addClass('isOpen')
-          $(li).find('i').toggleClass('fa-plus fa-minus')
-          $(li).siblings().children('ul').slideUp(300)
+          $(li).find('i')
+            .toggleClass('fa-plus fa-minus')
+          // $(li).siblings().children('ul').slideUp(400)
           $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus')
-          
+          handleAnimatingPos()
         })
-        $(li).find('.submenu-item').each((j, subLi) => {
-          if ($(subLi).children('ul').length > 0 ) {
-            // $(subLi).prepend('<i class="fas fa-angle-down arrow"></i>')
-            $(subLi).click(e => {
-              e.preventDefault()
-              e.stopPropagation()
-              $(subLi).toggleClass('isOpen')
-              $(subLi).find('i').toggleClass('fa-plus fa-minus')
-              $(subLi).children('ul').slideToggle(300)
-            })
-          }
-        }) 
+      }
+      
+    })
+    $('.col-2').find('.submenu-item').each((i, subLi) => {
+      if ($(subLi).hasClass('has-children')) {
+        // $(subLi).prepend('<i class="fas fa-angle-down arrow"></i>')
+        $(subLi).children('a').addClass('disable')
+        $(subLi).click(e => {
+          e.preventDefault()
+          e.stopPropagation()
+          // e.stopPropagation()
+          $(subLi).toggleClass('isOpen')
+          $(subLi).find('i')
+            .toggleClass('fa-plus fa-minus')
+          const tertList = $('.inner-grid').children('.col-3').children('ul')
+          tertList.slideToggle(400)
+          handleAnimatingPos()
+        })
       }
     })
+    $('.col-3').find('.tert-menu-item').click(e => {
+      $('#side-nav').slideUp(400)
+      $('#nav-btn').removeClass('open')
+    })
+  }
+
+  
+
+  const initAnimation = () => {
+    // const els = [
+    //   $('#nav-btn')
+      // $('#top').find('.col-1').find('.item'),
+      // $('#top').find('.col-2').find('.submenu-item'),
+      // $('#top').find('.col-3').find('.tert-menu-item')
+    // ]
+    // els.forEach(el => {
+    //   el.click(e => {
+    //     if ($('#nav-btn').hasClass('open')) {
+    //       handleAnimatingPos()
+    //     }
+    //   })
+    // })
+    $('#nav-btn').click(() => {
+      if ($('#nav-btn').hasClass('open')) {
+        handleAnimatingPos()
+      }
+    })
+    $('#')
   }
   
   const initDoc = () => {
     // dealWithMobileSubmenus()
+    const initial = true
+    window.addEventListener('resize', handleAnimatingPos)
     enableNewMenuClickFunctionality()
+    // handleAnimatingPos(true)
+    initAnimation()
   }
   initDoc()
 })

@@ -88,14 +88,14 @@ jQuery(document).ready(function($) {
           </li>
         `)
       }
-      if (menuWrapper.children(`#streaming-menu-item`).length < 1) {
-        menuWrapper.append(`
-          <li id='streaming-menu-item' class='az-offerings-locations-menu-item'>
-            <a>STREAMING</a>
-          </li>
-        `)
-      }
     })
+    if (menuWrapper.children(`#streaming`).length < 1) {
+      menuWrapper.append(`
+        <li id='streaming-menu-item' class='az-offerings-locations-menu-item'>
+          <a>STREAMING</a>
+        </li>
+      `)
+    }
 
     const menuItems = $('.az-offerings-locations-menu-item a')
     setActiveItemFilter(menuItems, activeLocation)
@@ -191,8 +191,11 @@ jQuery(document).ready(function($) {
     const PMsplitter = event => event.start_time.split('T')[0].split('-')
     const preMonth = event => `${PMsplitter(event)[1]}-${PMsplitter(event)[2]}-${PMsplitter(event)[0]}`
 
+    // console.log(events)
+
     return events.map(event => {
       const { id, title, course_id, center_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event 
+
       const month = start_time ? moment(preMonth(event)).format('MMMM') : null
       const start =  start_time ? formatTime(event.start_time) : null
       const end = end_time ? formatTime(event.end_time) : null
@@ -204,6 +207,13 @@ jQuery(document).ready(function($) {
         end.time = null
         end.date = null
       }
+      const isStreaming = activeLocation.toUpperCase() === 'STREAMING'
+      const locTitle = isStreaming ? 'Streaming' : center.title
+      const address = isStreaming ? '' : center.address
+      const phone = isStreaming ? '' : center.phone
+
+      // console.log('month: ', month, 'start_time: ', start_time, 'start: ', start, 'end_time: ', end_time, 'end: ', end, 'center: ', center, 'event: ', event)
+      
       return {
         id,
         title,
@@ -217,7 +227,7 @@ jQuery(document).ready(function($) {
         price_notes,
         streaming: is_streaming,
         link: registration_link,
-        location: { title: center.title, address: center.address, phone: center.phone }
+        location: { title: locTitle, address, phone }
       }
     })
   }
@@ -242,6 +252,8 @@ jQuery(document).ready(function($) {
     })()
 
     const { events, courses } = allTheseCourses
+    const ACTIVE_LOCATION = activeLocation.toUpperCase()
+    const streamingActive = ACTIVE_LOCATION === 'STREAMING'
 
     const thisCity = cities.filter(city =>
       textMatches(city.title, activeLocation)
@@ -251,7 +263,9 @@ jQuery(document).ready(function($) {
     )[0]
 
 
-    const thisLocationCenters = centers.filter(center => center.city_id === thisCity.id)
+    const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id)
+
+    // console.log(thisLocationCenters)
 
     const recurringEvents = thisLocationCenters.reduce(
       (list, center) => {
@@ -262,14 +276,25 @@ jQuery(document).ready(function($) {
     )
 
     const localEvents = events.filter(event => {
+      // console.log(event)
+      const { is_streaming } = event
+      const retStream = is_streaming === 'both' || is_streaming === 'not'
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
       let ret1 = false
       let ret2 = false
-      thisLocationCenters.forEach(center => {
-        if (center.id === event.center_id) {
+      console.log(streamingActive)
+      if (!streamingActive) {
+        thisLocationCenters.forEach(center => {
+          console.log(center, center.id, event.location_id, event)
+          if ((center.id === event.center_id) && retStream) {
+            ret1 = true
+          }
+        })
+      } else {
+        if (is_streaming === 'both' || 'only') {
           ret1 = true
         }
-      })
+      }
       if (activeTypeFilter === 'all' || activeTypeFilter === 'ALL' || courseMatches) {
         ret2 = true
       }
@@ -279,13 +304,15 @@ jQuery(document).ready(function($) {
     LOCAL_EVENTS = transformEvents(localEvents, thisLocationCenters)
     RECURRING_EVENTS = transformEvents(recurringEvents, thisLocationCenters)
 
+    console.log('LOCAL_EVENTS', LOCAL_EVENTS, localEvents)
+
     renderEventData(LOCAL_EVENTS, RECURRING_EVENTS)
     handleExpandingMonths()
   }
 
   async function renderDoc () {
     activeTypeFilter = 'all'
-    const forceRefresh = false
+    const forceRefresh = true
     const { localStorage } = window
     const data = await queries.events()
     const shouldRefresh = localStorage.lastUpdated + 60000000 <= Date.now()
@@ -314,8 +341,6 @@ jQuery(document).ready(function($) {
           return meditations
       }
     })()
-
-    console.log(allTheseCourses)
 
     const { courses } = allTheseCourses
 

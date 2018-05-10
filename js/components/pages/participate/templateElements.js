@@ -2,21 +2,13 @@ export const detailInner = event => {
   const { id, title, time, price, price_notes, location, description, day, start, end, time_notes } = event
   return `
     <div id='${id}' class='detail-inner'>
+      <div class='title'>${title}</div>
       <div class='detail-item'>
         <div class='col-1'>
           <div class='details'>
-            <div class='date'>${ day
-              ? day
-              : end.time !== null
-                ? start.date + ' - ' + end.date
-                : start.date }
+            <div class='date'>${day ? day : end.time !== null ? start.date + ' - ' + end.date : start.date}
             </div>
-            <div class='title'>${title}</div>
-            <div class='time'>${day
-              ? start
-              : end.time !== null
-                ? start.time + ' - ' + end.time
-                : start.time}
+            <div class='time'>${day ? start : end.time !== null ? start.time + ' - ' + end.time : start.time}
             </div>
             <div class='time-notes'>${time_notes || ''}</div>
             <div class='price'>${price}</div>
@@ -32,9 +24,6 @@ export const detailInner = event => {
             <div class='address'>${location.title}</div>              
             <div class='address'>${location.address}</div>
             <div class='phone'>${location.phone}</div>
-          </div>
-          <div class='learn-btn'>
-            <div>LEARN ABOUT THIS LOCATION</div>
           </div>
         </div>  
         <div class='col-3'>
