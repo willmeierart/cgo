@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
     $('.header-title-text').prepend(`
       <div id='cgo-logo' class='header-logo'>${_cgoLogo2.default}</div>
     `).css({
-      background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-banner.png')`
+      background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-banner.jpg')`
     }).append();
     $('.header-logo').css({
       height: '50px'

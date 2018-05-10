@@ -44,7 +44,7 @@ jQuery(document).ready(($) => {
       const num = k + 1
       $('#rosetta-container').append($(`
         <div class='each-rose rose-${num}' >
-          <img src='${rosePfx}0${num}.png' />
+          <img src='${rosePfx}0${num}.jpg' />
         </div>
       `).css({
         zIndex: num,

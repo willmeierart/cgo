@@ -42,13 +42,13 @@ var _utils = __webpack_require__(1);
 jQuery(document).ready(function ($) {
   const setHeaderImgs = () => {
     $('.top-banner').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-headerstandardized.png')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-headerstandardized.jpg')`
     });
     $('.breaker-1').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-02.png')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-02.jpg')`
     });
     $('.breaker-2').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-03.png')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-03.jpg')`
     });
   };
   const setButton = () => {

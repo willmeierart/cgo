@@ -1296,6 +1296,36 @@ jQuery(document).ready(function ($) {
 
   console.log(clonedMenu);
 
+  const handleCartDropdown = () => {
+    let isWooCommercePg = false;
+    console.log(window.location.pathname);
+    const { pathname } = window.location;
+    const path = pathname.replace(/[^a-zA-Z]/g, '').toLowerCase();
+    const pages = ['shop', 'cart', 'checkout', 'order', 'product'];
+    const cartEl = $('#header-outer').children('.cart-outer');
+    cartEl.hide(0);
+    pages.forEach(pg => {
+      if (path.indexOf(pg) !== -1) {
+        isWooCommercePg = true;
+      }
+    });
+    if (isWooCommercePg) {
+      cartEl.show(0);
+      cartEl.css({
+        marginTop: '30px',
+        position: 'relative'
+      });
+      cartEl.children('.cart-menu-wrap').css({
+        width: '100px',
+        height: '100px'
+      });
+      cartEl.find('.cart-menu').css({
+        borderLeft: 'none'
+      });
+    }
+    console.log(isWooCommercePg);
+  };
+
   const makeWholeNewMenu = () => {
     const newMainList = $('<ul class="new-main-list"></ul>');
     // const subList = $('<ul class="new-sub-list"></ul>')
@@ -1424,6 +1454,7 @@ jQuery(document).ready(function ($) {
     // replaceEntireHeader()
     handleNavClick();
     formatLogo();
+    handleCartDropdown();
   })();
 });
 
@@ -2409,9 +2440,9 @@ jQuery(document).ready(function ($) {
     console.log($('#top').find('.inner-grid').css('margin-left'));
     const marginLeft = parseFloat($('#top').find('.inner-grid').css('margin-left').replace(/[a-zA-Z]/g, ''));
     const computedWidth = getGridContainerSize() + marginLeft * 2;
-    const pxPlusChange = getGridContainerSize() < gridContainerSize - 1 || getGridContainerSize() > gridContainerSize + 1;
-    const marginsNotSame = computedWidth !== window.innerWidth;
-    const conds = pxPlusChange || marginsNotSame;
+    const pxPlusChange = getGridContainerSize() < gridContainerSize - 1.5 || getGridContainerSize() > gridContainerSize + 1.5;
+    const marginsNotSame = window.innerWidth - computedWidth <= Math.abs(3);
+    const conds = pxPlusChange || marginsNotSame; // || computedWidth !== window.innerWidth
 
     console.log('pxPlusChange', pxPlusChange, 'marginsNotSame', marginsNotSame, 'getGridContainerSize', getGridContainerSize(), 'marginLeft', marginLeft, 'computedWidth', computedWidth, 'window', window.innerWidth);
 
@@ -2435,7 +2466,7 @@ jQuery(document).ready(function ($) {
       containerEl.animate({
         marginLeft: marginLeft2
       }, {
-        duration: 1000,
+        duration: 500,
         specialEasing: 'ease-in',
         clearQueue: true
       });
@@ -2462,7 +2493,7 @@ jQuery(document).ready(function ($) {
     //       handleAnimatingPos()
     //       shouldFireGate = false
     //     }
-    //   }, 405)
+    //   }, 205)
     // }
     return;
   };
@@ -2496,13 +2527,13 @@ jQuery(document).ready(function ($) {
           e.preventDefault();
           // console.log('siblings: ', $(li).siblings('.has-children'))
           $(li).siblings('.has-children').removeClass('isOpen').find('i').removeClass('fa-minus').addClass('fa-plus');
-          $('.inner-grid').children('.col-2').find(`.${txt2}`).hide(0).siblings(`.${txt}`).slideToggle(400);
-          $('.inner-grid').children('.col-3').children('ul').hide(400);
+          $('.inner-grid').children('.col-2').find(`.${txt2}`).hide(0).siblings(`.${txt}`).slideToggle(200);
+          $('.inner-grid').children('.col-3').children('ul').hide(200);
           $('.inner-grid').children('.col-2').find('.has-children').removeClass('isOpen').find('i').removeClass('fa-minus').addClass('fa-plus');
           $(li).toggleClass('isOpen');
           // $(e.target).parent().addClass('isOpen')
           $(li).find('i').toggleClass('fa-plus fa-minus');
-          // $(li).siblings().children('ul').slideUp(400)
+          // $(li).siblings().children('ul').slideUp(200)
           $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus');
           handleAnimatingPos();
         });
@@ -2519,13 +2550,13 @@ jQuery(document).ready(function ($) {
           $(subLi).toggleClass('isOpen');
           $(subLi).find('i').toggleClass('fa-plus fa-minus');
           const tertList = $('.inner-grid').children('.col-3').children('ul');
-          tertList.slideToggle(400);
+          tertList.slideToggle(200);
           handleAnimatingPos();
         });
       }
     });
     $('.col-3').find('.tert-menu-item').click(e => {
-      $('#side-nav').slideUp(400);
+      $('#side-nav').slideUp(200);
       $('#nav-btn').removeClass('open');
     });
   };

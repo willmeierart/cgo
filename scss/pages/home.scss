@@ -26,16 +26,16 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       height: 80vh;
       object-fit: cover;
       position: relative;
-      #bg-image {
-        width: 100vw !important;
-        height: 100%;
-        background-image: url($home-url + '/2018/02/CGO_Home_2500x1274_background.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top center;
-        // border-bottom: 10px solid black;
-        // box-sizing: content-box;
-      }
+      // #bg-image {
+      //   width: 100vw !important;
+      //   height: 100%;
+      //   background-image: url($home-url + '/2018/02/CGO_Home_2500x1274_background.png');
+      //   background-repeat: no-repeat;
+      //   background-size: cover;
+      //   background-position: top center;
+      //   // border-bottom: 10px solid black;
+      //   // box-sizing: content-box;
+      // }
       #rosetta-container {
         position: relative;
         width: 100%;

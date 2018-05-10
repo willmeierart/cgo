@@ -8,7 +8,7 @@ jQuery(document).ready(($) => {
     $('.header-title-text').prepend(`
       <div id='cgo-logo' class='header-logo'>${ logo }</div>
     `).css({
-      background: `url('${url}/wp-content/uploads/2018/05/purpose-banner.png')`,
+      background: `url('${url}/wp-content/uploads/2018/05/purpose-header.jpg')`,
     })
     $('.header-logo').css({
       height: '50px'

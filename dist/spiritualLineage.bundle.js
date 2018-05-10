@@ -44,7 +44,7 @@ var _utils = __webpack_require__(1);
 jQuery(document).ready(function ($) {
   const setHeaderImg = () => {
     $('.spiritual-lineage').find('.header-title-text').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/spiritual-lineage-header.png')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/spiritual-lineage-header.jpg')`
     });
   };
 

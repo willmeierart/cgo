@@ -17001,12 +17001,12 @@ jQuery(document).ready(function ($) {
     // console.log(events)
 
     return events.map(event => {
-      const { id, title, course_id, center_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event;
+      const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event;
 
       const month = start_time ? (0, _moment2.default)(preMonth(event)).format('MMMM') : null;
       const start = start_time ? formatTime(event.start_time) : null;
       const end = end_time ? formatTime(event.end_time) : null;
-      const center = centers.filter(center => center.id === center_id)[0];
+      const center = centers.filter(center => center.id === center_id || center.id === location_id)[0];
       const endsSameDay = start_time && end_time ? formatTime(start_time).date === formatTime(end_time).date : false;
       if (endsSameDay) {
         start.time = `${start.time} - ${end.time}`;
@@ -17014,9 +17014,10 @@ jQuery(document).ready(function ($) {
         end.date = null;
       }
       const isStreaming = activeLocation.toUpperCase() === 'STREAMING';
-      const locTitle = isStreaming ? 'Streaming' : center.title;
-      const address = isStreaming ? '' : center.address;
-      const phone = isStreaming ? '' : center.phone;
+      console.log(center, isStreaming, event);
+      const locTitle = center ? center.title : isStreaming ? 'Streaming' : '';
+      const address = center ? center.address : '';
+      const phone = center ? center.phone : '';
 
       // console.log('month: ', month, 'start_time: ', start_time, 'start: ', start, 'end_time: ', end_time, 'end: ', end, 'center: ', center, 'event: ', event)
 
@@ -17084,7 +17085,7 @@ jQuery(document).ready(function ($) {
       if (!streamingActive) {
         thisLocationCenters.forEach(center => {
           console.log(center, center.id, event.location_id, event);
-          if (center.id === event.center_id && retStream) {
+          if ((center.id === event.center_id || center.id === event.location_id) && retStream) {
             ret1 = true;
           }
         });
@@ -17637,7 +17638,7 @@ jQuery(document).ready(function ($) {
 
   const setHeaderBG = () => {
     $('.top-banner').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/participate-header.png')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/participate-header.jpg')`
     });
   };
 

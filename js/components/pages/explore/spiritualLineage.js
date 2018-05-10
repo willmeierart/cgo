@@ -5,7 +5,7 @@ import { url } from '../../../utils'
 jQuery(document).ready(function($) {
   const setHeaderImg = () => {
     $('.spiritual-lineage').find('.header-title-text').css({
-      backgroundImage: `url('${url}/wp-content/uploads/2018/05/spiritual-lineage-header.png')`
+      backgroundImage: `url('${url}/wp-content/uploads/2018/05/spiritual-lineage-header.jpg')`
     })
   }
 

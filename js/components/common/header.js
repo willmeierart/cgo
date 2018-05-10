@@ -19,6 +19,36 @@ jQuery(document).ready(function($) {
 
   console.log(clonedMenu);
   
+  const handleCartDropdown = () => {
+    let isWooCommercePg = false
+    console.log(window.location.pathname)
+    const { pathname } = window.location
+    const path = pathname.replace(/[^a-zA-Z]/g, '').toLowerCase()
+    const pages = ['shop', 'cart', 'checkout', 'order', 'product']
+    const cartEl = $('#header-outer').children('.cart-outer')
+    cartEl.hide(0)
+    pages.forEach(pg => {
+      if (path.indexOf(pg) !== -1) {
+        isWooCommercePg = true
+      }
+    })
+    if (isWooCommercePg) {
+      cartEl.show(0)
+      cartEl.css({
+        marginTop: '30px',
+        position: 'relative'
+      })
+      cartEl.children('.cart-menu-wrap').css({
+        width: '100px',
+        height: '100px'
+      })
+      cartEl.find('.cart-menu').css({
+        borderLeft: 'none'
+      })
+    }
+    console.log(isWooCommercePg)
+  }
+  
 
   const makeWholeNewMenu = () => {
     const newMainList = $('<ul class="new-main-list"></ul>')
@@ -150,5 +180,6 @@ jQuery(document).ready(function($) {
     // replaceEntireHeader()
     handleNavClick()
     formatLogo()
+    handleCartDropdown()
   })()
 })

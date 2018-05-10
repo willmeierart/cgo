@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 
   const setHeaderBG = () => {
     $('.top-banner').css({
-      backgroundImage: `url('${url}/wp-content/uploads/2018/05/participate-header.png')`
+      backgroundImage: `url('${url}/wp-content/uploads/2018/05/participate-header.jpg')`
     })
   }
 

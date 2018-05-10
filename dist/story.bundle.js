@@ -52,7 +52,7 @@ jQuery(document).ready($ => {
     $('.header-title-text').prepend(`
       <div id='cgo-logo' class='header-logo'>${_cgoLogo2.default}</div>
     `).css({
-      background: `url('${_utils.url}/wp-content/uploads/2018/05/story-banner.png')`
+      background: `url('${_utils.url}/wp-content/uploads/2018/05/story-header.jpg')`
     });
     $('.header-logo').css({
       height: '50px'
