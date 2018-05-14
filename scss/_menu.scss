@@ -69,7 +69,9 @@
       right: 0;
       height: calc(100vh);
       width: 100vw;
-      display: none;
+
+      // display: none;
+      
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -168,7 +170,9 @@
                 align-items: flex-start; // font-size: 1.75em;
                 // color: black;
                 // margin-left: 8em;
-                display: none;
+
+                // display: none;
+
                 padding: 0 1em;
                 .submenu-item {
                   line-height: 1.5em;
@@ -206,7 +210,10 @@
               // display: flex;
               flex-direction: column;
               align-items: center;
-              display: none; // margin-left: 1em;
+
+              // display: none; 
+
+              // margin-left: 1em;
               // padding-right: 1em;
               .tert-menu-item {
                 // color: black;

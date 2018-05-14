@@ -192,6 +192,7 @@ jQuery(document).ready(function($) {
     const preMonth = event => `${PMsplitter(event)[1]}-${PMsplitter(event)[2]}-${PMsplitter(event)[0]}`
 
     // console.log(events)
+    
 
     return events.map(event => {
       const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event 
@@ -208,7 +209,7 @@ jQuery(document).ready(function($) {
         end.date = null
       }
       const isStreaming = activeLocation.toUpperCase() === 'STREAMING'
-      console.log(center, isStreaming, event)
+      // console.log(center, isStreaming, event)
       const locTitle = center ? center.title : isStreaming ? 'Streaming' : ''
       const address = center ? center.address : ''
       const phone = center ? center.phone : ''
@@ -283,10 +284,8 @@ jQuery(document).ready(function($) {
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
       let ret1 = false
       let ret2 = false
-      console.log(streamingActive)
       if (!streamingActive) {
         thisLocationCenters.forEach(center => {
-          console.log(center, center.id, event.location_id, event)
           if ((center.id === event.center_id || center.id === event.location_id) && retStream) {
             ret1 = true
           }
@@ -304,8 +303,6 @@ jQuery(document).ready(function($) {
 
     LOCAL_EVENTS = transformEvents(localEvents, thisLocationCenters)
     RECURRING_EVENTS = transformEvents(recurringEvents, thisLocationCenters)
-
-    console.log('LOCAL_EVENTS', LOCAL_EVENTS, localEvents)
 
     renderEventData(LOCAL_EVENTS, RECURRING_EVENTS)
     handleExpandingMonths()
@@ -327,6 +324,12 @@ jQuery(document).ready(function($) {
     const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
 
     console.log('cachedData: ', cachedData)
+
+    const eventTitles = flatten([
+      meditations.events.map(event => event.title),
+      introductions.events.map(event => event.title),
+      seminars.events.map(event => event.title)
+    ])
 
     const allTheseCourses = (() => {
       switch (true) {

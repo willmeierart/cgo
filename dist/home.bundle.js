@@ -174,6 +174,7 @@ jQuery(document).ready($ => {
     $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ });
 
     const animateFunc = () => {
+      // console.log('animaterose')
       if (i === 0) i = 5;
       if (j === 0) j = 5;
       $(`.rose-${j}`).css({
