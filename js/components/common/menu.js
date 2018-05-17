@@ -1,4 +1,5 @@
 import { isThin } from '../../utils'
+import throttle from 'lodash.throttle'
 
 jQuery(document).ready(function($) {
   let initial = true  
@@ -173,91 +174,117 @@ jQuery(document).ready(function($) {
         handleAnimatingPos()
       }
     })
-    $('#')
+    // $('#')
   }
 
-  
-
-  const handleMobileMenu = (newIdx, oldIdx) => {
+  const handleMobileMenu = (newIdx, oldIdx, txt) => {
+    const cols = $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list')
+    const currentMarg = $()
     const w = window.innerWidth / 2
+    const val = `${newIdx < oldIdx ? -w : w}px` 
+    // const neg = newIdx < oldIdx ? -1 : 1
+    // const val = newIdx === 0 ? VALS.margin1 : newIdx === 1 ? VALS.margin2 : VALS.margin3
+    // const VAL = val * neg
+    // console.log(w, newIdx, oldIdx, val);
     const views = [
       $('#top').find('.col-1'),
       $('#top').find('.col-2'),
       $('#top').find('.col-3')
     ]
-    const thisView = views[mobileMenuView]
+    const thisView = views[newIdx]
     views.forEach(view => {
       if (view === thisView) {
+        // console.log(view)
         view.show()
+        if (txt) {
+          if (txt === 'Explore') {
+            console.log($(view).children())
+            $($(view).find('ul')[0]).show()
+            $($(view).find('ul')[1]).hide()
+          } else {
+            $($(view).find('ul')[0]).hide()
+            $($(view).find('ul')[1]).show()
+            
+          }
+        }
       }
       const fadeOut = () => {
         if (view !== thisView) {
-          view.fadeOut(150)
+          view.hide()
+          console.log(view)      
         } 
       }
-      //   view.show()
-      // if (newIdx < oldIdx) {
-      view.animate({ transform: `translate3d(${newIdx < oldIdx ? -w : w}, 0, 0)` }, {
-        duration: '500ms',
-        complete: fadeOut()
-      })
-      // } else if (newIdx > oldIdx) {
-
-      // }
-      // } else {
-
-      // }
+      // // view.css({
+      // // view.animate({
+      // $('#top').find('.inner-grid').css({
+      //   transform: `translate3d(${val}, 0, 0)`,
+      //   transition: 'transform .5s ease-in'
+      //   // marginLeft: val
+      // // }, {
+      // //   duration: '500ms',
+      // //   complete: fadeOut()
+      // })
+      // setTimeout(() => { fadeOut() },)
+      fadeOut()
+      if (newIdx > 0) {
+        thisView.find('i.back').show()
+      }
     })
 
 
   }
 
-  const setMobileView = idx => {
+  const setMobileView = (idx, txt) => {
     let oldIdx = mobileMenuView
     mobileMenuView = idx
-    handleMobileMenu(mobileMenuView, oldIdx)
+    handleMobileMenu(mobileMenuView, oldIdx, txt ? txt : null)
   }
 
   const initMobileMenu = () => {
+    $('#top').find('.inner-grid').children('.col-2').css({ display: 'none' })
+    $('#top').find('.inner-grid').children('.col-3').css({ display: 'none' })
+    let LI
+    // $('i.back').css({ cursor: 'pointer' }).one('click', e => {
+      $('#top').find('.col-1, .col-2, .col-3').css({ textAlign: 'left!important' })
+    
     $('#side-nav li').each((i, li) => {
       const a = $(li).children('a')
+      if ($(li).siblings('i.back').length < 1) {
+        $(li).parent().prepend('<i class="fas fa-chevron-left back"></i>')
+      }
+      
       if ($(li).hasClass('has-children')) {
-        $(li).children('a').first().append('<i class="fas fa-plus"></i>')
+        $(li).children('a').first().append('<i class="fas fa-chevron-right forward"></i>')
+        // $(li).children('a').first().prepend('<i class="fas fa-chevron-left back"></i>')
+        
+        $('i.back').css({ display: 'none' })
       }
 
       if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
         $(a).addClass('disable')
         $(li).click(e => {
-          const thisIsOpen = $(li).hasClass('isOpen')
-          const siblingIsOpen = $(li).siblings().hasClass('isOpen')
-          const txt = $(li).text()
-          const txt2 = txt === 'Explore' ? 'Participate' : 'Explore'
-
-          e.preventDefault()
-          $(li).siblings('.has-children').removeClass('isOpen')
-            .find('i').removeClass('fa-minus').addClass('fa-plus')
-          $('.inner-grid').children('.col-2').find(`.${txt2}`)
-            .hide(0)
-            .siblings(`.${txt}`)
-            .slideToggle({
-              duration: 200,
-              complete: () => { setDynamicVal('col2w', getCol2Width()) }
-            })
-          $('.inner-grid').children('.col-3').children('ul')
-            .hide(200)
-          $('.inner-grid').children('.col-2').find('.has-children')
-            .removeClass('isOpen')
-            .find('i')
-            .removeClass('fa-minus').addClass('fa-plus')
-          $(li).toggleClass('isOpen')
-          $(li).find('i')
-            .toggleClass('fa-plus fa-minus')
-          $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus')
-          const thisAmt = thisIsOpen ? VALS.margin1 : VALS.margin2
-          handleAnimatingPos(thisAmt)
+        // $(li).one('click', e => {
+          e.preventDefault()          
+          if ($(li).hasClass('has-children')) {
+            (throttle(() => setMobileView(mobileMenuView + 1, $(li).text()), 200, { trailing: false, leading: true }))()
+          }
         })
       }
+    })
 
+    $('.col-2').find('.submenu-item').each((i, subLi) => {
+      if ($(subLi).hasClass('has-children')) {
+        $(subLi).children('a').addClass('disable')
+        // $(subLi).one('click', e => {
+        $(subLi).click(e => {
+          // e.preventDefault()
+          (throttle(() => setMobileView(mobileMenuView + 1), 200, { trailing: false, leading: true}))()
+        })
+      }
+    })
+    $('i.back').css({ cursor: 'pointer' }).click(e => {
+      e.preventDefault()
+      setMobileView(mobileMenuView - 1)
     })
   }
   
@@ -270,11 +297,11 @@ jQuery(document).ready(function($) {
       }
     })
     if (isLarge) {
-      handleInitialsDesktop()
+      // handleInitialsDesktop()
       enableNewMenuClickFunctionality()
       initAnimation()
     } else {
-      handleMobileMenu()
+      initMobileMenu()
     }
   }
   initDoc()

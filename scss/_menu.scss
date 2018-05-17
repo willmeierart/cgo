@@ -243,6 +243,32 @@
           display: none;
         }
       }
+      .side-nav-inner {
+        .inner-grid {
+          display: flex!important;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          .col-1 {
+            .new-main-list {
+              align-items: flex-start;
+              text-align: left;
+            }
+          }
+          .col-2 {
+            .new-sub-list {
+              align-items: flex-start;
+              text-align: left;
+            }
+          }
+          .col-3 {
+            .new-tert-list {
+              align-items: flex-start;
+              text-align: left;
+            }
+          }
+        }
+      }
     }
   }
 }
