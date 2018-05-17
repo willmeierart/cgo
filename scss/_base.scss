@@ -6,7 +6,7 @@
 // }
 
 .body-copy, body {
-  font: 300 1em/1.5em $font-fam-sans !important;
+  font: 300 1em/1.5em $font-fam-sans;
 }
 
 h1, .h1, h1 *, .h1 * {
@@ -26,11 +26,11 @@ h4, .h4 {
   font: bold italic 1.3em $font-fam-serif, serif !important;
 }
 
-.quote {
+.quote, .quote * {
   font: italic 1em/1.5em $font-fam-serif, serif !important;
 }
 
-.quote-attr {
+.quote-attr, .quote-attr * {
   font: bold 1em $font-fam-sans, sans-serif !important;
   letter-spacing: 0.0125em !important;
 }
@@ -55,15 +55,15 @@ h4, .h4 {
 }
 
 .gilded-first-letter {
-  font-family: $font-fam-serif;
+  font-family: $font-fam-sans;
   .first-par {
     padding-bottom: 0;
   }
   .first-letter {
     line-height: 1em;
-    padding-top: .05em;
+    margin-top: -.05em;
     padding-right: .1em;
-    font-size: 5em;
+    font-size: 4.5em;
     font-weight: bold;
     color: $color-gold;
     float: left;

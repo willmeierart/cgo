@@ -76,6 +76,11 @@ a {
 }
 
 
+.vc_col-sm-4 {
+  width: 33vw!important;
+}
+
+
 
 #header-outer {
   // padding-top: 0!important;
@@ -120,6 +125,7 @@ a {
     }
   }
 }
+
 
 .prepend-logo, .prepend-logo-medium, .append-logo, .append-logo-medium {
   display: flex;
@@ -232,17 +238,99 @@ a {
 }
 
 #footer-outer {
+  // background-color: white!important;
+  border-top: 3px solid $color-gold;
   #nav_menu-2 {
     #menu-main-1 {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       text-align: left;
       .menu-item {
-        & > a:first-child {
-          // font-weight:bold;
+        & * {
+          margin: 0 .5em;
+        }
+        & a {
+          @extend .menu-item;
+        }
+        color: black!important;
+        text-transform: uppercase;
+        font-size: .9em!important;
+        font-style: normal!important;
+        font-weight: normal!important;
+        font-family: $font-fam-sans!important;
+        margin: 0 2em;
+        .sans-left-marg {
+          margin: 0!important;
+        }
+        &.menu-item-has-children {
+          font-size: 1em!important;
+          color: $color-gold!important;
+          font-family: $font-fam-serif!important;
+          font-style: italic!important;
+          font-weight: bold!important;
+          & > a {
+            @extend .menu-item-has-children;
+          }
+          .sub-menu {
+            .menu-item-has-children {
+              color: black !important;
+              text-transform: uppercase;
+              font-size: .9em !important;
+              font-style: normal !important;
+              font-weight: normal !important;
+              font-family: $font-fam-sans !important;
+            }
+          }
+        }
+        &.top-lvl {
+          @extend .menu-item-has-children;
+          & > a {
+            @extend .top-lvl;
+          }
         }
         .sub-menu {
           padding: 0 !important;
+        }
+      }
+    }
+  }
+  #footer-widgets {
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .bottom-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .socials-container {
+          // width: 200px;
+          display: flex;
+          justify-content: center;
+          div {
+            margin: 1em;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            a {
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+              svg {
+                height: 100%;
+                fill: $color-gold;
+                path {
+                  @extend svg;
+                }
+              }
+            }
+          }
+        }
+        .copyright {
+          text-align: center;
+          font-style: italic;
+          font-family: $font-fam-sans;
+          font-size: .85em;
         }
       }
     }

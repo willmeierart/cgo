@@ -1,5 +1,6 @@
 import '../../../../scss/pages/spiritualLineage.scss'
 import '../../../../scss/pages/explore.scss'
+import '../../../../scss/main.scss'
 import { url } from '../../../utils'
 
 jQuery(document).ready(function($) {

@@ -4558,7 +4558,7 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-const textMatches = exports.textMatches = (str1, str2) => str1 === str2 || str1.toLowerCase() === str2.toLowerCase() || str1.toUpperCase() === str2.toUpperCase() || str1.replace(/[^a-zA-Z]/g, '_') === str2.replace(/[^a-zA-Z]/g, '_') || str1.replace(/[^a-zA-Z]/g, '-') === str2.replace(/[^a-zA-Z]/g, '-') || str1.replace(/[^a-zA-Z]/g, '_').toUpperCase() === str2.replace(/[^a-zA-Z]/g, '_').toUpperCase() || str1.replace(/[^a-zA-Z]/g, '_').toLowerCase() === str2.replace(/[^a-zA-Z]/g, '_').toLowerCase() || str1.replace(/[^a-zA-Z]/g, '-').toUpperCase() === str2.replace(/[^a-zA-Z]/g, '-').toUpperCase() || str1.replace(/[^a-zA-Z]/g, '-').toLowerCase() === str2.replace(/[^a-zA-Z]/g, '-').toLowerCase();
+const textMatches = exports.textMatches = (str1, str2) => str1 === str2 || str1.toLowerCase() === str2.toLowerCase() || str1.toUpperCase() === str2.toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_') === str2.replace(/[^a-zA-Z0-9]/g, '_') || str1.replace(/[^a-zA-Z0-9]/g, '-') === str2.replace(/[^a-zA-Z0-9]/g, '-') || str1.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
 
 const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedString) => {
   element.each((i, item) => {

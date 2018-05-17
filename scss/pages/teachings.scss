@@ -1,20 +1,98 @@
+@import '../_variables.scss';
+
 .teachings {
-  .header-banner {
-    // text-align: center;
+  font-family: $font-fam-sans;
+  .header-title-text {
+    width: 100vw!important;
+    margin-left: -2em!important;
+    background-position: center;
   }
-  // .banner-2 {
-  //   background: url('../../assets/teachings-bigquote-01.png');
-  //   background-size: cover;
-  //   background-repeat: none;
-  // }
-  // .banner-3 {
-  //   background: url('../../assets/teachings-bigquote-02.png');
-  //   background-size: cover;
-  //   background-repeat: none;
-  // }
-  // .banner-4 {
-  //   background: url('../../assets/teachings-bigquote-03.png');
-  //   background-size: cover;
-  //   background-repeat: none;
-  // }
+  .header-secondary-text {
+    padding: 2em 4em!important;
+    font-family: $font-fam-serif!important;
+    font-size: 1.25em!important;
+    p {
+      font-family: $font-fam-serif;
+      font-size: 1em !important;
+    }
+  }
+  .main-content {
+    padding: 0!important;
+    h4 {
+      color: $color-gold;
+      font-style: normal!important;
+      font-weight: normal!important;
+      border-bottom: 1px solid $color-gold;
+      text-align: left;
+      font-size: 2.125em!important;
+      margin-bottom: .5em!important;
+      padding-bottom: .5em!important;
+    }
+    .banner-2, .banner-3, .banner-4 {
+      @extend .header-title-text;
+      text-align: center;
+      h5, div {
+        color: white;
+        text-align: center;
+        font-weight: 900;
+        margin: 0 2em;
+      }
+      h5 {
+        font-family: $font-fam-serif;
+        font-size: 2em;
+        line-height: 1.125em;
+      }
+      background-size: cover;
+      background-repeat: none;
+      
+      padding: 2em;
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // width: 100%;
+    }
+    .vc_column-inner {
+      padding: 4em;
+      .wpb_wrapper {
+        // text-align: center;
+        .quote {
+          width: 60%;
+          margin-left: 20%;
+        }
+        .quote-attr {
+          margin: 1em;
+          margin-bottom: 4em;
+          p {
+            text-align: center !important;
+          }
+        }
+        .audio-sample {
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .teachings {
+    .header-title-text, .banner-2, .banner-3, .banner-4 {
+      margin-left: -4em!important;
+    }
+    .col {
+      .span_12 {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .col-flip {
+      .span_12 {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }

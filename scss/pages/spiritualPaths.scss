@@ -1,0 +1,85 @@
+@import '../_variables.scss';
+
+.spiritual-paths {
+  .header-text {
+    background-size: cover;
+    background-position: center!important;
+    width: 100vw !important;
+    // min-width: 100vw!important;
+    margin-left: -90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px;
+    margin-bottom: 50px;
+    height: 45vw;
+    h1 {
+      color: white;
+      margin-bottom: 0;
+    }
+    h2 {
+      font-family: $font-fam-sans!important;
+      color: white!important;
+      font-size: 1.5em!important;
+      text-align: center;
+    }
+  }
+  .gold-text {
+    h4 {
+      color: $color-gold!important;
+      font-style: normal!important;
+      font-weight: normal!important;
+      text-align: center;
+      padding: 4em;
+    }
+  }
+  .glyph-wrapper { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    margin-top: 4em;    
+    // height: 
+    * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      object-fit: contain;
+    }
+    .vc_col-sm-4 {
+      height: 100%;
+    }
+    .glyph {
+      height: 100px;
+    }
+  }
+  .gold-n-bold {
+    color: $color-gold;
+    font-style: normal !important;
+    font-weight: normal !important;
+    border-bottom: 3px solid $color-gold;
+    text-align: left;
+    font-size: 2.125em !important;
+    margin-bottom: .5em !important;
+    padding-bottom: .5em !important;
+    line-height: 1.125em!important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .spiritual-paths {
+    .header-text {
+      margin-left: 0;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+    }
+    .col-flip {
+      .col {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}

@@ -63,18 +63,32 @@ jQuery(document).ready(($) => {
       zIndex: 10,
       position: 'absolute',
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       justifyContent: 'center',
       width: '100%',
-      height: imgWPix,
+      height: '100%',
       color: '#CDA33A',
       bottom: 0
+    }).children('#rosetta-logo').css({
+      height: `${Math.min($('#rosetta-container').width(), imgSize)}px`,
+      display: 'flex',
+      alignItems: 'center'
+    })
+
+    $('#rosetta-container').css({
+      height: '100%'
     })
 
     i = 5
     j = 4
 
-    $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ })
+    $('.each-rose')
+      .children('img')
+      .css({
+        maxWidth: imgWPix,
+        maxHeight: imgWPix /*marginLeft: roseMargin*/,
+        height: '100%'
+      })
 
     const animateFunc = () => {
       // console.log('animaterose')
@@ -112,4 +126,18 @@ jQuery(document).ready(($) => {
     })
   }
   initDoc()
+  window.addEventListener('resize', () => {
+    // $('#rosetta-container').css({
+    //   height: $('#rosetta-container').width()
+    // })
+    // $('.rose-logo-wrapper').css({
+    //   height: $('#rosetta-container').width()
+    // })
+    // $('.each-rose').children('img').css({
+    //   height: $('#rosetta-container').width()
+    // })
+    $('#rosetta-logo').css({
+      height: `${Math.min($('#rosetta-container').width(), imgSize)}px`
+    })
+  })
 })

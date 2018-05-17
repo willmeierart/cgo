@@ -40,6 +40,7 @@
     "lodash.flatten": "^4.4.0",
     "lodash.once": "^4.1.1",
     "lodash.throttle": "^4.1.1",
+    "mediaelement": "^4.2.9",
     "moment": "^2.22.1",
     "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",

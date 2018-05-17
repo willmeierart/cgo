@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
   let RECURRING_EVENTS
 
   let activeLocation = 'Denver'
-  let activeTypeFilter = 'all'
+  let activeTypeFilter = 'All'
 
   const months = ['recurring', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   const getFirstMonth = (currentLow, month) => Math.min(currentLow, months.indexOf(month))
@@ -30,22 +30,24 @@ jQuery(document).ready(function($) {
   const handleExpandingMonths = () => {
     const monthKeys = Object.keys(monthsExpanded)
     monthKeys.forEach(month => {
-      $(`.${month}`).click(e => {
+      $(`.${month}`).children('.month-name').css({ display: 'inline-block' }).click(e => {
+        e.stopPropagation()
         monthsExpanded[month] = !monthsExpanded[month]
-        $(`.${month}`).children('*:not(i, svg)').toggle(300)
+        $(`.${month}, .recurring`).children('*:not(i, svg, .month-name)').toggle(300)
         $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up')
       })
+      // $(`.${month}`).children().click(e => { e.preventDefault() })
     })
   }
-  
-  const filterByLocation = eventList =>
-    eventList.filter(event => event.slug === activeLocation)
 
-  const filterByType = eventList => {
-    const filteredList = activeTypeFilter === 'all'
-      ? eventList : eventList.filter(event => event.type === activeTypeFilter.replace(' ', '-').toLowerCase())
-    return filteredList
-  }
+  // const filterByLocation = eventList =>
+  //   eventList.filter(event => event.slug === activeLocation)
+
+  // const filterByType = eventList => {
+  //   const filteredList = activeTypeFilter === 'all'
+  //     ? eventList : eventList.filter(event => event.type === activeTypeFilter.replace(' ', '-').toLowerCase())
+  //   return filteredList
+  // }
 
   const refreshEventList = () => { // updates state of page on click
     filterEventsData()
@@ -118,6 +120,8 @@ jQuery(document).ready(function($) {
   }
 
   const renderEventData = (events, recurringEvents) => {
+
+    console.log(recurringEvents)
     const formatTime = D => {
       const dateParts = D.split('-')
       const dateTimeSplit = dateParts[dateParts.length - 1].split('T')
@@ -133,13 +137,13 @@ jQuery(document).ready(function($) {
 
     const detailsWrapper = $('.az-offerings-location-detail-wrapper')
     if (detailsWrapper.children('.recurring').length < 1) {
-      detailsWrapper.append(`<div class='date-category recurring'>Recurring</div>`)
+      detailsWrapper.append(`<div class='date-category recurring'><div class='month-name'>Recurring</div></div>`)
     }
 
     const recurAngle = IS_SEMINARS_PAGE ? 'up' : 'down'
 
     const recurringWrapper = $(`.recurring`)
-    if (recurringWrapper.children().length < 1) {
+    if (recurringWrapper.children().length < 2) {
       recurringWrapper.append(`<i class='fas fa-angle-${recurAngle}'></i>`)
       recurringEvents.forEach((event, i) => {
         const { id } = event
@@ -153,6 +157,11 @@ jQuery(document).ready(function($) {
         recurringWrapper.children('*:not(i, svg)').hide()
       }
     }
+    if (recurringEvents.length < 1) {
+      recurringWrapper.hide()
+    } else {
+      recurringWrapper.show()
+    }
     
     
     
@@ -160,7 +169,7 @@ jQuery(document).ready(function($) {
       const { id, month } = event
       if (detailsWrapper.find(`#${id}`).length < 1) {
         if (detailsWrapper.children(`.${month}`).length < 1) {
-          detailsWrapper.append(`<div class='date-category ${month}'>${month}</div>`)
+          detailsWrapper.append(`<div class='date-category ${month}'><div class='month-name'>${month}</div></div>`)
           $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`)
         }
         if ($(`.${month}`).children(`#${id}`).length < 1) {
@@ -178,6 +187,7 @@ jQuery(document).ready(function($) {
     })
   }
 
+  
   const transformEvents = (events, centers) => {
     const formatTime = D => {
       const dateParts = D.split('-')
@@ -244,8 +254,17 @@ jQuery(document).ready(function($) {
           return seminars
         case IS_MEDITATIONS_PAGE:
           return meditations
-        case IS_INTRODUCTIONS_PAGE:
-          return introductions
+        case IS_INTRODUCTIONS_PAGE: {
+          const publicMeditations = meditations.events.filter(event => event.title.includes('Public Meditation'))
+          const syntheticCourseType = {
+            id: publicMeditations[0].course_id,
+            title: 'Evenings of Meditation'
+          }
+          const INTROS = { ...introductions }
+          INTROS.events = [...INTROS.events, ...publicMeditations]
+          INTROS.courses.push(syntheticCourseType)
+          return INTROS
+        }
         case IS_OTHER_PAGE:
           return other_programs
         default:
@@ -275,7 +294,23 @@ jQuery(document).ready(function($) {
         return list
       },
       []
-    )
+    ).filter(event => {
+      console.log(event.course_id, thisCourseType)
+      const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
+      let ret1 = false
+      let ret2 = false
+      thisLocationCenters.forEach(center => {
+        if (center.id === event.center_id || center.id === event.location_id) {
+          ret1 = true
+        }
+      })
+      if (activeTypeFilter.toLowerCase() === 'all' || courseMatches) {
+        ret2 = true
+      }
+      if (ret1 && ret2) return event
+    })
+
+    console.log(recurringEvents)
 
     const localEvents = events.filter(event => {
       // console.log(event)
@@ -295,7 +330,7 @@ jQuery(document).ready(function($) {
           ret1 = true
         }
       }
-      if (activeTypeFilter === 'all' || activeTypeFilter === 'ALL' || courseMatches) {
+      if (activeTypeFilter.toLowerCase() === 'all' || courseMatches) {
         ret2 = true
       }
       if (ret1 && ret2) return event
@@ -319,17 +354,17 @@ jQuery(document).ready(function($) {
       localStorage.setItem('CGOdata', JSON.stringify(data))
       localStorage.setItem('lastUpdated', Date.now())
     }
-    console.log('cached refreshed:', conds)
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
     const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
 
+    console.log('cached refreshed:', conds)
     console.log('cachedData: ', cachedData)
 
-    const eventTitles = flatten([
-      meditations.events.map(event => event.title),
-      introductions.events.map(event => event.title),
-      seminars.events.map(event => event.title)
-    ])
+    // const eventTitles = flatten([
+    //   meditation.events.map(event => event.title),
+    //   introductions.events.map(event => event.title),
+    //   seminars.events.map(event => event.title)
+    // ])
 
     const allTheseCourses = (() => {
       switch (true) {
@@ -337,8 +372,17 @@ jQuery(document).ready(function($) {
           return seminars
         case IS_MEDITATIONS_PAGE:
           return meditations
-        case IS_INTRODUCTIONS_PAGE:
-          return introductions
+        case IS_INTRODUCTIONS_PAGE: {
+          const publicMeditations = meditations.events.filter(event => event.title.includes('Public Meditation'))
+          const syntheticCourseType = {
+            id: publicMeditations[0].course_id,
+            title: 'Evenings of Meditation'
+          }
+          const INTROS = { ...introductions }
+          INTROS.courses.push(syntheticCourseType)
+          INTROS.events = [...INTROS.events, ...publicMeditations]
+          return INTROS
+        }
         case IS_OTHER_PAGE:
           return other_programs
         default:

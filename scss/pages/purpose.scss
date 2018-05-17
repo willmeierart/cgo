@@ -41,4 +41,29 @@ $color-gold: #CDA33A;
   //     }
   //   }
   // }
+  .main-content {
+    .audio-row {
+      .vc_col-sm-4 {
+        margin: 0 2em!important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .purpose {
+    .main-content {
+      .col.span_12 {
+        flex-direction: column-reverse;
+        // &:last-of-type {
+        //   flex-direction: column;
+        // }
+      }
+      .flip-row {
+        .col.span_12 {
+          flex-direction: column;
+        }
+      }
+    }
+  }
 }

@@ -29,6 +29,13 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 /***/ }),
 
+/***/ 130:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38,6 +45,8 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 __webpack_require__(176);
 
 __webpack_require__(3);
+
+__webpack_require__(130);
 
 var _utils = __webpack_require__(1);
 

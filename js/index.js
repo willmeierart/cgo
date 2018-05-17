@@ -91,6 +91,7 @@ jQuery(document).ready(($) => {
   }
 
   const formatGoldFirstLetter = () => {
+    $('.gold-first-letter').addClass('gilded-first-letter')
     $('.gilded-first-letter').each((i, par) => {
       const pars = $(par).find('p') 
       const firstPar = $(pars).first() 
@@ -101,11 +102,29 @@ jQuery(document).ready(($) => {
     })
   }
 
+  const prependAudioBtn = () => {
+    $('.prepend-audio').css({
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    }).prepend(`
+      <a><img class='audio-btn' src='${url}/wp-content/uploads/2018/05/icon-audio.png' /></a>
+    `)
+    $('.audio-btn').css({
+      maxWidth: '30px'
+    }).hover(btn => {
+      $(btn).css({
+        filter: 'hue-rotate(90deg)'
+      })
+    })
+  }
+
   const initDoc = (() => {
     ditchThemeImgAnimations()
     addSmallLogos()
     flipMiddleSecOnMobile()
     handleLocalSrcSets()
+    prependAudioBtn()
     formatGoldFirstLetter()
   })()
 })

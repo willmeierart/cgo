@@ -5,6 +5,7 @@ import './userAgreement'
 
 jQuery(document).ready(function($) { 
   let menuIsOpen = false
+
   const breakpoints = [1000]
   const isThin = $(window).width() <= 1000
   console.log(menuIsOpen);

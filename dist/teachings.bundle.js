@@ -29,13 +29,6 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 /***/ }),
 
-/***/ 130:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46,8 +39,6 @@ __webpack_require__(178);
 
 __webpack_require__(3);
 
-__webpack_require__(130);
-
 var _utils = __webpack_require__(1);
 
 var _cgoLogo = __webpack_require__(5);
@@ -56,22 +47,46 @@ var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import '../../../../scss/main.scss'
 jQuery(document).ready(function ($) {
   const formatHeaderText = () => {
     $('.header-title-text').prepend(`
       <div id='cgo-logo' class='header-logo'>${_cgoLogo2.default}</div>
     `).css({
       background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-banner.jpg')`
-    }).append();
+    });
     $('.header-logo').css({
       height: '50px'
     }).children('svg').css({
       height: '2px'
     });
+
+    $('.banner-2').css({
+      background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-bigquote-01.jpg')`
+    });
+    $('.banner-3').css({
+      background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-bigquote-02.jpg')`
+    });
+    $('.banner-4').css({
+      background: `url('${_utils.url}/wp-content/uploads/2018/05/teachings-bigquote-03.jpg')`
+    });
+  };
+
+  $('.audio-sample').addClass('prepend-audio');
+
+  const addTopMarginNoTitle = () => {
+    $('.vc_col-sm-6').each((i, col) => {
+      const conds = $(col).find('h4').length < 1 && $(col).siblings().find('h4').length >= 1 && $(col).find('img').length < 1;
+      console.log(conds);
+      if (conds) {
+        $(col).css({ marginTop: '4.5em' });
+      }
+    });
   };
 
   const initDoc = () => {
     formatHeaderText();
+    addTopMarginNoTitle();
   };
   initDoc();
 });

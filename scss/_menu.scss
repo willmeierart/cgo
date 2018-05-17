@@ -17,7 +17,7 @@
       justify-content: center;
       #nav-btn {
         width: 40px;
-        height: 15px;
+        height: 19px;
         z-index: 90000;
         position: relative;
         .line {
@@ -25,7 +25,7 @@
           position: absolute;
           left: 0;
           width: 100%;
-          height: 2px; // margin-top: 4px;
+          height: 3px; // margin-top: 4px;
           // border-radius: 2px;
           background-color: black;
           transform: rotate(0deg);
@@ -35,10 +35,10 @@
           }
           &:nth-child(2),
           &:nth-child(3) {
-            top: 6px;
+            top: 8px;
           }
           &:nth-child(4) {
-            top: 12px;
+            top: 16px;
           }
         }
         &.open {

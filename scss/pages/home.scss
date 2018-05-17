@@ -26,6 +26,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       height: 80vh;
       object-fit: cover;
       position: relative;
+      justify-content: flex-end;
       // #bg-image {
       //   width: 100vw !important;
       //   height: 100%;
@@ -48,7 +49,9 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
           display: flex;
           justify-content: center;
           bottom: 0;
+          align-items: flex-end;
           // filter: blur(1px);
+          height:100vw;
           width: 100vw;
           img {
             width: 100%;
@@ -59,24 +62,39 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
     .col.span_12 {
       display: flex;
       align-items: center;
+      &.section-title {
+        h2 {
+          color: black!important;
+          font-size: 1.75em!important;
+        }
+      }
       .vc_col-sm-6 {
         height: 100%!important;
         display: flex!important;
         justify-content: center;
         align-items: center;
-      }
-    }
-    .bold-quote-intro {
-      font-weight: bold!important;
-    }
-    .quote, .wpb_text_column {
-      .wpb_wrapper {
-        text-align: center;
-        p {
-          padding-bottom: 0;
+        .bold-quote-intro {
+          font: 900 1em/1.5em "Playfair Display",
+          serif !important;
+          & * {
+            @extend .bold-quote-intro;
+          }
+        }
+        .prepend-logo {
+          margin-bottom: 5px;
+        }
+        .quote, .wpb_text_column {
+          .wpb_wrapper {
+            text-align: center;
+            p {
+              padding-bottom: 0;
+            }
+          }
         }
       }
     }
+    
+    
     .light-beings-footer {
       display: flex;
       justify-content: center;
@@ -112,14 +130,14 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
     text-align: center;
     p {
       padding-bottom: 0;
-      font-size: 2em;
+      font-size: 1.5em;
       line-height: 1em;
       font-family: $font-fam-serif;
       font-style: italic;
       &:first-of-type {
         font-weight: bold;
         font-style: normal;
-        padding-bottom: 1em;
+        padding-bottom: .5em;
       }
       &:last-of-type {
         padding: 0 10%;
@@ -137,18 +155,24 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
         margin-left: 0;
         display: block;
         .home-nav-btn {
-          font-size: 1.5em;
+          font-size: 1.25em;
           text-align: center;
-          margin: 1em;
+          margin: 1.5em;
           font-weight: bold;
           color: white;
-          background-size: cover;
+          background-size: contain;
           background-repeat: no-repeat;
-          padding: 2em 1em;
+          padding: 1.5em 1em;
           display: flex;
-          align-items: flex-end;
+          align-items: center;
           justify-content: center;
-          height: 140px;
+          height: 100px;
+          // white-space: pre;
+          // white-space: pre-wrap;
+          background-position-x: center;
+          a {
+            padding-top: 1em;
+          }
         }
       }
     }
@@ -173,10 +197,19 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       }
       .vc_col-sm-3 {
         padding: 0!important;
+        .home-nav-btn {
+          background-size: contain!important;
+        }
       }
     }
   }
   .bottom-cgo-branding {
     margin-bottom: 2em!important;
   }
+  .main-content {
+    .col.span_12 {
+      flex-direction: column-reverse;
+    }
+  }
 }
+

@@ -3,6 +3,7 @@ import { isThin } from '../../utils'
 jQuery(document).ready(function($) {
   let initial = true  
   const test = false
+  let mobileMenuView = 0
 
   const hardCodedVals = {
     col1w: 500,
@@ -77,9 +78,11 @@ jQuery(document).ready(function($) {
   const col2isShown = () => $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list').css('display') !== 'none'
   const col3isShown = () => $('#top').find('.inner-grid').children('.col-3').find('.new-tert-list').css('display') !== 'none'
 
-  $('#side-nav').css({ display: 'none' })  
-  $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list').css({ display: 'none' })
-  $('#top').find('.inner-grid').children('.col-3').children('.new-tert-list').css({ display: 'none' })
+  const handleInitialsDesktop = () => {
+    $('#side-nav').css({ display: 'none' })  
+    $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list').css({ display: 'none' })
+    $('#top').find('.inner-grid').children('.col-3').children('.new-tert-list').css({ display: 'none' })
+  }
 
   const handleAnimatingPos = amt => {
     const transform = `translate3d(${amt}px, 0, 0)`
@@ -172,13 +175,107 @@ jQuery(document).ready(function($) {
     })
     $('#')
   }
+
+  
+
+  const handleMobileMenu = (newIdx, oldIdx) => {
+    const w = window.innerWidth / 2
+    const views = [
+      $('#top').find('.col-1'),
+      $('#top').find('.col-2'),
+      $('#top').find('.col-3')
+    ]
+    const thisView = views[mobileMenuView]
+    views.forEach(view => {
+      if (view === thisView) {
+        view.show()
+      }
+      const fadeOut = () => {
+        if (view !== thisView) {
+          view.fadeOut(150)
+        } 
+      }
+      //   view.show()
+      // if (newIdx < oldIdx) {
+      view.animate({ transform: `translate3d(${newIdx < oldIdx ? -w : w}, 0, 0)` }, {
+        duration: '500ms',
+        complete: fadeOut()
+      })
+      // } else if (newIdx > oldIdx) {
+
+      // }
+      // } else {
+
+      // }
+    })
+
+
+  }
+
+  const setMobileView = idx => {
+    let oldIdx = mobileMenuView
+    mobileMenuView = idx
+    handleMobileMenu(mobileMenuView, oldIdx)
+  }
+
+  const initMobileMenu = () => {
+    $('#side-nav li').each((i, li) => {
+      const a = $(li).children('a')
+      if ($(li).hasClass('has-children')) {
+        $(li).children('a').first().append('<i class="fas fa-plus"></i>')
+      }
+
+      if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
+        $(a).addClass('disable')
+        $(li).click(e => {
+          const thisIsOpen = $(li).hasClass('isOpen')
+          const siblingIsOpen = $(li).siblings().hasClass('isOpen')
+          const txt = $(li).text()
+          const txt2 = txt === 'Explore' ? 'Participate' : 'Explore'
+
+          e.preventDefault()
+          $(li).siblings('.has-children').removeClass('isOpen')
+            .find('i').removeClass('fa-minus').addClass('fa-plus')
+          $('.inner-grid').children('.col-2').find(`.${txt2}`)
+            .hide(0)
+            .siblings(`.${txt}`)
+            .slideToggle({
+              duration: 200,
+              complete: () => { setDynamicVal('col2w', getCol2Width()) }
+            })
+          $('.inner-grid').children('.col-3').children('ul')
+            .hide(200)
+          $('.inner-grid').children('.col-2').find('.has-children')
+            .removeClass('isOpen')
+            .find('i')
+            .removeClass('fa-minus').addClass('fa-plus')
+          $(li).toggleClass('isOpen')
+          $(li).find('i')
+            .toggleClass('fa-plus fa-minus')
+          $(li).siblings().children('i').removeClass('fa-minus').addClass('fa-plus')
+          const thisAmt = thisIsOpen ? VALS.margin1 : VALS.margin2
+          handleAnimatingPos(thisAmt)
+        })
+      }
+
+    })
+  }
   
   const initDoc = () => {
+    let isLarge = window.innerWidth >= 1000
     window.addEventListener('resize', () =>  {
-      adjustDynamicMarginsOnResize()
+      isLarge = window.innerWidth >= 1000
+      if (isLarge) {
+        adjustDynamicMarginsOnResize()
+      }
     })
-    enableNewMenuClickFunctionality()
-    initAnimation()
+    if (isLarge) {
+      handleInitialsDesktop()
+      enableNewMenuClickFunctionality()
+      initAnimation()
+    } else {
+      handleMobileMenu()
+    }
   }
   initDoc()
 })

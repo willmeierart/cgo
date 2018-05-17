@@ -16,6 +16,16 @@ jQuery(document).ready(($) => {
       height: '2px'
     })
   }
+
+  // const columnNeedsFlipped = $('.instance-3').siblings()
+
+  // columnNeedsFlipped.css({
+  //   flexDirection: 'column!important'
+  // })
+
+  // console.log(columnNeedsFlipped)
+
+
   const init = (() => {
     formatHeaderText()
   })()
