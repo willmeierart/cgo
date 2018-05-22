@@ -10,9 +10,9 @@ export const detailInner = event => {
             </div>
             <div class='time'>${day ? start : end.time !== null ? start.time + ' - ' + end.time : start.time}
             </div>
-            <div class='time-notes'>${time_notes || ''}</div>
+            <div class='time-notes'>${time_notes ? '(' + time_notes + ')' : ''}</div>
             <div class='price'>${price}</div>
-            <div class='price-notes'>${price_notes || ''}</div>                
+            <div class='price-notes'>${price_notes ? '(' + price_notes + ')' : ''}</div>                
           </div>
           <div class='register-btn'>
             <div>REGISTER</div>

@@ -8,43 +8,28 @@ $font-fam-sans: 'Montserrat';
 $color-gold: #CDA33A;
 
 .purpose {
-  .header-logo {}
-  // .main-content{
-  //   margin: 0;
-  //   padding: 0;
-  //   .span_12 {
-  //     display: flex;
-  //     align-items: center;
-  //     .vc_col-sm-4 {
-  //       margin: 0;
-  //     }
-  //     .vc_col-sm-6 {
-  //       margin: 0;
-  //       width: 50%;
-  //       .gilded-first-letter {
-  //         padding: 6em;
-  //         p {
-  //           font-family: $font-fam-sans;
-  //           padding: 1em;
-  //         }
-  //       }
-  //     }
-  //     .header-paragraph {
-  //       margin-bottom: 3em;
-  //       .gilded-first-letter {
-  //         padding: 0;
-  //         .first-letter {
-  //           font-size: 6em;
-  //           font-family: $font-fam-serif;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
   .main-content {
     .audio-row {
+      margin: 6em;
       .vc_col-sm-4 {
         margin: 0 2em!important;
+        display: flex;
+        justify-content: center;
+        .vc_column-inner {
+          width: 50%;
+        }
+      }
+    }
+    .col.span_12 {
+      display: flex;
+      align-items: flex-end;
+      & a {
+        @extend .col.span_12;
+      }
+      .inner {
+        img {
+          margin-bottom: 0 !important;
+        }
       }
     }
   }
@@ -55,9 +40,6 @@ $color-gold: #CDA33A;
     .main-content {
       .col.span_12 {
         flex-direction: column-reverse;
-        // &:last-of-type {
-        //   flex-direction: column;
-        // }
       }
       .flip-row {
         .col.span_12 {

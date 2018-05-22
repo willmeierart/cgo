@@ -90,6 +90,14 @@
         // margin-top: 2em;
         height: 100%;
         width: 100%;
+        .border-line {
+          position: absolute;
+          height: 100%;
+          width: 3px;
+          top: 0;
+          right: -3px;
+          background-color: $color-gold;
+        }
         .inner-grid {
           display: grid;
           grid-template-columns: repeat(3, auto);
@@ -249,19 +257,26 @@
           align-items: center;
           justify-content: center;
           width: 100%;
+          position: relative;
           .col-1 {
+            width: 100vw;
+            min-width: 100vw;
             .new-main-list {
               align-items: flex-start;
               text-align: left;
             }
           }
           .col-2 {
+            width: 100vw;
+            min-width: 100vw;
             .new-sub-list {
               align-items: flex-start;
               text-align: left;
             }
           }
           .col-3 {
+            width: 100vw;
+            min-width: 100vw;
             .new-tert-list {
               align-items: flex-start;
               text-align: left;

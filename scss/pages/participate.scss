@@ -9,12 +9,12 @@
     background-size: cover;
     background-color: $color-gold;
     margin-bottom: 1em!important;
-    height: 400px;
+    height: 40vw;
     width: 100vw;
     margin-left: -90px;
     h1 {
       color: white !important;
-      margin-bottom: -60px;
+      // margin-bottom: -60px;
     }
   }
   .az-offerings-submenu-wrapper {
@@ -44,6 +44,7 @@
   .top-description {
     margin-bottom: 2em!important;
     text-align: center;
+    font-size: 1.5em!important;
   }
 
   .az-offerings-types-description-container {
@@ -96,44 +97,51 @@
   }
   .az-offerings-type-filter-wrapper {
     display: flex;
+    letter-spacing: 0.06125em!important;
+    flex-wrap: nowrap;
     .sort-by {
       font-weight: bold;
-      font-size: 2em;
+      font-size: .9em;
       display: inline-block;
-      margin-right: 1em;
+      margin-right: 2em;
       white-space: nowrap;
+      letter-spacing: 0!important;
     }
     ul {
       max-width: 80vw;
-      flex-wrap: wrap;
+      margin-bottom: 0!important;
+      flex-wrap: nowrap;
       display: flex;
       flex-grow: 0;
       justify-content: flex-end;
       text-transform: uppercase; // white-space: nowrap;
       li {
+        white-space: nowrap;
         margin-right: 2em;
+        font-size: .75em;
         cursor: pointer;
         list-style: none !important;
       }
-      a .active {
+      a.active {
         font-weight: bold;
-        font-size: 1.25em;
+        font-size: 1.5em!important;
+        color: $color-gold!important;
       }
     }
+  }
+
+  .az-upcoming-category {
+    text-align: left; // text-transform: uppercase;
+    padding-bottom: .25em;
+    border-bottom: 2px solid $color-gold;
   }
 
   .dynamic-row {
     .span_12 {
       display: flex;
       .vc_col-sm-3 {
-        width: 50%!important;
+        // width: 50%!important;
       }   
-      .az-upcoming-category {
-        text-align: left;
-        // text-transform: uppercase;
-        padding-bottom: .25em;
-        border-bottom: 2px solid $color-gold;
-      }
       .az-offerings-locations-menu-wrapper {
         height: 100%;
         ul{
@@ -143,7 +151,7 @@
           justify-content: space-between;
         }
         li {
-          font-size: 2.5em;
+          font-size: 1.5em;
           line-height: 1.25em;
           text-transform: uppercase;
           cursor: pointer;
@@ -160,7 +168,7 @@
             .active-line {
               width: calc(100% - .5em);
               margin-left: .5em;
-              border-top: 1px solid $color-gold;
+              border-top: 2px solid $color-gold;
             } 
           }
           &:hover {
@@ -178,18 +186,33 @@
         }
         .month-name {
           cursor: pointer;
+          color: black;
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          margin-bottom: 1.6em;
+          &.active {
+            font-weight: bold;            
+            color: $color-gold;
+          }
+
         }
         .detail-inner {
-          margin-bottom: 3em;
+          // margin-top: 1.5em;
+          margin-bottom: 1.5em;
+          padding-bottom: 1.5em;
+          border-bottom: 1px solid lightgrey;
           cursor: default;
           .title {
+            letter-spacing: 0.06125em;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 2em;
+            font-size: 1.66em;
           }
           .detail-item {
+            margin-top: .25em;
             display: flex;
             justify-content: space-between;
+            line-height: 1.0125em;
             .col-1, .col-2, .col-3 {
               width: 15vw;
               // height: 100%;
@@ -198,20 +221,42 @@
               justify-content: space-between;
               // flex-grow: 1;
             }
+            .col-2 {
+              justify-content: center;
+              font-size: .75em;
+              letter-spacing: 0.125em;
+              text-transform: uppercase;
+              .address {
+                &:first-of-type {
+                  font-weight: bold;
+                  text-transform: none;                  
+                }
+                letter-spacing: 0;
+              }
+            }
             .col-3{
-              font-size: .8em;
+              justify-content: center;
+              font-size: .7em;
+              font-family: $font-fam-serif;
+              font-style: italic;
             }
-            .location-info-spacer {
-              height: 2em;
+            // .location-info-spacer {
+            //   height: 2em;
+            // }
+            .date {
+              font-size: 1em;
+              font-style: italic;
             }
-            
-            .date, .time {
-              font-size: 1.5em;
+            .time, .time-notes, .price, .price-notes {
+              font-size: .75em;
+              display: inline-block;
+            }
+            .time-notes, .price-notes {
+              // display: inline;
             }
             .price {
               font-weight: bold;
-              font-size: 1.5em;
-              &,.price-notes {
+              &, .price-notes {
                 display: inline-block;
               }
             }
@@ -223,11 +268,17 @@
               cursor: default;
               div {
                 cursor: pointer;
-                width: 90%;
-                padding: .25em;
+                font-size: .6em;
+                padding: .5em 2em;          
+                // width: 90%;
+                // padding: .25em;
                 box-sizing: border-box;
-                border: 1px solid grey;
-                border-radius: 500px;
+                // border: 1px solid grey;
+                color: white;
+                text-transform: uppercase;
+                font-weight: 700;
+                background: $color-blue;
+                // border-radius: 500px;
               }
             }
           }

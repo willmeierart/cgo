@@ -4,11 +4,12 @@
   font-family: $font-fam-sans;
   .header-title-text {
     width: 100vw!important;
-    margin-left: -2em!important;
+    // margin-left: -2em!important;
     background-position: center;
+    height: 45vw!important;
   }
   .header-secondary-text {
-    padding: 2em 4em!important;
+    // padding: 2em 4em!important;
     font-family: $font-fam-serif!important;
     font-size: 1.25em!important;
     p {
@@ -52,8 +53,11 @@
       align-items: center;
       // width: 100%;
     }
+    .vc_col-sm-6 {
+      padding: 6em;
+    }
     .vc_column-inner {
-      padding: 4em;
+      // padding: 4em;
       .wpb_wrapper {
         // text-align: center;
         .quote {

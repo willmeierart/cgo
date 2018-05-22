@@ -4,9 +4,18 @@
   .container.main-content {
     padding: 0;
   }
+  .col.span_12 {
+    display: flex;
+    align-items: center;
+    .vc_col-sm-6 {
+      .wpb_text_column:not(.page-intro), img {
+        padding: 15%;
+      }
+    }
+  }
   .top-banner, .page-breaker {
     width: 100vw;
-    height: 400px;
+    height: 50vw;
     text-align: center;
     background-size: cover;
     background-position: top center;
@@ -15,13 +24,73 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 100px!important;
     h1 {
       color: white!important;
-      font-size: 2em !important;
-      font-style: normal!important;
-      font-family: $font-fam-sans!important;
+    //   font-size: 2em !important;
+    //   font-style: normal!important;
+    //   font-family: $font-fam-sans!important;
+      &.stack-ser-sans {
+        font-size: 1em!important;
+        div {
+          @extend .stack-ser-sans;
+          &.small-sans {
+            font-family: $font-fam-sans!important;
+            font-size: 1.25em!important;
+            font-style: normal!important;
+            font-weight: bold!important;
+            margin-bottom: 2em;
+          }
+        }
+      }
+    }
+    &.left-text {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      text-align: left;
+      font-style: normal !important;
+      font-weight: 900 !important;
+      font-size: 1.6em !important;
+      .wpb_wrapper {
+        height: 100%;
+        h1 {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          text-align: left;
+          font-style: normal !important;
+          font-weight: 900 !important;
+          font-size: 1.6em !important;
+          width: 50% !important;
+          padding: 1em 2em;
+          margin: 0!important;
+          height: 100%!important;
+        }
+      }
     }
   }
+  .top-banner {
+    justify-content: center;
+    // margin-bottom: 100px;
+  }
+  .page-breaker {
+    margin-top: 100px;
+    &.breaker-2 {
+      margin-bottom: 0!important;
+    }
+    &.breaker-3 {
+      margin-top: 0!important;
+    }
+  }
+  
+
+  .page-intro{
+    font-size: 1.25em;
+    line-height: 1.5em;
+  }
+
+  
   .gold-text, .page-intro {
     color: $color-gold;
     font-family: $font-fam-serif;
@@ -30,17 +99,58 @@
   .star-motif {
     display: flex;
     justify-content: center;
-  }
-  .two-gifts-button {
-    color: white;
-    text-align: center;
-    background-size: fill;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    margin-bottom: 2em;
+    .inner {
+      @extend .star-motif;
+      .blue-sun {
+        max-width: 50% !important;
+      }
+    }
+  }
+  .squiggle-wrapper {
+    @extend .star-motif;
+    .inner {
+      @extend .star-motif;
+      .squiggle {
+        max-width: 30%;
+      }
+    }
+  }
+  .btn-wrapper {
+    .wpb_wrapper {
+      display: flex;
+      justify-content: center;
+      .two-gifts-button {
+        color: white;
+        text-align: center;
+        background-size: cover;
+        width:80%;
+        min-width: 80%;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        cursor: pointer;
+        font-weight: bold;
+        line-height: 1em;
+        padding-bottom: 1.25em;
+      }
+    }
+    margin-top: 3em;
+  }
+  .quote-txt-block {
+    .wpb_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .end-txt-block {
+        text-align: center;
+        width: 60%;
+      }
+    }
   }
 }

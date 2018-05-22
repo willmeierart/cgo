@@ -2287,19 +2287,75 @@ jQuery(document).ready(function ($) {
 
   const handleMobileMenu = (newIdx, oldIdx, txt) => {
     const cols = $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list');
-    const currentMarg = $();
-    const w = window.innerWidth / 2;
-    const val = `${newIdx < oldIdx ? -w : w}px`;
+    // const currentMarg = $()
+
     // const neg = newIdx < oldIdx ? -1 : 1
     // const val = newIdx === 0 ? VALS.margin1 : newIdx === 1 ? VALS.margin2 : VALS.margin3
     // const VAL = val * neg
     // console.log(w, newIdx, oldIdx, val);
     const views = [$('#top').find('.col-1'), $('#top').find('.col-2'), $('#top').find('.col-3')];
+
+    const neg = newIdx < oldIdx;
+    // const w = newIdx === 2 ? window.innerWidth : newIdx === 1 ? window.innerWidth / 3 : window.innerWidth / 3
+    // const w = newIdx === 2 ? window.innerWidth / 2 : window.innerWidth / 3
+    const w = window.innerWidth;
+    // const val = `${w}px` 
+    const val = `${neg ? -w : w}px`;
+    // console.log(val)
+
+    const b1 = $('.border-line.b1');
+    const b2 = $('.border-line.b2');
+
+    console.log(oldIdx, newIdx, val);
+
+    // const w = window.innerWidth / 2 - $(view).width() / 2
     const thisView = views[newIdx];
-    views.forEach(view => {
+    views.forEach(async view => {
+      const isPrevView = neg ? views.indexOf(view) > newIdx : views.indexOf(view) < newIdx;
+      const isNextView = neg ? views.indexOf(view) < newIdx : views.indexOf(view) > newIdx;
+      const isToTheRight = isPrevView && neg || isNextView && !neg;
+      const isToTheLeft = isNextView && neg || isPrevView && !neg;
+
+      console.log('neg', neg);
+
+      if (neg) {
+        if (oldIdx === 2) {
+          b1.css({
+            transform: `translate3d(0, 0, 0)`,
+            transition: 'transform .5s'
+          });
+        } else {
+          b2.css({
+            transform: `translate3d(0, 0, 0)`,
+            transition: 'transform .5s'
+          });
+        }
+      } else {
+        if (oldIdx === 0) {
+          b2.css({
+            transform: `translate3d(-${window.innerWidth + 3}px, 0, 0)`,
+            transition: 'transform .5s'
+          });
+        } else {
+          b1.css({
+            transform: `translate3d(-${window.innerWidth + 3}px, 0, 0)`,
+            transition: 'transform .5s'
+          });
+        }
+      }
+
       if (view === thisView) {
-        // console.log(view)
         view.show();
+        console.log('transform1', view.css('transform'));
+        view.css({
+          transform: `translate3d(0, 0, 0)`,
+          opacity: 1,
+          transition: 'transform .5s, opacity .5s'
+        });
+        setTimeout(() => {
+          console.log('transform2', view.css('transform'));
+        }, 501);
+
         if (txt) {
           if (txt === 'Explore') {
             console.log($(view).children());
@@ -2310,25 +2366,28 @@ jQuery(document).ready(function ($) {
             $($(view).find('ul')[1]).show();
           }
         }
-      }
-      const fadeOut = () => {
-        if (view !== thisView) {
+      } else if (isToTheRight) {
+        view.css({
+          transform: `translate3d(${window.innerWidth}px, 0, 0)`,
+          opacity: 0,
+          transition: 'transform .5s, opacity .5s'
+        });
+        setTimeout(() => {
           view.hide();
-          console.log(view);
-        }
-      };
-      // // view.css({
-      // // view.animate({
-      // $('#top').find('.inner-grid').css({
-      //   transform: `translate3d(${val}, 0, 0)`,
-      //   transition: 'transform .5s ease-in'
-      //   // marginLeft: val
-      // // }, {
-      // //   duration: '500ms',
-      // //   complete: fadeOut()
-      // })
-      // setTimeout(() => { fadeOut() },)
-      fadeOut();
+        });
+        // view.hide()
+      } else {
+        view.css({
+          transform: `translate3d(-${window.innerWidth}px, 0, 0)`,
+          opacity: 0,
+          transition: 'transform .5s, opacity .5s'
+        });
+        setTimeout(() => {
+          view.hide();
+        });
+        // view.hide()
+      }
+
       if (newIdx > 0) {
         thisView.find('i.back').show();
       }
@@ -2344,6 +2403,12 @@ jQuery(document).ready(function ($) {
   const initMobileMenu = () => {
     $('#top').find('.inner-grid').children('.col-2').css({ display: 'none' });
     $('#top').find('.inner-grid').children('.col-3').css({ display: 'none' });
+    // $('.border-line').css({ right: '-3px' })
+
+    if ($('#top').find('.side-nav-inner').children('.border-line').length === 0) {
+      $('#top').find('.side-nav-inner').append('<div class="border-line b1"></div><div class="border-line b2"></div>');
+    }
+
     let LI;
     // $('i.back').css({ cursor: 'pointer' }).one('click', e => {
     $('#top').find('.col-1, .col-2, .col-3').css({ textAlign: 'left!important' });
@@ -2355,7 +2420,7 @@ jQuery(document).ready(function ($) {
       }
 
       if ($(li).hasClass('has-children')) {
-        $(li).children('a').first().append('<i class="fas fa-chevron-right forward"></i>');
+        $(li).children('a').first().append('<i class="fas fa-chevron-down forward"></i>');
         // $(li).children('a').first().prepend('<i class="fas fa-chevron-left back"></i>')
 
         $('i.back').css({ display: 'none' });
@@ -2383,7 +2448,7 @@ jQuery(document).ready(function ($) {
         });
       }
     });
-    $('i.back').css({ cursor: 'pointer' }).click(e => {
+    $('i.back').css({ cursor: 'pointer', fontSize: '2em' }).click(e => {
       e.preventDefault();
       setMobileView(mobileMenuView - 1);
     });
@@ -2395,10 +2460,12 @@ jQuery(document).ready(function ($) {
       isLarge = window.innerWidth >= 1000;
       if (isLarge) {
         adjustDynamicMarginsOnResize();
+      } else {
+        initMobileMenu();
       }
     });
     if (isLarge) {
-      // handleInitialsDesktop()
+      handleInitialsDesktop();
       enableNewMenuClickFunctionality();
       initAnimation();
     } else {

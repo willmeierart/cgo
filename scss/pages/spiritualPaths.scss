@@ -37,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 200px;
     position: relative;
     margin-top: 4em;    
     // height: 
@@ -51,7 +51,7 @@
       height: 100%;
     }
     .glyph {
-      height: 100px;
+      height: 200px;
     }
   }
   .gold-n-bold {
@@ -64,6 +64,40 @@
     margin-bottom: .5em !important;
     padding-bottom: .5em !important;
     line-height: 1.125em!important;
+  }
+  .col.span_12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -8px!important;
+    .vc_col-sm-6 {
+      p, .bottom-txt-segment {
+        padding: 1em 4em;
+      }
+      .quote-img {
+        width: 90%;
+        height: 90%;
+      }
+      .bio-img {
+        margin: 0;
+        margin-left: -15px!important;    
+        width: 50vw!important;
+        max-width: 50vw!important;
+        padding: 0!important;
+        &.left {
+          margin-left: -90px!important;
+        }
+      }
+    }
+  }
+  .quote-img-wrapper {
+    .vc_col-sm-6:last-of-type {
+      // width: 50vw!important;
+      // max-width:50vw!important;
+      margin-left: 180px;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 

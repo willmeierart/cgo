@@ -37,6 +37,8 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 __webpack_require__(182);
 
+__webpack_require__(3);
+
 var _utils = __webpack_require__(1);
 
 jQuery(document).ready(function ($) {
@@ -45,10 +47,22 @@ jQuery(document).ready(function ($) {
       backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-headerstandardized.jpg')`
     });
     $('.breaker-1').css({
-      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-02.jpg')`
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-01.jpg')`
     });
     $('.breaker-2').css({
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-02.jpg')`
+    });
+    $('.breaker-3').css({
       backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-la-banner-03.jpg')`
+    });
+    $('.breaker-4').css({
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-gmp-banner-01.jpg')`
+    });
+    $('.breaker-5').css({
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-gmp-banner-02.jpg')`
+    });
+    $('.breaker-6').css({
+      backgroundImage: `url('${_utils.url}/wp-content/uploads/2018/05/2gifts-gmp-banner-03.jpg')`
     });
   };
   const setButton = () => {
@@ -67,6 +81,13 @@ jQuery(document).ready(function ($) {
 /***/ }),
 
 /***/ 182:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

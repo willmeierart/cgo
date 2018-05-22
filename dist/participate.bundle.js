@@ -16849,12 +16849,15 @@ jQuery(document).ready(function ($) {
       $(`.${month}`).children('.month-name').css({ display: 'inline-block' }).click(e => {
         e.stopPropagation();
         monthsExpanded[month] = !monthsExpanded[month];
-        $(`.${month}, .recurring`).children('*:not(i, svg, .month-name)').toggle(300);
+        $(`.${month}`).children('*:not(i, svg, .month-name)').toggle(300);
+        $(`.${month}`).children('.month-name').toggleClass('active');
         $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up');
       });
       // $(`.${month}`).children().click(e => { e.preventDefault() })
     });
   };
+
+  $('.sort-by').text('Sort by:');
 
   // const filterByLocation = eventList =>
   //   eventList.filter(event => event.slug === activeLocation)
@@ -16958,7 +16961,7 @@ jQuery(document).ready(function ($) {
 
     const recurringWrapper = $(`.recurring`);
     if (recurringWrapper.children().length < 2) {
-      recurringWrapper.append(`<i class='fas fa-angle-${recurAngle}'></i>`);
+      // recurringWrapper.append(`<i class='fas fa-angle-${recurAngle}'></i>`)
       recurringEvents.forEach((event, i) => {
         const { id } = event;
         $(recurringWrapper.append((0, _templateElements.detailInner)(event)));
@@ -16966,6 +16969,8 @@ jQuery(document).ready(function ($) {
       if (IS_SEMINARS_PAGE) {
         monthsExpanded.recurring = true;
         recurringWrapper.children('*:not(i, svg)').show();
+        $('.recurring').children('.month-name').addClass('active');
+        console.log('visible?', recurringWrapper.children('*:not(i, svg)').is(':visible'));
       } else {
         monthsExpanded.recurring = false;
         recurringWrapper.children('*:not(i, svg)').hide();
@@ -16982,13 +16987,14 @@ jQuery(document).ready(function ($) {
       if (detailsWrapper.find(`#${id}`).length < 1) {
         if (detailsWrapper.children(`.${month}`).length < 1) {
           detailsWrapper.append(`<div class='date-category ${month}'><div class='month-name'>${month}</div></div>`);
-          $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`);
+          // $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`)
         }
         if ($(`.${month}`).children(`#${id}`).length < 1) {
           $(`.${month}`).append((0, _templateElements.detailInner)(event));
         }
         if (IS_SEMINARS_PAGE) {
           monthsExpanded[month] = true;
+          $(`.${month}`).children('.month-name').addClass('active');
           $(`.${month}`).children('*:not(i, svg)').show();
         } else {
           monthsExpanded[month] = false;
@@ -17608,9 +17614,9 @@ const detailInner = exports.detailInner = event => {
             </div>
             <div class='time'>${day ? start : end.time !== null ? start.time + ' - ' + end.time : start.time}
             </div>
-            <div class='time-notes'>${time_notes || ''}</div>
+            <div class='time-notes'>${time_notes ? '(' + time_notes + ')' : ''}</div>
             <div class='price'>${price}</div>
-            <div class='price-notes'>${price_notes || ''}</div>                
+            <div class='price-notes'>${price_notes ? '(' + price_notes + ')' : ''}</div>                
           </div>
           <div class='register-btn'>
             <div>REGISTER</div>

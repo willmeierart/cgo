@@ -21,8 +21,13 @@
       // margin-left: -20px;
     }
   }
+  .page-title-image {
+    width: 30%!important;
+    height: 30%!important;
+    margin-top: 6em;
+  }
   .header-img {
-    margin-left: 45px!important;
+    // margin-left: 45px!important;
     .inner {
       display: flex;
       justify-content: center;
@@ -33,6 +38,7 @@
         font-family: $font-fam-sans;
         font-weight: bold !important;
         font-size: 2em;
+        letter-spacing: .1em;
       }
       &.leader-logo-slogan  {
         font-family: $font-fam-serif;
@@ -43,12 +49,60 @@
   .intro-par {
     padding: 20px 10vw;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: $font-fam-serif;
     line-height: 1.125em;
+    margin-top: 2em;
+    margin-bottom: 2em!important;
   }
   .section-gap {
     height: 100px;
+  }
+  .purpose-img.leader-img {
+    padding: 0 4em!important;
+  }
+  .quote-box {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .wpb_text_column {
+      .wpb_wrapper {
+        @extend .quote-box;
+        margin-top: 0;
+        .quote {
+          width: 75%;
+        }
+        .quote-attr {
+          text-align: center;
+          margin-top: 1em!important;
+          p {
+            @extend .quote-attr;
+          }
+        }
+      }
+      .quote {
+        width: 75%;
+      }
+
+      .quote-attr {
+        text-align: center;
+        margin-top: 1em !important;
+        p {
+          @extend .quote-attr;
+        }
+      }
+      // &:last-of-type {
+      //   .wpb-wrapper {
+      //     margin-top: 0;
+      //   }
+      // }
+    }
+    // margin-top: 3em;    
+  }
+  #the-lady, #kalindi {
+    border-bottom: 3px solid $color-gold;
   }
 }
 

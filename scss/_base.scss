@@ -8,6 +8,10 @@
 .body-copy, body {
   font: 300 1em/1.5em $font-fam-sans;
 }
+.body-link {
+  color: #1B75BC!important;
+  font-weight: bold;
+}
 
 h1, .h1, h1 *, .h1 * {
   font: italic 5em $font-fam-serif, serif !important;

@@ -23,7 +23,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       flex-direction: column;
       flex-grow: 1;
       width: 100vw!important;
-      height: 80vh;
+      height: 60vh;
       object-fit: cover;
       position: relative;
       justify-content: flex-end;
@@ -73,6 +73,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
         display: flex!important;
         justify-content: center;
         align-items: center;
+        font-size: 1.25em!important;
         .bold-quote-intro {
           font: 900 1em/1.5em "Playfair Display",
           serif !important;
@@ -151,7 +152,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
       justify-content: center;
       flex-direction: row;
       .vc_col-sm-3 {
-        width: 100%;
+        // width: 100%;
         margin-left: 0;
         display: block;
         .home-nav-btn {
@@ -162,16 +163,19 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
           color: white;
           background-size: contain;
           background-repeat: no-repeat;
-          padding: 1.5em 1em;
+          // padding: 1.5em 1em;
           display: flex;
+          flex-grow: 0;
           align-items: center;
           justify-content: center;
           height: 100px;
+          width: 220px;
           // white-space: pre;
           // white-space: pre-wrap;
           background-position-x: center;
           a {
             padding-top: 1em;
+            margin: 1em;
           }
         }
       }
@@ -199,6 +203,7 @@ $home-url: 'http://kp0.60d.myftpupload.com/wp-content/uploads';
         padding: 0!important;
         .home-nav-btn {
           background-size: contain!important;
+          width: unset;
         }
       }
     }

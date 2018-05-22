@@ -40,6 +40,8 @@
 //   margin-left: 45px;
 // }
 
+
+
 body {
   width: 100vw;
   height: 100vh;
@@ -51,6 +53,13 @@ body {
       background-color: $color-gold;
     }
   }
+  #ajax-content-wrap {
+    background-color: white !important;
+  }
+}
+.container-wrap {
+  margin-top: 0!important;
+  padding-top: 0!important;
 }
 
 .container:first-of-type {
@@ -238,9 +247,11 @@ a {
 }
 
 #footer-outer {
+  margin-top: 5em;
   // background-color: white!important;
   border-top: 3px solid $color-gold;
   #nav_menu-2 {
+    width: 100%;
     #menu-main-1 {
       display: flex;
       justify-content: center;
