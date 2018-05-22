@@ -251,9 +251,6 @@
               font-size: .75em;
               display: inline-block;
             }
-            .time-notes, .price-notes {
-              // display: inline;
-            }
             .price {
               font-weight: bold;
               &, .price-notes {
@@ -274,16 +271,44 @@
                 // padding: .25em;
                 box-sizing: border-box;
                 // border: 1px solid grey;
-                color: white;
                 text-transform: uppercase;
                 font-weight: 700;
-                background: $color-blue;
+                border: 1px solid $color-blue;
+                color: $color-blue;
                 // border-radius: 500px;
+                &:hover {
+                  color: white;
+                  background: $color-blue;
+                }
               }
             }
           }
         }
       }
     }
+  }
+  .sticky-el-1, .sticky-el-2 {
+    position: initial;
+    top: 0;
+  }
+  .sticky-el-3 {
+    margin-left: 2.1%;
+  }
+  .sticky-nav-1 {
+    position: fixed;
+    top: 98px;
+    background: white;
+    width: 100%;
+    z-index: 100;
+  }
+  .sticky-nav-2 {
+    position: fixed;
+    top: 230px;
+    margin-left: 0;
+    width: 20%!important;
+  }
+  .sticky-nav-3 {
+    z-index: 1;
+    // margin-left: 8%;
   }
 }

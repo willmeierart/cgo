@@ -8,18 +8,22 @@ import { url } from '../../../utils'
 import queries from '../../../queries'
 
 jQuery(document).ready(function($) {
-  const { pathname } = window.location
+  const { pathname, hash } = window.location
   const splitPath = pathname.split('/')
   const path = splitPath[splitPath.length - 2]
+
+  console.log(window.location)
 
   const IS_SEMINARS_PAGE = path === 'seminars'
   const IS_MEDITATIONS_PAGE = path === 'meditations'
   const IS_INTRODUCTIONS_PAGE = path === 'introductions'
   const IS_OTHER_PAGE = path === 'other-opportunities'
+  const IS_CALENDAR_PAGE = path === 'calendar'
 
   let LOCAL_EVENTS
   let RECURRING_EVENTS
 
+  let hashFilter = hash.replace('#', '').replace('-', '_')
   let activeLocation = 'Denver'
   let activeTypeFilter = 'All'
 
@@ -28,6 +32,7 @@ jQuery(document).ready(function($) {
   const monthsExpanded = {}
 
   const handleExpandingMonths = () => {
+    $('.month-name').off('click')
     const monthKeys = Object.keys(monthsExpanded)
     monthKeys.forEach(month => {
       $(`.${month}`).children('.month-name').css({ display: 'inline-block' }).click(e => {
@@ -252,7 +257,15 @@ jQuery(document).ready(function($) {
 
   function filterEventsData () {
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
+    const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
+    const matcherObj = {
+      seminars,
+      meditation: meditations,
+      introductions,
+      other_opportunities: other_opportunities
+    }
+
+    console.log(hashFilter, matcherObj, matcherObj[hashFilter])
 
     const allTheseCourses = (() => {
       switch (true) {
@@ -272,7 +285,9 @@ jQuery(document).ready(function($) {
           return INTROS
         }
         case IS_OTHER_PAGE:
-          return other_programs
+          return other_opportunities
+        case IS_CALENDAR_PAGE:
+          return matcherObj[hashFilter]
         default:
           return meditations
       }
@@ -349,6 +364,84 @@ jQuery(document).ready(function($) {
     handleExpandingMonths()
   }
 
+  const handleCalendarTypeFilter = () => {
+    const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
+    const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
+    const matcherObj = {
+      seminars,
+      meditation: meditations,
+      introductions,
+      other_opportunities: other_opportunities
+    }
+    const a = $('.az-offerings-submenu-wrapper.calendar').find('a')
+    a.click(e => {
+      hashFilter = $(e.target).text().toLowerCase().replace(/[^a-z]/g, '_')
+      const allTheseCourses = (() => {
+        switch (true) {
+          case IS_SEMINARS_PAGE:
+            return seminars
+          case IS_MEDITATIONS_PAGE:
+            return meditations
+          case IS_INTRODUCTIONS_PAGE: {
+            const publicMeditations = meditations.events.filter(event => event.title.includes('Public Meditation'))
+            const syntheticCourseType = {
+              id: publicMeditations[0].course_id,
+              title: 'Evenings of Meditation'
+            }
+            const INTROS = { ...introductions }
+            INTROS.courses.push(syntheticCourseType)
+            INTROS.events = [...INTROS.events, ...publicMeditations]
+            return INTROS
+          }
+          case IS_OTHER_PAGE:
+            return other_opportunities
+          case IS_CALENDAR_PAGE:
+            return matcherObj[hashFilter]
+          default:
+            return meditations
+        }
+      })()
+      const { courses } = allTheseCourses
+      $('#az-offerings-filter-focus').empty()
+      renderTypesFilter(courses)
+      filterEventsData()
+    })
+  }
+
+  const handleStickyNav = () => {
+    const topLvlEls = $('.az-upcoming-category').closest('.col.span_12').closest('.wpb_wrapper')
+    const typeFilter = $(topLvlEls.children()[0])
+    const locFilter = $(topLvlEls.children()[1]).find('.vc_col-sm-3')
+    const dataBody = $('.az-offerings-location-detail-wrapper').closest('.vc_col-sm-9')
+    let scrollTop = 0
+
+    typeFilter.addClass('sticky-el-1')
+    locFilter.addClass('sticky-el-2')
+    dataBody.addClass('sticky-el-3')
+
+    $('body').scroll(() => {
+      const { top } = typeFilter.offset()
+      if (top <= 98 && scrollTop === 0) {
+        if (scrollTop === 0) {
+          scrollTop = $('body').scrollTop()
+        }
+        const locHeight = `${typeFilter.height() + 98}px`
+        typeFilter.addClass('sticky-nav-1')
+        locFilter.addClass('sticky-nav-2')
+        if (locFilter.siblings('.vc_col-sm-3').length < 1) {
+          locFilter.parent().prepend('<div class="vc_col-sm-3"></div>').css({ marginRight: '2.1%' })
+        }
+        dataBody.addClass('sticky-nav-3')
+      } else if ($('body').scrollTop() <= scrollTop) {
+        typeFilter.removeClass('sticky-nav-1')
+        locFilter.removeClass('sticky-nav-2')
+        locFilter.siblings('.vc_col-sm-3').remove()
+        dataBody.removeClass('sticky-nav-3')
+        scrollTop = 0
+      }
+    })
+  }
+
   async function renderDoc () {
     activeTypeFilter = 'all'
     const forceRefresh = true
@@ -361,7 +454,7 @@ jQuery(document).ready(function($) {
       localStorage.setItem('lastUpdated', Date.now())
     }
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    const { course_types: { meditations, seminars, introductions, other_programs }, locations: { cities, centers } } = cachedData
+    const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
 
     console.log('cached refreshed:', conds)
     console.log('cachedData: ', cachedData)
@@ -390,7 +483,9 @@ jQuery(document).ready(function($) {
           return INTROS
         }
         case IS_OTHER_PAGE:
-          return other_programs
+          return other_opportunities
+        case IS_CALENDAR_PAGE:
+          return seminars
         default:
           return meditations
       }
@@ -401,7 +496,10 @@ jQuery(document).ready(function($) {
     filterEventsData()
     renderTypesFilter(courses)    
     renderLocationsMenu(cities)
+    if (IS_CALENDAR_PAGE) {
+      handleCalendarTypeFilter()
+    }
+    handleStickyNav()
   }
-
   renderDoc()
 })
