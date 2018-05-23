@@ -16,8 +16,6 @@ developed by Will Meier at Agency Zero 2018 🤑
 
 **keep in mind that this is all written in ES6 and Sass, transpiled with webpack to traditional css. you can run `npm run webpack` to generate a `dist` folder that will have traditional js and css in it, but it will be minified/uglified beyond legibility... hopefully Sass isn't a problem to translate from...**
 
-*at the time of writing this (3:15PM 05/23/18) the mobile footer styling is still not done*
-
 *also, sorry about all the `!important` rules -- if you've worked with wordpress you know what it's like*
 
 

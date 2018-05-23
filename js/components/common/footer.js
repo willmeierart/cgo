@@ -48,23 +48,27 @@ jQuery(document).ready(function($) {
       if (i === 0) firstList = item
       if (txtContent === 'Shop' || txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
       if (txtContent === 'Connect') $(item).addClass('top-lvl')
-      if (txtContent === 'Spiritual Lineage') $(item).children('a').attr('href', '/explore/spiritual-lineage')
+      if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').children('a')
+        .attr('href', window.innerWidth >= 1000 ? '/explore/spiritual-lineage' : '')
       // if (txtContent === 'Explore' || txtContent === 'Participate') {
       //   $(item).css({ cursor: 'default', pointerEvents: 'none' }).children({ cursor: 'pointer', pointerEvents: 'all' })
       // }
-      if (txtContent === 'Participate') $(item).children('a').attr('href', '/participate/meditation')
-      if (txtContent === 'Explore') $(item).children('a').attr('href', '/explore/purpose')
+      if (txtContent === 'Participate') $(item).addClass('mobile-exp').children('a')
+        .attr('href', window.innerWidth >= 1000 ? '/participate/meditation' : '')
+      if (txtContent === 'Explore') $(item).addClass('mobile-exp').children('a')
+        .attr('href', window.innerWidth >= 1000 ? '/explore/purpose' : '')
     })
-    console.log(firstList);
-    items.last().append(`
-      <li class='menu-item top-marg'>
-        <a href='#'>User Agreement</a>
-      </li>
-      <li class='menu-item'>
-        <a href='#'>Privacy Policy</a>
-      </li>
-    `)
-    const TGClone = twoGifts.clone().addClass('top-marg')
+
+    // $('#footer-outer').find('.container').append(`
+    //   <li class='menu-item top-marg'>
+    //     <a href='#'>User Agreement</a>
+    //   </li>
+    //   <li class='menu-item'>
+    //     <a href='#'>Privacy Policy</a>
+    //   </li>
+    // `)
+
+    const TGClone = twoGifts.clone().addClass('top-marg menu-item two-gifts-thin')
     $(firstList).append(TGClone)
     twoGifts.remove()
     items.first().parent().prepend(`
@@ -85,6 +89,15 @@ jQuery(document).ready(function($) {
           <div class='instagram'></div>
         </div>
         <div class='copyright'>© Center of the Golden One, 2018</div>
+        <ul class='ua-pp'>
+          <li class='menu-item'>
+            <a href='#'>User Agreement </a>
+            <span class='gold-text'>/</span>
+          </li>
+          <li class='menu-item'>
+            <a href='#'>Privacy Policy</a>
+          </li>
+        </ul>
       </div>
     `)
     $('.bottom-section').children('.socials-container').children('div').each((i, icon) => {
@@ -104,8 +117,26 @@ jQuery(document).ready(function($) {
     })
   }
 
+  const handleMobile = () => {
+    $('#footer-outer').find('.sub-menu, .tert-menu').addClass('hidden')
+    $('#footer-outer').find('.menu-item').removeClass('top-marg')
+    $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')
+    console.log('mobile exp:::', $('.mobile-exp'))
+    $('.mobile-exp').click(e => {
+      e.stopPropagation()
+      e.preventDefault()
+      const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item')
+      console.log('clicked', el.children('.hidden'))
+      el.find('.hidden').first().slideToggle(200)
+    })
+    // $('.mobile-exp').children('.sub-menu')
+  }
+
   const init = (() => {
     shuffleList()
     appendSocialsAndCopyright()
+    if (window.innerWidth < 1000) {
+      handleMobile()
+    }
   })()
 })
