@@ -4558,7 +4558,9 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-const textMatches = exports.textMatches = (str1, str2) => str1 === str2 || str1.toLowerCase() === str2.toLowerCase() || str1.toUpperCase() === str2.toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_') === str2.replace(/[^a-zA-Z0-9]/g, '_') || str1.replace(/[^a-zA-Z0-9]/g, '-') === str2.replace(/[^a-zA-Z0-9]/g, '-') || str1.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+const textMatches = exports.textMatches = (str1, str2) => {
+  return str1 === str2 || str1.toLowerCase() === str2.toLowerCase() || str1.toUpperCase() === str2.toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_') === str2.replace(/[^a-zA-Z0-9]/g, '_') || str1.replace(/[^a-zA-Z0-9]/g, '-') === str2.replace(/[^a-zA-Z0-9]/g, '-') || str1.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toUpperCase() || str1.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase() === str2.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+};
 
 const setActiveItemFilter = exports.setActiveItemFilter = (element, matchedString) => {
   element.each((i, item) => {
@@ -16828,8 +16830,6 @@ jQuery(document).ready(function ($) {
   const splitPath = pathname.split('/');
   const path = splitPath[splitPath.length - 2];
 
-  console.log(window.location);
-
   const IS_SEMINARS_PAGE = path === 'seminars';
   const IS_MEDITATIONS_PAGE = path === 'meditations';
   const IS_INTRODUCTIONS_PAGE = path === 'introductions';
@@ -16842,6 +16842,21 @@ jQuery(document).ready(function ($) {
   let hashFilter = hash.replace('#', '').replace('-', '_');
   let activeLocation = 'Denver';
   let activeTypeFilter = 'All';
+  const dateFilters = [];
+  let activeMobileDateFilter = 'recurring';
+  let openCards = [];
+  const hasBeenActivated = {
+    location: false,
+    type: false,
+    date: false
+  };
+  let allEventEls;
+
+  const mobileCards = ['location', 'type', 'date'];
+  let mobileCardStateIdx = 0;
+  let mobileCardState = mobileCards[mobileCardStateIdx];
+  let shouldShowEvents = false;
+  let mobileHasBeenTransformed = false;
 
   const months = ['recurring', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const getFirstMonth = (currentLow, month) => Math.min(currentLow, months.indexOf(month));
@@ -16858,11 +16873,25 @@ jQuery(document).ready(function ($) {
         $(`.${month}`).children('.month-name').toggleClass('active');
         $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up');
       });
+      if (window.innerWidth < 1000) {
+        if (dateFilters.indexOf(month) === -1) {
+          dateFilters.push(month);
+        }
+      }
       // $(`.${month}`).children().click(e => { e.preventDefault() })
     });
   };
 
   $('.sort-by').text('Sort by:');
+
+  const topLvlEls = $('.az-upcoming-category').closest('.col.span_12').closest('.wpb_wrapper');
+  const typeFilter = $(topLvlEls.children()[0]);
+  const locFilter = $(topLvlEls.children()[1]).find('.vc_col-sm-3');
+  const dataBody = $('.az-offerings-location-detail-wrapper').closest('.vc_col-sm-9');
+
+  typeFilter.addClass('sticky-el-1');
+  locFilter.addClass('sticky-el-2');
+  dataBody.addClass('sticky-el-3');
 
   // const filterByLocation = eventList =>
   //   eventList.filter(event => event.slug === activeLocation)
@@ -16943,8 +16972,6 @@ jQuery(document).ready(function ($) {
   };
 
   const renderEventData = (events, recurringEvents) => {
-
-    console.log(recurringEvents);
     const formatTime = D => {
       const dateParts = D.split('-');
       const dateTimeSplit = dateParts[dateParts.length - 1].split('T');
@@ -16957,10 +16984,16 @@ jQuery(document).ready(function ($) {
     const PMsplitter = course => course.StartTime.split('T')[0].split('-');
     const preMonth = course => `${PMsplitter(course)[1]}-${PMsplitter(course)[2]}-${PMsplitter(course)[0]}`;
 
+    if ($('body').find('.az-offerings-location-detail-wrapper').length === 0) {
+      console.log('offerings wrapper doesnt exist');
+      $('body').append($('<div class="az-offerings-location-detail-wrapper"></div>').css({ display: 'none' }));
+    }
+
     const detailsWrapper = $('.az-offerings-location-detail-wrapper');
     if (detailsWrapper.children('.recurring').length < 1) {
       detailsWrapper.append(`<div class='date-category recurring'><div class='month-name'>Recurring</div></div>`);
     }
+    detailsWrapper.children('.recurring-section').remove();
 
     const recurAngle = IS_SEMINARS_PAGE ? 'up' : 'down';
 
@@ -16975,7 +17008,6 @@ jQuery(document).ready(function ($) {
         monthsExpanded.recurring = true;
         recurringWrapper.children('*:not(i, svg)').show();
         $('.recurring').children('.month-name').addClass('active');
-        console.log('visible?', recurringWrapper.children('*:not(i, svg)').is(':visible'));
       } else {
         monthsExpanded.recurring = false;
         recurringWrapper.children('*:not(i, svg)').hide();
@@ -17007,6 +17039,10 @@ jQuery(document).ready(function ($) {
         }
       }
     });
+
+    console.log('eventEls 1', allEventEls);
+    allEventEls = detailsWrapper.clone();
+    console.log('eventEls 2', allEventEls);
   };
 
   const transformEvents = (events, centers) => {
@@ -17046,7 +17082,7 @@ jQuery(document).ready(function ($) {
 
       // console.log('month: ', month, 'start_time: ', start_time, 'start: ', start, 'end_time: ', end_time, 'end: ', end, 'center: ', center, 'event: ', event)
 
-      return {
+      const retObj = {
         id,
         title,
         description,
@@ -17061,6 +17097,7 @@ jQuery(document).ready(function ($) {
         link: registration_link,
         location: { title: locTitle, address, phone }
       };
+      return retObj;
     });
   };
 
@@ -17072,11 +17109,10 @@ jQuery(document).ready(function ($) {
       meditation: meditations,
       introductions,
       other_opportunities: other_opportunities
-    };
 
-    console.log(hashFilter, matcherObj, matcherObj[hashFilter]);
+      // console.log(hashFilter, matcherObj, matcherObj[hashFilter])
 
-    const allTheseCourses = (() => {
+    };const allTheseCourses = (() => {
       switch (true) {
         case IS_SEMINARS_PAGE:
           return seminars;
@@ -17112,13 +17148,12 @@ jQuery(document).ready(function ($) {
 
     const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id);
 
-    // console.log(thisLocationCenters)
+    console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters);
 
     const recurringEvents = thisLocationCenters.reduce((list, center) => {
       list = list.concat(center.recurring_events);
       return list;
     }, []).filter(event => {
-      console.log(event.course_id, thisCourseType);
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false;
       let ret1 = false;
       let ret2 = false;
@@ -17133,7 +17168,7 @@ jQuery(document).ready(function ($) {
       if (ret1 && ret2) return event;
     });
 
-    console.log(recurringEvents);
+    // console.log(recurringEvents)
 
     const localEvents = events.filter(event => {
       // console.log(event)
@@ -17212,15 +17247,7 @@ jQuery(document).ready(function ($) {
   };
 
   const handleStickyNav = () => {
-    const topLvlEls = $('.az-upcoming-category').closest('.col.span_12').closest('.wpb_wrapper');
-    const typeFilter = $(topLvlEls.children()[0]);
-    const locFilter = $(topLvlEls.children()[1]).find('.vc_col-sm-3');
-    const dataBody = $('.az-offerings-location-detail-wrapper').closest('.vc_col-sm-9');
     let scrollTop = 0;
-
-    typeFilter.addClass('sticky-el-1');
-    locFilter.addClass('sticky-el-2');
-    dataBody.addClass('sticky-el-3');
 
     $('body').scroll(() => {
       const { top } = typeFilter.offset();
@@ -17245,6 +17272,173 @@ jQuery(document).ready(function ($) {
     });
   };
 
+  const advanceMobileCardState = cmd => {
+    if (mobileCardStateIdx < 3 && cmd !== 'no-advance') {
+      mobileCardStateIdx += 1;
+      if (mobileCardStateIdx !== 3) {
+        mobileCardState = mobileCards[mobileCardStateIdx];
+      }
+    }
+  };
+
+  const createMobileFilters = () => {
+    const allFiltersCompleted = mobileCardStateIdx === 3;
+    const reload = allEventEls !== undefined;
+
+    const locationList = $('.az-offerings-locations-menu-wrapper').children('ul');
+    const locationListClone = mobileHasBeenTransformed ? $('.mobile-locations-list') : locationList.clone().addClass('mobile-locations-list mobile-list');
+    const typeList = $('.az-offerings-type-filter-wrapper').children('ul');
+    const typeListClone = mobileHasBeenTransformed ? $('.mobile-type-list') : typeList.clone().addClass('mobile-list mobile-type-list');
+
+    console.log('reload?: ', reload);
+
+    const allEventsClone = !reload ? $('.az-offerings-location-detail-wrapper').clone() : allEventEls.clone();
+
+    console.log('eventEls inside createMobileFilters:', allEventEls);
+
+    const dateFilterList = $('<ul class="date-filter-list mobile-list"></ul>').append(dateFilters.map((date, i) => `<li class='date-filter'><a>${date}</a></li>`));
+    const cardTitles = {
+      location: 'Choose a location',
+      type: 'Event Type',
+      date: 'Event Date'
+    };
+    const lists = [locationListClone, typeListClone, dateFilterList];
+    const activeMobileFilterProps = [activeLocation, activeTypeFilter, activeMobileDateFilter];
+
+    const slicedCards = mobileCards.slice(0, mobileCardStateIdx + 1);
+    const cards = mobileCards.map((cardType, i) => {
+      const title = cardTitles[cardType];
+      const list = lists[i][0].outerHTML;
+      const filterObj = {
+        isOpen: i === slicedCards.length - 1 && !allFiltersCompleted || openCards.indexOf(cardType.toLowerCase()) !== -1,
+        title,
+        list,
+        activeProp: activeMobileFilterProps[i] || '',
+        class: cardType,
+        isVisible: i < slicedCards.length
+      };
+      return (0, _templateElements.mobileFilterModule)(filterObj);
+    });
+    const returnElsObj = {
+      events: allEventsClone,
+      filters: cards
+
+      // $('')
+
+    };return returnElsObj;
+  };
+
+  const handleMobileStyling = () => {
+    const { filters, events } = createMobileFilters();
+    if (!mobileHasBeenTransformed) {
+      const wholeBottomSec = $('.az-offerings-types-description-container').siblings().last();
+      wholeBottomSec.replaceWith('<div class="mobile-dynamic-section"></div>');
+      // if (wholeBottomSec.siblings('.mobile-dynamic-section').length === 0) {
+      //   wholeBottomSec.css({ display: 'none' }).parent().append('<div class="mobile-dynamic-section"></div>')
+      // }
+    }
+    const allFiltersCompleted = mobileCardStateIdx === 3;
+    if (allFiltersCompleted) {
+      refreshEventList();
+    }
+
+    if ($('.mobile-dynamic-section').children().length === 0) {
+      $('.mobile-dynamic-section').append(`
+        <div class="mobile-filters-section"></div>
+        <div class="mobile-events-section"></div>
+      `);
+    }
+
+    const filteredEvents = events.children().filter((i, child) => {
+      let ret = false;
+      child.classList.forEach(clazz => {
+        if (clazz.toLowerCase().includes(activeMobileDateFilter.toLowerCase())) {
+          ret = true;
+        }
+      });
+      return ret;
+    });
+
+    const filteredEventsWithParent = events.clone().empty().append(filteredEvents);
+
+    console.log('filtered events: ', events, filteredEvents, filteredEventsWithParent);
+
+    $('.mobile-filters-section').empty().append(filters);
+
+    // if ($('.mobile-events-section').children().length === 0) {
+    $('.mobile-events-section').css({
+      display: allFiltersCompleted ? 'flex' : 'none'
+      // }).empty().append(events)
+    }).empty().append(filteredEventsWithParent);
+    // } else {
+    //   $('.mobile-events-section').css({
+    //     display: allFiltersCompleted ? 'flex' : 'none'
+    //   }).children().replaceWith(filteredEventsWithParent)
+    // }
+
+    mobileHasBeenTransformed = true;
+  };
+
+  const reloadErthang = cmd => {
+    refreshEventList();
+    advanceMobileCardState(cmd);
+    handleMobileStyling();
+    handleMobileFiltering();
+    $('.date-category').children('.month-name').css({ visibility: 'hidden' });
+  };
+
+  var handleMobileFiltering = () => {
+    const locLIs = $('.mobile-filter-module.location').find('li');
+    const typeLIs = $('.mobile-filter-module.type').find('li');
+    const dateLIs = $('.mobile-filter-module.date').find('li');
+
+    locLIs.off('click');
+    typeLIs.off('click');
+    dateLIs.off('click');
+
+    locLIs.click(e => {
+      let trigger = '';
+      const txt = $(e.target).children('a').length !== 0 ? $(e.target).children('a').text().toLowerCase() : $(e.target).text().toLowerCase();
+      activeLocation = txt;
+      openCards = openCards.filter(card => card !== 'location');
+      if (hasBeenActivated.location) {
+        trigger = 'no-advance';
+      }
+      reloadErthang(trigger);
+      hasBeenActivated.location = true;
+    });
+    typeLIs.click(e => {
+      let trigger = '';
+      const txt = $(e.target).children('a').length !== 0 ? $(e.target).children('a').text().toLowerCase() : $(e.target).text().toLowerCase();
+      activeTypeFilter = txt;
+      openCards = openCards.filter(card => card !== 'type');
+      if (hasBeenActivated.type) {
+        trigger = 'no-advance';
+      }
+      reloadErthang(trigger);
+      hasBeenActivated.type = true;
+    });
+    dateLIs.click(e => {
+      let trigger = '';
+      const txt = $(e.target).children('a').length !== 0 ? $(e.target).children('a').text().toLowerCase() : $(e.target).text().toLowerCase();
+      activeMobileDateFilter = txt;
+      openCards = openCards.filter(card => card !== 'date');
+      if (hasBeenActivated.date) {
+        trigger = 'no-advance';
+      }
+      reloadErthang(trigger);
+      hasBeenActivated.date = true;
+    });
+
+    $('.mobile-filter-module.closed').children('.title-block').click(e => {
+      const txt = $(e.target).attr('data-title').toLowerCase();
+      if (openCards.indexOf(txt) === -1) {
+        openCards.push(txt);
+      }
+      reloadErthang('no-advance');
+    });
+  };
+
   async function renderDoc() {
     activeTypeFilter = 'all';
     const forceRefresh = true;
@@ -17261,12 +17455,6 @@ jQuery(document).ready(function ($) {
 
     console.log('cached refreshed:', conds);
     console.log('cachedData: ', cachedData);
-
-    // const eventTitles = flatten([
-    //   meditation.events.map(event => event.title),
-    //   introductions.events.map(event => event.title),
-    //   seminars.events.map(event => event.title)
-    // ])
 
     const allTheseCourses = (() => {
       switch (true) {
@@ -17303,7 +17491,16 @@ jQuery(document).ready(function ($) {
     if (IS_CALENDAR_PAGE) {
       handleCalendarTypeFilter();
     }
-    handleStickyNav();
+
+    allEventEls = $('.az-offerings-location-detail-wrapper').clone();
+
+    if (window.innerWidth > 1000) {
+      handleStickyNav();
+    } else {
+      handleMobileStyling();
+      handleMobileFiltering();
+      $('.date-category').children('.month-name').css({ visibility: 'hidden' });
+    }
   }
   renderDoc();
 });
@@ -17748,6 +17945,13 @@ const descriptionTxtBlock = exports.descriptionTxtBlock = course => `
         <div class='expand-btn'>+</div>
       </div>
     </div>
+  </div>
+`;
+
+const mobileFilterModule = exports.mobileFilterModule = filterObj => `
+  <div class='mobile-filter-module ${filterObj.isOpen ? 'open' : 'closed'} ${filterObj.class} ${filterObj.isVisible ? 'visible' : 'hidden'}'>
+    <div data-title='${filterObj.class}' class='title-block'>${filterObj.isOpen ? filterObj.title : filterObj.activeProp}</div>
+    ${filterObj.list}
   </div>
 `;
 

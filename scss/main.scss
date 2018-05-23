@@ -281,6 +281,7 @@ a {
           font-weight: bold!important;
           & > a {
             @extend .menu-item-has-children;
+            text-transform: none;            
           }
           .sub-menu {
             .menu-item-has-children {
@@ -385,9 +386,14 @@ a {
 
 @media only screen and (max-width: 1000px) and (min-width: 1px) {
   body {
-    #header-outer {
-      // padding:0!important;
-      // padding-top:0!important;
+    #footer-outer {
+      #nav_menu-2 {
+        #menu-main-1 {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
     }
   }
 }

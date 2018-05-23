@@ -47,3 +47,10 @@ export const descriptionTxtBlock = course => `
     </div>
   </div>
 `
+
+export const mobileFilterModule = filterObj => (`
+  <div class='mobile-filter-module ${filterObj.isOpen ? 'open' : 'closed'} ${filterObj.class} ${filterObj.isVisible ? 'visible' : 'hidden'}'>
+    <div data-title='${filterObj.class}' class='title-block'>${filterObj.isOpen ? filterObj.title : filterObj.activeProp}</div>
+    ${filterObj.list}
+  </div>
+`)
