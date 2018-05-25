@@ -30,7 +30,8 @@ module.exports = function(env) {
       store: "./js/components/pages/store/index.js",   
       community: "./js/components/pages/community/index.js",
       connect: "./js/components/pages/connect/index.js",
-      error: "./js/components/pages/error.js"
+      error: "./js/components/pages/error.js",
+      userAgreement: "./js/components/pages/userAgreement/index.js"
     },
     output: {
       path: path.resolve(__dirname + "/dist"),

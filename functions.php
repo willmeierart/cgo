@@ -45,6 +45,7 @@ function CGO_enqueue_js() {
 		wp_register_script('cgo_store', get_stylesheet_directory_uri() . '/dist/store.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_connect', get_stylesheet_directory_uri() . '/dist/connect.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_error', get_stylesheet_directory_uri() . '/dist/error.bundle.js', array('jquery'), '1.0', false );
+		wp_register_script('cgo_userAgreement', get_stylesheet_directory_uri() . '/dist/userAgreement.bundle.js', array('jquery'), '1.0', false );
 		
 		wp_enqueue_script('cgo_common');		
 		wp_enqueue_script('cgo_main');
@@ -117,6 +118,9 @@ function CGO_enqueue_js() {
 		} else if(is_page( 'Connect' )) {
 			wp_enqueue_script('cgo_connect');
 			wp_enqueue_style('cgo_connect_style', get_stylesheet_directory_uri() . '/dist/styles/connect.css');
+		} else if(is_page( 'User Agreement' )) {
+			wp_enqueue_script('cgo_userAgreement');
+			wp_enqueue_style('cgo_userAgreement_style', get_stylesheet_directory_uri() . '/dist/styles/userAgreement.css');
 		} else if(is_404()) {
 			wp_enqueue_script('cgo_error');
 			wp_enqueue_style('cgo_error_style', get_stylesheet_directory_uri() . '/dist/styles/error.css');

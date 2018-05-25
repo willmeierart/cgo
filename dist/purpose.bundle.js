@@ -1,4 +1,4 @@
-webpackJsonp([6],{
+webpackJsonp([8],{
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
@@ -29,15 +29,15 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 /***/ }),
 
-/***/ 171:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(172);
+__webpack_require__(177);
 
-__webpack_require__(3);
+__webpack_require__(2);
 
 var _cgoLogo = __webpack_require__(5);
 
@@ -77,14 +77,14 @@ jQuery(document).ready($ => {
 
 /***/ }),
 
-/***/ 172:
+/***/ 177:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -106,4 +106,4 @@ exports.default = logo;
 
 /***/ })
 
-},[171]);
+},[176]);

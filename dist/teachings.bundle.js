@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackJsonp([6],{
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
@@ -29,15 +29,15 @@ const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
 
 /***/ }),
 
-/***/ 177:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(178);
+__webpack_require__(183);
 
-__webpack_require__(3);
+__webpack_require__(2);
 
 var _utils = __webpack_require__(1);
 
@@ -93,14 +93,14 @@ jQuery(document).ready(function ($) {
 
 /***/ }),
 
-/***/ 178:
+/***/ 183:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -122,4 +122,4 @@ exports.default = logo;
 
 /***/ })
 
-},[177]);
+},[182]);

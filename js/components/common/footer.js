@@ -123,16 +123,18 @@ jQuery(document).ready(function($) {
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')
     console.log('mobile exp:::', $('.mobile-exp'))
     $('.mobile-exp').click(e => {
-      e.stopPropagation()
+      // e.stopPropagation()
       e.preventDefault()
       const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item')
       console.log('clicked', el.children('.hidden'))
+      el.children('.hidden').first().slideToggle(200)
       el.find('.hidden').first().slideToggle(200)
     })
     // $('.mobile-exp').children('.sub-menu')
   }
 
   const init = (() => {
+    console.log($('#footer-outer').find('.sub-menu'))
     shuffleList()
     appendSocialsAndCopyright()
     if (window.innerWidth < 1000) {

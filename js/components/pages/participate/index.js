@@ -168,10 +168,10 @@ jQuery(document).ready(function($) {
     const PMsplitter = course => course.StartTime.split('T')[0].split('-')
     const preMonth = course => `${PMsplitter(course)[1]}-${PMsplitter(course)[2]}-${PMsplitter(course)[0]}`
 
-    if ($('body').find('.az-offerings-location-detail-wrapper').length === 0) {
-      console.log('offerings wrapper doesnt exist')
-      $('body').append($('<div class="az-offerings-location-detail-wrapper"></div>').css({ display: 'none' }))
-    }
+    // if ($('body').find('.az-offerings-location-detail-wrapper').length === 0) {
+    //   console.log('offerings wrapper doesnt exist')
+    //   $('body').append($('<div class="az-offerings-location-detail-wrapper"></div>').css({ display: 'none' }))
+    // }
 
     const detailsWrapper = $('.az-offerings-location-detail-wrapper')
     if (detailsWrapper.children('.recurring').length < 1) {
@@ -538,14 +538,8 @@ jQuery(document).ready(function($) {
     if (!mobileHasBeenTransformed) {
       const wholeBottomSec = $('.az-offerings-types-description-container').siblings().last()
       wholeBottomSec.replaceWith('<div class="mobile-dynamic-section"></div>')
-      // if (wholeBottomSec.siblings('.mobile-dynamic-section').length === 0) {
-      //   wholeBottomSec.css({ display: 'none' }).parent().append('<div class="mobile-dynamic-section"></div>')
-      // }
     }
     const allFiltersCompleted = mobileCardStateIdx === 3
-    if (allFiltersCompleted) {
-      refreshEventList()
-    }
 
     if ($('.mobile-dynamic-section').children().length === 0) {
       $('.mobile-dynamic-section').append(`
@@ -554,43 +548,66 @@ jQuery(document).ready(function($) {
       `)
     }
 
-
-    const filteredEvents = events.children().filter((i, child) => {
-      let ret = false
-      child.classList.forEach(clazz => {
-        if (clazz.toLowerCase().includes(activeMobileDateFilter.toLowerCase())) {
-          ret = true
-        }
-      })
-      return ret
-    })
-
-    const filteredEventsWithParent = events.clone().empty().append(filteredEvents)
-
-    console.log('filtered events: ', events, filteredEvents, filteredEventsWithParent);
-
     $('.mobile-filters-section').empty().append(filters)
 
-    // if ($('.mobile-events-section').children().length === 0) {
-      $('.mobile-events-section').css({
-        display: allFiltersCompleted ? 'flex' : 'none'
-      // }).empty().append(events)
-      }).empty().append(filteredEventsWithParent)
-    // } else {
-    //   $('.mobile-events-section').css({
-    //     display: allFiltersCompleted ? 'flex' : 'none'
-    //   }).children().replaceWith(filteredEventsWithParent)
-    // }
+    $('.mobile-events-section').css({
+      display: allFiltersCompleted ? 'flex' : 'none'
+    }).empty()
+
 
     mobileHasBeenTransformed = true
   }
 
+  const renderMobileEvents = events => {
+    const formatTime = D => {
+      const dateParts = D.split('-')
+      const dateTimeSplit = dateParts[dateParts.length - 1].split('T')
+      const timeParts = dateTimeSplit[1].split(':')
+      const isPM = timeParts[0] > 12
+      const formatDate = `${dateParts[1]}/${dateTimeSplit[0]}/${dateParts[0]}`
+      const formatTime = isPM ? `${timeParts[0] % 12}:${timeParts[1]} PM` : `${timeParts[0]}:${timeParts[1]} AM`
+      return { date: formatDate, time: formatTime }
+    }
+    const PMsplitter = course => course.StartTime.split('T')[0].split('-')
+    const preMonth = course => `${PMsplitter(course)[1]}-${PMsplitter(course)[2]}-${PMsplitter(course)[0]}`
+    const detailsWrapper = $('.mobile-events-section')
+
+    Object.keys(monthsExpanded).forEach(month => monthsExpanded[month] = true)
+    $('.date-category').children('*:not(i, svg)').show()
+
+    const dateFilter = activeMobileDateFilter ? activeMobileDateFilter.toLowerCase() : ''
+
+
+    events.forEach((event, i) => {
+      const { id, month } = event
+      const MONTH = month ? month.toLowerCase() : ''
+      if (MONTH === dateFilter || (!month && dateFilter === 'recurring')) {
+        if (detailsWrapper.find(`#${id}`).length < 1) {
+          if (detailsWrapper.children(`.${month}`).length < 1) {
+            detailsWrapper.append(`<div class='date-category ${month}'></div>`)
+            // $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`)
+          }
+          if ($(`.${month}`).children(`#${id}`).length < 1) {
+            $(`.${month}`).append(detailInner(event))
+          }
+        }
+      }
+
+    })
+
+  }
+
   const reloadErthang = cmd => {
-    refreshEventList()
+    const isRecurring = activeMobileDateFilter.toLowerCase() === 'recurring'
+    if (mobileCardStateIdx === 3) {
+      refreshEventList()
+    }
     advanceMobileCardState(cmd)
     handleMobileStyling()
     handleMobileFiltering()
-    $('.date-category').children('.month-name').css({ visibility: 'hidden' })
+    console.log(RECURRING_EVENTS, LOCAL_EVENTS)
+    renderMobileEvents(isRecurring ? RECURRING_EVENTS : LOCAL_EVENTS)
+    // $('.date-category').children('.month-name').css({ visibility: 'hidden' })
   }
 
   var handleMobileFiltering = () => {

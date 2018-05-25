@@ -5,6 +5,7 @@ jQuery(document).ready(function($) {
   let initial = true  
   const test = false
   let mobileMenuView = 0
+  let mobileInitialized = false
 
   const hardCodedVals = {
     col1w: 500,
@@ -202,17 +203,68 @@ jQuery(document).ready(function($) {
     const b1 = $('.border-line.b1')
     const b2 = $('.border-line.b2')
 
-    console.log(oldIdx, newIdx, val)
     
     // const w = window.innerWidth / 2 - $(view).width() / 2
     const thisView = views[newIdx]
-    views.forEach(async view => {
+    views.forEach(async (view, i) => {
       const isPrevView = neg ? views.indexOf(view) > newIdx : views.indexOf(view) < newIdx
       const isNextView = neg ? views.indexOf(view) < newIdx : views.indexOf(view) > newIdx
       const isToTheRight = isPrevView && neg || isNextView && !neg
       const isToTheLeft = isNextView && neg || isPrevView && !neg
 
-      console.log('neg', neg);
+      console.log('neg', neg, oldIdx, newIdx, val);
+
+      if (!mobileInitialized && i === 1) {
+        view.css({
+          transform: `translate3d(${window.innerWidth}px, 0, 0)`,
+          opacity: 0,
+          transition: 'transform .5s, opacity .5s'
+        })
+      }
+      
+      if (view === thisView) {
+        view.show()
+        console.log('transform1', view.css('transform'))               
+        view.css({
+          transform: `translate3d(0, 0, 0)`,
+          opacity: 1,
+          transition: 'transform .5s, opacity .5s'
+        })
+        setTimeout(() => { console.log('transform2', view.css('transform')) }, 501)
+        
+        if (txt) {
+          if (txt === 'Explore') {
+            console.log($(view).children())
+            $($(view).find('ul')[0]).show()
+            $($(view).find('ul')[1]).hide()
+          } else {
+            $($(view).find('ul')[0]).hide()
+            $($(view).find('ul')[1]).show()
+            
+          }
+        }
+      } else if (isToTheRight) {
+        console.log(view, 'is to the right')
+        view.css({
+          transform: `translate3d(${window.innerWidth}px, 0, 0)`,
+          opacity: 0,
+          transition: 'transform .5s, opacity .5s'
+        })
+        // if (mobileInitialized) {
+          setTimeout(() => { view.hide() })
+        // } else {
+        //   view.hide()
+        // }
+        // view.hide()
+      } else {
+        view.css({
+          transform: `translate3d(-${window.innerWidth}px, 0, 0)`,
+          opacity: 0,
+          transition: 'transform .5s, opacity .5s'
+        })
+        setTimeout(() => { view.hide() })
+        // view.hide()
+      }
 
       if (neg) {
         if (oldIdx === 2) {
@@ -239,51 +291,12 @@ jQuery(document).ready(function($) {
           })
         }
       }
-      
-      if (view === thisView) {
-        view.show()
-        console.log('transform1', view.css('transform'))               
-        view.css({
-          transform: `translate3d(0, 0, 0)`,
-          opacity: 1,
-          transition: 'transform .5s, opacity .5s'
-        })
-        setTimeout(() => { console.log('transform2', view.css('transform')) }, 501)
-        
-        if (txt) {
-          if (txt === 'Explore') {
-            console.log($(view).children())
-            $($(view).find('ul')[0]).show()
-            $($(view).find('ul')[1]).hide()
-          } else {
-            $($(view).find('ul')[0]).hide()
-            $($(view).find('ul')[1]).show()
-            
-          }
-        }
-      } else if (isToTheRight) {
-        view.css({
-          transform: `translate3d(${window.innerWidth}px, 0, 0)`,
-          opacity: 0,
-          transition: 'transform .5s, opacity .5s'
-        })
-        setTimeout(() => { view.hide() })
-        // view.hide()
-      } else {
-        view.css({
-          transform: `translate3d(-${window.innerWidth}px, 0, 0)`,
-          opacity: 0,
-          transition: 'transform .5s, opacity .5s'
-        })
-        setTimeout(() => { view.hide() })
-        // view.hide()
-      }
 
       if (newIdx > 0) {
         thisView.find('i.back').show()
       }
     })
-
+    mobileInitialized = true
 
   }
 

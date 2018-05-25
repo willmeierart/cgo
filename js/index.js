@@ -4,7 +4,7 @@ import '../scss/main.scss'
 import { url, thisPage, isThin } from './utils'
 import './components/common/footer'  
 import './components/common/header'
-import './components/common/userAgreement'
+// import './components/common/userAgreement'
 import './components/common/menu'
 import logo from '../assets/cgo-logo.js' 
 
