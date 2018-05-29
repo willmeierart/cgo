@@ -152,7 +152,7 @@ function wpcf7_dynamic_to_filter($recipient, $args=array()) {
   }
   return $recipient;
 } // end function wpcf7-dynamic-email
-add_filter('wpcf7-dynamic-to-filter', 'wpcf7_dynamic_to_filter');
+add_filter('wpcf7-dynamic-recipient-filter', 'wpcf7_dynamic_to_filter');
 
 
 
