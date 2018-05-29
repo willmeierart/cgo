@@ -41,9 +41,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _utils = __webpack_require__(1);
 
-const ops = { mode: 'cors', credentials: 'include' };
+const ops = { mode: 'cors'
+  // const ops = { mode: 'cors', credentials: 'include' }
 
-const local = true;
+};const local = true;
 
 exports.default = {
   events: async () => {
