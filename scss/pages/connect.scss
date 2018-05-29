@@ -14,24 +14,33 @@
       font-style: italic;
       width: 100%;
       white-space: nowrap;
+      margin-bottom: 1.5em;
     }
     form {
       @extend .row;
-        input {
+        input:not([type=submit]), .your-email {
           height: 1.25em;
-          margin-top: 1.5em;
           width: 100%!important;
           background-image: none!important;
-          border: none !important;          
-          border-bottom: 1px solid lightgrey!important;
+          border: none !important;
+          border-bottom: 1px solid lightgrey !important;
+        }
+        .your-email {
+          border-bottom: none!important;
+          margin-bottom: 2.5em !important;          
+        }
+         .email {
+          margin-top: 1.5em!important;     
           &:focus {
-            border-bottom: 1px solid $color-gold!important;
+            border-bottom: 1px solid $color-gold !important;
           }
         }
-        textarea {
+        textarea, .message {
           border: none!important;
           border-top: 1px solid lightgrey!important;
           padding-top: .125em!important;
+          width: 100%!important;
+          color: black!important;
           &:focus {
             border-top: none!important;
             border-bottom: 1px solid $color-gold!important;
@@ -43,39 +52,65 @@
             @extend textarea;
           }
         }
+        .message {
+          border-top: none!important;
+        }
         .name-group {
+          position: relative;
           width: 100%;
           display: flex;
-          justify-content: space-between;
-          input {
-            width: 49%!important;
+          justify-content: center;
+          .last-name, .first-name {
+            width: 40%!important;
+            position: relative;
+            input {
+              width: 98%!important;
+            }
           }
         }
         select {
-          margin: 1.5em;
+          // margin: 1.5em;
           box-shadow: none!important;
           border-radius: 0!important;
           border: 1px solid lightgrey!important;
           background: white!important;
+          color: black!important;
           &:focus {
             @extend select;
             border: 1px solid $color-gold!important;
           }
         }
         .hr {
-          width: 100%;
+          width: 80%;
           height: 1px;
           background-color: lightgrey;
-          margin-top: 3em;
+          margin-top: 1em;
         }
         button {
           border: none;
-          background-color: $color-gold;
+          background-color: $color-gold!important;
           color: white;
-          font-family: $font-fam-sans;
+          font-family: $font-fam-sans!important;
           // font-weight: bold;
-          padding: .8em 2em;
-          margin-top: 3em;
+          padding: .8em 2em!important;
+          margin-top: 3em!important;
+          font-weight: 300 !important;
+          font-size: 1em !important;
+        }
+        p {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          font-weight: 300!important;
+          font-size: 1em!important;
+          font-family: $font-fam-sans !important;
+          #btn{
+            @extend button;
+            .ajax-loader {
+              display: none!important;
+            }
+          }
         }
       }
     }

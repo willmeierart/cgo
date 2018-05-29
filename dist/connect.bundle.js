@@ -142,9 +142,18 @@ jQuery(document).ready($ => {
     $('form').submit();
   };
 
+  const formatWpcf7 = () => {
+    $('.first-name').attr('placeholder', 'FIRST NAME');
+    $('.last-name').attr('placeholder', 'LAST NAME');
+    $('.email').attr('placeholder', 'EMAIL ADDRESS');
+    $('textarea').attr('placeholder', 'MESSAGE');
+    $('option').first().prop('disabled', true);
+  };
+
   const init = () => {
+    formatWpcf7();
     // setTimeout(() => {
-    //   normalizeForm()
+    // normalizeForm()
     // }, 1000)
     $('button').click(e => {
       e.preventDefault();

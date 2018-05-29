@@ -19,3 +19,7 @@
 ## TO-DO:
 [] at the end of the project, delete any unused files, remove enqueue'ing
   [] refactor for shared assets
+
+
+rsync -av kp0641570666030@45.40.149.159:/home/kp0641570666030/html/wp-content/plugins/
+/Users/w/var/www/centerofthegoldenone.com/www/wp-content/plugins

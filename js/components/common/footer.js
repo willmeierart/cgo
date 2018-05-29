@@ -46,17 +46,25 @@ jQuery(document).ready(function($) {
       const txtContent = $(item).children('a').text()
       if (txtContent === 'Two Gifts') twoGifts = $(item)
       if (i === 0) firstList = item
+      if (i < 3) {
+        $(item).addClass('mobile-col-1')
+      } else {
+        $(item).addClass('mobile-col-2')
+      }
       if (txtContent === 'Shop' || txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
       if (txtContent === 'Connect') $(item).addClass('top-lvl')
       if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').children('a')
-        .attr('href', window.innerWidth >= 1000 ? '/explore/spiritual-lineage' : '')
+        .attr('href', '/explore/spiritual-lineage')
+        // .attr('href', window.innerWidth >= 1000 ? '/explore/spiritual-lineage' : '')
       // if (txtContent === 'Explore' || txtContent === 'Participate') {
       //   $(item).css({ cursor: 'default', pointerEvents: 'none' }).children({ cursor: 'pointer', pointerEvents: 'all' })
       // }
       if (txtContent === 'Participate') $(item).addClass('mobile-exp').children('a')
-        .attr('href', window.innerWidth >= 1000 ? '/participate/meditation' : '')
+        .attr('href', '/participate/meditation')
+        // .attr('href', window.innerWidth >= 1000 ? '/participate/meditation' : '')
       if (txtContent === 'Explore') $(item).addClass('mobile-exp').children('a')
-        .attr('href', window.innerWidth >= 1000 ? '/explore/purpose' : '')
+        .attr('href', '/explore/purpose')
+        // .attr('href', window.innerWidth >= 1000 ? '/explore/purpose' : '')
     })
 
     // $('#footer-outer').find('.container').append(`
@@ -72,7 +80,7 @@ jQuery(document).ready(function($) {
     $(firstList).append(TGClone)
     twoGifts.remove()
     items.first().parent().prepend(`
-      <li class='menu-item top-lvl'>
+      <li class='menu-item top-lvl mobile-col-1'>
         <a href='/'>Home</a>
       </li>
     `)
@@ -118,18 +126,37 @@ jQuery(document).ready(function($) {
   }
 
   const handleMobile = () => {
+    $('#menu-main-1').append(`
+      <li class='mobile-wrapper-1'><ul></ul></li>
+      <li class='mobile-wrapper-2'><ul></ul></li>
+    `).css({ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' })
+    $('.menu-item').each((i, item) => {
+      if ($(item).parent('.sub-menu').length !== 0) {
+        $(item).remove()
+      }
+    })
+    const clone1 = $('.mobile-col-1').addClass('orig').clone()
+    const clone2 = $('.mobile-col-2').addClass('orig').clone()
+    clone1.addClass('cloned').removeClass('orig')
+    clone2.addClass('cloned').removeClass('orig')
+    $('.mobile-wrapper-1 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone1)
+    $('.mobile-wrapper-2 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone2)
+    $('.mobile-col-1.orig').remove()
+    $('.mobile-col-2.orig').remove()
     $('#footer-outer').find('.sub-menu, .tert-menu').addClass('hidden')
     $('#footer-outer').find('.menu-item').removeClass('top-marg')
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')
+    // $('.hidden').css({ display: 'none' })
     console.log('mobile exp:::', $('.mobile-exp'))
     $('.mobile-exp').click(e => {
       // e.stopPropagation()
       e.preventDefault()
       const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item')
       console.log('clicked', el.children('.hidden'))
-      el.children('.hidden').first().slideToggle(200)
-      el.find('.hidden').first().slideToggle(200)
+      // el.children('.hidden').first().slideToggle(200)
+      // el.find('.hidden').first().slideToggle(200)
     })
+    $('.two-gifts-thin').last().remove()
     // $('.mobile-exp').children('.sub-menu')
   }
 
