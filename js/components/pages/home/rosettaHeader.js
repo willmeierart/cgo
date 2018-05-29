@@ -124,10 +124,10 @@ jQuery(document).ready(($) => {
 
   const initDoc = () => {
     console.log('initDoc')
-    $('.rose-5 img').load(() => {
-      console.log('img loaded')
+    // $('.rose-5 img').load(() => {
+      // console.log('img loaded')
       createRosettas()
-    })
+    // })
   }
   initDoc()
   window.addEventListener('resize', () => {
