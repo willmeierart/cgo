@@ -155,7 +155,6 @@ function wpcf7_dynamic_recipient_filter($recipient, $args=array()) {
 add_filter('wpcf7-dynamic-recipient-filter', 'wpcf7_dynamic_recipient_filter', 10, 2);
 
 
-
 // redirect to home after logout
 add_action('wp_logout','auto_redirect_after_logout');
 function auto_redirect_after_logout(){
