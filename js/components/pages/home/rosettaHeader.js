@@ -36,6 +36,7 @@ jQuery(document).ready(($) => {
   }
 
   const createRosettas = () => {
+    console.log('create rosettas')
     let i = 4
     let j = 3
     const slots = [0, 0, 0, 0]
@@ -91,6 +92,7 @@ jQuery(document).ready(($) => {
       })
 
     const animateFunc = () => {
+      console.log('animatefunc')
       // console.log('animaterose')
       if (i === 0) i = 5
       if (j === 0) j = 5
@@ -121,7 +123,9 @@ jQuery(document).ready(($) => {
   }
 
   const initDoc = () => {
+    console.log('initDoc')
     $('.rose-5 img').load(() => {
+      console.log('img loaded')
       createRosettas()
     })
   }
