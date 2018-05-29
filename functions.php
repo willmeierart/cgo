@@ -137,7 +137,7 @@ function CGO_enqueue_js() {
 
 // add custom contact form dynamic recipient plugin
 function wpcf7_dynamic_recipient_filter($recipient, $args=array()) {
-	$recipient = 'testStr'
+	$recipient = 'testStr';
   if (isset($args['select-location'])) {
     if ($args['select-location'] == 'Denver - USA') {
       $recipient = 'michelle@miracle.org';
