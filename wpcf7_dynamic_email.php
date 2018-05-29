@@ -13,5 +13,5 @@ function wpcf7_dynamic_email($recipient, $args=array()) {
     }
   }
   return $recipient;
-} // end function wpcf7_dynamic_to_filter_example
-add_filter('wpcf7-dynamic-email', 'wpcf7_dynamic_email', 10, 2);
+} // end function wpcf7-dynamic-email
+add_filter('wpcf7-dynamic-email', 'wpcf7_dynamic_email');
