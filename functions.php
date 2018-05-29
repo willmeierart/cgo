@@ -115,6 +115,12 @@ function CGO_enqueue_js() {
 		} else if(is_shop()) {
 			wp_enqueue_script('cgo_store');
 			wp_enqueue_style('cgo_store_style', get_stylesheet_directory_uri() . '/dist/styles/store.css');
+		}	else if(is_cart()) {
+			wp_enqueue_script('cgo_store');
+			wp_enqueue_style('cgo_store_style', get_stylesheet_directory_uri() . '/dist/styles/store.css');
+		}	else if(is_checkout()) {
+			wp_enqueue_script('cgo_store');
+			wp_enqueue_style('cgo_store_style', get_stylesheet_directory_uri() . '/dist/styles/store.css');
 		} else if(is_page( 'Connect' )) {
 			wp_enqueue_script('cgo_connect');
 			wp_enqueue_style('cgo_connect_style', get_stylesheet_directory_uri() . '/dist/styles/connect.css');
