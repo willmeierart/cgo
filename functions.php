@@ -152,7 +152,7 @@ function wpcf7_dynamic_recipient_filter($recipient, $args=array()) {
   }
   return $recipient;
 } // end function wpcf7-dynamic-email
-add_filter('wpcf7-dynamic-recipient-filter', 'wpcf7_dynamic_recipient_filter', 10, 2);
+add_filter('wpcf7-dynamic-recipient-example-filter', 'wpcf7_dynamic_recipient_filter', 10, 2);
 
 
 // redirect to home after logout
