@@ -370,7 +370,9 @@ a {
   text-align: center;
   display: none;
 }
-
+.audio-link {
+  display: none;
+}
 #audio-modal-bg {
   width: 100vw;
   height: 100vh;
@@ -404,13 +406,21 @@ a {
       justify-content: center;
       align-items: center;
       audio {
-        display: none;
-        &::-webkit-media-controls-panel {}
-        &::-webkit-media-controls-mute-button {}
+        // display: none;
+        &::-webkit-media-controls-panel {
+          background-color: black;
+        }
+        &::-webkit-media-controls-mute-button {
+
+        }
         &::-webkit-media-controls-play-button {}
         &::-webkit-media-controls-timeline-container {}
-        &::-webkit-media-controls-current-time-display {}
-        &::-webkit-media-controls-time-remaining-display {}
+        &::-webkit-media-controls-current-time-display {
+          color: white;
+        }
+        &::-webkit-media-controls-time-remaining-display {
+          color: white;
+        }
         &::-webkit-media-controls-timeline {}
         &::-webkit-media-controls-volume-slider-container {}
         &::-webkit-media-controls-volume-slider {}
