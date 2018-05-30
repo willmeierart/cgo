@@ -3103,14 +3103,25 @@ jQuery(document).ready($ => {
     </div>
   `);
   jQuery('body').append(audioModal);
-
-  $('.audio-btn').click(e => {
-    console.log(e);
-    const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text();
-    console.log(SRC);
-    $('#audio-modal-bg').find('audio').attr('src', _utils.url + SRC);
-    $('#audio-modal-bg').css({ display: 'flex' });
+  $('#audio-modal-bg').click(e => {
+    $('#audio-modal-bg').hide(200);
   });
+
+  const handleBtnClick = () => {
+    $('.audio-btn').click(e => {
+      console.log(e);
+      const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text();
+      console.log(SRC);
+      $('#audio-modal-bg').find('audio').attr('src', _utils.url + SRC);
+      $('#audio-modal-bg').show(200);
+    });
+  };
+
+  const initDoc = () => {
+    handleBtnClick();
+  };
+
+  setTimeout(initDoc, 1000);
 });
 
 /***/ }),
