@@ -126,23 +126,23 @@ jQuery(document).ready(function($) {
   }
 
   const handleMobile = () => {
-    $('#menu-main-1').append(`
+    $('#footer-outer #menu-main-1').append(`
       <li class='mobile-wrapper-1'><ul></ul></li>
       <li class='mobile-wrapper-2'><ul></ul></li>
     `).css({ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' })
-    $('.menu-item').each((i, item) => {
+    $('#footer-outer .menu-item').each((i, item) => {
       if ($(item).parent('.sub-menu').length !== 0) {
         $(item).remove()
       }
     })
-    const clone1 = $('.mobile-col-1').addClass('orig').clone()
-    const clone2 = $('.mobile-col-2').addClass('orig').clone()
+    const clone1 = $('#footer-outer .mobile-col-1').addClass('orig').clone()
+    const clone2 = $('#footer-outer .mobile-col-2').addClass('orig').clone()
     clone1.addClass('cloned').removeClass('orig')
     clone2.addClass('cloned').removeClass('orig')
-    $('.mobile-wrapper-1 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone1)
-    $('.mobile-wrapper-2 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone2)
-    $('.mobile-col-1.orig').remove()
-    $('.mobile-col-2.orig').remove()
+    $('#footer-outer .mobile-wrapper-1 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone1)
+    $('#footer-outer .mobile-wrapper-2 ul').css({ display: 'flex', flexDirection: 'column' }).append(clone2)
+    $('#footer-outer .mobile-col-1.orig').remove()
+    $('#footer-outer .mobile-col-2.orig').remove()
     $('#footer-outer').find('.sub-menu, .tert-menu').addClass('hidden')
     $('#footer-outer').find('.menu-item').removeClass('top-marg')
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')

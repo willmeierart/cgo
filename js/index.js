@@ -6,6 +6,7 @@ import './components/common/footer'
 import './components/common/header'
 // import './components/common/userAgreement'
 import './components/common/menu'
+import './media'
 import logo from '../assets/cgo-logo.js' 
 
 jQuery(document).ready(($) => { 
@@ -108,7 +109,7 @@ jQuery(document).ready(($) => {
       flexDirection: 'column',
       alignItems: 'center'
     }).prepend(`
-      <a><img class='audio-btn' src='${url}/wp-content/uploads/2018/05/icon-audio.png' /></a>
+      <a class='audio-btn'><img src='${url}/wp-content/uploads/2018/05/icon-audio.png' /></a>
     `)
     $('.audio-btn').css({
       maxWidth: '30px'
@@ -118,6 +119,7 @@ jQuery(document).ready(($) => {
       })
     })
   }
+
 
   const initDoc = (() => {
     ditchThemeImgAnimations()

@@ -317,7 +317,9 @@ jQuery(document).ready(function($) {
 
     let LI
     // $('i.back').css({ cursor: 'pointer' }).one('click', e => {
-      $('#top').find('.col-1, .col-2, .col-3').css({ textAlign: 'left!important' })
+      $('#top').find('.col-2, .col-3').css({ textAlign: 'left!important' })
+      $('#top').find('.col-1').css({ textAlign: 'right!important' })
+          .children('ul').css({ alignItems: 'flex-end' })
     
     $('#side-nav li').each((i, li) => {
       const a = $(li).children('a')
@@ -326,7 +328,7 @@ jQuery(document).ready(function($) {
       }
       
       if ($(li).hasClass('has-children')) {
-        $(li).children('a').first().append('<i class="fas fa-chevron-down forward"></i>')
+        $(li).children('a').first().append('<i class="fas fa-chevron-right forward"></i>')
         // $(li).children('a').first().prepend('<i class="fas fa-chevron-left back"></i>')
         
         $('i.back').css({ display: 'none' })

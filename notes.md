@@ -23,3 +23,6 @@
 
 rsync -av kp0641570666030@45.40.149.159:/home/kp0641570666030/html/wp-content/plugins/
 /Users/w/var/www/centerofthegoldenone.com/www/wp-content/plugins
+
+
+https://test.centerofthegoldenone.com/wp-content/uploads/2018/05/Everyone-is-Praying-Everyone-is-Searching-for-Love.mp3

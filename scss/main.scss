@@ -371,6 +371,45 @@ a {
   display: none;
 }
 
+#audio-modal-bg {
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  .audio-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    .audio-screen {
+      background: rgba(255, 255, 255, .85);
+      z-index: 101;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+    .player-wrapper {
+      z-index: 102;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      audio {
+        display: none;
+      }
+    }
+  }
+}
+
 
 /********************************************
 ************* ~MEDIA QUERIES~ ***************
