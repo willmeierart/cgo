@@ -16870,6 +16870,7 @@ jQuery(document).ready(function ($) {
 
   let LOCAL_EVENTS;
   let RECURRING_EVENTS;
+  let ALL_EVENTS;
 
   let hashFilter = hash.replace('#', '').replace('-', '_');
   let activeLocation = 'Denver';
@@ -17077,7 +17078,7 @@ jQuery(document).ready(function ($) {
     console.log('eventEls 2', allEventEls);
   };
 
-  const transformEvents = (events, centers) => {
+  const transformEvents = (events, centers, transformAll) => {
     const formatTime = D => {
       const dateParts = D.split('-');
       const dateTimeSplit = dateParts[dateParts.length - 1].split('T');
@@ -17093,13 +17094,13 @@ jQuery(document).ready(function ($) {
     // console.log(events)
 
 
-    return events.map(event => {
+    const transformer = CENTER => events.map(event => {
       const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event;
 
       const month = start_time ? (0, _moment2.default)(preMonth(event)).format('MMMM') : null;
       const start = start_time ? formatTime(event.start_time) : null;
       const end = end_time ? formatTime(event.end_time) : null;
-      const center = centers.filter(center => center.id === center_id || center.id === location_id)[0];
+      const center = CENTER ? CENTER : centers.filter(center => center.id === center_id || center.id === location_id)[0];
       const endsSameDay = start_time && end_time ? formatTime(start_time).date === formatTime(end_time).date : false;
       if (endsSameDay) {
         start.time = `${start.time} - ${end.time}`;
@@ -17131,6 +17132,12 @@ jQuery(document).ready(function ($) {
       };
       return retObj;
     });
+
+    const sendAll = centers.map(center => {
+      return transformer(center);
+    });
+
+    return !transformAll ? transformer() : sendAll;
   };
 
   function filterEventsData() {
@@ -17228,6 +17235,7 @@ jQuery(document).ready(function ($) {
 
     LOCAL_EVENTS = transformEvents(localEvents, thisLocationCenters);
     RECURRING_EVENTS = transformEvents(recurringEvents, thisLocationCenters);
+    ALL_EVENTS = transformEvents(events, centers);
 
     renderEventData(LOCAL_EVENTS, RECURRING_EVENTS);
     handleExpandingMonths();
@@ -17313,6 +17321,33 @@ jQuery(document).ready(function ($) {
     }
   };
 
+  const filterLocationsOnMobile = locations => {
+
+    // const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
+    // const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
+    const returnedEvents = [];
+    $(locations[0]).children().each((a, locChild) => {
+      const locTxt = $(locChild).find('a').text().toLowerCase();
+      ALL_EVENTS.forEach(event => {
+        const txt = event.location.address.toLowerCase();
+        if (txt.indexOf(locTxt) !== -1 && returnedEvents.indexOf(locTxt) === -1) returnedEvents.push(locTxt);
+      });
+      // $(events[0]).children().each((i, child) => {
+      //   console.log(child);
+      //   $(child).children().each((j, grandChild) => {
+      //     const txt = $(grandChild).find('.address').text().toLowerCase()
+      //     // if (txt.toLowerCase() === )
+      //     console.log(txt)
+      //     if (txt.indexOf(locTxt) !== -1) {
+      //       returnedEvents.push(locTxt)
+      //     }
+      //   })
+      // })
+    });
+    console.log(returnedEvents);
+    return returnedEvents;
+  };
+
   const createMobileFilters = () => {
     const allFiltersCompleted = mobileCardStateIdx === 3;
     const reload = allEventEls !== undefined;
@@ -17325,6 +17360,16 @@ jQuery(document).ready(function ($) {
     console.log('reload?: ', reload);
 
     const allEventsClone = !reload ? $('.az-offerings-location-detail-wrapper').clone() : allEventEls.clone();
+
+    const locationsWithEvents = filterLocationsOnMobile(locationListClone);
+
+    $(locationListClone[0]).children().each((i, li) => {
+      const txt = $(li).children().text().toLowerCase();
+      if (locationsWithEvents.indexOf(txt) === -1) {
+        $(li).css({ display: 'none' });
+      }
+      console.log(locationsWithEvents, txt);
+    });
 
     console.log('eventEls inside createMobileFilters:', allEventEls);
 
