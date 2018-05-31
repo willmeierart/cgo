@@ -99,11 +99,11 @@ jQuery(document).ready(function($) {
         <div class='copyright'>© Center of the Golden One, 2018</div>
         <ul class='ua-pp'>
           <li class='menu-item'>
-            <a href='#'>User Agreement </a>
+            <a href='/user-agreement'>User Agreement </a>
             <span class='gold-text'>/</span>
           </li>
           <li class='menu-item'>
-            <a href='#'>Privacy Policy</a>
+            <a href='/user-agreement'>Privacy Policy</a>
           </li>
         </ul>
       </div>

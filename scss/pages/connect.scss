@@ -115,3 +115,9 @@
       }
     }
 }
+
+@media screen and (max-width: 600px) {
+  select {
+    width: 80%!important;
+  }
+}

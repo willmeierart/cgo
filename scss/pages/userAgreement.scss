@@ -2,6 +2,7 @@
 
 .user-agreement {
   color: black!important;
+  text-align: center;
   p, h4 {
     color: black!important;
   }
@@ -39,5 +40,11 @@
     * {
       text-align: center;
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main-content {
+    padding: 5vw;
   }
 }
