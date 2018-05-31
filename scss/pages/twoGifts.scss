@@ -117,7 +117,9 @@
       }
     }
   }
+  
   .btn-wrapper {
+    margin-left: 2%!important;
     .wpb_wrapper {
       display: flex;
       justify-content: center;
@@ -141,6 +143,14 @@
     }
     margin-top: 3em;
   }
+  .vc_col-sm-4 {
+    &.btn-wrapper {
+      // .two-gifts-button {
+      //   width: 120%;
+      //   min-width: 100%;
+      // }
+    }
+  }
   .quote-txt-block {
     .wpb_wrapper {
       display: flex;
@@ -150,6 +160,21 @@
       .end-txt-block {
         text-align: center;
         width: 60%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .two-gifts {
+    .btn-wrapper {
+      margin-left: 0!important;
+    }
+  }
+  .col.span_12 {
+    .vc_column-inner {
+      .audio-text {
+        padding: 10px;
       }
     }
   }

@@ -1,15 +1,15 @@
 @import '../_variables.scss';
 
-$home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
+// $home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
 
-.header-gradient {
-  height: 20vh;
-  background: linear-gradient(rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 20;
-}
+// .header-gradient {
+//   height: 20vh;
+//   background: linear-gradient(rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
+//   position: absolute;
+//   top: 0;
+//   width: 100%;
+//   z-index: 20;
+// }
 
 .home{
   .container-wrap {
@@ -184,6 +184,9 @@ $home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
 }
 
 @media screen and (max-width: 1000px) {
+  .row .col.section-title span:not(.share-count-total) {
+    display: initial!important;
+  }
   .come-within {
     // width: 80vw;
     // margin-left: -40vw;
@@ -201,9 +204,18 @@ $home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
       }
       .vc_col-sm-3 {
         padding: 0!important;
-        .home-nav-btn {
-          background-size: contain!important;
-          width: unset;
+        .wpb_wrapper {
+          display: flex;
+          justify-content: center;
+          .home-nav-btn {
+            background-size: contain!important;
+            width: 100vw;
+            margin: 0;
+            height: 120px;
+            a {
+              padding-top: 1.5em;
+            }
+          }
         }
       }
     }
@@ -214,6 +226,12 @@ $home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
   .main-content {
     .col.span_12 {
       flex-direction: column-reverse;
+      align-items: center;
+    }
+    .col-flip {
+      .col.span_12 {
+        flex-direction: column;
+      }
     }
   }
 }

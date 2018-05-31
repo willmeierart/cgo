@@ -128,5 +128,8 @@ jQuery(document).ready(($) => {
     handleLocalSrcSets()
     prependAudioBtn()
     formatGoldFirstLetter()
+    window.addEventListener('resize', () => {
+      $('.cart-outer').css({ display: 'none' })
+    })
   })()
 })

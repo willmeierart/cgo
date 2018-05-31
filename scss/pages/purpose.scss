@@ -38,6 +38,9 @@ $color-gold: #CDA33A;
 @media screen and (max-width: 1000px) {
   .purpose {
     .main-content {
+      .audio-row {
+        margin: 0;
+      }
       .col.span_12 {
         flex-direction: column-reverse;
       }

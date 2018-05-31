@@ -83,19 +83,36 @@
 
 @media screen and (max-width: 1000px) {
   .teachings {
-    .header-title-text, .banner-2, .banner-3, .banner-4 {
-      margin-left: -4em!important;
-    }
-    .col {
-      .span_12 {
-        display: flex;
-        flex-direction: column;
+    .main-content {
+      .col {
+        .span_12 {
+          display: flex;
+          flex-direction: column;
+        }
       }
-    }
-    .col-flip {
-      .span_12 {
-        display: flex;
-        flex-direction: column-reverse;
+      .col-flip {
+        .span_12 {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
+      .vc_col-sm-6 {
+        padding: 3em 6em !important;
+      }
+      .vc_column-inner {
+        .wpb_wrapper {
+          .quote-attr {
+            // margin-bottom: 2em!important;
+          }
+        }
+      }
+      .header-title-text, .banner-2, .banner-3, .banner-4 {
+        // margin-left: -4em!important;
+        .wpb_wrapper {
+          .quote-attr {
+            margin-bottom: 0!important;
+          }
+        }
       }
     }
   }

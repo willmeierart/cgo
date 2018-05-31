@@ -45,3 +45,14 @@
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .audio-text {
+    margin-top: 3em!important;
+    .wpb_wrapper {
+      p {
+        width: 100%!important;
+      }
+    }
+  }
+}

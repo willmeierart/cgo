@@ -137,7 +137,7 @@ function CGO_enqueue_js() {
 
 // add custom contact form dynamic recipient plugin
 function wpcf7_dynamic_recipient_filter($recipient, $args=array()) {
-	$recipient = 'will@agencyzero.com';
+	$recipient = 'zero@agencyzero.com';
   if (isset($args['select-location'])) {
     if ($args['select-location'] == 'Denver - USA') {
       $recipient = 'michelle@miracle.org';
@@ -149,6 +149,10 @@ function wpcf7_dynamic_recipient_filter($recipient, $args=array()) {
       $recipient = 'gmpperth@gmail.com';
     } elseif ($args['select-location'] == 'tester') {
       $recipient = 'will@agencyzero.com';
+    } elseif ($args['select-location'] == 'tester2') {
+      $recipient = 'willmeierart@gmail.com';
+    } elseif ($args['select-location'] == 'tester3') {
+      $recipient = 'zero@agencyzero.com';
     }
   }
   return $recipient;
