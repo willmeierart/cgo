@@ -16,7 +16,7 @@ const isThin = exports.isThin = jQuery(window).width() <= 1000;
 
 const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
 
-const url = exports.url = 'https://test.centerofthegoldenone.com';
+const url = exports.url = window.location.hostname === 'localhost' ? 'https://test.centerofthegoldenone.com' : '';
 
 const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
 const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
@@ -77,7 +77,7 @@ jQuery(document).ready(function ($) {
   const addTopMarginNoTitle = () => {
     $('.vc_col-sm-6').each((i, col) => {
       const conds = $(col).find('h4').length < 1 && $(col).siblings().find('h4').length >= 1 && $(col).find('img').length < 1;
-      console.log(conds);
+      // console.log(conds);
       if (conds) {
         $(col).css({ marginTop: '4.5em' });
       }

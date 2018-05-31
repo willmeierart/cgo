@@ -8,8 +8,6 @@ webpackJsonp([14],{
 
 __webpack_require__(213);
 
-console.log('activated');
-
 /***/ }),
 
 /***/ 213:

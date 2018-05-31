@@ -23,9 +23,9 @@ jQuery(document).ready($ => {
 
   const handleBtnClick = () => {
     $('.audio-btn').click(e => {
-      console.log(e)
+      // console.log(e)
       const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text()
-      console.log(SRC)    
+      // console.log(SRC)    
       $('#audio-modal-bg').find('audio').attr('src', url + SRC)
       $('#audio-modal-bg').show(200)
     })

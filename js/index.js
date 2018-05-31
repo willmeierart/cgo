@@ -10,6 +10,7 @@ import './media'
 import logo from '../assets/cgo-logo.js' 
 
 jQuery(document).ready(($) => { 
+  // console.log(window.location)
 
   const ditchThemeImgAnimations = () => {
     $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap')

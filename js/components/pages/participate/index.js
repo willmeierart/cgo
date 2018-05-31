@@ -228,9 +228,9 @@ jQuery(document).ready(function($) {
       
     })
 
-    console.log('eventEls 1', allEventEls)
+    // console.log('eventEls 1', allEventEls)
     allEventEls = detailsWrapper.clone()
-    console.log('eventEls 2', allEventEls)
+    // console.log('eventEls 2', allEventEls)
   }
 
   
@@ -351,7 +351,7 @@ jQuery(document).ready(function($) {
 
     const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id)
 
-    console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters)
+    // console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters)
     
 
     const recurringEvents = thisLocationCenters.reduce(
@@ -512,7 +512,7 @@ jQuery(document).ready(function($) {
       //   })
       // })
     })
-    console.log(returnedEvents);
+    // console.log(returnedEvents);
     return returnedEvents
   }
 
@@ -530,7 +530,7 @@ jQuery(document).ready(function($) {
       : typeList.clone().addClass('mobile-list mobile-type-list')
 
 
-    console.log('reload?: ', reload);
+    // console.log('reload?: ', reload);
 
     const allEventsClone = !reload ? $('.az-offerings-location-detail-wrapper').clone() : allEventEls.clone()
 
@@ -541,13 +541,13 @@ jQuery(document).ready(function($) {
       if (locationsWithEvents.indexOf(txt) === -1) {
         $(li).css({ display: 'none' })
       }
-      console.log(locationsWithEvents, txt)
+      // console.log(locationsWithEvents, txt)
     })
 
     
     
 
-    console.log('eventEls inside createMobileFilters:', allEventEls)
+    // console.log('eventEls inside createMobileFilters:', allEventEls)
 
     const dateFilterList = $('<ul class="date-filter-list mobile-list"></ul>').append(dateFilters.map((date, i) => `<li class='date-filter'><a>${date}</a></li>`))
     const cardTitles = {
@@ -656,7 +656,7 @@ jQuery(document).ready(function($) {
     advanceMobileCardState(cmd)
     handleMobileStyling()
     handleMobileFiltering()
-    console.log(RECURRING_EVENTS, LOCAL_EVENTS)
+    // console.log(RECURRING_EVENTS, LOCAL_EVENTS)
     renderMobileEvents(isRecurring ? RECURRING_EVENTS : LOCAL_EVENTS)
     // $('.date-category').children('.month-name').css({ visibility: 'hidden' })
   }
@@ -721,7 +721,7 @@ jQuery(document).ready(function($) {
 
   async function renderDoc () {
     activeTypeFilter = 'all'
-    const forceRefresh = true
+    const forceRefresh = false
     const { localStorage } = window
     const data = await queries.events()
     const shouldRefresh = localStorage.lastUpdated + 60000000 <= Date.now()
@@ -734,7 +734,7 @@ jQuery(document).ready(function($) {
     const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
 
     console.log('cached refreshed:', conds)
-    console.log('cachedData: ', cachedData)
+    // console.log('cachedData: ', cachedData)
 
     const allTheseCourses = (() => {
       switch (true) {

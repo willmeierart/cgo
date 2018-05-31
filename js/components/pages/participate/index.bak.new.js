@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
     const monthKeys = Object.keys(monthsExpanded)
     monthKeys.forEach(month => {
       $(`.${month}`).click(() => {
-        console.log(month)
+        // console.log(month)
         monthsExpanded[month] = !monthsExpanded[month]
         $(`.${month}`).children('*:not(i, svg)').toggle(300)
         $(`.${month}`).children('i').toggleClass('fa-angle-down fa-angle-up')
@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {
     setActiveItemFilter(thisChild, activeTypeFilter)
     thisChild.click(e => {
       activeTypeFilter = $(e.target).text()
-      console.log(thisChild, activeTypeFilter)
+      // console.log(thisChild, activeTypeFilter)
       setActiveItemFilter(thisChild, activeTypeFilter)
       $('.az-offerings-location-detail-wrapper').empty()
       // refreshEventList()
@@ -215,7 +215,7 @@ jQuery(document).ready(function($) {
     
     eventData.forEach((event, i) => {
       const { id, time: { month } } = event
-      console.log(month)
+      // console.log(month)
       lowMonthIdx = getFirstMonth(lowMonthIdx, month)
 
       if (detailsWrapper.find(`#${id}`).length < 1) {

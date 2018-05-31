@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
     const eachWrapper = $('.az-offerings-types-description-container .wpb_wrapper').children('.wpb_raw_code')
     await $(eachWrapper).each((i, wrapper) => {
       const actualContent = $(wrapper).children('txt-block')
-      console.log(actualContent);
+      // console.log(actualContent);
       $('.az-offerings-types-description-container').prepend(actualContent)
     })
     await $('.az-offerings-types-description-container').children().each((i, child) => {

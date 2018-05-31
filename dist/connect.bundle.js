@@ -16,7 +16,7 @@ const isThin = exports.isThin = jQuery(window).width() <= 1000;
 
 const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
 
-const url = exports.url = 'https://test.centerofthegoldenone.com';
+const url = exports.url = window.location.hostname === 'localhost' ? 'https://test.centerofthegoldenone.com' : '';
 
 const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
 const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
@@ -80,7 +80,7 @@ jQuery(document).ready($ => {
   const normalizeForm = () => {
     $('.minimal-form-input').each((i, f) => {
       const form = $(f).children();
-      console.log(form);
+      // console.log(form)
       $(f).replaceWith(form);
     });
   };
@@ -133,12 +133,12 @@ jQuery(document).ready($ => {
     const emailBody = `Name:${space}${name.replace(' ', space)}${linebreak}Is${space}inquiring${space}about${space}the${space}location:${space}${location.replace(' ', space)}.${linebreak}And${space}can${space}be${space}reached${space}at${space}${email}.${linebreak}Their${space}inquiry${space}is${space}as${space}follows:${linebreak}${msg.replace('', space).replace('\n', linebreak)}`;
 
     const encodedMsg = encodeURIComponent(emailBody);
-    console.log(name, email, location, msg, contactEmail, $(form), emailBody);
+    // console.log(name, email, location, msg, contactEmail, $(form), emailBody)
 
     // $(form).attr('action', `mailto:${contactEmail}?subject=Website Inquiry`)
     $(form).attr('action', `mailto:${contactEmail}?subject=Website${space}Inquiry&body=${emailBody}`);
 
-    console.log($(form).attr('action'));
+    // console.log($(form).attr('action'))
 
     $('form').submit();
   };

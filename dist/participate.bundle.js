@@ -4528,7 +4528,7 @@ const isThin = exports.isThin = jQuery(window).width() <= 1000;
 
 const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
 
-const url = exports.url = 'https://test.centerofthegoldenone.com';
+const url = exports.url = window.location.hostname === 'localhost' ? 'https://test.centerofthegoldenone.com' : '';
 
 const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
 const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
@@ -17073,9 +17073,9 @@ jQuery(document).ready(function ($) {
       }
     });
 
-    console.log('eventEls 1', allEventEls);
+    // console.log('eventEls 1', allEventEls)
     allEventEls = detailsWrapper.clone();
-    console.log('eventEls 2', allEventEls);
+    // console.log('eventEls 2', allEventEls)
   };
 
   const transformEvents = (events, centers, transformAll) => {
@@ -17187,7 +17187,8 @@ jQuery(document).ready(function ($) {
 
     const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id);
 
-    console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters);
+    // console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters)
+
 
     const recurringEvents = thisLocationCenters.reduce((list, center) => {
       list = list.concat(center.recurring_events);
@@ -17344,7 +17345,7 @@ jQuery(document).ready(function ($) {
       //   })
       // })
     });
-    console.log(returnedEvents);
+    // console.log(returnedEvents);
     return returnedEvents;
   };
 
@@ -17357,7 +17358,7 @@ jQuery(document).ready(function ($) {
     const typeList = $('.az-offerings-type-filter-wrapper').children('ul');
     const typeListClone = mobileHasBeenTransformed ? $('.mobile-type-list') : typeList.clone().addClass('mobile-list mobile-type-list');
 
-    console.log('reload?: ', reload);
+    // console.log('reload?: ', reload);
 
     const allEventsClone = !reload ? $('.az-offerings-location-detail-wrapper').clone() : allEventEls.clone();
 
@@ -17368,10 +17369,10 @@ jQuery(document).ready(function ($) {
       if (locationsWithEvents.indexOf(txt) === -1) {
         $(li).css({ display: 'none' });
       }
-      console.log(locationsWithEvents, txt);
+      // console.log(locationsWithEvents, txt)
     });
 
-    console.log('eventEls inside createMobileFilters:', allEventEls);
+    // console.log('eventEls inside createMobileFilters:', allEventEls)
 
     const dateFilterList = $('<ul class="date-filter-list mobile-list"></ul>').append(dateFilters.map((date, i) => `<li class='date-filter'><a>${date}</a></li>`));
     const cardTitles = {
@@ -17473,7 +17474,7 @@ jQuery(document).ready(function ($) {
     advanceMobileCardState(cmd);
     handleMobileStyling();
     handleMobileFiltering();
-    console.log(RECURRING_EVENTS, LOCAL_EVENTS);
+    // console.log(RECURRING_EVENTS, LOCAL_EVENTS)
     renderMobileEvents(isRecurring ? RECURRING_EVENTS : LOCAL_EVENTS);
     // $('.date-category').children('.month-name').css({ visibility: 'hidden' })
   };
@@ -17532,7 +17533,7 @@ jQuery(document).ready(function ($) {
 
   async function renderDoc() {
     activeTypeFilter = 'all';
-    const forceRefresh = true;
+    const forceRefresh = false;
     const { localStorage } = window;
     const data = await _queries2.default.events();
     const shouldRefresh = localStorage.lastUpdated + 60000000 <= Date.now();
@@ -17545,7 +17546,7 @@ jQuery(document).ready(function ($) {
     const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData;
 
     console.log('cached refreshed:', conds);
-    console.log('cachedData: ', cachedData);
+    // console.log('cachedData: ', cachedData)
 
     const allTheseCourses = (() => {
       switch (true) {

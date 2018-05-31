@@ -16,7 +16,7 @@ const isThin = exports.isThin = jQuery(window).width() <= 1000;
 
 const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
 
-const url = exports.url = 'https://test.centerofthegoldenone.com';
+const url = exports.url = window.location.hostname === 'localhost' ? 'https://test.centerofthegoldenone.com' : '';
 
 const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
 const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
@@ -107,38 +107,38 @@ jQuery(document).ready($ => {
   const imgWPix = `${imgSize}px`;
   const imgEl = $('.each-rose').children('img')[0];
   const roseRect = imgEl.getBoundingClientRect();
-  console.log(roseRect);
+  // console.log(roseRect)
   let roseRealWidth = roseRect.width;
   let roseMargin = (window.innerWidth - roseRealWidth) / 2;
 
-  console.log(roseRealWidth);
+  // console.log(roseRealWidth)
 
   window.addEventListener('resize', () => {
     if (window.innerWidth < imgSize) {
-      console.log('reeval roseRealWidth');
+      // console.log('reeval roseRealWidth')
       roseRealWidth = imgEl.getBoundingClientRect().width;
       $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ });
     }
     roseMargin = (window.innerWidth - roseRealWidth) / 2;
   });
 
-  console.log(window.location);
+  // console.log(window.location)
   const isLocal = window.location.host.includes('localhost');
 
   if (isLocal) {
-    console.log('isLocal');
+    // console.log('isLocal')
     const rawSrc = $('.rose-5 img').attr('src');
     $('.rose-5 img').attr('src', _utils.url + rawSrc);
-    console.log($('.rose-5 img').attr('src'));
+    // console.log($('.rose-5 img').attr('src'))
   }
 
   const createRosettas = () => {
-    console.log('create rosettas');
+    // console.log('create rosettas')
     let i = 4;
     let j = 3;
     const slots = [0, 0, 0, 0];
     slots.forEach((x, k) => {
-      console.log(x, k);
+      // console.log(x, k)
       const num = k + 1;
       $('#rosetta-container').append($(`
         <div class='each-rose rose-${num}' >
@@ -187,7 +187,7 @@ jQuery(document).ready($ => {
     });
 
     const animateFunc = () => {
-      console.log('animatefunc');
+      // console.log('animatefunc')
       // console.log('animaterose')
       if (i === 0) i = 5;
       if (j === 0) j = 5;
@@ -219,7 +219,7 @@ jQuery(document).ready($ => {
   };
 
   const initDoc = () => {
-    console.log('initDoc');
+    // console.log('initDoc')
     // $('.rose-5 img').load(() => {
     // console.log('img loaded')
     createRosettas();

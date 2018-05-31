@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 
   const shuffleList = () => {
     const items = $('#footer-outer').find('li.menu-item')
-    console.log(items)
+    // console.log(items)
     let twoGifts
     let firstList
     items.each((i, item) => {
@@ -147,12 +147,12 @@ jQuery(document).ready(function($) {
     $('#footer-outer').find('.menu-item').removeClass('top-marg')
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')
     // $('.hidden').css({ display: 'none' })
-    console.log('mobile exp:::', $('.mobile-exp'))
+    // console.log('mobile exp:::', $('.mobile-exp'))
     $('.mobile-exp').click(e => {
       // e.stopPropagation()
       e.preventDefault()
       const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item')
-      console.log('clicked', el.children('.hidden'))
+      // console.log('clicked', el.children('.hidden'))
       // el.children('.hidden').first().slideToggle(200)
       // el.find('.hidden').first().slideToggle(200)
     })
@@ -161,7 +161,7 @@ jQuery(document).ready(function($) {
   }
 
   const init = (() => {
-    console.log($('#footer-outer').find('.sub-menu'))
+    // console.log($('#footer-outer').find('.sub-menu'))
     shuffleList()
     appendSocialsAndCopyright()
     if (window.innerWidth < 1000) {

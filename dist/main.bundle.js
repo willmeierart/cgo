@@ -16,7 +16,7 @@ const isThin = exports.isThin = jQuery(window).width() <= 1000;
 
 const isMobile = exports.isMobile = typeof window.orientation !== 'undefined';
 
-const url = exports.url = 'https://test.centerofthegoldenone.com';
+const url = exports.url = window.location.hostname === 'localhost' ? 'https://test.centerofthegoldenone.com' : '';
 
 const API_PROXY = exports.API_PROXY = 'http://104.131.7.39/data/';
 const API_BASE = exports.API_BASE = 'http://104.130.1.140/data/';
@@ -648,6 +648,7 @@ var _cgoLogo2 = _interopRequireDefault(_cgoLogo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 jQuery(document).ready($ => {
+  // console.log(window.location)
 
   const ditchThemeImgAnimations = () => {
     $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap');
@@ -831,7 +832,7 @@ jQuery(document).ready(function ($) {
 
   const shuffleList = () => {
     const items = $('#footer-outer').find('li.menu-item');
-    console.log(items);
+    // console.log(items)
     let twoGifts;
     let firstList;
     items.each((i, item) => {
@@ -936,12 +937,12 @@ jQuery(document).ready(function ($) {
     $('#footer-outer').find('.menu-item').removeClass('top-marg');
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl');
     // $('.hidden').css({ display: 'none' })
-    console.log('mobile exp:::', $('.mobile-exp'));
+    // console.log('mobile exp:::', $('.mobile-exp'))
     $('.mobile-exp').click(e => {
       // e.stopPropagation()
       e.preventDefault();
       const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item');
-      console.log('clicked', el.children('.hidden'));
+      // console.log('clicked', el.children('.hidden'))
       // el.children('.hidden').first().slideToggle(200)
       // el.find('.hidden').first().slideToggle(200)
     });
@@ -950,7 +951,7 @@ jQuery(document).ready(function ($) {
   };
 
   const init = (() => {
-    console.log($('#footer-outer').find('.sub-menu'));
+    // console.log($('#footer-outer').find('.sub-menu'))
     shuffleList();
     appendSocialsAndCopyright();
     if (window.innerWidth < 1000) {
@@ -1048,7 +1049,7 @@ jQuery(document).ready(function ($) {
 
   const breakpoints = [1000];
   const isThin = $(window).width() <= 1000;
-  console.log(menuIsOpen);
+  // console.log(menuIsOpen);
 
   const giveHeaderGradient = () => {
     $('body').prepend("<div class='header-gradient'></div>");
@@ -1056,11 +1057,11 @@ jQuery(document).ready(function ($) {
 
   const clonedMenu = isThin ? $(_extends({}, $('.mobile-only .menu').clone())) : $(_extends({}, $('nav .sf-menu').clone()));
 
-  console.log(clonedMenu);
+  // console.log(clonedMenu);
 
   const handleCartDropdown = () => {
     let isWooCommercePg = false;
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname)
     const { pathname } = window.location;
     const path = pathname.replace(/[^a-zA-Z]/g, '').toLowerCase();
     const pages = ['shop', 'cart', 'checkout', 'order', 'product'];
@@ -1085,7 +1086,7 @@ jQuery(document).ready(function ($) {
         borderLeft: 'none'
       });
     }
-    console.log(isWooCommercePg);
+    // console.log(isWooCommercePg)
   };
 
   const makeWholeNewMenu = () => {
@@ -3112,9 +3113,9 @@ jQuery(document).ready($ => {
 
   const handleBtnClick = () => {
     $('.audio-btn').click(e => {
-      console.log(e);
+      // console.log(e)
       const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text();
-      console.log(SRC);
+      // console.log(SRC)    
       $('#audio-modal-bg').find('audio').attr('src', _utils.url + SRC);
       $('#audio-modal-bg').show(200);
     });

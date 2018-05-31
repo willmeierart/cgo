@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
 
   const breakpoints = [1000]
   const isThin = $(window).width() <= 1000
-  console.log(menuIsOpen);
+  // console.log(menuIsOpen);
 
   const giveHeaderGradient = () => {
     $('body').prepend("<div class='header-gradient'></div>")
@@ -18,11 +18,11 @@ jQuery(document).ready(function($) {
     ? $({ ...$('.mobile-only .menu').clone() })
     : $({ ...$('nav .sf-menu').clone() })
 
-  console.log(clonedMenu);
+  // console.log(clonedMenu);
   
   const handleCartDropdown = () => {
     let isWooCommercePg = false
-    console.log(window.location.pathname)
+    // console.log(window.location.pathname)
     const { pathname } = window.location
     const path = pathname.replace(/[^a-zA-Z]/g, '').toLowerCase()
     const pages = ['shop', 'cart', 'checkout', 'order', 'product']
@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
         borderLeft: 'none'
       })
     }
-    console.log(isWooCommercePg)
+    // console.log(isWooCommercePg)
   }
   
 
