@@ -16755,7 +16755,8 @@ var _utils = __webpack_require__(1);
 const ops = { mode: 'cors'
   // const ops = { mode: 'cors', credentials: 'include' }
 
-};const local = true;
+};const local = false;
+// const local = window.location.hostname === 'localhost'
 
 exports.default = {
   events: async () => {

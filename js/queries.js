@@ -2,7 +2,8 @@ import { API_PROXY, API_BASE } from './utils'
 const ops = { mode: 'cors' }
 // const ops = { mode: 'cors', credentials: 'include' }
 
-const local = window.location.hostname === 'localhost'
+const local = false
+// const local = window.location.hostname === 'localhost'
 
 export default {
   events: async () => {
