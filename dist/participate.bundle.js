@@ -16761,7 +16761,7 @@ const ops = { mode: 'cors'
 exports.default = {
   events: async () => {
     // const fetcher = await fetch(`${local ? API_PROXY : API_BASE}events`, ops)
-    const fetcher = await fetch(`https://104.130.1.140/data/events`, ops);
+    const fetcher = await fetch(`http://104.130.1.140/data/events`, ops);
     const response = await fetcher.json();
     return response.data;
   },
