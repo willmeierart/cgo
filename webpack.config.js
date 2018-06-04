@@ -43,9 +43,9 @@ module.exports = function(env) {
           test: /\.js$/,
           exclude: /node_modules/,
           use: [
-            // {
-            //   loader: "cache-loader"
-            // },
+            {
+              loader: "cache-loader"
+            },
             {
               loader: "babel-loader",
               options: {
@@ -65,9 +65,9 @@ module.exports = function(env) {
         {
           test: /\.html$/,
           use: [
-            // {
-            //   loader: "cache-loader"
-            // },
+            {
+              loader: "cache-loader"
+            },
             {
               loader: "raw-loader"
             }
@@ -79,9 +79,9 @@ module.exports = function(env) {
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
             use: [
-              // {
-              //   loader: "cache-loader"
-              // },
+              {
+                loader: "cache-loader"
+              },
               {
                 loader: "css-loader", options: {
                   sourceMap: true
@@ -142,19 +142,19 @@ module.exports = function(env) {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'common'
       }),
-      // new UglifyJsPlugin({
-      //   sourceMap: true,
-      //   uglifyOptions: {
-      //     ie8: false,
-      //     ecma: 8,
-      //     mangle: true,
-      //     output: {
-      //       comments: false,
-      //       beautify: false
-      //     },
-      //     warnings: false
-      //   }
-      // }),
+      new UglifyJsPlugin({
+        sourceMap: true,
+        uglifyOptions: {
+          ie8: false,
+          ecma: 8,
+          mangle: true,
+          output: {
+            comments: false,
+            beautify: false
+          },
+          warnings: false
+        }
+      }),
       new BrowserSyncPlugin({
         proxy: config.url,
         files: [
