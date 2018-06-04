@@ -47,6 +47,7 @@ body {
   height: 100vh;
   overflow: auto !important;
   color: black;
+  background-color: white!important;
   .loading-icon .material-icon .bar {
     border-color: $color-gold;
     &::after {
