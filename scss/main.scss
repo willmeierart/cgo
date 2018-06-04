@@ -282,7 +282,7 @@ a {
           color: $color-gold!important;
           font-family: $font-fam-serif!important;
           font-style: italic!important;
-          font-weight: bold!important;
+          font-weight: 900!important;
           & > a {
             @extend .menu-item-has-children;
             text-transform: none;            

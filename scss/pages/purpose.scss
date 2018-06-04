@@ -1,11 +1,5 @@
 @import '../pageTemplate.scss';
-
-$font-fam-cursive: 'Nickainley Normal';
-$font-fam-serif: 'Playfair Display';
-$font-fam-sans-modern: 'Chivo';
-$font-fam-sans: 'Montserrat';
-
-$color-gold: #CDA33A;
+@import '../_variables.scss';
 
 .purpose {
   .main-content {
