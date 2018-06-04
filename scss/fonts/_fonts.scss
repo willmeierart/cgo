@@ -14,9 +14,9 @@
 
 @font-face {
   font-family: 'Playfair Display';
-  src: url('PlayfairDisplay-Italic.ttf') format('truetype');
-  src: url('PlayfairDisplay-Italic.eot');
-  src: url('PlayfairDisplay-Italic.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Italic.woff2') format('woff2'), url('PlayfairDisplay-Italic.woff') format('woff');
+  // src: url('PlayfairDisplay-Italic.ttf') format('truetype');
+  // src: url('PlayfairDisplay-Italic.eot');
+  src: url('PlayfairDisplay-Italic.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
@@ -32,27 +32,27 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('Montserrat-Light.ttf') format('truetype');
-  src: url('Montserrat-Light.eot');
-  src: url('Montserrat-Light.eot?#iefix') format('embedded-opentype'), url('Montserrat-Light.woff2') format('woff2'), url('Montserrat-Light.woff') format('woff');
+  // src: url('Montserrat-Light.ttf') format('truetype');
+  // src: url('Montserrat-Light.eot');
+  src: url('Montserrat-Light.eot?#iefix') format('embedded-opentype'), url('Montserrat-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Playfair Display';
-  src: url('PlayfairDisplay-Regular.ttf') format('truetype');
-  src: url('PlayfairDisplay-Regular.eot');
-  src: url('PlayfairDisplay-Regular.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Regular.woff2') format('woff2'), url('PlayfairDisplay-Regular.woff') format('woff');
+  // src: url('PlayfairDisplay-Regular.ttf') format('truetype');
+  // src: url('PlayfairDisplay-Regular.eot');
+  src: url('PlayfairDisplay-Regular.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('Montserrat-Bold.ttf') format('truetype');
-  src: url('Montserrat-Bold.eot');
-  src: url('Montserrat-Bold.eot?#iefix') format('embedded-opentype'), url('Montserrat-Bold.woff2') format('woff2'), url('Montserrat-Bold.woff') format('woff');
+  // src: url('Montserrat-Bold.ttf') format('truetype');
+  // src: url('Montserrat-Bold.eot');
+  src: url('Montserrat-Bold.eot?#iefix') format('embedded-opentype'), url('Montserrat-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -68,16 +68,16 @@
 
 @font-face {
   font-family: 'Playfair Display';
-  src: url('PlayfairDisplay-Black.eot');
-  src: url('PlayfairDisplay-Black.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Black.woff2') format('woff2'), url('PlayfairDisplay-Black.woff') format('woff');
+  // src: url('PlayfairDisplay-Black.eot');
+  src: url('PlayfairDisplay-Black.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Playfair Display';
-  src: url('PlayfairDisplay-BlackItalic.eot');
-  src: url('PlayfairDisplay-BlackItalic.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-BlackItalic.woff2') format('woff2'), url('PlayfairDisplay-BlackItalic.woff') format('woff');
+  // src: url('PlayfairDisplay-BlackItalic.eot');
+  src: url('PlayfairDisplay-BlackItalic.eot?#iefix') format('embedded-opentype'), url('PlayfairDisplay-BlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
 }
