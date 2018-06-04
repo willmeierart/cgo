@@ -93,6 +93,10 @@
   justify-content: center;
 }
 
+.home .main-content .light-beings-footer-img {
+  padding-bottom: 0 !important;
+}
+
 .home .main-content .section-title,
 .home .main-content .section-title h2 {
   font-family: "Playfair Display" !important;
@@ -132,7 +136,6 @@
 
 .home .come-within p:last-of-type {
   padding: 0 10%;
-  padding-bottom: 3em;
 }
 
 .home .home-nav-btn-row .col {
@@ -164,7 +167,7 @@
 }
 
 .home .home-nav-btn-row .col .vc_col-sm-3 .home-nav-btn a {
-  padding-top: 1em;
+  padding-top: 1.25em;
   margin: 1em;
 }
 

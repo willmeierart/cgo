@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
     let firstList
     items.each((i, item) => {
       const txtContent = $(item).children('a').text()
-      if (txtContent === 'Two Gifts') twoGifts = $(item)
+      if (txtContent === 'Two Gifts') $(item).addClass('top-lvl')
       if (i === 0) firstList = item
       if (i < 3) {
         $(item).addClass('mobile-col-1')
@@ -27,9 +27,9 @@ jQuery(document).ready(function($) {
       if (txtContent === 'Explore') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/explore/purpose')
     })
-    const TGClone = twoGifts.clone().addClass('top-marg menu-item two-gifts-thin')
-    $(firstList).append(TGClone)
-    twoGifts.remove()
+    // const TGClone = twoGifts.clone().addClass('top-marg menu-item two-gifts-thin')
+    // $(firstList).append(TGClone)
+    // twoGifts.remove()
     items.first().parent().prepend(`
       <li class='menu-item top-lvl mobile-col-1'>
         <a href='/'>Home</a>

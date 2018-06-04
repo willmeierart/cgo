@@ -210,3 +210,18 @@ body:not(.home) .main-content:not(.home) .leader-img {
   }
 }
 
+@media screen and (min-width: 1000px) {
+  .wpb_row {
+    margin-bottom: 0;
+  }
+
+  .wpb_row .vc_col-sm-6 .wpb_text_column {
+    padding: 0 6em !important;
+  }
+
+  .wpb_row .wpb_wrapper .inner {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+

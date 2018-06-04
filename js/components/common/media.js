@@ -23,8 +23,10 @@ jQuery(document).ready($ => {
   const handleBtnClick = () => {
     $('.audio-btn').click(e => {
       const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text()
-      $('#audio-modal-bg').find('audio').attr('src', url + SRC)
+      const audio = $('#audio-modal-bg').find('audio')
+      audio.attr('src', url + SRC)
       $('#audio-modal-bg').show(200)
+      audio[0].play()
     })
   }
 

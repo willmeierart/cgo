@@ -46,3 +46,20 @@
     }
   }
 }
+
+@media screen and (min-width: 1000px) {
+  .wpb_row {
+    margin-bottom: 0;
+    .vc_col-sm-6 {
+      .wpb_text_column {
+        padding: 0 6em!important;
+      }
+    }
+    .wpb_wrapper {
+      .inner {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  }
+}
