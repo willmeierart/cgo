@@ -3,43 +3,10 @@ import ig from '../../../assets/instagramIcon'
 import tw from '../../../assets/twitterIcon'
 
 jQuery(document).ready(function($) { 
-  // const isThin = $(window).width() <= 1000
-  // const clonedMenu = isThin ? $({
-  //       ...$('.mobile-only .menu').clone()
-  //     }) : $({ ...$('nav .sf-menu').clone() })
-
   $('#footer-outer h4').remove()
-
-  // $('a').filter((x, b) => {
-  //   return $(b).attr('href') === '/learn/spiritual-masters'
-  // }).each((i, a) => {
-  //     console.log(a);
-  //     if (i !== 0) {
-  //       // $(a).replaceWith($('a').children())
-  //       console.log($(a).children());
-  //     }
-  //   })
-
-  // $('#text-3 p').each((i, social) => {
-  //   let className = ''
-  //   const txtContent = $(social).text()
-  //   switch (true) {
-  //     case (txtContent.indexOf('facebook') !== -1) :
-  //       className = 'facebook'
-  //       break
-  //     case (txtContent.indexOf('linkedin') !== -1) :
-  //       className = 'linkedin'
-  //       break
-  //     default:
-  //       break
-  //   }
-  //   $(social).replaceWith(`<a href='${txtContent}' target='_blank'><i class="fas fa-${className}"></i></a>`)
-
-  // })
 
   const shuffleList = () => {
     const items = $('#footer-outer').find('li.menu-item')
-    // console.log(items)
     let twoGifts
     let firstList
     items.each((i, item) => {
@@ -55,27 +22,11 @@ jQuery(document).ready(function($) {
       if (txtContent === 'Connect') $(item).addClass('top-lvl')
       if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/explore/spiritual-lineage')
-        // .attr('href', window.innerWidth >= 1000 ? '/explore/spiritual-lineage' : '')
-      // if (txtContent === 'Explore' || txtContent === 'Participate') {
-      //   $(item).css({ cursor: 'default', pointerEvents: 'none' }).children({ cursor: 'pointer', pointerEvents: 'all' })
-      // }
       if (txtContent === 'Participate') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/participate/meditation')
-        // .attr('href', window.innerWidth >= 1000 ? '/participate/meditation' : '')
       if (txtContent === 'Explore') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/explore/purpose')
-        // .attr('href', window.innerWidth >= 1000 ? '/explore/purpose' : '')
     })
-
-    // $('#footer-outer').find('.container').append(`
-    //   <li class='menu-item top-marg'>
-    //     <a href='#'>User Agreement</a>
-    //   </li>
-    //   <li class='menu-item'>
-    //     <a href='#'>Privacy Policy</a>
-    //   </li>
-    // `)
-
     const TGClone = twoGifts.clone().addClass('top-marg menu-item two-gifts-thin')
     $(firstList).append(TGClone)
     twoGifts.remove()
@@ -146,22 +97,14 @@ jQuery(document).ready(function($) {
     $('#footer-outer').find('.sub-menu, .tert-menu').addClass('hidden')
     $('#footer-outer').find('.menu-item').removeClass('top-marg')
     $('#footer-outer').find('.two-gifts-thin').addClass('top-lvl')
-    // $('.hidden').css({ display: 'none' })
-    // console.log('mobile exp:::', $('.mobile-exp'))
     $('.mobile-exp').click(e => {
-      // e.stopPropagation()
       e.preventDefault()
       const el = $(e.target).hasClass('menu-item') ? $(e.target) : $(e.target).closest('.menu-item')
-      // console.log('clicked', el.children('.hidden'))
-      // el.children('.hidden').first().slideToggle(200)
-      // el.find('.hidden').first().slideToggle(200)
     })
     $('.two-gifts-thin').last().remove()
-    // $('.mobile-exp').children('.sub-menu')
   }
 
   const init = (() => {
-    // console.log($('#footer-outer').find('.sub-menu'))
     shuffleList()
     appendSocialsAndCopyright()
     if (window.innerWidth < 1000) {

@@ -13,12 +13,7 @@
       height: 50%;
       h1 {
         margin: 0!important;
-        // font-size: 100px!important;
       }
-    }
-    .cgo-logo-medium {
-      margin-bottom: 50px;
-      // margin-left: -20px;
     }
   }
   .page-title-image {
@@ -27,7 +22,6 @@
     margin-top: 6em;
   }
   .header-img {
-    // margin-left: 45px!important;
     .inner {
       display: flex;
       justify-content: center;
@@ -93,13 +87,7 @@
           @extend .quote-attr;
         }
       }
-      // &:last-of-type {
-      //   .wpb-wrapper {
-      //     margin-top: 0;
-      //   }
-      // }
     }
-    // margin-top: 3em;    
   }
   #the-lady, #kalindi {
     border-bottom: 3px solid $color-gold;

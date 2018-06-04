@@ -1,14 +1,12 @@
 import logo from '../../../assets/cgo-logo.js'
 import headerLogo from '../../../assets/cgo-header-logo'
 import { clonedMenu } from '../../utils'
-import './userAgreement'
 
 jQuery(document).ready(function($) { 
   let menuIsOpen = false
 
   const breakpoints = [1000]
   const isThin = $(window).width() <= 1000
-  // console.log(menuIsOpen);
 
   const giveHeaderGradient = () => {
     $('body').prepend("<div class='header-gradient'></div>")
@@ -17,8 +15,6 @@ jQuery(document).ready(function($) {
   const clonedMenu = isThin
     ? $({ ...$('.mobile-only .menu').clone() })
     : $({ ...$('nav .sf-menu').clone() })
-
-  // console.log(clonedMenu);
   
   const handleCartDropdown = () => {
     let isWooCommercePg = false
@@ -47,13 +43,11 @@ jQuery(document).ready(function($) {
         borderLeft: 'none'
       })
     }
-    // console.log(isWooCommercePg)
   }
   
 
   const makeWholeNewMenu = () => {
     const newMainList = $('<ul class="new-main-list"></ul>')
-    // const subList = $('<ul class="new-sub-list"></ul>')
     const subLists = $('<div class="sub-lists"></div>')
     const tertList = $('<ul class="new-tert-list"></ul>')
     clonedMenu.children('li').each((i, li) => {
@@ -66,8 +60,6 @@ jQuery(document).ready(function($) {
         const title = $(li).children('a').text()
         const subList = $(`<ul class="new-sub-list ${title}"></ul>`)
         subLists.append(subList)
-        // const newSubmenu = $('<ul class="submenu-list"></ul>')
-        // newListItem.append(newSubmenu)
         $(li).children('ul').children('li').each((j, subLi) => {
           const txtContent2 = $(subLi).children('a').text()
           const href2 = $(subLi).children('a').attr('href')
@@ -75,8 +67,6 @@ jQuery(document).ready(function($) {
           subList.append(newSubListItem)
           if ($(subLi).children('ul').length > 0) {
             newSubListItem.addClass('has-children')
-            // const newTertMenu = $('<ul class="tert-menu-list"></ul>')
-            // newSubListItem.append(newTertMenu)
             $(subLi).children('ul').children('li').each((k, tertLi) => {
               const txtContent3 = $(tertLi).children('a').text()
               const href3 = $(tertLi).children('a').attr('href')
@@ -119,7 +109,6 @@ jQuery(document).ready(function($) {
         </div>
       </div>
     `)
-    // .append(clonedMenu))
     $('#side-nav').css('display', 'none')
   }
 
@@ -132,20 +121,7 @@ jQuery(document).ready(function($) {
   
   
   const formatLogo = () => {
-    const titleSection = $('.az-header-container .header-title')
-    titleSection.empty()
-    // titleSection.append(`
-    //   <div id='cgo-logo'>${logo}</div>
-    // `)
-    // titleSection.append(`
-    //   <div class='title-wrapper'>
-    //     <a href='/'>
-    //       <div class='center-of'>CENTER OF</div>
-    //       <div class='the-golden-one'>THE GOLDEN ONE</div>
-    //     </a>
-    //   </div>
-    // `)
-    titleSection.append(`<a href='/' style='width: 200px;'>${headerLogo}</a>`)
+    $('.az-header-container .header-title').empty().append(`<a href='/' style='width: 200px;'>${headerLogo}</a>`)
   }
 
   const handleNavClick = () => {
@@ -162,23 +138,8 @@ jQuery(document).ready(function($) {
     })
   }
 
-  // const extraNavIconFormatting = () => {
-  //   $('.mobile-icon').hover(() => {
-  //     $('.lines').attr('style', 'background-color: #fab92a !important')
-  //   })
-  //   $('.mobile-icon').children('*').hover(() => {
-  //     $('.lines').attr('style', 'background-color: #fab92a !important')
-  //   })
-  //   $('.mobile-icon .lines::before, .mobile-icon .lines::after').hover(() => {
-  //     $('.lines').attr('style', 'background-color: #fab92a !important')
-  //   })
-  // }
-
   const initHeader = (() => {
-    // getTitleFromPath()
     giveHeaderGradient()
-
-    // replaceEntireHeader()
     handleNavClick()
     formatLogo()
     handleCartDropdown()

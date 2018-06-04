@@ -433,3 +433,37 @@
     }
   }
 }
+
+.calendar {
+  .az-offerings-type-filter-wrapper {
+    display: grid;
+    grid-template-columns: 100px auto;
+    grid-template-rows: 1fr 1fr;
+    .sort-by {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    .az-offerings-submenu-wrapper {
+      grid-column: 2/3;
+      grid-row: 1/3;
+      display: flex;
+      li {
+        border-right: none!important;
+        margin-right: 1em!important;
+        padding: 0!important;
+        font-size: 1.5em;        
+        a {
+          color: black !important;
+          &.active {
+            color: $color-gold !important;
+          }
+        }
+      }
+    }
+    .secondary-nav {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      display: flex;
+    }
+  }
+}

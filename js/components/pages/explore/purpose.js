@@ -17,15 +17,6 @@ jQuery(document).ready(($) => {
     })
   }
 
-  // const columnNeedsFlipped = $('.instance-3').siblings()
-
-  // columnNeedsFlipped.css({
-  //   flexDirection: 'column!important'
-  // })
-
-  // console.log(columnNeedsFlipped)
-
-
   const init = (() => {
     formatHeaderText()
   })()

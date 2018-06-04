@@ -40,11 +40,8 @@ function CGO_enqueue_js() {
 		wp_register_script('cgo_introductions', get_stylesheet_directory_uri() . '/dist/introductions.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_calendar', get_stylesheet_directory_uri() . '/dist/calendar.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_otherOpportunities', get_stylesheet_directory_uri() . '/dist/otherOpportunities.bundle.js', array('jquery'), '1.0', false );
-		wp_register_script('cgo_community', get_stylesheet_directory_uri() . '/dist/community.bundle.js', array('jquery'), '1.0', false );
-		wp_register_script('cgo_locations', get_stylesheet_directory_uri() . '/dist/locations.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_store', get_stylesheet_directory_uri() . '/dist/store.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_connect', get_stylesheet_directory_uri() . '/dist/connect.bundle.js', array('jquery'), '1.0', false );
-		wp_register_script('cgo_error', get_stylesheet_directory_uri() . '/dist/error.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_userAgreement', get_stylesheet_directory_uri() . '/dist/userAgreement.bundle.js', array('jquery'), '1.0', false );
 		
 		wp_enqueue_script('cgo_common');		
@@ -83,35 +80,24 @@ function CGO_enqueue_js() {
 			wp_enqueue_style('cgo_twoGifts_style', get_stylesheet_directory_uri() . '/dist/styles/twoGifts.css');
 		} else if(is_page( 'Meditation' )) {
 			wp_enqueue_script('cgo_meditation');
-			wp_enqueue_style('cgo_meditation_style', get_stylesheet_directory_uri() . '/dist/styles/meditation.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
 		} else if(is_page('Seminars')) {
 			wp_enqueue_script('cgo_seminars');
-			wp_enqueue_style('cgo_seminars_style', get_stylesheet_directory_uri() . '/dist/styles/seminars.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
 		} else if(is_page( 'Introductions' )) {
 			wp_enqueue_script('cgo_introductions');
-			wp_enqueue_style('cgo_introductions_style', get_stylesheet_directory_uri() . '/dist/styles/introductions.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
 		} else if(is_page( 'Calendar' )) {
 			wp_enqueue_script('cgo_calendar');
-			wp_enqueue_style('cgo_calendar_style', get_stylesheet_directory_uri() . '/dist/styles/calendar.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
 		} else if(is_page( 'Other Opportunities' )) {
 			wp_enqueue_script('cgo_otherOpportunities');
-			wp_enqueue_style('cgo_otherOpportunities_style', get_stylesheet_directory_uri() . '/dist/styles/otherOpportunities.css');
 			wp_enqueue_script('cgo_participate');
 			wp_enqueue_style('cgo_participate_style', get_stylesheet_directory_uri() . '/dist/styles/participate.css');
-		} else if(is_page( 'Locations' )) {
-			wp_enqueue_script('cgo_locations');
-			wp_enqueue_style('cgo_locations_style', get_stylesheet_directory_uri() . '/dist/styles/locations.css');
-		} else if(is_page( 'Community' )) {
-			wp_enqueue_script('cgo_community');
-			wp_enqueue_style('cgo_community_style', get_stylesheet_directory_uri() . '/dist/styles/community.css');
 		} else if(is_shop()) {
 			wp_enqueue_script('cgo_store');
 			wp_enqueue_style('cgo_store_style', get_stylesheet_directory_uri() . '/dist/styles/store.css');
@@ -127,10 +113,7 @@ function CGO_enqueue_js() {
 		} else if(is_page( 'User Agreement' )) {
 			wp_enqueue_script('cgo_userAgreement');
 			wp_enqueue_style('cgo_userAgreement_style', get_stylesheet_directory_uri() . '/dist/styles/userAgreement.css');
-		} else if(is_404()) {
-			wp_enqueue_script('cgo_error');
-			wp_enqueue_style('cgo_error_style', get_stylesheet_directory_uri() . '/dist/styles/error.css');
-		} 
+		}
 	endif;
 }
 

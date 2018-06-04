@@ -1,6 +1,5 @@
 import '../../../../scss/pages/teachings.scss'
 import '../../../../scss/pages/explore.scss'
-// import '../../../../scss/main.scss'
 import { url } from '../../../utils'
 import logo from '../../../../assets/cgo-logo'
 
@@ -35,7 +34,6 @@ jQuery(document).ready(function($) {
       const conds = $(col).find('h4').length < 1 &&
         $(col).siblings().find('h4').length >= 1 &&
         $(col).find('img').length < 1
-      // console.log(conds);
       if (conds) {
         $(col).css({ marginTop: '4.5em' })
       }

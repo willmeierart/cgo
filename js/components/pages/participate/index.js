@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
   const { pathname, hash } = window.location
   const splitPath = pathname.split('/')
   const path = splitPath[splitPath.length - 2]
-
   const IS_SEMINARS_PAGE = path === 'seminars'
   const IS_MEDITATIONS_PAGE = path === 'meditations'
   const IS_INTRODUCTIONS_PAGE = path === 'introductions'
@@ -62,7 +61,6 @@ jQuery(document).ready(function($) {
           dateFilters.push(month)
         }
       }
-      // $(`.${month}`).children().click(e => { e.preventDefault() })
     })
   }
 
@@ -76,15 +74,6 @@ jQuery(document).ready(function($) {
   typeFilter.addClass('sticky-el-1')
   locFilter.addClass('sticky-el-2')
   dataBody.addClass('sticky-el-3')
-
-  // const filterByLocation = eventList =>
-  //   eventList.filter(event => event.slug === activeLocation)
-
-  // const filterByType = eventList => {
-  //   const filteredList = activeTypeFilter === 'all'
-  //     ? eventList : eventList.filter(event => event.type === activeTypeFilter.replace(' ', '-').toLowerCase())
-  //   return filteredList
-  // }
 
   const refreshEventList = () => { // updates state of page on click
     filterEventsData()
@@ -169,11 +158,6 @@ jQuery(document).ready(function($) {
     const PMsplitter = course => course.StartTime.split('T')[0].split('-')
     const preMonth = course => `${PMsplitter(course)[1]}-${PMsplitter(course)[2]}-${PMsplitter(course)[0]}`
 
-    // if ($('body').find('.az-offerings-location-detail-wrapper').length === 0) {
-    //   console.log('offerings wrapper doesnt exist')
-    //   $('body').append($('<div class="az-offerings-location-detail-wrapper"></div>').css({ display: 'none' }))
-    // }
-
     const detailsWrapper = $('.az-offerings-location-detail-wrapper')
     if (detailsWrapper.children('.recurring').length < 1) {
       detailsWrapper.append(`<div class='date-category recurring'><div class='month-name'>Recurring</div></div>`)
@@ -184,7 +168,6 @@ jQuery(document).ready(function($) {
 
     const recurringWrapper = $(`.recurring`)
     if (recurringWrapper.children().length < 2) {
-      // recurringWrapper.append(`<i class='fas fa-angle-${recurAngle}'></i>`)
       recurringEvents.forEach((event, i) => {
         const { id } = event
         $(recurringWrapper.append(detailInner(event)))
@@ -211,7 +194,6 @@ jQuery(document).ready(function($) {
       if (detailsWrapper.find(`#${id}`).length < 1) {
         if (detailsWrapper.children(`.${month}`).length < 1) {
           detailsWrapper.append(`<div class='date-category ${month}'><div class='month-name'>${month}</div></div>`)
-          // $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`)
         }
         if ($(`.${month}`).children(`#${id}`).length < 1) {
           $(`.${month}`).append(detailInner(event))
@@ -227,10 +209,7 @@ jQuery(document).ready(function($) {
       }
       
     })
-
-    // console.log('eventEls 1', allEventEls)
     allEventEls = detailsWrapper.clone()
-    // console.log('eventEls 2', allEventEls)
   }
 
   
@@ -247,9 +226,6 @@ jQuery(document).ready(function($) {
     const PMsplitter = event => event.start_time.split('T')[0].split('-')
     const preMonth = event => `${PMsplitter(event)[1]}-${PMsplitter(event)[2]}-${PMsplitter(event)[0]}`
 
-    // console.log(events)
-    
-
     const transformer = CENTER => events.map(event => {
       const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event 
 
@@ -265,12 +241,10 @@ jQuery(document).ready(function($) {
         end.date = null
       }
       const isStreaming = activeLocation.toUpperCase() === 'STREAMING'
-      // console.log(center, isStreaming, event)
+
       const locTitle = center ? center.title : isStreaming ? 'Streaming' : ''
       const address = center ? center.address : ''
       const phone = center ? center.phone : ''
-
-      // console.log('month: ', month, 'start_time: ', start_time, 'start: ', start, 'end_time: ', end_time, 'end: ', end, 'center: ', center, 'event: ', event)
       
       const retObj = {
         id,
@@ -306,8 +280,6 @@ jQuery(document).ready(function($) {
       introductions,
       other_opportunities: other_opportunities
     }
-
-    // console.log(hashFilter, matcherObj, matcherObj[hashFilter])
 
     const allTheseCourses = (() => {
       switch (true) {
@@ -347,12 +319,7 @@ jQuery(document).ready(function($) {
       textMatches(course.title, activeTypeFilter)
     )[0]
 
-
-
     const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id)
-
-    // console.log('these things', thisCity, thisCourseType, activeTypeFilter, thisLocationCenters)
-    
 
     const recurringEvents = thisLocationCenters.reduce(
       (list, center) => {
@@ -375,10 +342,7 @@ jQuery(document).ready(function($) {
       if (ret1 && ret2) return event
     })
 
-    // console.log(recurringEvents)
-
     const localEvents = events.filter(event => {
-      // console.log(event)
       const { is_streaming } = event
       const retStream = is_streaming === 'both' || is_streaming === 'not'
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
@@ -419,7 +383,7 @@ jQuery(document).ready(function($) {
       introductions,
       other_opportunities: other_opportunities
     }
-    const a = $('.az-offerings-submenu-wrapper.calendar').find('a')
+    const a = $('.az-offerings-submenu-wrapper.calendar-menu').find('a')
     a.click(e => {
       hashFilter = $(e.target).text().toLowerCase().replace(/[^a-z]/g, '_')
       const allTheseCourses = (() => {
@@ -490,9 +454,6 @@ jQuery(document).ready(function($) {
   }
 
   const filterLocationsOnMobile = locations => {
-
-    // const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    // const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
     const returnedEvents = []
     $(locations[0]).children().each((a, locChild) => {
       const locTxt = $(locChild).find('a').text().toLowerCase()
@@ -500,19 +461,7 @@ jQuery(document).ready(function($) {
         const txt = event.location.address.toLowerCase()
         if (txt.indexOf(locTxt) !== -1 && returnedEvents.indexOf(locTxt) === -1) returnedEvents.push(locTxt)
       })
-      // $(events[0]).children().each((i, child) => {
-      //   console.log(child);
-      //   $(child).children().each((j, grandChild) => {
-      //     const txt = $(grandChild).find('.address').text().toLowerCase()
-      //     // if (txt.toLowerCase() === )
-      //     console.log(txt)
-      //     if (txt.indexOf(locTxt) !== -1) {
-      //       returnedEvents.push(locTxt)
-      //     }
-      //   })
-      // })
     })
-    // console.log(returnedEvents);
     return returnedEvents
   }
 
@@ -529,9 +478,6 @@ jQuery(document).ready(function($) {
       ? $('.mobile-type-list')
       : typeList.clone().addClass('mobile-list mobile-type-list')
 
-
-    // console.log('reload?: ', reload);
-
     const allEventsClone = !reload ? $('.az-offerings-location-detail-wrapper').clone() : allEventEls.clone()
 
     const locationsWithEvents = filterLocationsOnMobile(locationListClone)
@@ -541,13 +487,7 @@ jQuery(document).ready(function($) {
       if (locationsWithEvents.indexOf(txt) === -1) {
         $(li).css({ display: 'none' })
       }
-      // console.log(locationsWithEvents, txt)
     })
-
-    
-    
-
-    // console.log('eventEls inside createMobileFilters:', allEventEls)
 
     const dateFilterList = $('<ul class="date-filter-list mobile-list"></ul>').append(dateFilters.map((date, i) => `<li class='date-filter'><a>${date}</a></li>`))
     const cardTitles = {
@@ -578,8 +518,6 @@ jQuery(document).ready(function($) {
       events: allEventsClone,
       filters: cards
     }
-
-    // $('')
     
     return returnElsObj
   }
@@ -636,7 +574,6 @@ jQuery(document).ready(function($) {
         if (detailsWrapper.find(`#${id}`).length < 1) {
           if (detailsWrapper.children(`.${month}`).length < 1) {
             detailsWrapper.append(`<div class='date-category ${month}'></div>`)
-            // $(`.${month}`).append(`<i class='fas fa-angle-down'></i>`)
           }
           if ($(`.${month}`).children(`#${id}`).length < 1) {
             $(`.${month}`).append(detailInner(event))
@@ -656,9 +593,7 @@ jQuery(document).ready(function($) {
     advanceMobileCardState(cmd)
     handleMobileStyling()
     handleMobileFiltering()
-    // console.log(RECURRING_EVENTS, LOCAL_EVENTS)
     renderMobileEvents(isRecurring ? RECURRING_EVENTS : LOCAL_EVENTS)
-    // $('.date-category').children('.month-name').css({ visibility: 'hidden' })
   }
 
   var handleMobileFiltering = () => {
@@ -734,7 +669,6 @@ jQuery(document).ready(function($) {
     const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
 
     console.log('cached refreshed:', conds)
-    // console.log('cachedData: ', cachedData)
 
     const allTheseCourses = (() => {
       switch (true) {

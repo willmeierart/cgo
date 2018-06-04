@@ -175,17 +175,10 @@ jQuery(document).ready(function($) {
         handleAnimatingPos()
       }
     })
-    // $('#')
   }
 
   const handleMobileMenu = (newIdx, oldIdx, txt) => {
     const cols = $('#top').find('.inner-grid').children('.col-2').find('.new-sub-list')
-    // const currentMarg = $()
-    
-    // const neg = newIdx < oldIdx ? -1 : 1
-    // const val = newIdx === 0 ? VALS.margin1 : newIdx === 1 ? VALS.margin2 : VALS.margin3
-    // const VAL = val * neg
-    // console.log(w, newIdx, oldIdx, val);
     const views = [
       $('#top').find('.col-1'),
       $('#top').find('.col-2'),
@@ -193,18 +186,12 @@ jQuery(document).ready(function($) {
     ]
 
     const neg = newIdx < oldIdx
-    // const w = newIdx === 2 ? window.innerWidth : newIdx === 1 ? window.innerWidth / 3 : window.innerWidth / 3
-    // const w = newIdx === 2 ? window.innerWidth / 2 : window.innerWidth / 3
     const w = window.innerWidth
-    // const val = `${w}px` 
     const val = `${neg ? -w : w}px` 
-    // console.log(val)
 
     const b1 = $('.border-line.b1')
     const b2 = $('.border-line.b2')
 
-    
-    // const w = window.innerWidth / 2 - $(view).width() / 2
     const thisView = views[newIdx]
     views.forEach(async (view, i) => {
       const isPrevView = neg ? views.indexOf(view) > newIdx : views.indexOf(view) < newIdx
@@ -250,12 +237,7 @@ jQuery(document).ready(function($) {
           opacity: 0,
           transition: 'transform .5s, opacity .5s'
         })
-        // if (mobileInitialized) {
           setTimeout(() => { view.hide() })
-        // } else {
-        //   view.hide()
-        // }
-        // view.hide()
       } else {
         view.css({
           transform: `translate3d(-${window.innerWidth}px, 0, 0)`,
@@ -263,7 +245,6 @@ jQuery(document).ready(function($) {
           transition: 'transform .5s, opacity .5s'
         })
         setTimeout(() => { view.hide() })
-        // view.hide()
       }
 
       if (neg) {
@@ -309,14 +290,12 @@ jQuery(document).ready(function($) {
   const initMobileMenu = () => {
     $('#top').find('.inner-grid').children('.col-2').css({ display: 'none' })
     $('#top').find('.inner-grid').children('.col-3').css({ display: 'none' })
-    // $('.border-line').css({ right: '-3px' })
     
     if ($('#top').find('.side-nav-inner').children('.border-line').length === 0) {
       $('#top').find('.side-nav-inner').append('<div class="border-line b1"></div><div class="border-line b2"></div>')
     }
 
     let LI
-    // $('i.back').css({ cursor: 'pointer' }).one('click', e => {
       $('#top').find('.col-2, .col-3').css({ textAlign: 'left!important' })
       $('#top').find('.col-1').css({ textAlign: 'right!important' })
           .children('ul').css({ alignItems: 'flex-end' })
@@ -329,7 +308,6 @@ jQuery(document).ready(function($) {
       
       if ($(li).hasClass('has-children')) {
         $(li).children('a').first().append('<i class="fas fa-chevron-right forward"></i>')
-        // $(li).children('a').first().prepend('<i class="fas fa-chevron-left back"></i>')
         
         $('i.back').css({ display: 'none' })
       }
@@ -337,7 +315,6 @@ jQuery(document).ready(function($) {
       if ($(a).text() === 'Explore' || $(a).text() === 'Participate') {
         $(a).addClass('disable')
         $(li).click(e => {
-        // $(li).one('click', e => {
           e.preventDefault()
           if ($(li).hasClass('has-children')) {
             (throttle(() => setMobileView(mobileMenuView + 1, $(li).text()), 200, { trailing: false, leading: true }))()
@@ -349,9 +326,7 @@ jQuery(document).ready(function($) {
     $('.col-2').find('.submenu-item').each((i, subLi) => {
       if ($(subLi).hasClass('has-children')) {
         $(subLi).children('a').addClass('disable')
-        // $(subLi).one('click', e => {
         $(subLi).click(e => {
-          // e.preventDefault()
           (throttle(() => setMobileView(mobileMenuView + 1), 200, { trailing: false, leading: true}))()
         })
       }

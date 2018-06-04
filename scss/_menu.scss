@@ -135,26 +135,7 @@
                   font-weight: 900 !important;
                   font-family: $font-fam-serif !important;
                   font-style: italic;
-                  // color: black !important;
                 }
-                // &.has-children {
-                //   // margin-left: -1em;
-                //   .submenu-list {
-                    
-                //   }
-                //   &.open {
-                //     .submenu-list {
-                //       display: flex;
-                //       flex-direction: column;
-                //       align-items: center;
-                //       .submenu-item {
-                //         .disable {
-                //           pointer-events: none;
-                //         }
-                //       }
-                //     }
-                //   }
-                // }
               }
             }
           }
@@ -169,18 +150,9 @@
               justify-content: flex-start;
               align-items: center;
               .new-sub-list {
-                // position: absolute;
-                // top: 30px;
-                // left: 105%;
                 font-weight: normal;
-                // display: flex;
                 flex-direction: column;
-                align-items: flex-start; // font-size: 1.75em;
-                // color: black;
-                // margin-left: 8em;
-
-                // display: none;
-
+                align-items: flex-start;
                 padding: 0 1em;
                 .submenu-item {
                   line-height: 1.5em;
@@ -199,7 +171,6 @@
                   }
                   &.isOpen,
                   &:hover {
-                    // font-weight: bold; // color: $color-gold;
                     font-weight: 900 !important;
                     font-family: $font-fam-serif !important;
                     font-style: italic;
@@ -215,25 +186,17 @@
             justify-content: center;
             align-items: center;
             .new-tert-list {
-              // display: flex;
               flex-direction: column;
               align-items: center;
-
-              // display: none; 
-
-              // margin-left: 1em;
-              // padding-right: 1em;
               .tert-menu-item {
-                // color: black;
                 font-size: 2em;
                 line-height: 1.5em;
                 font-weight: normal;
                 &:hover {
-                  // font-weight: bold; // color: $color-gold;
                   font-weight: 900 !important;
                   font-family: $font-fam-serif !important;
                   font-style: italic;
-                } // font-size: .5em;
+                }
               }
             }
           }

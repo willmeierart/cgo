@@ -1,47 +1,36 @@
 import { url } from '../../../utils'
 import logo from '../../../../assets/cgo-logo.js'
-import '../../../../scss/_animations.scss'
 import '../../../../scss/pages/home.scss'
 
 jQuery(document).ready(($) => {
-
-  const rosePfx = url + '/wp-content/uploads/2018/05/home-header-rose'
+  const rosePfx = url + '/wp-content/uploads/2018/06/home-header-rose'
   const imgSize = 788
   const imgWPix = `${imgSize}px`
   const imgEl = $('.each-rose').children('img')[0]
   const roseRect = imgEl.getBoundingClientRect()
-  // console.log(roseRect)
   let roseRealWidth = roseRect.width
   let roseMargin = (window.innerWidth - roseRealWidth) / 2
 
-  // console.log(roseRealWidth)
-
   window.addEventListener('resize', () => {
     if (window.innerWidth < imgSize) {
-      // console.log('reeval roseRealWidth')
       roseRealWidth = imgEl.getBoundingClientRect().width
-      $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix /*marginLeft: roseMargin*/ })
+      $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix })
     }
     roseMargin = (window.innerWidth - roseRealWidth) / 2
   })
 
-  // console.log(window.location)
   const isLocal = window.location.host.includes('localhost')
 
   if (isLocal) {
-    // console.log('isLocal')
     const rawSrc = $('.rose-5 img').attr('src')
     $('.rose-5 img').attr('src', url + rawSrc)
-    // console.log($('.rose-5 img').attr('src'))
   }
 
   const createRosettas = () => {
-    // console.log('create rosettas')
     let i = 4
     let j = 3
     const slots = [0, 0, 0, 0]
     slots.forEach((x, k) => {
-      // console.log(x, k)
       const num = k + 1
       $('#rosetta-container').append($(`
         <div class='each-rose rose-${num}' >
@@ -54,11 +43,11 @@ jQuery(document).ready(($) => {
       }))
     })
 
-    $('#rosetta-container').append(`
-      <div class='rose-logo-wrapper'>
-        <div id='rosetta-logo'>${ logo }</div>
-      </div>
-    `)
+    // $('#rosetta-container').append(`
+    //   <div class='rose-logo-wrapper'>
+    //     <div id='rosetta-logo'>${ logo }</div>
+    //   </div>
+    // `)
 
     $('.rose-logo-wrapper').css({
       zIndex: 10,
@@ -87,24 +76,19 @@ jQuery(document).ready(($) => {
       .children('img')
       .css({
         maxWidth: imgWPix,
-        maxHeight: imgWPix /*marginLeft: roseMargin*/,
+        maxHeight: imgWPix,
         height: '100%'
       })
 
     const animateFunc = () => {
-      // console.log('animatefunc')
-      // console.log('animaterose')
       if (i === 0) i = 5
       if (j === 0) j = 5
       $(`.rose-${j}`).css({
         opacity: 1,
-        zIndex: j < i ? j : i,
-        // backgroundBlendMode: 'normal'
+        zIndex: j < i ? j : i
       })
       $(`.rose-${i}`).css({
         zIndex: i > j ? i : j,
-        // mixBlendMode: 'difference'
-        // mixBlendMode: i % 2 === 0 ? 'overlay' : 'multiply'
       }).delay(200)
         .animate({ opacity: 0 }, {
           duration: 5000, 
@@ -113,33 +97,19 @@ jQuery(document).ready(($) => {
           complete: () => {
             i--
             j--
-            setTimeout(() => { animateFunc() }, 160)
-            // window.requestAnimationFrame(animateFunc)            
+            setTimeout(() => { animateFunc() }, 160)       
           }
         })
     }
     window.requestAnimationFrame(animateFunc)
-    // animateFunc()
   }
 
   const initDoc = () => {
-    // console.log('initDoc')
-    // $('.rose-5 img').load(() => {
-      // console.log('img loaded')
-      createRosettas()
-    // })
+    createRosettas()
   }
   initDoc()
+
   window.addEventListener('resize', () => {
-    // $('#rosetta-container').css({
-    //   height: $('#rosetta-container').width()
-    // })
-    // $('.rose-logo-wrapper').css({
-    //   height: $('#rosetta-container').width()
-    // })
-    // $('.each-rose').children('img').css({
-    //   height: $('#rosetta-container').width()
-    // })
     $('#rosetta-logo').css({
       height: `${Math.min($('#rosetta-container').width(), imgSize)}px`
     })

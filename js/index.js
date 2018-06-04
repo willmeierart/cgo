@@ -4,14 +4,11 @@ import '../scss/main.scss'
 import { url, thisPage, isThin } from './utils'
 import './components/common/footer'  
 import './components/common/header'
-// import './components/common/userAgreement'
 import './components/common/menu'
-import './media'
+import './components/common/media'
 import logo from '../assets/cgo-logo.js' 
 
 jQuery(document).ready(($) => { 
-  // console.log(window.location)
-
   const ditchThemeImgAnimations = () => {
     $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap')
     $('.img-with-animation').removeClass('img-with-animation')
@@ -104,30 +101,11 @@ jQuery(document).ready(($) => {
     })
   }
 
-  const prependAudioBtn = () => {
-    $('.prepend-audio').css({
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }).prepend(`
-      <a class='audio-btn'><img src='${url}/wp-content/uploads/2018/05/icon-audio.png' /></a>
-    `)
-    $('.audio-btn').css({
-      maxWidth: '30px'
-    }).hover(btn => {
-      $(btn).css({
-        filter: 'hue-rotate(90deg)'
-      })
-    })
-  }
-
-
   const initDoc = (() => {
     ditchThemeImgAnimations()
     addSmallLogos()
     flipMiddleSecOnMobile()
     handleLocalSrcSets()
-    prependAudioBtn()
     formatGoldFirstLetter()
     window.addEventListener('resize', () => {
       $('.cart-outer').css({ display: 'none' })

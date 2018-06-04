@@ -1,17 +1,9 @@
-import '../../../../scss/pages/meditation.scss'
-import '../../../../scss/pages/participate.scss'
-import { setActiveItemFilter } from './utils'
+import { url } from '../../../utils'
+
 
 jQuery(document).ready(function($) {
   $('.az-upcoming-category').text('Upcoming Meditation Events')
-
-  const setTopMenuActiveItem = () => {
-    const subheadLinks = $('.az-offerings-submenu-wrapper a')
-    setActiveItemFilter(subheadLinks, 'meditations')
-  }
-
-  const initDoc = () => {
-    // setTopMenuActiveItem()
-  }
-  initDoc()
+  $('.meditation .top-banner').css({
+    backgroundImage: `url('${url}/wp-content/uploads/2018/06/participate-header-meditations.jpg')`
+  })
 })

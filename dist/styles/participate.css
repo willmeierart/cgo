@@ -492,3 +492,41 @@
   }
 }
 
+.calendar .az-offerings-type-filter-wrapper {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 1fr 1fr;
+}
+
+.calendar .az-offerings-type-filter-wrapper .sort-by {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.calendar .az-offerings-type-filter-wrapper .az-offerings-submenu-wrapper {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  display: flex;
+}
+
+.calendar .az-offerings-type-filter-wrapper .az-offerings-submenu-wrapper li {
+  border-right: none !important;
+  margin-right: 1em !important;
+  padding: 0 !important;
+  font-size: 1.5em;
+}
+
+.calendar .az-offerings-type-filter-wrapper .az-offerings-submenu-wrapper li a {
+  color: black !important;
+}
+
+.calendar .az-offerings-type-filter-wrapper .az-offerings-submenu-wrapper li a.active {
+  color: #D4A011 !important;
+}
+
+.calendar .az-offerings-type-filter-wrapper .secondary-nav {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: flex;
+}
+

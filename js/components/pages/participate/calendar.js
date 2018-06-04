@@ -1,5 +1,4 @@
-import '../../../../scss/pages/calendar.scss'
-import '../../../../scss/pages/participate.scss'
+import { url } from '../../../utils'
 
 jQuery(document).ready($ => {
   const { hash } = window.location
@@ -18,5 +17,8 @@ jQuery(document).ready($ => {
         $(A).addClass('active')
       }
     }
+  })
+  $('.calendar .top-banner').css({
+    backgroundImage: `url('${url}/wp-content/uploads/2018/05/participate-header.jpg')`
   })
 })

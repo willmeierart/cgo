@@ -4,12 +4,10 @@
   font-family: $font-fam-sans;
   .header-title-text {
     width: 100vw!important;
-    // margin-left: -2em!important;
     background-position: center;
     height: 45vw!important;
   }
   .header-secondary-text {
-    // padding: 2em 4em!important;
     font-family: $font-fam-serif!important;
     font-size: 1.25em!important;
     p {
@@ -51,15 +49,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      // width: 100%;
     }
     .vc_col-sm-6 {
       padding: 6em;
     }
     .vc_column-inner {
-      // padding: 4em;
       .wpb_wrapper {
-        // text-align: center;
         .quote {
           width: 60%;
           margin-left: 20%;
@@ -99,15 +94,7 @@
       .vc_col-sm-6 {
         padding: 3em 6em !important;
       }
-      .vc_column-inner {
-        .wpb_wrapper {
-          .quote-attr {
-            // margin-bottom: 2em!important;
-          }
-        }
-      }
       .header-title-text, .banner-2, .banner-3, .banner-4 {
-        // margin-left: -4em!important;
         .wpb_wrapper {
           .quote-attr {
             margin-bottom: 0!important;
