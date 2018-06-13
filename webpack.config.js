@@ -96,11 +96,30 @@ module.exports = function(env) {
           }),
           exclude: /node_modules/
         },
+        // {
+        //   test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
+        //   loader: 'url-loader',
+        //   exclude: /node_modules/
+        // },
         {
           test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
           loader: 'url-loader',
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            limit: 50000,
+            name: './fonts/[name].[ext]',
+            // publicPath: ''
+          }
         },
+        // {
+        //   test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
+        //   loader: 'file-loader',
+        //   exclude: /node_modules/,
+        //   options: {
+        //     name: '[name].[ext]',
+        //     outputPath: 'fonts/'
+        //   }
+        // },
         {
           test: /\.(png|svg|jpg|gif)$/,
           use: [
