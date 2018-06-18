@@ -1,5 +1,13 @@
+@import '../_variables.scss';
+
 #ajax-content-wrap{
   .container-wrap {
     background-color: white;
+  }
+  .product_title, .entry_title {
+    font-size: 4vw!important;
+  }
+  .woocommerce-breadcrumb {
+    border-bottom: 1px solid $color-gold;
   }
 }

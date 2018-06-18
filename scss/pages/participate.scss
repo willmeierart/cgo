@@ -346,6 +346,7 @@
             .txt-block {
               // border: 3px solid lightgrey!important;
               padding: 2em!important;
+              padding-top: 0!important;
             }
           }
         }
@@ -359,6 +360,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      .mobile-events-section {
+        .date-category {
+          padding: 20px;
+          .col-1, .col-2, .col-3 {
+            width: 28vw;
+          }
+        }
+      }
       .mobile-filters-section {
         @extend .mobile-dynamic-section;
         .mobile-filter-module {

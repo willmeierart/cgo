@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
       } else {
         $(item).addClass('mobile-col-2')
       }
-      if (txtContent === 'Shop' || txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
+      if (txtContent === 'Store' || txtContent === 'Shop' || txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
       if (txtContent === 'Connect') $(item).addClass('top-lvl')
       if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/explore/spiritual-lineage')
@@ -47,13 +47,14 @@ jQuery(document).ready(function($) {
           <div class='twitter'></div>
           <div class='instagram'></div>
         </div>
-        <div class='copyright'>© Center of the Golden One, 2018</div>
+        <div class='copyright'>
+          <div>© Center of the Golden One, 2018.</div>
+          <div> All rights reserved.</div>
+        </div>
         <ul class='ua-pp'>
           <li class='menu-item'>
             <a href='/user-agreement'>User Agreement </a>
             <span class='gold-text'>/</span>
-          </li>
-          <li class='menu-item'>
             <a href='/user-agreement'>Privacy Policy</a>
           </li>
         </ul>

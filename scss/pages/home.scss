@@ -23,46 +23,37 @@
       flex-direction: column;
       flex-grow: 1;
       width: 100vw!important;
-      height: 60vh;
+      // height: 60vh;
       object-fit: cover;
       position: relative;
-      justify-content: flex-end;
-      // #bg-image {
-      //   width: 100vw !important;
-      //   height: 100%;
-      //   background-image: url($home-url + '/2018/02/CGO_Home_2500x1274_background.png');
-      //   background-repeat: no-repeat;
-      //   background-size: cover;
-      //   background-position: top center;
-      //   // border-bottom: 10px solid black;
-      //   // box-sizing: content-box;
-      // }
+      justify-content: flex-start;
       #rosetta-container {
         position: relative;
         width: 100%;
-        // height: 100%;
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        margin-top: 600px;
         .each-rose {
           position: absolute;
           display: flex;
           justify-content: center;
-          bottom: 0;
+          bottom: 3vw;
           align-items: flex-end;
-          // filter: blur(1px);
-          height:100vw;
+          max-height: 100vh;
+          // height:100vw;
           width: 100vw;
           img {
             width: 100%;
-            padding: 8%;
+            padding: 110px;
           }
         }
       }
       .section-title {
+        padding-top: 5vw;
         h2 {
           color: black !important;
-          font-size: 1.75em !important;
+          // font-size: 7vw !important;
           text-align: center;
         }
       }
@@ -102,8 +93,6 @@
         }
       }
     }
-    
-    
     .light-beings-footer {
       display: flex;
       justify-content: center;
@@ -115,7 +104,7 @@
       font-family: $font-fam-serif !important;
       font-weight: normal!important;
       font-style: italic !important;
-      font-size: 2em;
+      font-size: 3vw;
       color: black;
       justify-content: center;
       letter-spacing: .0125em !important;
@@ -125,14 +114,6 @@
     }
   }
   #ajax-content-wrap {
-    .below-img-body {
-      .span_12 {
-        // border-top: 10px solid black;
-      }
-    }
-    // .row:first-of-type {
-    //   padding-bottom: 0 !important;
-    // }
     img {
       padding: 10%;
     }
@@ -143,7 +124,7 @@
     p {
       padding-bottom: 0;
       font-size: 1.5em;
-      line-height: 1em;
+      line-height: 1.5em;
       font-family: $font-fam-serif;
       font-style: italic;
       &:first-of-type {
@@ -167,9 +148,10 @@
         margin-left: 0;
         display: block;
         .home-nav-btn {
-          font-size: 1.25em;
+          font-size: 1.125em;
           text-align: center;
           margin: 1.5em;
+          padding: 1em;
           font-weight: bold;
           color: white;
           background-size: contain;
@@ -180,12 +162,12 @@
           align-items: center;
           justify-content: center;
           height: 100px;
-          width: 220px;
+          // width: 220px;
           // white-space: pre;
           // white-space: pre-wrap;
           background-position-x: center;
           a {
-            padding-top: 1.25em;
+            padding-top: 1.375em;
             margin: 1em;
           }
         }
@@ -193,7 +175,22 @@
     }
   }
 }
-
+@media screen and (min-width: 1400px) {
+  .home {
+    .main-content {
+      #homepage-container {
+        #rosetta-container {
+          .section-title {
+            // font-size: 2em !important;
+            // h2 {
+            //   font-size: 2em !important;
+            // }
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 1000px) {
   .row .col.section-title span:not(.share-count-total) {
     display: initial!important;
@@ -204,6 +201,7 @@
     p:last-of-type {
       padding: 0 10%;
       padding-bottom: 0 !important;
+      // line-height:
     }
   }
   .home-nav-btn-row {
@@ -238,6 +236,15 @@
     .col.span_12 {
       flex-direction: column-reverse;
       align-items: center;
+      .vc_col-sm-6 {
+        .quote, .wpb_text_column {
+          .wpb_wrapper {
+            p {
+              font-size: 1.25em!important;
+            }
+          }
+        }
+      }
     }
     .col-flip {
       .col.span_12 {
@@ -245,11 +252,18 @@
       }
     }
     #homepage-container {
-      margin-bottom: 10em;
+      margin-bottom: 5em;
       .section-title {
-        margin-top: 10em;
-        h2 {
-          margin-bottom: -5em
+        // margin-top: 10em;
+        // h2 {
+        //   margin-bottom: -5em
+        // }
+      }
+      #rosetta-container {
+        .each-rose {
+          img {
+            // padding: 60px!important;
+          }
         }
       }
     }

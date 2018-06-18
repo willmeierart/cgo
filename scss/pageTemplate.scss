@@ -49,6 +49,9 @@ body:not(.home) {
         flex-direction: column;
         .vc_col-sm-6 {
           width: 100%!important;
+          .gilded-first-letter {
+            padding: 2em!important;
+          }
         }
         .header-paragraph {
           width: 80%!important;

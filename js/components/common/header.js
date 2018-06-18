@@ -54,27 +54,29 @@ jQuery(document).ready(function($) {
       const txtContent = $(li).children('a').text()
       const href = $(li).children('a').attr('href')
       const newListItem = $(`<li class="item"><a href="${href}">${txtContent}</a></li>`)
-      newMainList.append(newListItem)
-      if ($(li).children('ul').length > 0) {
-        newListItem.addClass('has-children')
-        const title = $(li).children('a').text()
-        const subList = $(`<ul class="new-sub-list ${title}"></ul>`)
-        subLists.append(subList)
-        $(li).children('ul').children('li').each((j, subLi) => {
-          const txtContent2 = $(subLi).children('a').text()
-          const href2 = $(subLi).children('a').attr('href')
-          const newSubListItem = $(`<li class='submenu-item'><a href="${href2}">${txtContent2}</a></li>`)
-          subList.append(newSubListItem)
-          if ($(subLi).children('ul').length > 0) {
-            newSubListItem.addClass('has-children')
-            $(subLi).children('ul').children('li').each((k, tertLi) => {
-              const txtContent3 = $(tertLi).children('a').text()
-              const href3 = $(tertLi).children('a').attr('href')
-              const newTertListItem = $(`<li class='tert-menu-item'><a href="${href3}">${txtContent3}</a></li>`)
-              tertList.append(newTertListItem)
-            })
-          }
-        })
+      if (href.indexOf('product') === -1) {
+        newMainList.append(newListItem)
+        if ($(li).children('ul').length > 0) {
+          newListItem.addClass('has-children')
+          const title = $(li).children('a').text()
+          const subList = $(`<ul class="new-sub-list ${title}"></ul>`)
+          subLists.append(subList)
+          $(li).children('ul').children('li').each((j, subLi) => {
+            const txtContent2 = $(subLi).children('a').text()
+            const href2 = $(subLi).children('a').attr('href')
+            const newSubListItem = $(`<li class='submenu-item'><a href="${href2}">${txtContent2}</a></li>`)
+            subList.append(newSubListItem)
+            if ($(subLi).children('ul').length > 0) {
+              newSubListItem.addClass('has-children')
+              $(subLi).children('ul').children('li').each((k, tertLi) => {
+                const txtContent3 = $(tertLi).children('a').text()
+                const href3 = $(tertLi).children('a').attr('href')
+                const newTertListItem = $(`<li class='tert-menu-item'><a href="${href3}">${txtContent3}</a></li>`)
+                tertList.append(newTertListItem)
+              })
+            }
+          })
+        }
       }
     })
     return {

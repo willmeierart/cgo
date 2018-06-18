@@ -16,14 +16,15 @@ jQuery(document).ready(($) => {
       roseRealWidth = imgEl.getBoundingClientRect().width
       $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix })
     }
+    console.log($('.rose-5 img').css('padding'))
     roseMargin = (window.innerWidth - roseRealWidth) / 2
   })
 
   const isLocal = window.location.host.includes('localhost')
 
   if (isLocal) {
-    const rawSrc = $('.rose-5 img').attr('src')
-    $('.rose-5 img').attr('src', url + rawSrc)
+    // const rawSrc = `/wp-content${$('.rose-5 img').attr('src')}`
+    // $('.rose-5 img').attr('src', url + rawSrc)
   }
 
   const createRosettas = () => {
@@ -65,9 +66,9 @@ jQuery(document).ready(($) => {
       alignItems: 'center'
     })
 
-    $('#rosetta-container').css({
-      height: '100%'
-    })
+    // $('#rosetta-container').css({
+    //   height: '100%'
+    // })
 
     i = 5
     j = 4

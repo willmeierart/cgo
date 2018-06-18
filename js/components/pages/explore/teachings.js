@@ -33,8 +33,10 @@ jQuery(document).ready(function($) {
     $('.vc_col-sm-6').each((i, col) => {
       const conds = $(col).find('h4').length < 1 &&
         $(col).siblings().find('h4').length >= 1 &&
-        $(col).find('img').length < 1
+        $(col).find('img').length < 1 &&
+        window.innerWidth > 1000
       if (conds) {
+        console.log(col);
         $(col).css({ marginTop: '4.5em' })
       }
     })

@@ -28,7 +28,7 @@
     }
   }
   .header-secondary-text {
-    padding: 10vw;
+    padding: 3em;
     text-align: center;
     font-family: $font-fam-serif;
     font-size: 1.66em;
@@ -48,11 +48,31 @@
 
 @media screen and (max-width: 1000px) {
   .audio-text {
-    margin-top: 3em!important;
+    margin-top: 2em!important;
     .wpb_wrapper {
       p {
         width: 100%!important;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .purpose, .story, .teachings, .spiritual-lineage, .teachings, .spiritual-paths, .two-gifts {
+    .header-title-text {
+      height: 80vw;
+      .wpb_wrapper {
+        h1 {
+          font-size: 10vw!important;
+        }
+      }
+    }
+    .header-secondary-text {
+      padding: 10vw;
+      text-align: center;
+      font-family: $font-fam-serif;
+      font-size: 1.25em;
+      line-height: 1.25em;
     }
   }
 }

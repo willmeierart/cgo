@@ -10,42 +10,20 @@
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/********************************************
-***************** ~IMPORTS~ *****************
-********************************************/
-
-// @import 'normalize';
 @import 'variables';
-// @import 'animations';
 @import 'menu';
-@import './fonts/_fonts';
+@import 'fonts';
 @import 'base';
-// @import 'pageTemplate';
 
-/********************************************
-***************** ~MIXINS~ ******************
-********************************************/
-
-/********************************************
-**************** ~VARIABLES~ ****************
-********************************************/
-// $color-gold: #fab92a;
-
-
-/********************************************
-***************** ~GLOBALS~ *****************
-********************************************/
-
-// .col.span_12 {
-//   margin-left: 45px;
-// }
-
-
+#footer-outer, #footer-outer #copyright, body {
+  background-color: white!important;
+}
 
 body {
   width: 100vw;
   height: 100vh;
-  overflow: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   color: black;
   background-color: white!important;
   .loading-icon .material-icon .bar {
@@ -56,7 +34,7 @@ body {
   }
   #ajax-content-wrap {
     background-color: white !important;
-    overflow-x: !important;
+    overflow-x: hidden !important;
   }
 }
 .quote-attr {
@@ -97,10 +75,9 @@ a {
 
 
 #header-outer {
-  // padding-top: 0!important;
-  // padding:0!important
   box-shadow: none!important;
   background: linear-gradient(rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, .95))!important;
+  top: 0!important;
 }
 #header-space { 
   background-color: white;
@@ -140,9 +117,6 @@ a {
   }
 }
 
-
-
-
 .prepend-logo, .prepend-logo-medium, .append-logo, .append-logo-medium {
   display: flex;
   flex-direction: column;
@@ -154,11 +128,30 @@ a {
   }
 }
 
+.audio-row {
+  .vc_column-inner {
+    width: 100% !important;
+  }
+}
 .audio-text {
-  text-align: center;
+  text-align: center!important;
   font-family: $font-fam-serif;
   font-style: italic;
+  flex-direction: column;
+  align-items: center;
+  .wpb_wrapper {
+    align-items: center;
+    flex-direction: column;
+    p {
+      width: 100%;
+      padding-bottom: 0;
+    }
+  }
 }
+
+// .audio-text {
+//   text-align: center;
+// }
 
 #cgo-logo{
   width: 20px;
@@ -178,15 +171,11 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 2em;
-    height: 3em;
+    width: 4em;
+    height: 6em;
     svg {
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: center;
-      // align-items: center;
-      margin-left: -5px;
-      width: 1px;
+      margin-left: -20px;
+      width: 2px;
       overflow: visible !important;
       .cls-1 {
         fill: $color-gold;
@@ -194,11 +183,11 @@ a {
     }
   }
   &-medium {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     svg {
-      width: 2px;
-      height: 5px;
+      width: 3px;
+      height: 7px;
       overflow: visible !important;
       .cls-1 {
         fill: $color-gold;
@@ -212,8 +201,6 @@ a {
   height: 20px;
   display: flex;
   margin-bottom: 30px;
-  // justify-content: center;
-  // align-items: center;
   svg {
     width: 2px;
     height: 6px;
@@ -258,7 +245,6 @@ a {
 
 #footer-outer {
   margin-top: 5em;
-  // background-color: white!important;
   border-top: 3px solid $color-gold;
   #nav_menu-2, #nav_menu-3 {
     width: 100%;
@@ -272,6 +258,7 @@ a {
         }
         & a {
           @extend .menu-item;
+          white-space: nowrap;
         }
         color: black!important;
         text-transform: uppercase;
@@ -375,7 +362,6 @@ a {
   z-index: 999999999999;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   text-align: center;
   display: none;
@@ -448,24 +434,19 @@ a {
   width: 30px;
   height: 30px;
   position: relative;
+  margin-bottom: 1em;
   .audio-icon {
     fill: black;
     width: 100%;
     height: 100%;
-    // stroke: #D80000;
     stroke-miterlimit: 10;
-    margin-bottom: .5em;
+    margin-bottom: .5
     &:hover {
       fill: $color-gold;
     }
   }
 }
 
-
-
-/********************************************
-************* ~MEDIA QUERIES~ ***************
-********************************************/
 
 @media only screen and (min-width: 1000px) {
   .container:first-of-type {

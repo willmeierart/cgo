@@ -1,9 +1,13 @@
 import '../../../../scss/pages/twoGifts.scss'
 import '../../../../scss/pages/explore.scss'
 import { url } from '../../../utils'
+import logo from '../../../../assets/cgo-logo'
 
 jQuery(document).ready(function($) {
   const setHeaderImgs = () => {
+    $('.header-title-text').prepend(`
+      <div id='cgo-logo' class='header-logo'>${ logo }</div>
+    `)
     $('.top-banner').css({
       backgroundImage: `url('${url}/wp-content/uploads/2018/05/2gifts-headerstandardized.jpg')`
     })

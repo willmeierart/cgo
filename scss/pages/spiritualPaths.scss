@@ -1,26 +1,35 @@
 @import '../_variables.scss';
 
 .spiritual-paths {
+  .main-content {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
   .header-text {
     background-size: cover;
     background-position: center!important;
     width: 100vw !important;
-    margin-left: -90px;
+    // margin-left: -90px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 150px;
     margin-bottom: 50px;
     height: 45vw;
+    text-align: center;
     h1 {
       color: white;
       margin-bottom: 0;
+      white-space: nowrap;
     }
     h2 {
       font-family: $font-fam-sans!important;
       color: white!important;
-      font-size: 1.5em!important;
+      font-size: 2vw!important;
       text-align: center;
+      font-weight: bold!important;
+      white-space: nowrap;
     }
   }
   .gold-text {
@@ -30,6 +39,7 @@
       font-weight: normal!important;
       text-align: center;
       padding: 4em;
+      font-size: 1.66em!important;
     }
   }
   .glyph-wrapper { 
@@ -68,43 +78,76 @@
     align-items: center;
     justify-content: center;
     margin-bottom: -8px!important;
+    width: 100vw;
     .vc_col-sm-6 {
+      width: 50vw;
+      .wpb_wrapper {
+        margin-bottom: 0;
+      }
       p, .bottom-txt-segment {
         padding: 1em 4em;
       }
       .quote-img {
         width: 90%;
         height: 90%;
+        padding: 2em;
       }
       .bio-img {
         margin: 0;
-        margin-left: -.9vw!important;    
+        // margin-left: -.9vw!important;    
         width: 50vw!important;
         max-width: 50vw!important;
         padding: 0!important;
-        &.left {
-          margin-left: -5.95vw!important;
-        }
+        // &.left {
+        //   margin-left: -90px!important;
+        // }
       }
     }
   }
   .quote-img-wrapper {
     .vc_col-sm-6:last-of-type {
-      margin-left: 180px;
+      // margin-left: 180px;
       display: flex;
       justify-content: center;
+      margin: 0;
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
 
 @media screen and (max-width: 1000px) {
   .spiritual-paths {
+    .glyph-wrapper {
+      margin-top: 2em;
+    }
     .header-text {
       margin-left: 0;
+    }
+    .gold-text {
+      h4 {
+        // padding-top: 2em;
+        padding: 2em 4em;
+      }
     }
     .col {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      .vc_col-sm-6 {
+        width: 90vw!important;
+        .gilded-first-letter {
+          margin-top: 3em;
+        }
+        .quote-img {
+          margin-top: 3em;
+          padding: 0;
+        }
+        // margin-top: 4em;
+      }
     }
     .col-flip {
       .col {
@@ -122,6 +165,9 @@
           padding: 0 !important;
           &.left {
             margin-left: 0 !important;
+          }
+          &:not(.left) {
+            margin: 3em 0;
           }
         }
       }

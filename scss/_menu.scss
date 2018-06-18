@@ -18,7 +18,7 @@
       #nav-btn {
         width: 40px;
         height: 19px;
-        z-index: 90000;
+        z-index: 1000002;
         position: relative;
         .line {
           display: block;
@@ -78,7 +78,7 @@
       justify-content: center;
       align-items: center;
       padding-right: 2em;
-      z-index:900;
+      z-index:100002;
       color: $color-gold;
       &.active {
         

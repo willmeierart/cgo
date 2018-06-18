@@ -9,6 +9,7 @@
   }
   .header-secondary-text {
     font-family: $font-fam-serif!important;
+    padding-bottom: 1em;
     // font-size: 1.25em!important;
     p {
       font-family: $font-fam-serif;
@@ -38,7 +39,7 @@
       }
       h5 {
         font-family: $font-fam-serif;
-        font-size: 2em;
+        font-size: 2.8vw;
         line-height: 1.125em;
       }
       background-size: cover;
@@ -49,9 +50,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-top: 5em;
+      .quote-attr {
+        font-size: 1.5vw!important;
+      }
     }
     .vc_col-sm-6 {
       padding: 6em;
+      .light-beings-img {
+        max-width: 90%;
+      }
+    }
+    .img-col {
+      padding: 3em!important;
+      padding-top: 6em!important;
     }
     .vc_column-inner {
       .wpb_wrapper {
@@ -64,6 +76,7 @@
           margin-bottom: 4em;
           p {
             text-align: center !important;
+            font-size: 1.25em;
           }
         }
         .audio-sample {
@@ -73,6 +86,12 @@
         }
       }
     }
+  }
+  .no-pad-top {
+    padding-top: 0 !important;
+  }
+  .no-pad-bottom {
+    padding-bottom: 0!important;
   }
 }
 
@@ -92,9 +111,16 @@
         }
       }
       .vc_col-sm-6 {
-        padding: 3em 6em !important;
+        padding: 3em!important;
+        // padding-bottom: 0!important;
       }
       .header-title-text, .banner-2, .banner-3, .banner-4 {
+        height: 80vw!important;
+        h5 {
+          font-size: 5vw;
+          width: 100%;
+          margin: 0;
+        }
         .wpb_wrapper {
           .quote-attr {
             margin-bottom: 0!important;

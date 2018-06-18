@@ -77,13 +77,15 @@ jQuery(document).ready(($) => {
   }
   
   const handleLocalSrcSets = () => {
+    console.log(url);
     if ($('img').length > 0) {
       $('img').each((i, img) => {
+        const path = `/wp-content${$(img).attr('src').split('/wp-content')[1]}`
         if ($(img).attr('src') !== undefined && $(img).attr('src') !== '') {
-          $(img).attr('src').indexOf('localhost') !== -1 && $(img).attr('src', $(img).attr('src').replace(/\/\/localhost:300\d/, url)) 
+          $(img).attr('src').indexOf('centerofthegoldenone') === -1 && $(img).attr('src', `${url}${path}`) 
         }
         if ($(img).attr('srcset') !== undefined && $(img).attr('srcset') !== '') {
-          $(img).attr('srcset').indexOf('localhost') !== -1 && $(img).attr('srcset', $(img).attr('srcset').replace(/\/\/localhost:300\d/, url)) 
+          $(img).attr('srcset').indexOf('centerofthegoldenone') === -1 && $(img).attr('srcset', `${url}${path}`) 
         }
       })
     }
@@ -101,12 +103,25 @@ jQuery(document).ready(($) => {
     })
   }
 
+  const removeWoocommerceMenu = () => {
+    const { pathname } = window.location
+    const conds = pathname.indexOf('cart') !== -1 ||
+      pathname.indexOf('checkout') !== -1 ||
+      pathname.indexOf('shop') !== -1 ||
+      pathname.indexOf('product') !== -1
+    console.log(conds)
+    if (!conds) {
+      $('#header-secondary-outer').remove()
+    }
+  }
+
   const initDoc = (() => {
     ditchThemeImgAnimations()
     addSmallLogos()
     flipMiddleSecOnMobile()
     handleLocalSrcSets()
     formatGoldFirstLetter()
+    removeWoocommerceMenu()
     window.addEventListener('resize', () => {
       $('.cart-outer').css({ display: 'none' })
     })

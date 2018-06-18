@@ -15,7 +15,7 @@
   }
   .top-banner, .page-breaker {
     width: 100vw;
-    height: 50vw;
+    height: 45vw;
     text-align: center;
     background-size: cover;
     background-position: top center;
@@ -33,10 +33,10 @@
           @extend .stack-ser-sans;
           &.small-sans {
             font-family: $font-fam-sans!important;
-            font-size: 1.25em!important;
+            font-size: 2vw!important;
             font-style: normal!important;
             font-weight: bold!important;
-            margin-bottom: 2em;
+            margin-bottom: 3vw;
           }
         }
       }
@@ -48,7 +48,7 @@
       text-align: left;
       font-style: normal !important;
       font-weight: 900 !important;
-      font-size: 1.6em !important;
+      // font-size: 4vw !important;
       .wpb_wrapper {
         height: 100%;
         h1 {
@@ -58,9 +58,11 @@
           text-align: left;
           font-style: normal !important;
           font-weight: 900 !important;
-          font-size: 1.6em !important;
+          font-size: 2.75vw !important;
           width: 50% !important;
-          padding: 1em 2em;
+          padding: 1em;
+          padding-left: 7.5%;
+          padding-bottom: 7.5%;
           margin: 0!important;
           height: 100%!important;
         }
@@ -72,6 +74,11 @@
   }
   .page-breaker {
     margin-top: 100px;
+    &.stack-ser-sans {
+      div:first-of-type {
+        font-size: .8em;
+      }
+    }
     &.breaker-2 {
       margin-bottom: 0!important;
     }
@@ -82,8 +89,8 @@
   
 
   .page-intro{
-    font-size: 1.25em;
-    line-height: 1.5em;
+    font-size: 1.66em;
+    line-height: 1.25em;
   }
 
   
@@ -123,8 +130,8 @@
         color: white;
         text-align: center;
         background-size: cover;
-        width:80%;
-        min-width: 80%;
+        width:100%;
+        min-width: 100%;
         height: 100px;
         background-repeat: no-repeat;
         background-position: center;
@@ -134,6 +141,7 @@
         cursor: pointer;
         font-weight: bold;
         line-height: 1em;
+        font-size: 1em;
         padding-bottom: 1.25em;
       }
     }
@@ -163,14 +171,80 @@
 
 @media screen and (max-width: 1000px) {
   .two-gifts {
+    .page-breaker {
+      margin-top: 0!important;
+    }
+    .top-banner, .page-breaker {
+      height: 80vw!important;
+      margin-bottom: 0!important;
+      h1 {
+        &.stack-ser-sans {
+          // font-size: 1.5em!important;
+          div{
+            font-size: 8vw!important;
+            &.small-sans{
+              font-size: 3vw!important;
+            }
+          }
+        }
+      }
+      &.left-text {
+        .wpb_wrapper {
+          h1 {
+            font-size: 4vw!important
+          }
+        }
+      }
+    }
+    .page-intro {
+      padding: 0 2em;
+    }
     .btn-wrapper {
       margin-left: 0!important;
+      margin-bottom: 3em!important;
     }
-  }
-  .col.span_12 {
-    .vc_column-inner {
-      .audio-text {
-        padding: 10px;
+    .col.span_12 {
+      flex-direction: column;
+      .star-motif {
+        margin-bottom: 0;
+        margin-top: 3em;
+        .blue-sun {
+          max-width: 100%;
+        }
+      }
+      .vc_col-sm-6 {
+        // width: 500%!important;
+        .wpb_wrapper {
+          &:first-of-type {
+            padding-bottom: 4%!important;
+          }
+          &:last-of-type {
+            padding-top: 4%!important;
+          }
+          img {
+            &:first-of-type {
+              padding-bottom: 4% !important;
+            }
+
+            &:last-of-type {
+              padding-top: 4% !important;
+            }
+          }
+          .wpb_text_column {
+            &:first-of-type {
+              padding-bottom: 4% !important;
+            }
+
+            &:last-of-type {
+              padding-top: 4% !important;
+            }
+          }
+        }
+        .vc_column-inner {
+          .audio-text {
+            padding: 10px;
+          }
+        }
       }
     }
   }

@@ -17,8 +17,8 @@
     }
   }
   .page-title-image {
-    width: 30%!important;
-    height: 30%!important;
+    width: 40%!important;
+    height: 40%!important;
     margin-top: 6em;
   }
   .header-img {
@@ -46,8 +46,8 @@
     font-size: 1.5em;
     font-family: $font-fam-serif;
     line-height: 1.125em;
-    margin-top: 2em;
-    margin-bottom: 2em!important;
+    margin-top: 1em;
+    margin-bottom: 1em!important;
   }
   .section-gap {
     height: 100px;
@@ -107,6 +107,9 @@
         .header-text.top-banner {
           font-size: 60px!important;
         }
+      }
+      .quote-box {
+        padding: 0 3em;
       }
     }
   }

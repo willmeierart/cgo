@@ -106,9 +106,11 @@ module.exports = function(env) {
           loader: 'url-loader',
           exclude: /node_modules/,
           options: {
-            limit: 50000,
-            name: './fonts/[name].[ext]',
-            // publicPath: ''
+            limit: 5000,
+            name: 'fonts/[name].[ext]'
+            // publicPath: function(url) {
+            //   return url.replace('/dist/styles/', '..')
+            // }
           }
         },
         // {
@@ -148,7 +150,7 @@ module.exports = function(env) {
       }
     },
     plugins: [
-      new CleanWebpackPlugin(['dist']),
+      // new CleanWebpackPlugin(['dist']),
       new HardsourceWebpackPlugin(),
       new AsyncAwaitPlugin(),
       new ExtractTextPlugin({
