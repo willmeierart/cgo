@@ -16,10 +16,9 @@
   flex-direction: column;
   flex-grow: 1;
   width: 100vw !important;
-  height: 60vh;
   object-fit: cover;
   position: relative;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .home .main-content #homepage-container #rosetta-container {
@@ -28,26 +27,30 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 600px;
 }
 
 .home .main-content #homepage-container #rosetta-container .each-rose {
   position: absolute;
   display: flex;
   justify-content: center;
-  bottom: 0;
+  bottom: 3vw;
   align-items: flex-end;
-  height: 100vw;
+  max-height: 100vh;
   width: 100vw;
 }
 
 .home .main-content #homepage-container #rosetta-container .each-rose img {
   width: 100%;
-  padding: 8%;
+  padding: 110px;
+}
+
+.home .main-content #homepage-container .section-title {
+  padding-top: 5vw;
 }
 
 .home .main-content #homepage-container .section-title h2 {
   color: black !important;
-  font-size: 1.75em !important;
   text-align: center;
 }
 
@@ -102,7 +105,7 @@
   font-family: "Playfair Display" !important;
   font-weight: normal !important;
   font-style: italic !important;
-  font-size: 2em;
+  font-size: 3vw;
   color: black;
   justify-content: center;
   letter-spacing: .0125em !important;
@@ -123,7 +126,7 @@
 .home .come-within p {
   padding-bottom: 0;
   font-size: 1.5em;
-  line-height: 1em;
+  line-height: 1.5em;
   font-family: "Playfair Display";
   font-style: italic;
 }
@@ -150,9 +153,10 @@
 }
 
 .home .home-nav-btn-row .col .vc_col-sm-3 .home-nav-btn {
-  font-size: 1.25em;
+  font-size: 1.125em;
   text-align: center;
   margin: 1.5em;
+  padding: 1em;
   font-weight: bold;
   color: white;
   background-size: contain;
@@ -162,12 +166,11 @@
   align-items: center;
   justify-content: center;
   height: 100px;
-  width: 220px;
   background-position-x: center;
 }
 
 .home .home-nav-btn-row .col .vc_col-sm-3 .home-nav-btn a {
-  padding-top: 1.25em;
+  padding-top: 1.375em;
   margin: 1em;
 }
 
@@ -219,20 +222,17 @@
     align-items: center;
   }
 
+  .main-content .col.span_12 .vc_col-sm-6 .quote .wpb_wrapper p,
+  .main-content .col.span_12 .vc_col-sm-6 .wpb_text_column .wpb_wrapper p {
+    font-size: 1.25em !important;
+  }
+
   .main-content .col-flip .col.span_12 {
     flex-direction: column;
   }
 
   .main-content #homepage-container {
-    margin-bottom: 10em;
-  }
-
-  .main-content #homepage-container .section-title {
-    margin-top: 10em;
-  }
-
-  .main-content #homepage-container .section-title h2 {
-    margin-bottom: -5em;
+    margin-bottom: 5em;
   }
 }
 

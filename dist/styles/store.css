@@ -2,3 +2,8 @@
   background-color: white;
 }
 
+#ajax-content-wrap .product_title,
+#ajax-content-wrap .entry_title {
+  font-size: 4vw !important;
+}
+

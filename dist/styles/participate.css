@@ -409,6 +409,7 @@
 
   .participate .az-offerings-types-description-container .vc_column-inner > .wpb_wrapper .wpb_wrapper .txt-block {
     padding: 2em !important;
+    padding-top: 0 !important;
   }
 
   .participate .mobile-dynamic-section,
@@ -419,6 +420,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+  }
+
+  .participate .mobile-dynamic-section .mobile-events-section .date-category {
+    padding: 20px;
+  }
+
+  .participate .mobile-dynamic-section .mobile-events-section .date-category .col-1,
+  .participate .mobile-dynamic-section .mobile-events-section .date-category .col-2,
+  .participate .mobile-dynamic-section .mobile-events-section .date-category .col-3 {
+    width: 28vw;
   }
 
   .participate .mobile-dynamic-section .mobile-filters-section .mobile-filter-module {

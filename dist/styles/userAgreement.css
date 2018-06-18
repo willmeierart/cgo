@@ -12,6 +12,10 @@
   color: black !important;
 }
 
+.user-agreement b {
+  font-family: inherit;
+}
+
 .user-agreement h1 {
   margin-top: 0 !important;
 }
@@ -31,7 +35,9 @@
   margin-top: .5em;
 }
 
-.user-agreement p {
+.user-agreement p,
+.user-agreement h3,
+.user-agreement h4 {
   width: 100%;
   text-align: left;
 }
@@ -51,6 +57,7 @@
 .user-agreement .copyright {
   width: 70%;
   text-align: center;
+  font-family: "Playfair Display";
 }
 
 .user-agreement .copyright * {

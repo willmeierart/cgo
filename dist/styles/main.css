@@ -11,10 +11,6 @@
 */
 
 /********************************************
-***************** ~IMPORTS~ *****************
-********************************************/
-
-/********************************************
 ****************** ~COLORS~ *****************
 ********************************************/
 
@@ -461,7 +457,7 @@ h1,
 .h1,
 h1 *,
 .h1 * {
-  font: italic 5em "Playfair Display", serif !important;
+  font: italic 7vw "Playfair Display", serif !important;
 }
 
 h2,
@@ -483,6 +479,10 @@ h4,
 .quote,
 .quote * {
   font: italic 1em/1.5em "Playfair Display", serif !important;
+}
+
+.quote-attr {
+  margin-top: 2em;
 }
 
 .quote-attr,
@@ -530,22 +530,17 @@ h4,
   float: left;
 }
 
-/********************************************
-***************** ~MIXINS~ ******************
-********************************************/
-
-/********************************************
-**************** ~VARIABLES~ ****************
-********************************************/
-
-/********************************************
-***************** ~GLOBALS~ *****************
-********************************************/
+#footer-outer,
+#footer-outer #copyright,
+body {
+  background-color: white !important;
+}
 
 body {
   width: 100vw;
   height: 100vh;
-  overflow: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   color: black;
   background-color: white !important;
 }
@@ -560,7 +555,7 @@ body .loading-icon .material-icon .bar::after {
 
 body #ajax-content-wrap {
   background-color: white !important;
-  overflow-x: !important;
+  overflow-x: hidden !important;
 }
 
 .quote-attr {
@@ -678,10 +673,26 @@ a:hover {
   padding-bottom: 50px !important;
 }
 
+.audio-row .vc_column-inner {
+  width: 100% !important;
+}
+
 .audio-text {
-  text-align: center;
+  text-align: center !important;
   font-family: "Playfair Display";
   font-style: italic;
+  flex-direction: column;
+  align-items: center;
+}
+
+.audio-text .wpb_wrapper {
+  align-items: center;
+  flex-direction: column;
+}
+
+.audio-text .wpb_wrapper p {
+  width: 100%;
+  padding-bottom: 0;
 }
 
 #cgo-logo {
@@ -707,15 +718,15 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 2em;
-  height: 3em;
+  width: 4em;
+  height: 6em;
 }
 
 .cgo-logo-small svg,
 .cgo-logo-small #footer-outer #footer-widgets .row .bottom-section .socials-container div a svg path,
 #footer-outer #footer-widgets .row .bottom-section .socials-container div a svg .cgo-logo-small path {
-  margin-left: -5px;
-  width: 1px;
+  margin-left: -20px;
+  width: 2px;
   overflow: visible !important;
 }
 
@@ -726,15 +737,15 @@ a:hover {
 }
 
 .cgo-logo-medium {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .cgo-logo-medium svg,
 .cgo-logo-medium #footer-outer #footer-widgets .row .bottom-section .socials-container div a svg path,
 #footer-outer #footer-widgets .row .bottom-section .socials-container div a svg .cgo-logo-medium path {
-  width: 2px;
-  height: 5px;
+  width: 3px;
+  height: 7px;
   overflow: visible !important;
 }
 
@@ -841,6 +852,11 @@ a:hover {
 #footer-outer #nav_menu-3 #menu-main-1 .menu-item *,
 #footer-outer #nav_menu-3 #menu-main-1 .menu-item a * {
   margin: 0 .5em;
+}
+
+#footer-outer #nav_menu-2 #menu-main-1 .menu-item a,
+#footer-outer #nav_menu-3 #menu-main-1 .menu-item a {
+  white-space: nowrap;
 }
 
 #footer-outer #nav_menu-2 #menu-main-1 .menu-item .sans-left-marg,
@@ -1875,6 +1891,7 @@ a:hover {
   width: 30px;
   height: 30px;
   position: relative;
+  margin-bottom: 1em;
 }
 
 .audio-btn .audio-icon {
@@ -1882,16 +1899,12 @@ a:hover {
   width: 100%;
   height: 100%;
   stroke-miterlimit: 10;
-  margin-bottom: .5em;
+  margin-bottom: 0.5 .audio-btn .audio-icon;
 }
 
-.audio-btn .audio-icon:hover {
+.audio-btn .audio-icon :hover {
   fill: #D4A011;
 }
-
-/********************************************
-************* ~MEDIA QUERIES~ ***************
-********************************************/
 
 @media only screen and (min-width: 1000px) {
   .container:first-of-type {
