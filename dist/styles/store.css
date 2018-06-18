@@ -1,3 +1,7 @@
+/********************************************
+****************** ~COLORS~ *****************
+********************************************/
+
 #ajax-content-wrap .container-wrap {
   background-color: white;
 }
@@ -5,5 +9,9 @@
 #ajax-content-wrap .product_title,
 #ajax-content-wrap .entry_title {
   font-size: 4vw !important;
+}
+
+#ajax-content-wrap .woocommerce-breadcrumb {
+  border-bottom: 1px solid #D4A011;
 }
 
