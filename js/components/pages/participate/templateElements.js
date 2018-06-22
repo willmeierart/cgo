@@ -1,5 +1,5 @@
 export const detailInner = event => {
-  const { id, title, time, price, price_notes, location, description, day, start, end, time_notes } = event
+  const { id, title, time, price, price_notes, location, description, day, start, end, time_notes, email } = event
   return `
     <div id='${id}' class='detail-inner'>
       <div class='title'>${title}</div>
@@ -24,6 +24,7 @@ export const detailInner = event => {
             <div class='address'>${location.title}</div>              
             <div class='address'>${location.address}</div>
             <div class='phone'>${location.phone}</div>
+            <div class='phone'>${email || ''}</div>
           </div>
         </div>  
         <div class='col-3'>

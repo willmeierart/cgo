@@ -18,17 +18,6 @@
   align-items: center;
 }
 
-.purpose .header-title-text #cgo-logo svg,
-.story .header-title-text #cgo-logo svg,
-.teachings .header-title-text #cgo-logo svg,
-.spiritual-lineage .header-title-text #cgo-logo svg,
-.teachings .header-title-text #cgo-logo svg,
-.spiritual-paths .header-title-text #cgo-logo svg,
-.two-gifts .header-title-text #cgo-logo svg {
-  width: 2px !important;
-  height: 2px !important;
-}
-
 .purpose .header-title-text .wpb_wrapper h1,
 .story .header-title-text .wpb_wrapper h1,
 .teachings .header-title-text .wpb_wrapper h1,
@@ -128,7 +117,7 @@
     padding: 10vw;
     text-align: center;
     font-family: "Playfair Display";
-    font-size: 1.25em;
+    font-size: 1.33em;
     line-height: 1.25em;
   }
 }
@@ -263,6 +252,14 @@ body:not(.home) .main-content:not(.home) .leader-img {
   .story .end-text-block {
     padding-top: 0;
     margin: 0 !important;
+  }
+
+  .story .surrender-img {
+    width: 100%;
+  }
+
+  .story .page-breaker {
+    height: 0;
   }
 
   .audio-text {

@@ -2,16 +2,208 @@
 ****************** ~COLORS~ *****************
 ********************************************/
 
+#ajax-content-wrap a {
+  color: #D4A011 !important;
+}
+
 #ajax-content-wrap .container-wrap {
   background-color: white;
 }
 
 #ajax-content-wrap .product_title,
 #ajax-content-wrap .entry_title {
-  font-size: 4vw !important;
+  font-size: 3vw !important;
 }
 
 #ajax-content-wrap .woocommerce-breadcrumb {
+  border-bottom: none;
+}
+
+#ajax-content-wrap .woocommerce-ordering,
+#ajax-content-wrap .woocommerce-result-count {
+  top: 13px !important;
+}
+
+#ajax-content-wrap .woocommerce-products-header {
+  border: 1px solid #D4A011;
+  padding: 3em;
+  margin-bottom: 4em;
+  position: relative;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  z-index: 11;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .featured-content,
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .angle-mask {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  letter-spacing: .125em;
+  transform: skewX(-45deg);
+  transform-origin: 100% 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .featured-content img,
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .angle-mask img {
+  width: 100%;
+  height: 100%;
+  transform: skewX(45deg);
+  transform-origin: inherit;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .featured-content:after,
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .angle-mask:after {
+  transform: skewX(45deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #D4A011;
+  font-family: "Montserrat";
+  font-size: .75em;
+  font-weight: bold;
+  line-height: 1em;
+  content: attr(data-txt);
+  transform-origin: inherit;
+  padding: 1.5em;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .angle-mask {
+  transform-origin: 0% 100%;
+  right: 0;
+  bottom: 0;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .cgo-logo-small {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .cgo-logo-small svg {
+  z-index: 12;
+}
+
+#ajax-content-wrap .woocommerce-products-header .featured-tag .wrapper .angle-mask {
+  opacity: 0;
+}
+
+#ajax-content-wrap .woocommerce-products-header .page-description {
+  z-index: 10;
+}
+
+#ajax-content-wrap .woocommerce-products-header .page-description ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#ajax-content-wrap #az-cat-list {
+  width: 100%;
+}
+
+#ajax-content-wrap #az-cat-list ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-wrap: wrap;
+}
+
+#ajax-content-wrap #az-cat-list ul li {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.3em;
+}
+
+#ajax-content-wrap .az-searchbar {
+  margin-bottom: 3em;
+  padding-bottom: 2em;
   border-bottom: 1px solid #D4A011;
+}
+
+#ajax-content-wrap .continue-shopping a,
+#ajax-content-wrap .continue-shopping i {
+  color: #D4A011 !important;
+}
+
+#ajax-content-wrap .woocommerce-message {
+  background-color: #D4A011 !important;
+}
+
+#ajax-content-wrap .sf-menu > li > a {
+  line-height: 32px;
+  height: 32px;
+}
+
+#ajax-content-wrap .sf-menu > li:hover {
+  color: #D4A011;
+}
+
+#ajax-content-wrap .sf-menu > li.menu-item-has-children i {
+  font-size: .5em;
+}
+
+#ajax-content-wrap .sf-menu > li ul {
+  background-color: white;
+}
+
+#ajax-content-wrap .sf-menu > li ul li {
+  line-height: 1em !important;
+}
+
+#ajax-content-wrap .sf-menu > li ul li a:hover {
+  background-color: #D4A011 !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .main-content {
+    padding: 0 30px;
+  }
+
+  .main-content .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .main-content .products li {
+    width: 31%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #az-cat-list {
+    width: 100%;
+  }
+
+  #az-cat-list ul {
+    flex-direction: column;
+  }
+
+  #az-cat-list ul li a {
+    line-height: 1.25em;
+  }
 }
 

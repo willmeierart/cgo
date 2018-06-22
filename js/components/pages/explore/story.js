@@ -5,9 +5,7 @@ import { url } from '../../../utils'
 
 jQuery(document).ready(($) => {
   const formatHeaderText = () => {
-    $('.header-title-text').prepend(`
-      <div id='cgo-logo' class='header-logo'>${ logo }</div>
-    `).css({
+    $('.header-title-text').css({
       background: `url('${url}/wp-content/uploads/2018/05/story-header.jpg')`,
     })
     $('.header-logo').css({

@@ -5,9 +5,7 @@ import logo from '../../../../assets/cgo-logo'
 
 jQuery(document).ready(function($) {
   const formatHeaderText = () => {
-    $('.header-title-text').prepend(`
-      <div id='cgo-logo' class='header-logo'>${ logo }</div>
-    `).css({
+    $('.header-title-text').css({
       background: `url('${url}/wp-content/uploads/2018/05/teachings-banner.jpg')`
     })
     $('.header-logo').css({

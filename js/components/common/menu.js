@@ -344,7 +344,7 @@ jQuery(document).ready(function($) {
       if (isLarge) {
         adjustDynamicMarginsOnResize()
       } else {
-        initMobileMenu()
+        // initMobileMenu()
       }
     })
     if (isLarge) {

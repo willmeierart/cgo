@@ -15,8 +15,10 @@
 @import 'fonts';
 @import 'base';
 
-#footer-outer, #footer-outer #copyright, body {
-  background-color: white!important;
+html {
+  #footer-outer, #footer-outer #copyright, body {
+    background-color: white!important;
+  }
 }
 
 body {
@@ -123,9 +125,6 @@ a {
   justify-content: space-between;
   align-items: center;
   height: 150%;
-  .cgo-logo-medium {
-    padding-bottom: 50px!important;
-  }
 }
 
 .audio-row {
@@ -153,17 +152,17 @@ a {
 //   text-align: center;
 // }
 
-#cgo-logo{
-  width: 20px;
-  height: 20px;
-  svg {
-    width: 1px;
-    overflow: visible!important;
-    .cls-1 {
-      fill: $color-gold;
-    }
-  }
-}
+// #cgo-logo{
+//   width: 20px;
+//   height: 20px;
+//   svg {
+//     width: 1px;
+//     overflow: visible!important;
+//     .cls-1 {
+//       fill: $color-gold;
+//     }
+//   }
+// }
 
 .cgo-logo {
   &-small {
@@ -183,11 +182,12 @@ a {
     }
   }
   &-medium {
-    width: 30px;
-    height: 30px;
+    // width: 30px;
+    // height: 30px;
+    padding-bottom: 30px;
     svg {
-      width: 3px;
-      height: 7px;
+      width: 2px;
+      height: 5px;
       overflow: visible !important;
       .cls-1 {
         fill: $color-gold;
@@ -404,7 +404,7 @@ a {
       audio {
         // display: none;
         &::-webkit-media-controls-panel {
-          background-color: black;
+          background-color: $color-gold;
         }
         &::-webkit-media-controls-mute-button {
 
@@ -440,9 +440,12 @@ a {
     width: 100%;
     height: 100%;
     stroke-miterlimit: 10;
-    margin-bottom: .5
+    margin-bottom: .5;
     &:hover {
       fill: $color-gold;
+      * {
+        fill: inherit;
+      }
     }
   }
 }
@@ -457,6 +460,16 @@ a {
 @media only screen and (min-width: 1300px){
   .container:first-of-type {
     max-width: unset !important;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .cgo-logo-medium {
+    padding-bottom: 50px !important;
+    svg {
+      width: 3px;
+      height: 7px;
+    }
   }
 }
 
@@ -480,6 +493,18 @@ a {
             margin-top: 1em!important;
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) and (min-width: 1px) {
+  body {
+    .cgo-logo-medium {
+      padding-bottom: 10px !important;
+      svg {
+        width: 1px;
+        height: 3.2px;
       }
     }
   }

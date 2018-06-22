@@ -2,6 +2,7 @@ import { url } from '../../utils'
 import audioIcon from '../../../assets/audioIcon'
 
 jQuery(document).ready($ => {
+  let audio
   $('audio-link').css({ display: 'none' })
   
   const audioModal = $(`
@@ -9,21 +10,27 @@ jQuery(document).ready($ => {
       <div class='audio-wrapper'>
         <div class='audio-screen'></div>
         <div class='player-wrapper'>
-          <audio controls />
+          <audio class='audio-player' controls />
         </div>
       </div>
     </div>
   `)
   jQuery('body').append(audioModal)
-  $('#audio-modal-bg').click(e => {
-    $('#audio-modal-bg').hide(200)
+  $('#audio-modal-bg').children().click(e => {
+    console.log(e.target)
+    if (!$(e.target).hasClass('audio-player')) {
+      $('#audio-modal-bg').hide(200)
+      if (audio[0]) {
+        audio[0].pause()
+      }
+    }
   })
 
 
   const handleBtnClick = () => {
     $('.audio-btn').click(e => {
       const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text()
-      const audio = $('#audio-modal-bg').find('audio')
+      audio = $('#audio-modal-bg').find('audio')
       audio.attr('src', url + SRC)
       $('#audio-modal-bg').show(200)
       audio[0].play()

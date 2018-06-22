@@ -14,12 +14,13 @@ jQuery(document).ready(function($) {
   const IS_SEMINARS_PAGE = path === 'seminars'
   const IS_MEDITATIONS_PAGE = path === 'meditations'
   const IS_INTRODUCTIONS_PAGE = path === 'introductions'
-  const IS_OTHER_PAGE = path === 'other-opportunities'
-  const IS_CALENDAR_PAGE = path === 'calendar'
+  const IS_OTHER_PAGE = path === 'other-opportunities' || path === 'other%20opportunities'
+  const IS_CALENDAR_PAGE = path.indexOf('calendar') !== -1
 
   let LOCAL_EVENTS
   let RECURRING_EVENTS
   let ALL_EVENTS
+  let LOCATION_IDS_WITH_EVENTS = []
 
   let hashFilter = hash.replace('#', '').replace('-', '_')
   let activeLocation = 'Denver'
@@ -108,15 +109,17 @@ jQuery(document).ready(function($) {
 
   const renderLocationsMenu = locations => {
     const menuWrapper = $('.az-offerings-locations-menu-wrapper ul')
-    locations.forEach(location => {
-      if (menuWrapper.children(`#${location.id}`).length < 1) {
-        menuWrapper.append(`
-          <li id='${location.id}' class='az-offerings-locations-menu-item'>
-            <a>${location.title}</a>
-          </li>
-        `)
-      }
-    })
+    console.log(locations, LOCATION_IDS_WITH_EVENTS)
+    locations.filter(loc => LOCATION_IDS_WITH_EVENTS.indexOf(loc.id) !== -1)
+      .forEach(location => {
+        if (menuWrapper.children(`#${location.id}`).length < 1) {
+          menuWrapper.append(`
+            <li id='${location.id}' class='az-offerings-locations-menu-item'>
+              <a>${location.title}</a>
+            </li>
+          `)
+        }
+      })
     if (menuWrapper.children(`#streaming`).length < 1) {
       menuWrapper.append(`
         <li id='streaming-menu-item' class='az-offerings-locations-menu-item'>
@@ -190,6 +193,7 @@ jQuery(document).ready(function($) {
     
     
     events.forEach((event, i) => {
+      console.log(event);
       const { id, month } = event
       if (detailsWrapper.find(`#${id}`).length < 1) {
         if (detailsWrapper.children(`.${month}`).length < 1) {
@@ -227,7 +231,16 @@ jQuery(document).ready(function($) {
     const preMonth = event => `${PMsplitter(event)[1]}-${PMsplitter(event)[2]}-${PMsplitter(event)[0]}`
 
     const transformer = CENTER => events.map(event => {
-      const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes } = event 
+      const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes, email } = event
+      
+      const LOC_ID = (() => {
+        if (center_id) return center_id
+        else if (location_id) return location_id
+        else return null
+      })()
+      if (LOC_ID && LOCATION_IDS_WITH_EVENTS.indexOf(LOC_ID) === -1) {
+        LOCATION_IDS_WITH_EVENTS.push(LOC_ID)
+      }
 
       const month = start_time ? moment(preMonth(event)).format('MMMM') : null
       const start =  start_time ? formatTime(event.start_time) : null
@@ -257,6 +270,7 @@ jQuery(document).ready(function($) {
         time_notes,
         price,
         price_notes,
+        email,
         streaming: is_streaming,
         link: registration_link,
         location: { title: locTitle, address, phone }
@@ -280,6 +294,8 @@ jQuery(document).ready(function($) {
       introductions,
       other_opportunities: other_opportunities
     }
+
+    // console.log(meditations, seminars, introductions, other_opportunities)
 
     const allTheseCourses = (() => {
       switch (true) {
@@ -315,20 +331,47 @@ jQuery(document).ready(function($) {
     const thisCity = cities.filter(city =>
       textMatches(city.title, activeLocation)
     )[0]
-    const thisCourseType = courses.filter(course =>
-      textMatches(course.title, activeTypeFilter)
-    )[0]
+    const thisCourseType = courses.filter(course => {
+      // console.log(course, courses)
+      return textMatches(course.title, activeTypeFilter)
+    })[0]
 
     const thisLocationCenters = streamingActive ? centers : centers.filter(center => center.city_id === thisCity.id)
 
+    const recurringFilter =(() => {
+      let courseType = 'meditation'
+      switch (true) {
+        case IS_INTRODUCTIONS_PAGE :
+          courseType = 'intro'
+          break
+        case IS_SEMINARS_PAGE :
+          courseType = 'sem'
+          break
+        case IS_OTHER_PAGE :
+          courseType = 'other'
+          break
+        default :
+          courseType = 'med'
+      }
+      return courseType
+    })()
+
     const recurringEvents = thisLocationCenters.reduce(
       (list, center) => {
-        list = list.concat(center.recurring_events)
+        const matchedRecurring = center.recurring_events.filter(ev =>
+          ev.course_type.indexOf(recurringFilter) !== -1 ||
+          IS_CALENDAR_PAGE
+        )
+        // console.log(recurringFilter)
+        // console.log(matchedRecurring)
+        list = list.concat(matchedRecurring) //this is prob where the extra filter needs to happen
+        // console.log(list)
         return list
       },
       []
     ).filter(event => {
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
+      // console.log(courseMatches, thisCourseType)
       let ret1 = false
       let ret2 = false
       thisLocationCenters.forEach(center => {
@@ -336,7 +379,7 @@ jQuery(document).ready(function($) {
           ret1 = true
         }
       })
-      if (activeTypeFilter.toLowerCase() === 'all' || courseMatches) {
+      if (activeTypeFilter.toLowerCase() === 'all' || courseMatches) { // this is the line that is allowing the pass-thru
         ret2 = true
       }
       if (ret1 && ret2) return event
@@ -344,17 +387,19 @@ jQuery(document).ready(function($) {
 
     const localEvents = events.filter(event => {
       const { is_streaming } = event
-      const retStream = is_streaming === 'both' || is_streaming === 'not'
+      const retStream = is_streaming === 'both' || is_streaming.indexOf('no') !== -1
       const courseMatches = thisCourseType ? event.course_id === thisCourseType.id : false
       let ret1 = false
       let ret2 = false
       if (!streamingActive) {
         thisLocationCenters.forEach(center => {
+          // console.log(event, center.id, event.center_id, event.location_id, retStream)
           if ((center.id === event.center_id || center.id === event.location_id) && retStream) {
             ret1 = true
           }
         })
       } else {
+        // console.log(event)
         if (is_streaming === 'both' || 'only') {
           ret1 = true
         }
@@ -369,6 +414,7 @@ jQuery(document).ready(function($) {
     RECURRING_EVENTS = transformEvents(recurringEvents, thisLocationCenters)
     ALL_EVENTS = transformEvents(events, centers)
     
+    console.log(RECURRING_EVENTS, ALL_EVENTS)
 
     renderEventData(LOCAL_EVENTS, RECURRING_EVENTS)
     handleExpandingMonths()
@@ -473,7 +519,7 @@ jQuery(document).ready(function($) {
     const locationListClone = mobileHasBeenTransformed
       ? $('.mobile-locations-list')
       : locationList.clone().addClass('mobile-locations-list mobile-list')
-    const typeList = $('.az-offerings-type-filter-wrapper').children('ul')
+    const typeList = $('.az-offerings-type-filter-wrapper').find('ul')
     const typeListClone = mobileHasBeenTransformed
       ? $('.mobile-type-list')
       : typeList.clone().addClass('mobile-list mobile-type-list')
@@ -498,7 +544,7 @@ jQuery(document).ready(function($) {
     const lists = [locationListClone, typeListClone, dateFilterList]
     const activeMobileFilterProps = [activeLocation, activeTypeFilter, activeMobileDateFilter]
 
-    
+    console.log(typeList, $('.az-offerings-type-filter-wrapper'))
 
     const slicedCards = mobileCards.slice(0, mobileCardStateIdx + 1)
     const cards = mobileCards.map((cardType, i) => {
@@ -526,6 +572,7 @@ jQuery(document).ready(function($) {
     const { filters, events } = createMobileFilters()
     if (!mobileHasBeenTransformed) {
       const wholeBottomSec = $('.az-offerings-types-description-container').siblings().last()
+      console.log(wholeBottomSec, $('.az-offerings-types-description-container'))
       wholeBottomSec.replaceWith('<div class="mobile-dynamic-section"></div>')
     }
     const allFiltersCompleted = mobileCardStateIdx === 3
@@ -568,6 +615,7 @@ jQuery(document).ready(function($) {
 
 
     events.forEach((event, i) => {
+      console.log(event.email)
       const { id, month } = event
       const MONTH = month ? month.toLowerCase() : ''
       if (MONTH === dateFilter || (!month && dateFilter === 'recurring')) {

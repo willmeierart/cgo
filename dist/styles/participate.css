@@ -541,3 +541,25 @@
   display: flex;
 }
 
+@media screen and (max-width: 1000px) {
+  .calendar .az-offerings-type-filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .calendar .az-offerings-type-filter-wrapper .sort-by {
+    display: none;
+  }
+
+  .calendar .az-offerings-type-filter-wrapper .az-offerings-submenu-wrapper {
+    flex-direction: column;
+  }
+
+  .calendar .az-offerings-type-filter-wrapper .secondary-nav {
+    width: 90%;
+  }
+}
+

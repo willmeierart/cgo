@@ -86,12 +86,13 @@
         }
       }
     }
-  }
-  .no-pad-top {
-    padding-top: 0 !important;
-  }
-  .no-pad-bottom {
-    padding-bottom: 0!important;
+    .no-pad-top {
+      padding-top: 0 !important;
+    }
+
+    .no-pad-bottom {
+      padding-bottom: 0 !important;
+    }
   }
 }
 
@@ -112,6 +113,12 @@
       }
       .vc_col-sm-6 {
         padding: 3em!important;
+        &.no-pad-top {
+          padding-top: 0 !important;
+        }
+        &.no-pad-bottom {
+          padding-bottom: 0 !important;
+        }
         // padding-bottom: 0!important;
       }
       .header-title-text, .banner-2, .banner-3, .banner-4 {
@@ -126,6 +133,9 @@
             margin-bottom: 0!important;
           }
         }
+      }
+      .light-beings-img {
+        max-width: 100%!important;
       }
     }
   }

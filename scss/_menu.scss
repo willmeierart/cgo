@@ -250,3 +250,67 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) and (min-width: 1px) {
+  body {
+    #side-nav {
+      .side-nav-inner {
+        .inner-grid {
+          .col-1 {
+            .new-main-list {
+              .item {
+                font-size: 2.5em;
+              }
+            }
+          }
+          .col-2 {
+            .new-sub-list {
+              .submenu-item {
+                font-size: 1.5em;
+              }
+            }
+          }
+          .col-3 {
+            .new-tert-list {
+              .tert-menu-item {
+                font-size: 1em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) and (min-width: 1px) {
+  body {
+    #side-nav {
+      .side-nav-inner {
+        .inner-grid {
+          .col-1 {
+            .new-main-list {
+              .item {
+                font-size: 1.75em;
+              }
+            }
+          }
+          .col-2 {
+            .new-sub-list {
+              .submenu-item {
+                font-size: .75em;
+              }
+            }
+          }
+          .col-3 {
+            .new-tert-list {
+              .tert-menu-item {
+                font-size: .5em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

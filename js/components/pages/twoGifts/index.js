@@ -5,9 +5,6 @@ import logo from '../../../../assets/cgo-logo'
 
 jQuery(document).ready(function($) {
   const setHeaderImgs = () => {
-    $('.header-title-text').prepend(`
-      <div id='cgo-logo' class='header-logo'>${ logo }</div>
-    `)
     $('.top-banner').css({
       backgroundImage: `url('${url}/wp-content/uploads/2018/05/2gifts-headerstandardized.jpg')`
     })
@@ -32,8 +29,11 @@ jQuery(document).ready(function($) {
     
   }
   const setButton = () => {
-    $('.two-gifts-button').css({
-      backgroundImage: `url('${url}/wp-content/uploads/2018/05/2gifts-button.png')`
+    $('.seminar-btn').css({
+      backgroundImage: `url('${url}/wp-content/uploads/2018/06/CGO-Button-MoreAboutTheSeminars-1.0.jpg')`
+    })
+    $('.meditate-btn').css({
+      backgroundImage: `url('${url}/wp-content/uploads/2018/06/CGO-Button-MeditateWithUs-1.0.jpg')`
     })
   }
 

@@ -25,3 +25,9 @@ rsync -av kp0641570666030@45.40.149.159:/home/kp0641570666030/html/wp-content/pl
 /Users/w/var/www/centerofthegoldenone.com/www/wp-content/plugins
 
 
+
+Potential issue down the road:
+via moment console warning 06/21/2018:
+```Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged and will be removed in an upcoming major release. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+Arguments: 
+[0] _isAMomentObject: true, _isUTC: false, _useUTC: false, _l: undefined, _i: 07-19-2018, _f: undefined, _strict: undefined, _locale: [object Object]```

@@ -50,7 +50,10 @@ module.exports = function(env) {
                   [
                     "env", {
                       "targets": {
-                        "node": "current"
+                        "node": "current",
+                        "browsers": [
+                          "last 2 versions"
+                        ]
                       }
                     }
                   ]

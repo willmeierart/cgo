@@ -9,12 +9,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    #cgo-logo {
-      svg {
-        width: 2px!important;
-        height: 2px!important;
-      }
-    }
+    // #cgo-logo {
+    //   svg {
+    //     width: 2px!important;
+    //     height: 2px!important;
+    //   }
+    // }
     .wpb_wrapper {
       // height: 50%;
       h1 {
@@ -71,7 +71,7 @@
       padding: 10vw;
       text-align: center;
       font-family: $font-fam-serif;
-      font-size: 1.25em;
+      font-size: 1.33em;
       line-height: 1.25em;
     }
   }

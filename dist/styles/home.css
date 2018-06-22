@@ -153,12 +153,8 @@
 }
 
 .home .home-nav-btn-row .col .vc_col-sm-3 .home-nav-btn {
-  font-size: 1.125em;
-  text-align: center;
   margin: 1.5em;
   padding: 1em;
-  font-weight: bold;
-  color: white;
   background-size: contain;
   background-repeat: no-repeat;
   display: flex;
@@ -167,11 +163,6 @@
   justify-content: center;
   height: 100px;
   background-position-x: center;
-}
-
-.home .home-nav-btn-row .col .vc_col-sm-3 .home-nav-btn a {
-  padding-top: 1.375em;
-  margin: 1em;
 }
 
 @media screen and (max-width: 1000px) {
@@ -233,6 +224,18 @@
 
   .main-content #homepage-container {
     margin-bottom: 5em;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .home .main-content .col.span_12 .vc_col-sm-6 {
+    font-size: 1.5em !important;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .home .main-content .col.span_12 .vc_col-sm-6 {
+    font-size: 1.75em !important;
   }
 }
 

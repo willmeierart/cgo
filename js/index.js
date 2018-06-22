@@ -8,7 +8,8 @@ import './components/common/menu'
 import './components/common/media'
 import logo from '../assets/cgo-logo.js' 
 
-jQuery(document).ready(($) => { 
+jQuery(document).ready(($) => {
+  console.warn('THIS IS WHAT YOU SHOULD COPY AND PASTE:', window.navigator.userAgent)
   const ditchThemeImgAnimations = () => {
     $('.img-with-aniamtion-wrap').removeClass('img-with-aniamtion-wrap')
     $('.img-with-animation').removeClass('img-with-animation')
@@ -112,6 +113,7 @@ jQuery(document).ready(($) => {
     console.log(conds)
     if (!conds) {
       $('#header-secondary-outer').remove()
+      $('#aws_widget-5').remove()
     }
   }
 

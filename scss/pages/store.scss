@@ -1,13 +1,207 @@
 @import '../_variables.scss';
 
-#ajax-content-wrap{
+#ajax-content-wrap {
+  a {
+    color: $color-gold!important;;
+  }
   .container-wrap {
     background-color: white;
   }
   .product_title, .entry_title {
-    font-size: 4vw!important;
+    font-size: 3vw!important;
   }
   .woocommerce-breadcrumb {
+    border-bottom: none;
+  }
+  .woocommerce-ordering, .woocommerce-result-count {
+    top: 13px!important;
+  }
+
+  .woocommerce-products-header {
+    border: 1px solid $color-gold;
+    padding: 3em;
+    margin-bottom: 4em;
+    position: relative;
+    .featured-tag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      z-index:11;
+      // background: url('https://test.centerofthegoldenone.com/wp-content/uploads/2018/06/cgoStoreBgSwatch.jpg');
+      .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        // padding: 1.5em;
+        overflow: hidden;
+        .featured-content, .angle-mask {
+          position: absolute;
+          z-index: 5;
+          width: 100%;
+          height: 100%;
+          letter-spacing: .125em;
+          // border-image-source: 'https://test.centerofthegoldenone.com/wp-content/uploads/2018/06/cgoStoreBgSwatch.jpg';
+          // border-top: 150px solid;
+          // border-right: 150px solid transparent;
+          // overflow: hidden;
+          // box-sizing: border-box;
+          transform: skewX(-45deg);
+          transform-origin: 100% 0;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            transform: skewX(45deg);
+            transform-origin: inherit;
+          }
+          &:after {
+            transform: skewX(45deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: $color-gold;
+            font-family: $font-fam-sans;
+            font-size: .75em;
+            font-weight: bold;
+            line-height: 1em;
+            content: attr(data-txt);
+            transform-origin: inherit;
+            padding: 1.5em;
+          }
+        }
+        .angle-mask {
+          transform-origin: 0% 100%;
+          right: 0;
+          bottom: 0;
+        }
+        .cgo-logo-small {
+          width: 2em;
+          height: 2em;
+          position: absolute;
+          top: 2em;
+          left: 1em;
+          svg {
+            z-index: 12;
+          }
+        }
+        .angle-mask {
+          // z-index: 4;
+          // width: 0;
+          // height: 0;
+          // position: absolute;
+          // bottom: 0;
+          // right: 0;
+          opacity: 0;
+          // border-image-source: ('https://test.centerofthegoldenone.com/wp-content/uploads/2018/06/cgoStoreBgSwatch.jpg');
+          // border-bottom: 150px solid;
+          // border-left: 150px solid transparent;
+        }
+      }
+    }
+    .page-description {
+      z-index: 10;
+      ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  
+  #az-cat-list {
+    width: 100%;
+    ul {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex-grow: 0;
+      flex-wrap: wrap;
+      li {
+        // padding: .25em 1em;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.3em;
+        &:not(:last-of-type) {
+          // border-right: 2px solid $color-gold;
+        }
+      }
+    }
+  }
+  .az-searchbar {
+    margin-bottom: 3em;
+    padding-bottom: 2em;
     border-bottom: 1px solid $color-gold;
+  }
+  .continue-shopping {
+    a, i {
+      color: $color-gold!important;
+    }
+  }
+
+  .woocommerce-message {
+    background-color: $color-gold!important;
+  }
+
+  .sf-menu {
+    > li {
+      > a {
+        line-height: 32px;
+        height: 32px;
+      }
+      &:hover {
+        color: $color-gold;
+      }
+      &.menu-item-has-children {
+        i {
+          // display: inline-block;
+          font-size: .5em;
+        }
+      }
+      ul {
+        background-color: white;
+        li {
+          line-height: 1em !important;
+          a {
+            &:hover {
+              background-color: $color-gold!important;
+              color: white!important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main-content {
+    padding: 0 30px;
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      li {
+        width: 31%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #az-cat-list {
+    width: 100%;
+    ul {
+      flex-direction: column;
+      li {
+        a {
+          line-height: 1.25em;
+        }
+      }
+    }
   }
 }

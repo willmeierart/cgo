@@ -148,28 +148,16 @@
         margin-left: 0;
         display: block;
         .home-nav-btn {
-          font-size: 1.125em;
-          text-align: center;
           margin: 1.5em;
           padding: 1em;
-          font-weight: bold;
-          color: white;
           background-size: contain;
           background-repeat: no-repeat;
-          // padding: 1.5em 1em;
           display: flex;
           flex-grow: 0;
           align-items: center;
           justify-content: center;
           height: 100px;
-          // width: 220px;
-          // white-space: pre;
-          // white-space: pre-wrap;
           background-position-x: center;
-          a {
-            padding-top: 1.375em;
-            margin: 1em;
-          }
         }
       }
     }
@@ -264,6 +252,30 @@
           img {
             // padding: 60px!important;
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .home {
+    .main-content {
+      .col.span_12 {
+        .vc_col-sm-6 {
+            font-size: 1.5em!important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .home {
+    .main-content {
+      .col.span_12 {
+        .vc_col-sm-6 {
+          font-size: 1.75em !important;
         }
       }
     }

@@ -18,17 +18,6 @@
   align-items: center;
 }
 
-.purpose .header-title-text #cgo-logo svg,
-.story .header-title-text #cgo-logo svg,
-.teachings .header-title-text #cgo-logo svg,
-.spiritual-lineage .header-title-text #cgo-logo svg,
-.teachings .header-title-text #cgo-logo svg,
-.spiritual-paths .header-title-text #cgo-logo svg,
-.two-gifts .header-title-text #cgo-logo svg {
-  width: 2px !important;
-  height: 2px !important;
-}
-
 .purpose .header-title-text .wpb_wrapper h1,
 .story .header-title-text .wpb_wrapper h1,
 .teachings .header-title-text .wpb_wrapper h1,
@@ -128,7 +117,7 @@
     padding: 10vw;
     text-align: center;
     font-family: "Playfair Display";
-    font-size: 1.25em;
+    font-size: 1.33em;
     line-height: 1.25em;
   }
 }
@@ -271,32 +260,21 @@
 }
 
 .two-gifts .btn-wrapper {
-  margin-left: 2% !important;
   margin-top: 3em;
 }
 
-.two-gifts .btn-wrapper .wpb_wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .two-gifts .btn-wrapper .wpb_wrapper .two-gifts-button {
-  color: white;
-  text-align: center;
-  background-size: cover;
-  width: 100%;
-  min-width: 100%;
+  padding: 1em;
+  background-size: contain;
   height: 100px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position-x: center;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  cursor: pointer;
-  font-weight: bold;
-  line-height: 1em;
-  font-size: 1em;
+  align-items: center;
+  flex-grow: 0;
   padding-bottom: 1.25em;
+  width: 100%;
 }
 
 .two-gifts .quote-txt-block .wpb_wrapper {
