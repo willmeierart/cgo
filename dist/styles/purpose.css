@@ -288,7 +288,6 @@ body:not(.home) .main-content:not(.home) .leader-img {
   }
 
   .wpb_row.audio-row {
-    margin: 20vw;
-    margin-top: 6em;
+    margin: 6em 20vw;
   }
 }

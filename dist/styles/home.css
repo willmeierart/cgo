@@ -99,6 +99,12 @@
   overflow: visible;
 }
 
+.home .main-content #homepage-container .section-title h2.cssanimation,
+.home .main-content #homepage-container .section-title h2.cssanimation span {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
 .home .main-content #homepage-container .section-title h2 span {
   overflow: visible;
 }

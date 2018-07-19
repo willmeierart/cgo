@@ -1,7 +1,7 @@
 import '../../../../scss/pages/home.scss'
 // import { TweenMax, TimelineLite } from 'gsap/TweenMax'
 import './rosettaHeader'
-import { url } from '../../../utils'
+import { url, isMobile } from '../../../utils'
 
 jQuery(document).ready(($) => { 
   const setBtnBGs = () => {
@@ -40,7 +40,12 @@ jQuery(document).ready(($) => {
   const initDoc = () => {
     setBtnBGs()
     formatEndStatement()
-    animateTitle()
+
+    if (!isMobile) {
+      animateTitle()
+    } else {
+      $('.section-title h2').css({ opacity: 1 })
+    }
   }
   initDoc()
 })

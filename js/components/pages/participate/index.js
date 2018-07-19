@@ -89,10 +89,7 @@ jQuery(document).ready(function($) {
   const renderTypesFilter = courseList => {
     courseList.forEach(item => {
       // use COURSE_IDS_WITH_EVENTS to filter them out if there are no corresponding events
-      console.log(COURSE_IDS_WITH_EVENTS);
-
       if (COURSE_IDS_WITH_EVENTS.indexOf(item.id) !== -1) {
-        console.log(item)
         if ($('#az-offerings-filter-focus').children(`#${item.id}`).length < 1) {
           $('#az-offerings-filter-focus').append($(`
             <li id='${item.id}' class='az-offerings-filter-item'>
@@ -102,12 +99,17 @@ jQuery(document).ready(function($) {
           )
         }
       } else {
-        if ($('#az-offerings-filter-focus').children(`#${item.id}`).length > 0) {
+        if (
+          $('#az-offerings-filter-focus').children(`#${item.id}`).length > 0 &&
+          $('#az-offerings-filter-focus').find('a').text() !== 'all'
+        ) {
+          // console.log($('#az-offerings-filter-focus').find('a').text())
           $(`#${item.id}`).remove()
         }
       }
     })
     const thisChild = $('.az-offerings-filter-item').children('a')
+    thisChild.off('click')
     setActiveItemFilter(thisChild, activeTypeFilter)
     thisChild.click(e => {
       activeTypeFilter = $(e.target).text()
@@ -119,7 +121,8 @@ jQuery(document).ready(function($) {
 
   const renderLocationsMenu = locations => {
     const menuWrapper = $('.az-offerings-locations-menu-wrapper ul')
-    // use LOCATION_IDS_WITH_EVENTS to filter them out if there are no corresponding events
+    // use COURSE_IDS_WITH_EVENTS to filter them out if there are no corresponding events
+    // console.log(LOCATION_IDS_WITH_EVENTS)
     locations.filter(loc => LOCATION_IDS_WITH_EVENTS.indexOf(loc.id) !== -1)
       .forEach(location => {
         if (menuWrapper.children(`#${location.id}`).length < 1) {
@@ -149,13 +152,17 @@ jQuery(document).ready(function($) {
       }
     })
 
+    menuItems.off('click')
     menuItems.click(e => {
       activeLocation = $(e.target).text().toUpperCase().replace(' ', '-')
       activeTypeFilter = 'All'
+      COURSE_IDS_WITH_EVENTS = []
+
       setActiveItemFilter(menuItems, activeLocation)
       $('.az-offerings-location-detail-wrapper').empty()
       menuItems.children('.active-line').hide()
       $(e.target).children('.active-line').show(250)
+
       refreshEventList()
     })
   }
@@ -215,14 +222,24 @@ jQuery(document).ready(function($) {
     //   recurringWrapper.show()
     // }
     
-    const dateParts = x => [parseInt(x.start.date.split('/')[0]), parseInt(x.start.date.split('/')[1]), parseInt(x.start.date.split('/')[2])]
+    const dateParts = x => [parseInt(x.start.date.split('/')[0]), parseInt(x.start.date.split('/')[1]), parseInt(x.start.date.split('/')[2][3])]
+
 
     events.sort((a, b) => {
-      return dateParts(a)[0] !== dateParts(b)[0]
-          ? dateParts(a)[0] - dateParts(b)[0]
-          : dateParts(a)[1] - dateParts(b)[1]
+      if (dateParts(a)[2] !== dateParts(b)[2]) {
+        return dateParts(a)[2] - dateParts(b)[2]
+      } else {
+        if (dateParts(a)[0] !== dateParts(b)[0]) {
+          return dateParts(a)[0] - dateParts(b)[0]
+        } else {
+          if (dateParts(a)[1] !== dateParts(b)[1]) {
+            return dateParts(a) - dateParts(b)
+          } else {
+            return 0
+          }
+        }
+      }
     })
-    .sort((a, b) => dateParts(a)[2] - dateParts(b)[2])
     .forEach((event, i) => {
       const { id, month } = event
       if (detailsWrapper.find(`#${id}`).length < 1) {
@@ -259,6 +276,10 @@ jQuery(document).ready(function($) {
     const PMsplitter = event => event.start_time.split('T')[0].split('-')
     const preMonth = event => `${PMsplitter(event)[1]}-${PMsplitter(event)[2]}-${PMsplitter(event)[0]}`
 
+    // console.log(events)
+
+    LOCATION_IDS_WITH_EVENTS = []
+
     const transformer = CENTER => events.map(event => {
       const { id, title, course_id, center_id, location_id, description, end_time, is_streaming, price, price_notes, registration_link, start_time, day, time, time_notes, email } = event
       
@@ -271,6 +292,7 @@ jQuery(document).ready(function($) {
       if (LOC_ID && LOCATION_IDS_WITH_EVENTS.indexOf(LOC_ID) === -1) {
         LOCATION_IDS_WITH_EVENTS.push(LOC_ID)
       }
+      // console.log(LOCATION_IDS_WITH_EVENTS)
 
       const getMonth = date => { // because moment.js crashes with webpack version apparently
         const month = date.split('-')[0]
@@ -385,7 +407,7 @@ jQuery(document).ready(function($) {
           const publicMeditations = meditations.events.filter(event => event.title.toLowerCase().indexOf('evening') !== -1)
           const syntheticCourseType = {
             id: publicMeditations[0].course_id,
-            title: 'Evening of Meditation'
+            title: 'Evenings of Meditation'
           }
           const INTROS = { ...introductions }
           INTROS.events = [...INTROS.events, ...publicMeditations]
@@ -395,6 +417,7 @@ jQuery(document).ready(function($) {
         case IS_OTHER_PAGE:
           return other_opportunities
         case IS_CALENDAR_PAGE:
+          console.log(matcherObj[hashFilter])
           return matcherObj[hashFilter]
         default:
           return meditations
@@ -433,7 +456,8 @@ jQuery(document).ready(function($) {
       return courseType
     })()
 
-    COURSE_IDS_WITH_EVENTS = [] // reset each time
+    // COURSE_IDS_WITH_EVENTS = [] // reset each time
+    // console.log(COURSE_IDS_WITH_EVENTS)
 
     const recurringEvents = thisLocationCenters.reduce(
       (list, center) => {
@@ -505,45 +529,59 @@ jQuery(document).ready(function($) {
 
   const handleCalendarTypeFilter = () => {
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
-    const { course_types: { meditations, seminars, introductions, other_opportunities } } = cachedData
+    const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities } } = cachedData
     const matcherObj = {
       seminars,
       meditation: meditations,
       introductions,
-      other_opportunities: other_opportunities
+      other_opportunities
     }
     const a = $('.az-offerings-submenu-wrapper.calendar-menu').find('a')
     a.click(e => {
       hashFilter = $(e.target).text().toLowerCase().replace(/[^a-z]/g, '_')
-      const allTheseCourses = (() => {
-        switch (true) {
-          case IS_SEMINARS_PAGE:
-            return seminars
-          case IS_MEDITATIONS_PAGE:
-            return meditations
-          case IS_INTRODUCTIONS_PAGE: {
-            const publicMeditations = meditations.events.filter(event => event.title.toLowerCase().indexOf('evening') !== -1)
-            const syntheticCourseType = {
-              id: publicMeditations[0].course_id,
-              title: 'Evening of Meditation'
-            }
-            const INTROS = { ...introductions }
-            INTROS.courses.push(syntheticCourseType)
-            INTROS.events = [...INTROS.events, ...publicMeditations]
-            return INTROS
-          }
-          case IS_OTHER_PAGE:
-            return other_opportunities
-          case IS_CALENDAR_PAGE:
-            return matcherObj[hashFilter]
-          default:
-            return meditations
-        }
-      })()
-      const { courses } = allTheseCourses
-      $('#az-offerings-filter-focus').empty()
-      renderTypesFilter(courses)
+      console.log(LOCATION_IDS_WITH_EVENTS, cities)
+      activeLocation = cities.filter(c => c.id === LOCATION_IDS_WITH_EVENTS[0])[0].title
+      activeTypeFilter = 'All'
+      // const allTheseCourses = (() => {
+      //   switch (true) {
+      //     case IS_SEMINARS_PAGE:
+      //       return seminars
+      //     case IS_MEDITATIONS_PAGE:
+      //       return meditations
+      //     case IS_INTRODUCTIONS_PAGE: {
+      //       const publicMeditations = meditations.events.filter(event => event.title.toLowerCase().indexOf('evening') !== -1)
+      //       const syntheticCourseType = {
+      //         id: publicMeditations[0].course_id,
+      //         title: 'Evening of Meditation'
+      //       }
+      //       const INTROS = { ...introductions }
+      //       INTROS.courses.push(syntheticCourseType)
+      //       INTROS.events = [...INTROS.events, ...publicMeditations]
+      //       return INTROS
+      //     }
+      //     case IS_OTHER_PAGE:
+      //       return other_opportunities
+      //     case IS_CALENDAR_PAGE:
+      //       return matcherObj[hashFilter]
+      //     default:
+      //       return meditations
+      //   }
+      // })()
+      // const { courses } = matcherObj[hashFilter]
+      $('#az-offerings-filter-focus').children().each((i, li) => {
+        if ($(li).children().text() !== 'all') $(li).remove()
+      })
+      $('.az-offerings-location-detail-wrapper').empty()
+      $('.az-offerings-locations-menu-wrapper ul').empty()
+    //  console.log($('.az-offerings-locations-menu-wrapper li').length)
+      // renderTypesFilter(courses)
+
       filterEventsData()
+      renderLocationsMenu(cities)
+
+      // window.location.reload()
+      // renderLocationsMenu(cities)
+      // renderTypesFilter(courses)
     })
   }
 
@@ -816,18 +854,24 @@ jQuery(document).ready(function($) {
           // console.log(object);
           const syntheticCourseType = {
             id: publicMeditations[0].course_id,
-            title: 'Evening of Meditation'
+            title: 'Evenings of Meditation'
           }
           const INTROS = { ...introductions }
           INTROS.courses.push(syntheticCourseType)
           INTROS.events = [...INTROS.events, ...publicMeditations]
-          console.log(INTROS.events)
+          // console.log(INTROS.events)
           return INTROS
         }
         case IS_OTHER_PAGE:
           return other_opportunities
         case IS_CALENDAR_PAGE:
-          return seminars
+          const matcherObj = {
+            seminars,
+            meditation: meditations,
+            introductions,
+            other_opportunities
+          }
+          return matcherObj[hashFilter]
         default:
           return meditations
       }

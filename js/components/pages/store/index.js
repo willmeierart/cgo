@@ -36,7 +36,10 @@ jQuery(document).ready($ => {
       window.location.pathname.indexOf('product') !== -1
     ) {
       $('.woocommerce-breadcrumb').children('i:first-of-type').after(el)
+    } else if (window.location.pathname.indexOf('store') !== -1) {
+      $('.woocommerce-breadcrumb').html($('.woocommerce-breadcrumb').html().replace('Shop', 'Store'))
     }
+
   }
 
   const formatFeatured = () => { // make featured products box

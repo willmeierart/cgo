@@ -101,6 +101,7 @@
   .page-intro{
     font-size: 1.66em;
     line-height: 1.25em;
+    padding: 0 3em;
     a {
       font-weight: bold;
     }
@@ -250,8 +251,7 @@
 @media screen and (min-width: 1000px) {
   .two-gifts {
     .wpb_row.audio-row {
-      margin: 20vw;
-      margin-top: 6em;
+      margin: 6em 20vw;
     }
     .no-pad-top {
       padding-top: 0!important;
