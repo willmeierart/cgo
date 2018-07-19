@@ -1,6 +1,6 @@
 import '../../../../scss/pages/twoGifts.scss'
 import '../../../../scss/pages/explore.scss'
-import { url } from '../../../utils'
+import { url, isIE } from '../../../utils'
 import logo from '../../../../assets/cgo-logo'
 
 jQuery(document).ready(function($) {
@@ -35,6 +35,13 @@ jQuery(document).ready(function($) {
     $('.meditate-btn').css({
       backgroundImage: `url('${url}/wp-content/uploads/2018/06/CGO-Button-MeditateWithUs-1.0.jpg')`
     })
+  }
+
+  if (isIE) {
+    $('.blue-sun').css({ width: '50%' })
+    $('.squiggle').css({ width: '30%' })
+    $('.left-text h1')
+      .parent().css({ width: '100%' })
   }
 
   const initDoc = () => {

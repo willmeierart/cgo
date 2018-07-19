@@ -49,6 +49,7 @@
       font-style: normal !important;
       font-weight: 900 !important;
       // font-size: 4vw !important;
+      
       .wpb_wrapper {
         height: 100%;
         h1 {
@@ -63,8 +64,17 @@
           padding: 1em;
           padding-left: 7.5%;
           padding-bottom: 7.5%;
-          margin: 0!important;
+          margin: 0;
           height: 100%!important;
+          &.lady-quote {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            .quote-attr {
+              font-size: .5em!important;
+              margin-top: 1em!important;
+            }
+          }
         }
       }
     }
@@ -91,6 +101,9 @@
   .page-intro{
     font-size: 1.66em;
     line-height: 1.25em;
+    a {
+      font-weight: bold;
+    }
   }
 
   
@@ -122,11 +135,9 @@
   }
   
   .btn-wrapper {
-    // margin-left: 2%!important;
     .wpb_wrapper {
       .two-gifts-button {
         padding: 1em;
-        // margin: 1.5em;
         background-size: contain;
         height:100px;
         background-repeat: no-repeat;
@@ -141,14 +152,6 @@
     }
     margin-top: 3em;
   }
-  .vc_col-sm-4 {
-    &.btn-wrapper {
-      // .two-gifts-button {
-      //   width: 120%;
-      //   min-width: 100%;
-      // }
-    }
-  }
   .quote-txt-block {
     .wpb_wrapper {
       display: flex;
@@ -156,6 +159,8 @@
       align-items: center;
       justify-content: center;
       .end-txt-block {
+        font-size: 1.5em!important;
+        line-height: 1.5em;
         text-align: center;
         width: 60%;
       }
@@ -173,7 +178,6 @@
       margin-bottom: 0!important;
       h1 {
         &.stack-ser-sans {
-          // font-size: 1.5em!important;
           div{
             font-size: 8vw!important;
             &.small-sans{
@@ -207,7 +211,6 @@
         }
       }
       .vc_col-sm-6 {
-        // width: 500%!important;
         .wpb_wrapper {
           &:first-of-type {
             padding-bottom: 4%!important;
@@ -240,6 +243,21 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .two-gifts {
+    .wpb_row.audio-row {
+      margin: 20vw;
+      margin-top: 6em;
+    }
+    .no-pad-top {
+      padding-top: 0!important;
+    }
+    .no-pad-bottom {
+      padding-bottom: 0!important;
     }
   }
 }

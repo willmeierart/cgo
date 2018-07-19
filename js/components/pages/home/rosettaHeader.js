@@ -1,4 +1,4 @@
-import { url } from '../../../utils'
+import { url, isIE } from '../../../utils'
 import logo from '../../../../assets/cgo-logo.js'
 import '../../../../scss/pages/home.scss'
 
@@ -16,16 +16,8 @@ jQuery(document).ready(($) => {
       roseRealWidth = imgEl.getBoundingClientRect().width
       $('.each-rose').children('img').css({ maxWidth: imgWPix, maxHeight: imgWPix })
     }
-    console.log($('.rose-5 img').css('padding'))
     roseMargin = (window.innerWidth - roseRealWidth) / 2
   })
-
-  const isLocal = window.location.host.includes('localhost')
-
-  if (isLocal) {
-    // const rawSrc = `/wp-content${$('.rose-5 img').attr('src')}`
-    // $('.rose-5 img').attr('src', url + rawSrc)
-  }
 
   const createRosettas = () => {
     let i = 4
@@ -44,12 +36,6 @@ jQuery(document).ready(($) => {
       }))
     })
 
-    // $('#rosetta-container').append(`
-    //   <div class='rose-logo-wrapper'>
-    //     <div id='rosetta-logo'>${ logo }</div>
-    //   </div>
-    // `)
-
     $('.rose-logo-wrapper').css({
       zIndex: 10,
       position: 'absolute',
@@ -66,14 +52,11 @@ jQuery(document).ready(($) => {
       alignItems: 'center'
     })
 
-    // $('#rosetta-container').css({
-    //   height: '100%'
-    // })
-
     i = 5
     j = 4
 
     $('.each-rose')
+      .css({ bottom: isIE ? '6vw' : '3vw' })
       .children('img')
       .css({
         maxWidth: imgWPix,
@@ -92,7 +75,7 @@ jQuery(document).ready(($) => {
         zIndex: i > j ? i : j,
       }).delay(200)
         .animate({ opacity: 0 }, {
-          duration: 5000, 
+          duration: 2000, 
           specialEasing: 'ease-in',
           clearQueue: true,
           complete: () => {
@@ -105,14 +88,17 @@ jQuery(document).ready(($) => {
     window.requestAnimationFrame(animateFunc)
   }
 
+  const handleRoseHeight = () => {
+    $('.each-rose').css({ height: `${Math.min($('#rosetta-container').width(), imgSize)}px` })
+  }
+
   const initDoc = () => {
     createRosettas()
+    const isFirefox = window.navigator.userAgent.indexOf('irefox') !== -1
+    if (isFirefox) {
+      handleRoseHeight()
+      window.addEventListener('resize', handleRoseHeight)
+    }
   }
   initDoc()
-
-  window.addEventListener('resize', () => {
-    $('#rosetta-logo').css({
-      height: `${Math.min($('#rosetta-container').width(), imgSize)}px`
-    })
-  })
 })

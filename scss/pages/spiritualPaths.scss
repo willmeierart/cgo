@@ -10,7 +10,6 @@
     background-size: cover;
     background-position: center!important;
     width: 100vw !important;
-    // margin-left: -90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 120px;
     position: relative;
     margin-top: 4em;    
     * {
@@ -59,7 +58,7 @@
       height: 100%;
     }
     .glyph {
-      height: 200px;
+      height: 120px;
     }
   }
   .gold-n-bold {
@@ -87,26 +86,28 @@
       p, .bottom-txt-segment {
         padding: 1em 4em;
       }
+      .bottom-txt-segment {
+        .wpb_wrapper {
+          div:not(.gold-n-bold) {
+            font-size: 1.125em;
+          }
+        }
+      }
       .quote-img {
         width: 90%;
         height: 90%;
         padding: 2em;
       }
       .bio-img {
-        margin: 0;
-        // margin-left: -.9vw!important;    
+        margin: 0;  
         width: 50vw!important;
         max-width: 50vw!important;
         padding: 0!important;
-        // &.left {
-        //   margin-left: -90px!important;
-        // }
       }
     }
   }
   .quote-img-wrapper {
     .vc_col-sm-6:last-of-type {
-      // margin-left: 180px;
       display: flex;
       justify-content: center;
       margin: 0;
@@ -129,7 +130,6 @@
     }
     .gold-text {
       h4 {
-        // padding-top: 2em;
         padding: 2em 4em;
       }
     }
@@ -146,7 +146,6 @@
           margin-top: 3em;
           padding: 0;
         }
-        // margin-top: 4em;
       }
     }
     .col-flip {

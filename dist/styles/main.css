@@ -25,7 +25,11 @@
 #top .container,
 #top .az-header-container {
   padding: 0 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   position: relative;
 }
@@ -34,9 +38,21 @@
 #top .az-header-container .nav-btn-wrapper {
   position: relative;
   height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+}
+
+#top .container .nav-btn-wrapper #shopping-cart-nav,
+#top .az-header-container .nav-btn-wrapper #shopping-cart-nav {
+  color: black !important;
 }
 
 #top .container .nav-btn-wrapper #nav-btn,
@@ -55,7 +71,9 @@
   width: 100%;
   height: 3px;
   background-color: black;
+  -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
+  -webkit-transition: .25s transform ease-in-out;
   transition: .25s transform ease-in-out;
 }
 
@@ -92,11 +110,13 @@
 
 #top .container .nav-btn-wrapper #nav-btn.open .line:nth-child(2),
 #top .az-header-container .nav-btn-wrapper #nav-btn.open .line:nth-child(2) {
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
 #top .container .nav-btn-wrapper #nav-btn.open .line:nth-child(3),
 #top .az-header-container .nav-btn-wrapper #nav-btn.open .line:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
@@ -108,9 +128,18 @@
   height: calc(100vh);
   width: 100vw;
   background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding-right: 2em;
   z-index: 100002;
@@ -119,7 +148,11 @@
 
 #top .container #side-nav .side-nav-inner,
 #top .az-header-container #side-nav .side-nav-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -137,38 +170,58 @@
 
 #top .container #side-nav .side-nav-inner .inner-grid,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (auto)[3];
   grid-template-columns: repeat(3, auto);
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-1,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  min-width: 500px;
+  min-width: 400px;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list {
   text-align: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list .item,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list .item {
-  font-size: 3.5em;
+  font-size: 3em;
   line-height: 1.5em;
+  text-transform: uppercase;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list .item a,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list .item a {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -190,28 +243,48 @@
   font-weight: 900 !important;
   font-family: "Playfair Display" !important;
   font-style: italic;
+  text-transform: none;
+  font-size: 3.625em;
+  line-height: 1.4em;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-2,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list {
   font-weight: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
   padding: 0 1em;
 }
@@ -219,17 +292,20 @@
 #top .container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list .submenu-item,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list .submenu-item {
   line-height: 1.5em;
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: normal;
   font-family: "Montserrat";
   color: #D4A011;
   font-style: normal;
   font-weight: normal;
+  text-transform: uppercase;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list .submenu-item a,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-2 .sub-lists .new-sub-list .submenu-item a {
   text-align: left !important;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
@@ -245,27 +321,41 @@
   font-weight: 900 !important;
   font-family: "Playfair Display" !important;
   font-style: italic;
+  text-transform: none;
+  font-size: 2.4em;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-3,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list .tert-menu-item,
 #top .az-header-container #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list .tert-menu-item {
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 1.5em;
   font-weight: normal;
+  text-transform: uppercase;
 }
 
 #top .container #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list .tert-menu-item:hover,
@@ -273,32 +363,32 @@
   font-weight: 900 !important;
   font-family: "Playfair Display" !important;
   font-style: italic;
+  text-transform: none;
+  font-size: 2em;
 }
 
 @media only screen and (max-width: 1000px) and (min-width: 1px) {
   body #side-nav .menu-item-has-children .sub-menu,
-  body #side-nav #footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu,
-  #footer-outer #nav_menu-2 #menu-main-1 body #side-nav .menu-item.menu-item-has-children > a .sub-menu,
-  body #side-nav #footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu,
-  #footer-outer #nav_menu-2 #menu-main-1 .menu-item body #side-nav a.menu-item-has-children > a .sub-menu,
-  body #side-nav #footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu,
-  #footer-outer #nav_menu-3 #menu-main-1 body #side-nav .menu-item.menu-item-has-children > a .sub-menu,
-  body #side-nav #footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu,
-  #footer-outer #nav_menu-3 #menu-main-1 .menu-item body #side-nav a.menu-item-has-children > a .sub-menu,
-  body #side-nav #footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu,
-  #footer-outer #nav_menu-2 #menu-main-1 body #side-nav .menu-item.top-lvl .sub-menu,
-  body #side-nav #footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu,
-  #footer-outer #nav_menu-2 #menu-main-1 .menu-item body #side-nav a.top-lvl .sub-menu,
-  body #side-nav #footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu,
-  #footer-outer #nav_menu-3 #menu-main-1 body #side-nav .menu-item.top-lvl .sub-menu,
-  body #side-nav #footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu,
-  #footer-outer #nav_menu-3 #menu-main-1 .menu-item body #side-nav a.top-lvl .sub-menu {
+  body #side-nav #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu,
+  #footer-outer div[id^="nav_menu"] #menu-main-1 body #side-nav .menu-item.menu-item-has-children > a .sub-menu,
+  body #side-nav #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu,
+  #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item body #side-nav a.menu-item-has-children > a .sub-menu,
+  body #side-nav #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu,
+  #footer-outer div[id^="nav_menu"] #menu-main-1 body #side-nav .menu-item.top-lvl .sub-menu,
+  body #side-nav #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu,
+  #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item body #side-nav a.top-lvl .sub-menu {
     display: none;
   }
 
   body #side-nav .side-nav-inner .inner-grid {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 100%;
     position: relative;
@@ -310,6 +400,8 @@
   }
 
   body #side-nav .side-nav-inner .inner-grid .col-1 .new-main-list {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     text-align: left;
   }
@@ -320,6 +412,8 @@
   }
 
   body #side-nav .side-nav-inner .inner-grid .col-2 .new-sub-list {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     text-align: left;
   }
@@ -330,6 +424,8 @@
   }
 
   body #side-nav .side-nav-inner .inner-grid .col-3 .new-tert-list {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     text-align: left;
   }
@@ -516,7 +612,7 @@ h4,
 .quote-attr,
 .quote-attr * {
   font: bold 1em "Montserrat", sans-serif !important;
-  letter-spacing: 0.0125em !important;
+  letter-spacing: 0.1em !important;
 }
 
 .big-quote {
@@ -567,7 +663,7 @@ html body {
 body {
   width: 100vw;
   height: 100vh;
-  overflow-y: auto !important;
+  overflow-y: visible !important;
   -webkit-overflow-scrolling: touch;
   color: black;
   background-color: white !important;
@@ -596,7 +692,7 @@ body #ajax-content-wrap {
 }
 
 .container:first-of-type {
-  max-width: unset !important;
+  max-width: none !important;
 }
 
 ul,
@@ -606,7 +702,7 @@ li {
 
 a {
   text-decoration: none !important;
-  color: inherit !important;
+  color: #D4A011 !important;
 }
 
 a.active {
@@ -626,9 +722,15 @@ a:hover {
 }
 
 #header-outer {
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, white), to(rgba(255, 255, 255, 0.95))) !important;
   background: linear-gradient(white 25%, rgba(255, 255, 255, 0.95)) !important;
   top: 0 !important;
+}
+
+#header-outer.opaque {
+  background: white !important;
 }
 
 #header-space {
@@ -642,21 +744,33 @@ a:hover {
 #top .container,
 #top .az-header-container {
   padding: 0 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   position: relative;
+  height: 100% !important;
 }
 
 #top .container .header-title,
 #top .az-header-container .header-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 1em;
+  height: 100%;
 }
 
 #top .container .header-title #cgo-logo,
 #top .az-header-container .header-title #cgo-logo {
   color: #D4A011 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
   align-items: stretch;
 }
 
@@ -688,9 +802,18 @@ a:hover {
 .prepend-logo-medium,
 .append-logo,
 .append-logo-medium {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 150%;
 }
@@ -703,24 +826,43 @@ a:hover {
   text-align: center !important;
   font-family: "Playfair Display";
   font-style: italic;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .audio-text .wpb_wrapper {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
 .audio-text .wpb_wrapper p {
-  width: 100%;
+  width: 150%;
   padding-bottom: 0;
 }
 
 .cgo-logo-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 4em;
   height: 6em;
@@ -761,6 +903,8 @@ a:hover {
 #rosetta-logo {
   width: 20px;
   height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 30px;
 }
@@ -780,8 +924,15 @@ a:hover {
 }
 
 .logo-append-to {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
@@ -825,22 +976,22 @@ a:hover {
   border-top: 3px solid #D4A011;
 }
 
-#footer-outer #nav_menu-2,
-#footer-outer #nav_menu-3 {
+#footer-outer div[id^="nav_menu"] {
   width: 100%;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1,
-#footer-outer #nav_menu-3 #menu-main-1 {
+#footer-outer div[id^="nav_menu"] #menu-main-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   text-align: left;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a {
   color: black !important;
   text-transform: uppercase;
   font-size: 0.9em !important;
@@ -850,39 +1001,27 @@ a:hover {
   margin: 0 2em;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item *,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a *,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item *,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a * {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item *,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a * {
   margin: 0 .5em;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a {
   white-space: nowrap;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item .sans-left-marg,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item .sans-left-marg {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item .sans-left-marg {
   margin: 0 !important;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl > a {
   font-size: 1em !important;
   color: #D4A011 !important;
   font-family: "Playfair Display" !important;
@@ -890,873 +1029,45 @@ a:hover {
   font-weight: 900 !important;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a > a {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children > a > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children > a > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl > a > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl > a > a {
   text-transform: none;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item-has-children,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.menu-item-has-children > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu .menu-item.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 a.menu-item.top-lvl a.menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a.menu-item .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.menu-item-has-children > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #nav_menu-2 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-2 #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item.top-lvl > a .sub-menu a.top-lvl > a,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item a.top-lvl > a .sub-menu a.top-lvl > a {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item-has-children,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu a.menu-item-has-children > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu .menu-item.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.menu-item-has-children .sub-menu a.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.menu-item-has-children .sub-menu a.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.top-lvl .sub-menu a.top-lvl > a,
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.top-lvl .sub-menu a.top-lvl > a {
   color: black !important;
   text-transform: uppercase;
   font-size: .9em !important;
@@ -1765,26 +1076,67 @@ a:hover {
   font-family: "Montserrat" !important;
 }
 
-#footer-outer #nav_menu-2 #menu-main-1 .menu-item .sub-menu,
-#footer-outer #nav_menu-3 #menu-main-1 .menu-item .sub-menu {
+#footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item .sub-menu {
   padding: 0 !important;
 }
 
 #footer-outer #footer-widgets .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+}
+
+#footer-outer #footer-widgets .row #menu-main-1 a:hover,
+#footer-outer #footer-widgets .row .bottom-section a:hover {
+  color: #D4A011 !important;
 }
 
 #footer-outer #footer-widgets .row .bottom-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
+#footer-outer #footer-widgets .row .bottom-section .login-btn {
+  margin: 1em;
+  padding: .5em 1em;
+  border: 2px solid #D4A011;
+  font-weight: bold;
+  cursor: pointer;
+  color: #D4A011 !important;
+}
+
+#footer-outer #footer-widgets .row .bottom-section .login-btn:hover {
+  background-color: #D4A011;
+  color: white !important;
+}
+
+#footer-outer #footer-widgets .row .bottom-section .login-btn a {
+  color: inherit !important;
+}
+
 #footer-outer #footer-widgets .row .bottom-section .socials-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  margin-top: 1em;
 }
 
 #footer-outer #footer-widgets .row .bottom-section .socials-container div {
@@ -1825,11 +1177,19 @@ a:hover {
   left: 10vw;
   width: 80vw;
   height: 80vh;
+  -webkit-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
   overflow: scroll;
   z-index: 999999999999;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   display: none;
@@ -1873,8 +1233,14 @@ a:hover {
   height: 100vh;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -1890,15 +1256,23 @@ a:hover {
   color: white;
 }
 
+#audio-modal-bg .audio-wrapper .player-wrapper i {
+  color: #D4A011;
+  margin-top: -100px;
+  margin-left: -40px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
 .audio-btn {
   width: 30px;
   height: 30px;
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 }
 
 .audio-btn .audio-icon {
-  fill: black;
+  fill: #D4A011;
   width: 100%;
   height: 100%;
   stroke-miterlimit: 10;
@@ -1906,7 +1280,7 @@ a:hover {
 }
 
 .audio-btn .audio-icon:hover {
-  fill: #D4A011;
+  fill: black;
 }
 
 .audio-btn .audio-icon:hover * {
@@ -1915,13 +1289,13 @@ a:hover {
 
 @media only screen and (min-width: 1000px) {
   .container:first-of-type {
-    max-width: unset !important;
+    max-width: none !important;
   }
 }
 
 @media only screen and (min-width: 1300px) {
   .container:first-of-type {
-    max-width: unset !important;
+    max-width: none !important;
   }
 }
 
@@ -1938,30 +1312,29 @@ a:hover {
   }
 }
 
-@media only screen and (max-width: 1000px) and (min-width: 1px) {
-  body #footer-outer #nav_menu-2 #menu-main-1,
-  body #footer-outer #nav_menu-3 #menu-main-1 {
+@media only screen and (max-width: 1300px) and (min-width: 1px) {
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     text-align: center;
   }
 
-  body #footer-outer #nav_menu-2 #menu-main-1 .menu-item,
-  body #footer-outer #nav_menu-2 #menu-main-1 .menu-item a,
-  body #footer-outer #nav_menu-3 #menu-main-1 .menu-item,
-  body #footer-outer #nav_menu-3 #menu-main-1 .menu-item a {
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item,
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a {
     margin-top: 1em !important;
   }
 
-  body #footer-outer #nav_menu-2 #menu-main-1 .menu-item.two-gifts-thin,
-  body #footer-outer #nav_menu-2 #menu-main-1 .menu-item a.two-gifts-thin,
-  body #footer-outer #nav_menu-3 #menu-main-1 .menu-item.two-gifts-thin,
-  body #footer-outer #nav_menu-3 #menu-main-1 .menu-item a.two-gifts-thin {
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item.two-gifts-thin,
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item a.two-gifts-thin {
     margin-top: 1em !important;
   }
 
-  body #footer-outer #nav_menu-2 #menu-main-1 .menu-item .sub-menu.hidden,
-  body #footer-outer #nav_menu-3 #menu-main-1 .menu-item .sub-menu.hidden {
+  body #footer-outer div[id^="nav_menu"] #menu-main-1 .menu-item .sub-menu.hidden {
     display: none;
   }
 }
@@ -1984,4 +1357,3 @@ a:hover {
     font-size: 1.5em !important;
   }
 }
-

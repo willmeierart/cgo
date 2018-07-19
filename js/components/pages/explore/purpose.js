@@ -15,7 +15,7 @@ jQuery(document).ready(($) => {
     })
   }
 
-  const init = (() => {
+  const initDoc = (() => {
     formatHeaderText()
   })()
 })

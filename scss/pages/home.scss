@@ -1,15 +1,15 @@
 @import '../_variables.scss';
 
-// $home-url: 'https://test.centerofthegoldenone.com/wp-content/uploads';
-
-// .header-gradient {
-//   height: 20vh;
-//   background: linear-gradient(rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0));
-//   position: absolute;
-//   top: 0;
-//   width: 100%;
-//   z-index: 20;
+// @keyframes header {
+//   from { width: 0; }
 // }
+@keyframes leBlurInRight {
+  from {
+    transform: scaleX(0.2) translateX(100px);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
 
 .home{
   .container-wrap {
@@ -23,7 +23,6 @@
       flex-direction: column;
       flex-grow: 1;
       width: 100vw!important;
-      // height: 60vh;
       object-fit: cover;
       position: relative;
       justify-content: flex-start;
@@ -39,9 +38,9 @@
           display: flex;
           justify-content: center;
           bottom: 3vw;
+          right: 0;
           align-items: flex-end;
           max-height: 100vh;
-          // height:100vw;
           width: 100vw;
           img {
             width: 100%;
@@ -51,10 +50,33 @@
       }
       .section-title {
         padding-top: 5vw;
+        // width: 100%;
+        // align-self: flex-start;
         h2 {
+          opacity: 0;
+          // white-space: nowrap;
+          // overflow: hidden;
+          // width: 100%;
+          // width: 100%;
+          // animation: header 4s steps(60, end);
           color: black !important;
-          // font-size: 7vw !important;
           text-align: center;
+          overflow: visible;
+          span {
+            overflow: visible;
+            // min-width: .33em;
+            // display: inline-block;
+            // opacity: 0;
+            // filter: blur(5px);
+            // transform: translateX(-20px) scale(0.2);
+            // transition: transform .5s, opacity .7s, filter .6s;
+            // transition-timing-function: ease-out;
+            // &.enter {
+            //   opacity: 1;
+            //   transform: translateX(0) scale(1);
+            //   filter: blur(0px);
+            // }
+          }
         }
       }
     }
@@ -91,6 +113,9 @@
             }
           }
         }
+        .quote-attr {
+          margin-top: -.5em!important;
+        }
       }
     }
     .light-beings-footer {
@@ -119,7 +144,7 @@
     }
   }
   .come-within {
-    margin: 3em!important;
+    // margin: 3em!important;
     text-align: center;
     p {
       padding-bottom: 0;
@@ -134,7 +159,6 @@
       }
       &:last-of-type {
         padding: 0 10%;
-        // padding-bottom: 3em;
       }
     }
   }
@@ -144,7 +168,6 @@
       justify-content: center;
       flex-direction: row;
       .vc_col-sm-3 {
-        // width: 100%;
         margin-left: 0;
         display: block;
         .home-nav-btn {
@@ -163,33 +186,14 @@
     }
   }
 }
-@media screen and (min-width: 1400px) {
-  .home {
-    .main-content {
-      #homepage-container {
-        #rosetta-container {
-          .section-title {
-            // font-size: 2em !important;
-            // h2 {
-            //   font-size: 2em !important;
-            // }
-          }
-        }
-      }
-    }
-  }
-}
 @media screen and (max-width: 1000px) {
   .row .col.section-title span:not(.share-count-total) {
     display: initial!important;
   }
   .come-within {
-    // width: 80vw;
-    // margin-left: -40vw;
     p:last-of-type {
       padding: 0 10%;
       padding-bottom: 0 !important;
-      // line-height:
     }
   }
   .home-nav-btn-row {
@@ -241,19 +245,6 @@
     }
     #homepage-container {
       margin-bottom: 5em;
-      .section-title {
-        // margin-top: 10em;
-        // h2 {
-        //   margin-bottom: -5em
-        // }
-      }
-      #rosetta-container {
-        .each-rose {
-          img {
-            // padding: 60px!important;
-          }
-        }
-      }
     }
   }
 }
@@ -264,6 +255,12 @@
       .col.span_12 {
         .vc_col-sm-6 {
             font-size: 1.5em!important;
+        }
+      }
+      .section-title {
+        font-size: 6em!important;
+        h2 {
+          font-size: 1em!important;
         }
       }
     }

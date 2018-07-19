@@ -2,7 +2,7 @@ import { url } from '../../../utils'
 
 jQuery(document).ready($ => {
   const { hash } = window.location
-  const a = $('.az-offerings-submenu-wrapper.calendar').find('a')
+  const a = $('.az-offerings-submenu-wrapper.calendar-menu').find('a')
   a.click(e => {
     a.removeClass('active')
     $(e.target).addClass('active')

@@ -1,4 +1,5 @@
 import '../../../../scss/pages/home.scss'
+// import { TweenMax, TimelineLite } from 'gsap/TweenMax'
 import './rosettaHeader'
 import { url } from '../../../utils'
 
@@ -10,21 +11,22 @@ jQuery(document).ready(($) => {
     const seminarsExt = '-Seminars-1.0.jpg'
     const lineageExt = '-SpiritualLineage-1.0.jpg'
 
-    // const mediaURL = url + '/wp-content/uploads/2018/04/home-button-0'
-    // $('.home-nav-btn').each((i, btn) => {
-    //   $(btn).css('background-image', `url('${mediaURL}${i + 1}.png')`)
-    // })
     $('.meditation-btn').css('background-image', `url('${mediaURL}${meditationExt}')`)
     $('.seminars-btn').css('background-image', `url('${mediaURL}${seminarsExt}')`)
     $('.teachings-btn').css('background-image', `url('${mediaURL}${teachingsExt}')`)
     $('.lineage-btn').css('background-image', `url('${mediaURL}${lineageExt}')`)
-
-
   }
 
-  const formatSectionTitle = () => {
-    const h2el = $('.section-title').children('h2')
-    h2el.text(h2el.text().split('?')[0]).append('<span class="gold-letter-normal">?</span>')
+  const animateTitle = () => {
+    $('.section-title h2').addClass('cssanimation leBlurInRight sequence')
+    const checker = () => {
+      if ($('.section-title h2').children().length > 0) {
+        $('.section-title h2').css({ opacity: 1 }).children().css({ opacity: 1 }).last().css({ color: '#D4A011' })
+      } else {
+        setTimeout(checker, 300)
+      }
+    }
+    checker()
   }
 
   const formatEndStatement = () => {
@@ -38,7 +40,7 @@ jQuery(document).ready(($) => {
   const initDoc = () => {
     setBtnBGs()
     formatEndStatement()
-    formatSectionTitle()
+    animateTitle()
   }
   initDoc()
 })

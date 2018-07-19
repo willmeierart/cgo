@@ -11,13 +11,13 @@ jQuery(document).ready($ => {
         <div class='audio-screen'></div>
         <div class='player-wrapper'>
           <audio class='audio-player' controls />
+          <i class='fas fa-times'></i>
         </div>
       </div>
     </div>
   `)
   jQuery('body').append(audioModal)
   $('#audio-modal-bg').children().click(e => {
-    console.log(e.target)
     if (!$(e.target).hasClass('audio-player')) {
       $('#audio-modal-bg').hide(200)
       if (audio[0]) {
@@ -31,7 +31,7 @@ jQuery(document).ready($ => {
     $('.audio-btn').click(e => {
       const SRC = $(e.target).closest('.wpb_wrapper').find('.audio-link').text()
       audio = $('#audio-modal-bg').find('audio')
-      audio.attr('src', url + SRC)
+      audio.attr('src', url + SRC) // just have one single audio player always available but hidden and use dynamic src
       $('#audio-modal-bg').show(200)
       audio[0].play()
     })

@@ -4,7 +4,7 @@
 .purpose {
   .main-content {
     .audio-row {
-      margin: 6em;
+      // margin: 6em;
       .vc_col-sm-4 {
         margin: 0 2em!important;
         display: flex;
@@ -60,6 +60,10 @@
         display: flex;
         align-items: flex-end;
       }
+    }
+    &.audio-row {
+      margin: 20vw;
+      margin-top: 6em;
     }
   }
 }

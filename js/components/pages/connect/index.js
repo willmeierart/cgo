@@ -1,5 +1,4 @@
 import '../../../../scss/pages/connect.scss'
-import queries from '../../../queries'
 
 jQuery(document).ready($ => {
   $('.first-name').attr('placeholder', 'FIRST NAME')

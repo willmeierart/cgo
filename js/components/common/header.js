@@ -1,11 +1,9 @@
 import logo from '../../../assets/cgo-logo.js'
 import headerLogo from '../../../assets/cgo-header-logo'
-import { clonedMenu } from '../../utils'
+import { clonedMenu, isIE } from '../../utils'
 
 jQuery(document).ready(function($) { 
   let menuIsOpen = false
-
-  const breakpoints = [1000]
   const isThin = $(window).width() <= 1000
 
   const giveHeaderGradient = () => {
@@ -14,14 +12,13 @@ jQuery(document).ready(function($) {
 
   const clonedMenu = isThin
     ? $({ ...$('.mobile-only .menu').clone() })
-    : $({ ...$('nav .sf-menu').clone() })
+    : $({ ...$('nav .sf-menu').clone() }) // hold both menus in state so that window resize doesn't break menu
   
-  const handleCartDropdown = () => {
+  const handleCartDropdown = () => { // don't show cart stuff unless it's woocommerce page
     let isWooCommercePg = false
-    // console.log(window.location.pathname)
     const { pathname } = window.location
     const path = pathname.replace(/[^a-zA-Z]/g, '').toLowerCase()
-    const pages = ['shop', 'cart', 'checkout', 'order', 'product']
+    const pages = ['shop', 'cart', 'checkout', 'order', 'product', 'store']
     const cartEl = $('#header-outer').children('.cart-outer')
     cartEl.hide(0)
     pages.forEach(pg => {
@@ -46,7 +43,7 @@ jQuery(document).ready(function($) {
   }
   
 
-  const makeWholeNewMenu = () => {
+  const makeWholeNewMenu = () => { // architecture happens here, mechanics of animations etc inside './menu'
     const newMainList = $('<ul class="new-main-list"></ul>')
     const subLists = $('<div class="sub-lists"></div>')
     const tertList = $('<ul class="new-tert-list"></ul>')
@@ -101,8 +98,15 @@ jQuery(document).ready(function($) {
           </div>
         </div>
         <div id='side-nav'>
-          <div class='side-nav-inner'>
-            <div class="inner-grid">
+          <div class='side-nav-inner desktop'>
+            <div class="inner-grid desktop">
+              <div class="col-1"></div>
+              <div class="col-2"></div>
+              <div class="col-3"></div>
+            </div>
+          </div>
+          <div class='side-nav-inner mobile'>
+            <div class="inner-grid mobile">
               <div class="col-1"></div>
               <div class="col-2"></div>
               <div class="col-3"></div>
@@ -112,18 +116,13 @@ jQuery(document).ready(function($) {
       </div>
     `)
     $('#side-nav').css('display', 'none')
+    $('.inner-grid').css({ display: isIE ? 'flex' : 'grid' })
   }
-
-  replaceEntireHeader()
-
-  $('#top').find('.col-1').append(newMenu.main)
-  $('#top').find('.col-2').append(newMenu.sub)
-  $('#top').find('.col-3').append(newMenu.tert)
-  
-  
   
   const formatLogo = () => {
-    $('.az-header-container .header-title').empty().append(`<a href='/' style='width: 200px;'>${headerLogo}</a>`)
+    $('.az-header-container .header-title').empty().append(`
+      <a href='/' style='width: 200px;'>${headerLogo}</a>
+    `)
   }
 
   const handleNavClick = () => {
@@ -131,19 +130,54 @@ jQuery(document).ready(function($) {
       menuIsOpen = !menuIsOpen 
       $('#nav-btn').toggleClass('open')
       menuIsOpen ? $('#side-nav').addClass('active') : $('#side-nav').removeClass('active')
+
+      if (isIE) {
+        // const conds = $('#side-nav').css('visibility') === 'hidden'
+        const visibility = menuIsOpen ? 'visible' : 'hidden'
+        const marginLeft = menuIsOpen ? 0 : 'auto'
+        $('#side-nav').css({ visibility })
+        $('.nav-btn-wrapper').css({ marginLeft })
+      }
       $('#side-nav').slideToggle()
+
+      $('.az-header-container').css({ justifyContent: menuIsOpen && isIE ? 'flex-end' : 'space-between' })
     })
     $('#nav-btn').hover(() => {
-      $('#nav-btn .line').css('background-color', '#fab92a')
+      $('#nav-btn .line').css('background-color', '#D4A011')
     }, () => {
       $('#nav-btn .line').css('background-color', 'black')
     })
   }
 
-  const initHeader = (() => {
-    giveHeaderGradient()
+  const formatNativeHeader = () => {
+    $('#top').find('.row').css({ width: '100%' })
+      .find('#logo').parent().replaceWith(`
+        <div class='header-title'>
+          <a href='/' style='width: 200px;'>${headerLogo}</a>
+        </div>
+      `)
+  }
+
+  const transformNewHeader = () => {
+    replaceEntireHeader()
+    $('#top').find('.col-1').append(newMenu.main)
+    $('#top').find('.col-2').append(newMenu.sub)
+    $('.mobile .sub-lists').children('ul').each((i, sLi) => {
+      $(sLi).addClass(`sublist-${i}`)
+    })
+    $('#top').find('.col-3').append(newMenu.tert)
     handleNavClick()
     formatLogo()
+  }
+
+  const initHeader = (() => {
+    const replaceHeader = true
+    if (replaceHeader) {
+      transformNewHeader()
+    } else {
+      formatNativeHeader()
+    }
+    giveHeaderGradient()
     handleCartDropdown()
   })()
 })

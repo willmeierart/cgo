@@ -34,15 +34,13 @@ jQuery(document).ready(function($) {
         $(col).find('img').length < 1 &&
         window.innerWidth > 1000
       if (conds) {
-        console.log(col);
         $(col).css({ marginTop: '4.5em' })
       }
     })
   }
   
-  const initDoc = () => {
+  const initDoc = (() => {
     formatHeaderText()
     addTopMarginNoTitle()
-  }
-  initDoc()
+  })()
 })

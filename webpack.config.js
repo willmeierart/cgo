@@ -1,3 +1,4 @@
+// require('babel-polyfill')
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -11,7 +12,7 @@ const config = require('./config')
 module.exports = function(env) {
   return  {
     entry: {
-      main: "./js/index.js",
+      main: ["whatwg-fetch", "./js/index.js"],
       home: "./js/components/pages/home/index.js",
       explore: "./js/components/pages/explore/index.js",
       purpose: "./js/components/pages/explore/purpose.js",
@@ -35,10 +36,12 @@ module.exports = function(env) {
       filename: "[name].bundle.js"
     },
     module: {
+      noParse: "/node_modules/json-schema/lib/validate.js",
       rules: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
+          // include: /node_modules\/moment/,
           use: [
             {
               loader: "cache-loader"
@@ -50,11 +53,15 @@ module.exports = function(env) {
                   [
                     "env", {
                       "targets": {
-                        "node": "current",
+                        // "node": "current",
                         "browsers": [
-                          "last 2 versions"
+                          "> 1%",
+                          "last 2 versions",
+                          "IE > 11"
                         ]
-                      }
+                      },
+                      "debug": true
+                      // "modules": false
                     }
                   ]
                 ]
@@ -91,6 +98,9 @@ module.exports = function(env) {
                 loader: "resolve-url-loader"
               },
               {
+                loader: "postcss-loader"
+              },
+              {
                 loader: "sass-loader", options: {
                   sourceMap: true
                 }
@@ -99,11 +109,11 @@ module.exports = function(env) {
           }),
           exclude: /node_modules/
         },
-        // {
-        //   test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
-        //   loader: 'url-loader',
-        //   exclude: /node_modules/
-        // },
+        {
+          test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
+          loader: 'url-loader',
+          exclude: /node_modules/
+        },
         {
           test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/,
           loader: 'url-loader',
@@ -154,7 +164,7 @@ module.exports = function(env) {
     },
     plugins: [
       // new CleanWebpackPlugin(['dist']),
-      new HardsourceWebpackPlugin(),
+      // new HardsourceWebpackPlugin(),
       new AsyncAwaitPlugin(),
       new ExtractTextPlugin({
         filename: 'styles/[name].css',

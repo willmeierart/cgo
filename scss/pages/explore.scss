@@ -4,23 +4,14 @@
   .header-title-text {
     height: 45vw;
     background-repeat: no-repeat!important;
-    background-size: cover!important;
+    background-size: 100% 100%!important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // #cgo-logo {
-    //   svg {
-    //     width: 2px!important;
-    //     height: 2px!important;
-    //   }
-    // }
     .wpb_wrapper {
-      // height: 50%;
       h1 {
-        // font-size: 5em;
         margin: 0 !important;
-        // font-size: 100px !important;
         font-style: italic;
         font-family: $font-fam-serif;
         color: white;
@@ -40,7 +31,7 @@
       display: flex;
       justify-content: center;
       p {
-        width: 60%;
+        width: 150%;
       }
     }
   }

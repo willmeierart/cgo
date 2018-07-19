@@ -11,10 +11,19 @@
 .two-gifts .header-title-text {
   height: 45vw;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: 100% 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -62,7 +71,11 @@
 .teachings .audio-text .wpb_wrapper,
 .spiritual-paths .audio-text .wpb_wrapper,
 .two-gifts .audio-text .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -73,7 +86,7 @@
 .teachings .audio-text .wpb_wrapper p,
 .spiritual-paths .audio-text .wpb_wrapper p,
 .two-gifts .audio-text .wpb_wrapper p {
-  width: 60%;
+  width: 150%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,9 +133,7 @@
     font-size: 1.33em;
     line-height: 1.25em;
   }
-}
-
-/********************************************
+}/********************************************
 ****************** ~COLORS~ *****************
 ********************************************/
 
@@ -132,7 +143,11 @@ body:not(.home) .main-content:not(.home) {
 }
 
 body:not(.home) .main-content:not(.home) .span_12 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -177,7 +192,12 @@ body:not(.home) .main-content:not(.home) .leader-img {
   }
 
   body .main-content .span_12 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 
@@ -198,13 +218,13 @@ body:not(.home) .main-content:not(.home) .leader-img {
 ****************** ~COLORS~ *****************
 ********************************************/
 
-.purpose .main-content .audio-row {
-  margin: 6em;
-}
-
 .purpose .main-content .audio-row .vc_col-sm-4 {
   margin: 0 2em !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -214,7 +234,11 @@ body:not(.home) .main-content:not(.home) .leader-img {
 
 .purpose .main-content .col.span_12,
 .purpose .main-content .col.span_12 a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
 }
 
@@ -229,12 +253,18 @@ body:not(.home) .main-content:not(.home) .leader-img {
 
   .purpose .main-content .col.span_12,
   .purpose .main-content .col.span_12 a {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
 
   .purpose .main-content .flip-row .col.span_12,
   .purpose .main-content .flip-row .col.span_12 a,
   .purpose .main-content .col.span_12 .flip-row a {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
@@ -249,8 +279,16 @@ body:not(.home) .main-content:not(.home) .leader-img {
   }
 
   .wpb_row .wpb_wrapper .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
   }
-}
 
+  .wpb_row.audio-row {
+    margin: 20vw;
+    margin-top: 6em;
+  }
+}

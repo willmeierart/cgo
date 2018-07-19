@@ -8,25 +8,31 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+    // width: 100vw;
     .nav-btn-wrapper {
       position: relative;
-      height: 50px; // width: 60px;
-      // margin-right: 20px;
+      height: 50px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      #shopping-cart-nav {
+        color: black!important;
+      }
       #nav-btn {
         width: 40px;
         height: 19px;
         z-index: 1000002;
         position: relative;
+        // background-color: black;
+        // &:hover {
+        //   // background-color: $
+        // }
         .line {
           display: block;
           position: absolute;
           left: 0;
           width: 100%;
-          height: 3px; // margin-top: 4px;
-          // border-radius: 2px;
+          height: 3px;
           background-color: black;
           transform: rotate(0deg);
           transition: .25s transform ease-in-out;
@@ -61,17 +67,11 @@
       }
     }
     #side-nav {
-      // border-top: 1px solid $color-gold;
-      // border-left: 1px solid $color-gold;
       position: fixed;
-      // top: 99px;
       top: 0;
       right: 0;
       height: calc(100vh);
       width: 100vw;
-
-      // display: none;
-      
       background-color: white;
       display: flex;
       flex-direction: column;
@@ -80,16 +80,14 @@
       padding-right: 2em;
       z-index:100002;
       color: $color-gold;
-      &.active {
-        
-      }
       .side-nav-inner {
         display: flex;
-        // justify-content: center;
         align-items: center;
-        // margin-top: 2em;
         height: 100%;
         width: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
         .border-line {
           position: absolute;
           height: 100%;
@@ -101,22 +99,21 @@
         .inner-grid {
           display: grid;
           grid-template-columns: repeat(3, auto);
-          // width: 100%;
-          // height: 100%;
           .col-1 {
             display: flex;
             position: relative;
             justify-content: center;
             align-items: center;
-            min-width: 500px;            
+            min-width: 400px;            
             .new-main-list {
               text-align: right;
               display: flex;
               flex-direction: column;
               position:relative;
               .item {
-                font-size: 3.5em;
+                font-size: 3em;
                 line-height: 1.5em;
+                text-transform: uppercase;
                 a {
                   position: relative;
                   display: flex;
@@ -131,10 +128,12 @@
                   }
                 }
                 &.isOpen, &:hover {
-                  // color: $color-gold;
                   font-weight: 900 !important;
                   font-family: $font-fam-serif !important;
                   font-style: italic;
+                  text-transform: none;
+                  font-size: 3.625em;
+                  line-height: 1.4em;
                 }
               }
             }
@@ -156,12 +155,13 @@
                 padding: 0 1em;
                 .submenu-item {
                   line-height: 1.5em;
-                  font-size: 2.5em;
+                  font-size: 2em;
                   font-weight: normal;
                   font-family: $font-fam-sans;
                   color: $color-gold;
                   font-style: normal;
                   font-weight: normal;
+                  text-transform: uppercase;
                   a {
                     text-align: left !important;
                     justify-content: flex-start;
@@ -174,7 +174,8 @@
                     font-weight: 900 !important;
                     font-family: $font-fam-serif !important;
                     font-style: italic;
-
+                    text-transform: none;
+                    font-size: 2.4em;
                   }
                 }
               }
@@ -189,13 +190,16 @@
               flex-direction: column;
               align-items: center;
               .tert-menu-item {
-                font-size: 2em;
+                font-size: 1.5em;
                 line-height: 1.5em;
                 font-weight: normal;
+                text-transform: uppercase;
                 &:hover {
                   font-weight: 900 !important;
                   font-family: $font-fam-serif !important;
                   font-style: italic;
+                  text-transform: none;
+                  font-size: 2em;
                 }
               }
             }

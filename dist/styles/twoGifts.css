@@ -11,10 +11,19 @@
 .two-gifts .header-title-text {
   height: 45vw;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: 100% 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -62,7 +71,11 @@
 .teachings .audio-text .wpb_wrapper,
 .spiritual-paths .audio-text .wpb_wrapper,
 .two-gifts .audio-text .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -73,7 +86,7 @@
 .teachings .audio-text .wpb_wrapper p,
 .spiritual-paths .audio-text .wpb_wrapper p,
 .two-gifts .audio-text .wpb_wrapper p {
-  width: 60%;
+  width: 150%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,9 +133,7 @@
     font-size: 1.33em;
     line-height: 1.25em;
   }
-}
-
-/********************************************
+}/********************************************
 ****************** ~COLORS~ *****************
 ********************************************/
 
@@ -131,7 +142,11 @@
 }
 
 .two-gifts .col.span_12 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -148,9 +163,18 @@
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
   margin-bottom: 100px !important;
 }
@@ -176,8 +200,14 @@
 
 .two-gifts .top-banner.left-text,
 .two-gifts .page-breaker.left-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   text-align: left;
   font-style: normal !important;
@@ -191,8 +221,14 @@
 
 .two-gifts .top-banner.left-text .wpb_wrapper h1,
 .two-gifts .page-breaker.left-text .wpb_wrapper h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   text-align: left;
   font-style: normal !important;
@@ -202,11 +238,33 @@
   padding: 1em;
   padding-left: 7.5%;
   padding-bottom: 7.5%;
-  margin: 0 !important;
+  margin: 0;
   height: 100% !important;
 }
 
+.two-gifts .top-banner.left-text .wpb_wrapper h1.lady-quote,
+.two-gifts .page-breaker.left-text .wpb_wrapper h1.lady-quote {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.two-gifts .top-banner.left-text .wpb_wrapper h1.lady-quote .quote-attr,
+.two-gifts .page-breaker.left-text .wpb_wrapper h1.lady-quote .quote-attr {
+  font-size: 0.5em !important;
+  margin-top: 1em !important;
+}
+
 .two-gifts .top-banner {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -233,6 +291,10 @@
   line-height: 1.25em;
 }
 
+.two-gifts .page-intro a {
+  font-weight: bold;
+}
+
 .two-gifts .gold-text,
 .two-gifts .page-intro {
   color: #D4A011;
@@ -244,8 +306,14 @@
 .two-gifts .star-motif .inner,
 .two-gifts .squiggle-wrapper,
 .two-gifts .squiggle-wrapper .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-bottom: 2em;
 }
@@ -269,22 +337,41 @@
   height: 100px;
   background-repeat: no-repeat;
   background-position-x: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
   flex-grow: 0;
   padding-bottom: 1.25em;
   width: 100%;
 }
 
 .two-gifts .quote-txt-block .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .two-gifts .quote-txt-block .wpb_wrapper .end-txt-block {
+  font-size: 1.5em !important;
+  line-height: 1.5em;
   text-align: center;
   width: 60%;
 }
@@ -325,6 +412,9 @@
   }
 
   .two-gifts .col.span_12 {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 
@@ -374,3 +464,17 @@
   }
 }
 
+@media screen and (min-width: 1000px) {
+  .two-gifts .wpb_row.audio-row {
+    margin: 20vw;
+    margin-top: 6em;
+  }
+
+  .two-gifts .no-pad-top {
+    padding-top: 0 !important;
+  }
+
+  .two-gifts .no-pad-bottom {
+    padding-bottom: 0 !important;
+  }
+}

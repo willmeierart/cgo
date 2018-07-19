@@ -4,8 +4,15 @@
 
 .connect .row,
 .connect .row form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
 }
@@ -30,6 +37,8 @@
   border: none !important;
   border-bottom: 1px solid lightgrey !important;
   letter-spacing: .15em;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .connect .row form .your-email {
@@ -49,6 +58,8 @@
 .connect .row form textarea slot,
 .connect .row form .message slot,
 .connect .row form .message {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   border: none !important;
   border-top: 1px solid lightgrey !important;
   padding-top: 0.125em !important;
@@ -81,7 +92,11 @@
 .connect .row form .name-group {
   position: relative;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -93,7 +108,7 @@
 
 .connect .row form .name-group .last-name input,
 .connect .row form .name-group .first-name input {
-  width: 98% !important;
+  width: 100% !important;
 }
 
 .connect .row form .select-location {
@@ -102,6 +117,7 @@
 
 .connect .row form select,
 .connect .row form select:focus {
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   border: 1px solid lightgrey !important;
@@ -118,7 +134,6 @@
 }
 
 .connect .row form .hr {
-  width: 100%;
   height: 1px;
   background-color: #D4A011;
   margin-top: 1em;
@@ -137,9 +152,18 @@
 }
 
 .connect .row form p {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   font-weight: 300 !important;
   font-size: 1em !important;
@@ -165,4 +189,3 @@
     padding: 0 1em;
   }
 }
-

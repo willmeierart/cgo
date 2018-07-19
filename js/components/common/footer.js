@@ -3,6 +3,8 @@ import ig from '../../../assets/instagramIcon'
 import tw from '../../../assets/twitterIcon'
 
 jQuery(document).ready(function($) { 
+  const SHOW_SOCIALS = false
+
   $('#footer-outer h4').remove()
 
   const shuffleList = () => {
@@ -11,16 +13,15 @@ jQuery(document).ready(function($) {
     let firstList
     items.each((i, item) => {
       const txtContent = $(item).children('a').text()
-      if (txtContent === 'Two Gifts') $(item).addClass('top-lvl')
+      if (txtContent === 'Two Gifts' || txtContent === 'Connect' || txtContent === 'Store') $(item).addClass('top-lvl')
       if (i === 0) firstList = item
-      if (i < 3) {
+      if (txtContent === 'Home' || txtContent === 'Explore' || txtContent === 'Two Gifts') {
         $(item).addClass('mobile-col-1')
       } else {
         $(item).addClass('mobile-col-2')
       }
-      if (txtContent === 'Store' || txtContent === 'Shop' || txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
-      if (txtContent === 'Connect') $(item).addClass('top-lvl')
-      if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').children('a')
+      if (txtContent === 'Gourasana' || txtContent === 'Kalindi' || txtContent === 'The Lady') $(item).remove()
+      if (txtContent === 'Spiritual Lineage') $(item).addClass('mobile-exp').removeClass('menu-item-has-children').children('a')
         .attr('href', '/explore/spiritual-lineage')
       if (txtContent === 'Participate') $(item).addClass('mobile-exp').children('a')
         .attr('href', '/participate/meditation')
@@ -48,8 +49,8 @@ jQuery(document).ready(function($) {
           <div class='instagram'></div>
         </div>
         <div class='copyright'>
-          <div>© Center of the Golden One, 2018.</div>
-          <div> All rights reserved.</div>
+          <span>© Center of The Golden One, 2018.</span>
+          <span> All rights reserved.</span>
         </div>
         <ul class='ua-pp'>
           <li class='menu-item'>
@@ -58,12 +59,15 @@ jQuery(document).ready(function($) {
             <a href='/user-agreement'>Privacy Policy</a>
           </li>
         </ul>
+        <div class='login-btn'>
+          <a href='https://apps.centerofthegoldenone.com'>LOGIN</a>
+        </div>
       </div>
     `)
     $('.bottom-section').children('.socials-container').children('div').each((i, icon) => {
       if ($(icon).hasClass('facebook')) {
         $(icon).append(`
-          <a>${fb}</a>
+          <a href='https://www.facebook.com/Loves-Awakening-515384048509904' target='_blank'>${fb}</a>
         `)
       } else if ($(icon).hasClass('twitter')) {
         $(icon).append(`
@@ -75,6 +79,7 @@ jQuery(document).ready(function($) {
         `)
       }
     })
+    if (!SHOW_SOCIALS) $('.socials-container').empty() // there aren't any social links currently
   }
 
   const handleMobile = () => {
@@ -108,7 +113,7 @@ jQuery(document).ready(function($) {
   const init = (() => {
     shuffleList()
     appendSocialsAndCopyright()
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 1300) {
       handleMobile()
     }
   })()

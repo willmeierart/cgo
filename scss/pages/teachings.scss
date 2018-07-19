@@ -5,15 +5,14 @@
   .header-title-text {
     width: 100vw!important;
     background-position: center;
+    background-size: 100% 100%!important;
     height: 45vw!important;
   }
   .header-secondary-text {
     font-family: $font-fam-serif!important;
     padding-bottom: 1em;
-    // font-size: 1.25em!important;
     p {
       font-family: $font-fam-serif;
-      // font-size: 1em !important;
     }
   }
   .main-content {
@@ -42,7 +41,7 @@
         font-size: 2.8vw;
         line-height: 1.125em;
       }
-      background-size: cover;
+      // background-size: cover!important;
       background-repeat: none;
       
       padding: 2em;
@@ -72,7 +71,7 @@
           margin-left: 20%;
         }
         .quote-attr {
-          margin: 1em;
+          margin: 2em;
           margin-bottom: 4em;
           p {
             text-align: center !important;
@@ -89,6 +88,10 @@
     .no-pad-top {
       padding-top: 0 !important;
     }
+    .half-pad-top {
+      padding-top: 2em!important;
+    }
+
 
     .no-pad-bottom {
       padding-bottom: 0 !important;

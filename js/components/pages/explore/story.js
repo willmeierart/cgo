@@ -14,7 +14,7 @@ jQuery(document).ready(($) => {
       height: '2px'
     })
   }
-  const init = (() => {
+  const initDoc = (() => {
     formatHeaderText()
   })()
 })

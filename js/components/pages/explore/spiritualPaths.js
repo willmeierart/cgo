@@ -1,11 +1,11 @@
 import '../../../../scss/pages/spiritualPaths.scss'
 import '../../../../scss/pages/explore.scss'
 import '../../../../scss/main.scss'
-import { url } from '../../../utils'
+import { url, isIE } from '../../../utils'
 
 jQuery(document).ready($ => {
   $('.header-text').css({
-    backgroundImage: `url('${url}/wp-content/uploads/2018/05/spiritual-paths-header-full.jpg')`
+    backgroundImage: `url('${url}/wp-content/uploads/2018/07/spiritual-paths-header-2.0.jpg')`
   })
   const setColMargins = () => {
     if (window.innerWidth < 1000) {
@@ -16,6 +16,11 @@ jQuery(document).ready($ => {
       })
     }
   }
+
+  if (isIE) {
+    $('.glyph').removeAttr('width')
+  }
+
   const initDoc = () => {
     setColMargins()
     window.addEventListener('resize', setColMargins)

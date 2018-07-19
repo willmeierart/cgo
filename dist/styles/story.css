@@ -11,10 +11,19 @@
 .two-gifts .header-title-text {
   height: 45vw;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: 100% 100% !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -62,7 +71,11 @@
 .teachings .audio-text .wpb_wrapper,
 .spiritual-paths .audio-text .wpb_wrapper,
 .two-gifts .audio-text .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -73,7 +86,7 @@
 .teachings .audio-text .wpb_wrapper p,
 .spiritual-paths .audio-text .wpb_wrapper p,
 .two-gifts .audio-text .wpb_wrapper p {
-  width: 60%;
+  width: 150%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -120,9 +133,7 @@
     font-size: 1.33em;
     line-height: 1.25em;
   }
-}
-
-/********************************************
+}/********************************************
 ****************** ~COLORS~ *****************
 ********************************************/
 
@@ -136,7 +147,11 @@ body:not(.home) .main-content:not(.home) {
 }
 
 body:not(.home) .main-content:not(.home) .span_12 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -181,7 +196,12 @@ body:not(.home) .main-content:not(.home) .leader-img {
   }
 
   body .main-content .span_12 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 
@@ -204,19 +224,33 @@ body:not(.home) .main-content:not(.home) .leader-img {
 
 .story .end-text-block {
   padding: 5em;
+  padding-top: 2em;
   font-family: "Playfair Display";
-  font-size: 1em;
+  font-size: 1.5em;
   font-style: italic;
   text-align: center;
+  line-height: 1.5em;
 }
 
-.story .surrender-img {
+.story .story-img-wrapper .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.story .story-img-wrapper .inner .surrender-img {
   padding: 5em;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.story .surrender-caption {
+.story .story-img-wrapper .surrender-caption {
   text-align: center;
   font-size: 1.5em;
 }
@@ -226,25 +260,34 @@ body:not(.home) .main-content:not(.home) .leader-img {
 }
 
 .story .audio-text {
-  margin-top: 5em;
+  margin-top: 2em;
 }
 
 .story .audio-text .wpb_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 
 .story .audio-text .wpb_wrapper p {
-  width: 60%;
+  width: 150%;
   padding-bottom: 0;
   text-align: center;
 }
 
 @media screen and (min-width: 1400px) {
   .story .end-text-block {
-    margin: 3em 0 !important;
+    margin-bottom: 3em !important;
   }
 }
 
@@ -266,4 +309,3 @@ body:not(.home) .main-content:not(.home) .leader-img {
     margin-top: 0;
   }
 }
-

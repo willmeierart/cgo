@@ -23,6 +23,7 @@ function CGO_enqueue_js() {
 	if ( !is_admin() ) :
 		// original: wp_register_script('zerojs', $template_directory . '/js/child.js', array('jquery'), '1.0' );
 		// instead: register WEBPACK scripts:
+		wp_register_script('letter_animation', get_stylesheet_directory_uri() . '/dist/animation/letteranimation.min.js', array('jquery'), '1.0', false );		
 		wp_register_script('cgo_common', get_stylesheet_directory_uri() . '/dist/common.bundle.js', array('jquery'), '1.0', false );		
 		wp_register_script('cgo_main', get_stylesheet_directory_uri() . '/dist/main.bundle.js', array('jquery'), '1.0', false );
 		wp_register_script('cgo_home', get_stylesheet_directory_uri() . '/dist/home.bundle.js', array('jquery'), '1.0', false );
@@ -50,7 +51,9 @@ function CGO_enqueue_js() {
 
 		if(is_front_page()) {
 			wp_enqueue_script('cgo_home');
+			wp_enqueue_script('letter_animation');
 			wp_enqueue_style('cgo_home_style', get_stylesheet_directory_uri() . '/dist/styles/home.css');
+			wp_enqueue_style('css_animation', get_stylesheet_directory_uri() . '/dist/animation/cssanimation.min.css');
 		} else if(is_page( 'Purpose' )) {
 			wp_enqueue_script('cgo_purpose');
 			wp_enqueue_style('cgo_purpose_style', get_stylesheet_directory_uri() . '/dist/styles/purpose.css');

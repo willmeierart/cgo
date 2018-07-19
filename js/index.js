@@ -1,7 +1,9 @@
 // MASTER JS FILE - USE TO COMPILE OTHER MODULAR SCRIPTS
 // (remember to run `webpack --watch` for changes to update live)
+// require('babel-polyfill')
+// require('babel-polyfill')
 import '../scss/main.scss'
-import { url, thisPage, isThin } from './utils'
+import { url, thisPage, isThin, isIE } from './utils'
 import './components/common/footer'  
 import './components/common/header'
 import './components/common/menu'
@@ -78,15 +80,14 @@ jQuery(document).ready(($) => {
   }
   
   const handleLocalSrcSets = () => {
-    console.log(url);
     if ($('img').length > 0) {
       $('img').each((i, img) => {
         const path = `/wp-content${$(img).attr('src').split('/wp-content')[1]}`
         if ($(img).attr('src') !== undefined && $(img).attr('src') !== '') {
-          $(img).attr('src').indexOf('centerofthegoldenone') === -1 && $(img).attr('src', `${url}${path}`) 
+          $(img).attr('src').indexOf('test.centerofthegoldenone') === -1 && $(img).attr('src', `${url}${path}`) 
         }
         if ($(img).attr('srcset') !== undefined && $(img).attr('srcset') !== '') {
-          $(img).attr('srcset').indexOf('centerofthegoldenone') === -1 && $(img).attr('srcset', `${url}${path}`) 
+          $(img).attr('srcset').indexOf('test.centerofthegoldenone') === -1 && $(img).attr('srcset', `${url}${path}`) 
         }
       })
     }
@@ -108,13 +109,21 @@ jQuery(document).ready(($) => {
     const { pathname } = window.location
     const conds = pathname.indexOf('cart') !== -1 ||
       pathname.indexOf('checkout') !== -1 ||
-      pathname.indexOf('shop') !== -1 ||
+      pathname.indexOf('store') !== -1 ||
       pathname.indexOf('product') !== -1
-    console.log(conds)
     if (!conds) {
       $('#header-secondary-outer').remove()
-      $('#aws_widget-5').remove()
+      $('[id^=aws_widget]').remove()
+      // $('[id^=aws_widget_cart-4').remove()
     }
+  }
+
+  const globalIEStyleOverrides = () => {
+    $('.gilded-first-letter').css({ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' })
+    
+    $('.quote-box').css({ position: 'relative' }).children().css({ width: '100%' })
+    $('.quote p').css({ width: '100%' }).parent().css({ width: '100%' }) // from spiritual-lineage page
+
   }
 
   const initDoc = (() => {
@@ -127,5 +136,9 @@ jQuery(document).ready(($) => {
     window.addEventListener('resize', () => {
       $('.cart-outer').css({ display: 'none' })
     })
+    if (isIE) globalIEStyleOverrides()
+    // if (window.location.pathname.indexOf('product') !== -1) {
+    //   $('.main-content ul, .main-content ul li').css({ listStyle: 'disc' })
+    // }
   })()
 })
