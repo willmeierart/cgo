@@ -3,6 +3,33 @@
 // @keyframes header {
 //   from { width: 0; }
 // }
+
+.cssanimation,
+.cssanimation span {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+
+.cssanimation span {
+  display: inline-block
+}
+
+.leBlurIn span {
+  animation-name: leBlurIn
+}
+
+@keyframes leBlurIn {
+  from {
+    transform: scaleX(0.2);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+.leBlurInRight span {
+  animation-name: leBlurInRight
+}
+
 @keyframes leBlurInRight {
   from {
     transform: scaleX(0.2) translateX(100px);
@@ -62,9 +89,9 @@
           color: black !important;
           text-align: center;
           overflow: visible;
-          &.cssanimation, &.cssanimation span {
-            animation-duration: 1s;
-          }
+          // &.cssanimation, &.cssanimation span {
+          //   animation-duration: 1s;
+          // }
           span {
             overflow: visible;
             // min-width: .33em;

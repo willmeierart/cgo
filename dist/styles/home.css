@@ -2,6 +2,48 @@
 ****************** ~COLORS~ *****************
 ********************************************/
 
+.cssanimation,
+.cssanimation span {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.cssanimation span {
+  display: inline-block;
+}
+
+.leBlurIn span {
+  -webkit-animation-name: leBlurIn;
+  animation-name: leBlurIn;
+}
+
+@-webkit-keyframes leBlurIn {
+  from {
+    -webkit-transform: scaleX(0.2);
+    transform: scaleX(0.2);
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes leBlurIn {
+  from {
+    -webkit-transform: scaleX(0.2);
+    transform: scaleX(0.2);
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+.leBlurInRight span {
+  -webkit-animation-name: leBlurInRight;
+  animation-name: leBlurInRight;
+}
+
 @-webkit-keyframes leBlurInRight {
   from {
     -webkit-transform: scaleX(0.2) translateX(100px);
@@ -97,12 +139,6 @@
   color: black !important;
   text-align: center;
   overflow: visible;
-}
-
-.home .main-content #homepage-container .section-title h2.cssanimation,
-.home .main-content #homepage-container .section-title h2.cssanimation span {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
 }
 
 .home .main-content #homepage-container .section-title h2 span {

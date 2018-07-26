@@ -832,16 +832,17 @@ jQuery(document).ready(function($) {
     const forceRefresh = false
     const { localStorage } = window
     const data = await queries.events()
+    console.log(data);
     const shouldRefresh = localStorage.lastUpdated + 60000000 <= Date.now() // refresh cache if it's been a day
     const conds = !localStorage.data || !localStorage.lastUpdated || shouldRefresh || forceRefresh
     if (conds) {
       localStorage.setItem('CGOdata', JSON.stringify(data))
       localStorage.setItem('lastUpdated', Date.now())
     }
+    console.log('cache refreshed: ', conds)
     const cachedData = JSON.parse(localStorage.getItem('CGOdata'))
     const { course_types: { meditations, seminars, introductions, other_opportunities }, locations: { cities, centers } } = cachedData
 
-    console.log('cache refreshed: ', conds)
 
     const allTheseCourses = (() => {
       switch (true) {

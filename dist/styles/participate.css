@@ -602,6 +602,11 @@
     width: 28vw;
   }
 
+  .participate .mobile-dynamic-section .mobile-events-section .date-category .col-2 {
+    overflow: hidden;
+    overflow-wrap: break-word;
+  }
+
   .participate .mobile-dynamic-section .mobile-filters-section .mobile-filter-module {
     width: 80vw;
     -webkit-box-sizing: border-box;
@@ -729,6 +734,12 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media screen and (max-width: 1100px) {
+  .email {
+    font-size: 0.75em !important;
+  }
 }
 
 @media screen and (max-width: 1000px) {

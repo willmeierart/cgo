@@ -26,7 +26,6 @@ jQuery(document).ready(function($) {
     $('.breaker-6').css({
       backgroundImage: `url('${url}/wp-content/uploads/2018/05/2gifts-gmp-banner-03.jpg')`
     })
-    
   }
   const setButton = () => {
     $('.seminar-btn').css({

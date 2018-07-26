@@ -23,7 +23,7 @@ jQuery(document).ready(($) => {
       if ($('.section-title h2').children().length > 0) {
         $('.section-title h2').css({ opacity: 1 }).children().css({ opacity: 1 }).last().css({ color: '#D4A011' })
       } else {
-        setTimeout(checker, 300)
+        setTimeout(checker, 100)
       }
     }
     checker()

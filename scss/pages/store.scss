@@ -323,19 +323,28 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .main-content {
-    padding: 0 30px;
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      li {
-        width: 31%;
-      }
-    }
-    .az-searchbar {
-      form {
-        width: 80%!important;
+  .woocommerce {
+    #ajax-content-wrap {
+      .main-content {
+        padding: 0 30px;
+        .products {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          li {
+            width: 31%;
+          }
+        }
+        .az-searchbar {
+          form {
+            width: 80%!important;
+          }
+        }
+        .nectar-shop-header {
+          h1.page-title {
+            font-size: 8vw!important;
+          }
+        }
       }
     }
   }
